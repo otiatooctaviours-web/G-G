@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eazzy Rent - Simple property rental management system for landlords and property managers.">
+  <title>Eazzy Rent | Property Rental Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #fff; min-height: 100vh; padding: 2rem; }
+    .container { max-width: 800px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 2rem; }
+    .logo { width: 80px; height: 80px; margin-bottom: 1.5rem; }
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .tagline { font-size: 1.125rem; color: #a1a1a1; margin-bottom: 2rem; }
+    .features { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-bottom: 2rem; }
+    .feature { background: #1f1f1f; border: 1px solid #2a2a2a; padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.875rem; }
+    .screenshots { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+    .screenshot { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 0.75rem; overflow: hidden; }
+    .screenshot img { width: 100%; height: 150px; object-fit: cover; display: block; }
+    .screenshot-caption { padding: 1rem; text-align: left; }
+    .screenshot-caption strong { display: block; margin-bottom: 0.25rem; font-size: 0.875rem; }
+    .screenshot-caption p { font-size: 0.75rem; color: #737373; }
+    .cta-container { text-align: center; }
+    .cta { display: inline-block; background: #22c55e; color: #000; font-weight: 600; padding: 1rem 2.5rem; border-radius: 0.5rem; text-decoration: none; font-size: 1rem; transition: transform 0.2s, opacity 0.2s; }
+    .cta:hover { transform: scale(1.02); opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <svg class="logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="48" height="48" rx="8" fill="#22c55e"/>
+        <path d="M8 21.5 24 9l16 12.5V39a1.5 1.5 0 0 1-1.5 1.5h-9.75V28h-9.5v12.5H9.5A1.5 1.5 0 0 1 8 39V21.5Z" fill="#0f0f0f"/>
+        <path d="M15 40.5V28h18v12.5" fill="#0f0f0f"/>
+      </svg>
+      <h1>Eazzy Rent</h1>
+      <p class="tagline">Property rental management made simple.</p>
+      <div class="features">
+        <span class="feature">Tenant Tracking</span>
+        <span class="feature">Rent Collection</span>
+        <span class="feature">Online Payments</span>
+        <span class="feature">Reports</span>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <div class="screenshot">
+        <img src="./assets/testimonial-angela.jpg" alt="Tenant dashboard showing rent status and payment history">
+        <div class="screenshot-caption">
+          <strong>Tenant Dashboard</strong>
+          <p>View rent balance, payment history, and make online payments</p>
+        </div>
+      </div>
+      <div class="screenshot">
+        <img src="./assets/testimonial-daniel.jpg" alt="Landlord dashboard showing property portfolio and collections">
+        <div class="screenshot-caption">
+          <strong>Landlord Dashboard</strong>
+          <p>Track all properties, monitor collections, and manage tenants</p>
+        </div>
+      </div>
+      <div class="screenshot">
+        <img src="./assets/testimonial-sarah.jpg" alt="Reports showing revenue and occupancy analytics">
+        <div class="screenshot-caption">
+          <strong>Analytics & Reports</strong>
+          <p>Revenue tracking, occupancy rates, and payment performance</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-container">
+      <a class="cta" href="https://admin-eazzyrent.ggmarketing.co.ke" target="_blank" rel="noopener">Sign Up</a>
+    </div>
+  </div>
+</body>
+</html>

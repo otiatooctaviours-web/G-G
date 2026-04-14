@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" role="img" aria-labelledby="favicon-title">
+  <title id="favicon-title">G&amp;G Marketing favicon</title>
+  <defs>
+    <linearGradient id="gold" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#f7dd9c" />
+      <stop offset="100%" stop-color="#bb8a2f" />
+    </linearGradient>
+    <linearGradient id="blue" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#7cb3ff" />
+      <stop offset="100%" stop-color="#2b65ff" />
+    </linearGradient>
+  </defs>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="18">
+    <path d="M138 122 260 38l122 84" stroke="url(#gold)" />
+    <path d="M160 168 260 98l100 70" stroke="url(#blue)" />
+    <path d="M182 214 260 158l78 56" stroke="url(#gold)" />
+  </g>
+
+  <text
+    x="260"
+    y="340"
+    text-anchor="middle"
+    font-size="172"
+    font-family="Georgia, Times New Roman, serif"
+    font-weight="700"
+    letter-spacing="4"
+    fill="url(#gold)"
+  >
+    G&amp;G
+  </text>
+</svg>
