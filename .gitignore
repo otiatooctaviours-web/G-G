@@ -1,0 +1,5 @@
+.wrangler/
+Desktop.ini
+wrangler-dev*.err.log
+wrangler-dev*.out.log
+wrangler-dev*.result.txt

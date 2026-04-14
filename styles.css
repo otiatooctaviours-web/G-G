@@ -222,6 +222,7 @@ p {
   position: sticky;
   top: 0;
   z-index: 50;
+  isolation: isolate;
   padding-top: 1rem;
 }
 
@@ -235,6 +236,8 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  position: relative;
+  z-index: 2;
   transition: background 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
 }
 
@@ -954,14 +957,9 @@ p {
   color: rgba(255, 255, 255, 0.78);
 }
 
-.portfolio-logo-rent svg {
-  width: 4.2rem;
-  height: 4.2rem;
-  fill: none;
-  stroke: #f5d49a;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.portfolio-logo-rentmark {
+  width: 7.25rem;
+  height: auto;
 }
 
 .portfolio-copy {
@@ -1675,10 +1673,10 @@ p {
   }
 
   .nav-menu {
-    position: absolute;
-    top: calc(100% + 0.65rem);
-    right: 0;
-    width: min(21rem, 50vw);
+    position: fixed;
+    top: calc(0.8rem + var(--nav-height) - 0.3rem);
+    right: 0.75rem;
+    width: min(22rem, calc(100vw - 1.5rem));
     max-width: calc(100vw - 1.5rem);
     margin-left: 0;
     display: grid;
@@ -1695,13 +1693,15 @@ p {
     box-shadow: 0 18px 40px rgba(1, 10, 25, 0.42);
     transform: translateX(1rem);
     transition: max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease, transform 0.35s ease;
-    z-index: 2;
+    z-index: 60;
   }
 
   .nav-menu.is-open {
-    max-height: 34rem;
+    max-height: min(34rem, calc(100vh - 7rem));
     opacity: 1;
     pointer-events: auto;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 0.85rem 1rem;
     transform: translateX(0);
   }
