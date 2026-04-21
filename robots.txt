@@ -1,0 +1,4 @@
+# robots.txt for ggmarketing.co.ke
+User-agent: *
+Disallow:
+Sitemap: https://ggmarketing.co.ke/sitemap.xml
