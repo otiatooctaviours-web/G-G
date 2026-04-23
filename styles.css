@@ -1650,6 +1650,11 @@ p {
   :root {
     --font-sans: "Segoe UI", Arial, sans-serif;
     --font-display: "Segoe UI", Arial, sans-serif;
+    --shadow: 0 16px 34px rgba(1, 10, 25, 0.24);
+  }
+
+  body {
+    background: linear-gradient(180deg, #0b1729 0%, #08111f 58%, #040912 100%);
   }
 
   .ambient,
@@ -1659,9 +1664,11 @@ p {
 
   .glass,
   .glass-pill {
+    background: rgba(11, 23, 41, 0.92);
+    border-color: rgba(255, 255, 255, 0.08);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    box-shadow: 0 16px 34px rgba(1, 10, 25, 0.28);
+    box-shadow: var(--shadow);
   }
 
   .js [data-reveal] {
@@ -1671,16 +1678,27 @@ p {
   }
 
   .site-header {
-    padding-top: 0.8rem;
+    position: static;
+    padding-top: 0.55rem;
   }
 
   .navbar {
-    border-radius: 28px;
+    min-height: 4.5rem;
+    padding: 0.8rem 0.95rem;
+    border-radius: 22px;
     position: relative;
     align-items: center;
     justify-content: space-between;
     flex-wrap: nowrap;
     overflow: visible;
+    background: rgba(11, 23, 41, 0.96);
+    box-shadow: 0 10px 24px rgba(1, 10, 25, 0.2);
+    transition: none;
+  }
+
+  .navbar.is-scrolled {
+    transform: none;
+    background: rgba(11, 23, 41, 0.96);
   }
 
   .nav-toggle {
@@ -1689,11 +1707,15 @@ p {
     flex-shrink: 0;
     position: relative;
     z-index: 3;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.06);
   }
 
   .nav-menu {
     position: fixed;
-    top: calc(0.8rem + var(--nav-height) - 0.3rem);
+    top: calc(0.55rem + var(--nav-height) - 0.65rem);
     right: 0.75rem;
     width: min(22rem, calc(100vw - 1.5rem));
     max-width: calc(100vw - 1.5rem);
@@ -1808,8 +1830,84 @@ p {
     width: fit-content;
   }
 
+  .brand-logo {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 14px;
+    box-shadow: none;
+  }
+
+  h1 {
+    max-width: 9ch;
+    font-size: clamp(2.5rem, 10vw, 3.8rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    margin-bottom: 0.9rem;
+  }
+
+  .eyebrow::before {
+    width: 1.4rem;
+    background: #d2a44d;
+  }
+
+  .glass-pill {
+    margin-bottom: 0.7rem;
+    padding: 0.45rem 0.75rem;
+  }
+
   .hero {
     padding-top: calc(var(--section-space-mobile) - 0.8rem);
+  }
+
+  .hero-copy {
+    gap: 1rem;
+  }
+
+  .hero-text {
+    font-size: 1rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .hero-subtext {
+    max-width: none;
+    margin-bottom: 1rem;
+  }
+
+  .hero-actions {
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .button,
+  .nav-toggle {
+    transition: none;
+  }
+
+  .button:hover,
+  .button:focus-visible {
+    transform: none;
+  }
+
+  .button-primary,
+  .button-secondary,
+  .button-ghost {
+    box-shadow: none;
+  }
+
+  .metrics {
+    content-visibility: auto;
+    contain-intrinsic-size: 320px;
+  }
+
+  .about-section,
+  .services-section,
+  .reason-section,
+  .portfolio-section,
+  .testimonials-section,
+  .cta-section,
+  .site-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 960px;
   }
 
   .section {
