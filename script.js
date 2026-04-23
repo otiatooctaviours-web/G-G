@@ -33,6 +33,7 @@ const consultationResetButton = consultationModal?.querySelector("[data-reset-co
 const consultationRequestForm = document.querySelector(".consultation-request");
 const consultationNameInput = consultationModal?.querySelector("[data-consultation-name]");
 const consultationContactInput = consultationModal?.querySelector("[data-consultation-contact]");
+const emailLinks = document.querySelectorAll("[data-email-link]");
 
 let activeIndex = 0;
 let testimonialIntervalId;
@@ -46,6 +47,23 @@ const appointmentFormatter = new Intl.DateTimeFormat("en-US", {
   month: "long",
   day: "numeric",
   year: "numeric",
+});
+
+emailLinks.forEach((link) => {
+  const user = link.getAttribute("data-email-user");
+  const domain = link.getAttribute("data-email-domain");
+  const tld = link.getAttribute("data-email-tld");
+
+  if (!user || !domain || !tld) {
+    return;
+  }
+
+  const address = `${user}@${domain}.${tld}`;
+  link.setAttribute("href", `mailto:${address}`);
+  const label = link.querySelector("[data-email-label]");
+  if (label) {
+    label.textContent = address;
+  }
 });
 
 const setNavbarState = () => {
