@@ -74,9 +74,15 @@ setNavbarState();
 window.addEventListener("scroll", setNavbarState, { passive: true });
 
 if (navToggle && navMenu) {
+  const syncNavOpenState = (isOpen) => {
+    body.classList.toggle("is-nav-open", isOpen);
+    navbar?.classList.toggle("is-menu-open", isOpen);
+  };
+
   const closeNavMenu = () => {
     navMenu.classList.remove("is-open");
     navToggle.setAttribute("aria-expanded", "false");
+    syncNavOpenState(false);
     dropdowns.forEach((dd) => {
       dd.classList.remove("is-open");
       const t = dd.querySelector(".dropdown-trigger");
@@ -87,6 +93,7 @@ if (navToggle && navMenu) {
   navToggle.addEventListener("click", () => {
     const isOpen = navMenu.classList.toggle("is-open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
+    syncNavOpenState(isOpen);
 
     if (!isOpen) {
       dropdowns.forEach((dd) => {
@@ -167,6 +174,8 @@ document.querySelectorAll(".nav-links a, .dropdown a").forEach((link) => {
   link.addEventListener("click", () => {
     navMenu?.classList.remove("is-open");
     navToggle?.setAttribute("aria-expanded", "false");
+    body.classList.remove("is-nav-open");
+    navbar?.classList.remove("is-menu-open");
     dropdowns.forEach((dd) => {
       dd.classList.remove("is-open");
       const t = dd.querySelector(".dropdown-trigger");
