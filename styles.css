@@ -16,6 +16,8 @@
   --surface-padding: 1.6rem;
   --content-width: min(1180px, calc(100% - 2rem));
   --nav-height: 88px;
+  --font-sans: "Inter", "Segoe UI", Arial, sans-serif;
+  --font-display: "Manrope", "Segoe UI", Arial, sans-serif;
   color-scheme: dark;
 }
 
@@ -37,7 +39,7 @@ body {
     radial-gradient(circle at 80% 20%, rgba(210, 164, 77, 0.12), transparent 24%),
     linear-gradient(180deg, #0a1527 0%, #07111f 45%, #040912 100%);
   color: var(--text);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
@@ -176,7 +178,7 @@ h1,
 h2,
 h3,
 strong {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-display);
 }
 
 h1,
@@ -527,7 +529,7 @@ p {
 
 .metric-value {
   display: block;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 800;
   color: #ffffff;
@@ -1645,6 +1647,23 @@ p {
 }
 
 @media (max-width: 860px) {
+  :root {
+    --font-sans: "Segoe UI", Arial, sans-serif;
+    --font-display: "Segoe UI", Arial, sans-serif;
+  }
+
+  .ambient,
+  .hero-visual {
+    display: none;
+  }
+
+  .glass,
+  .glass-pill {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: 0 16px 34px rgba(1, 10, 25, 0.28);
+  }
+
   .js [data-reveal] {
     opacity: 1;
     transform: none;
@@ -1790,7 +1809,7 @@ p {
   }
 
   .hero {
-    padding-top: calc(var(--section-space-mobile) - 0.4rem);
+    padding-top: calc(var(--section-space-mobile) - 0.8rem);
   }
 
   .section {
