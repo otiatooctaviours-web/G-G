@@ -38,13 +38,7 @@ body {
     linear-gradient(180deg, #0a1527 0%, #07111f 45%, #040912 100%);
   color: var(--text);
   font-family: "Inter", sans-serif;
-  opacity: 0;
-  transition: opacity 0.9s ease;
   overflow-x: hidden;
-}
-
-body.is-ready {
-  opacity: 1;
 }
 
 body.is-modal-open {
@@ -1596,13 +1590,13 @@ p {
   flex: 1 1 220px;
 }
 
-[data-reveal] {
+.js [data-reveal] {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.65s ease, transform 0.65s ease;
 }
 
-[data-reveal].is-visible {
+.js [data-reveal].is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1651,6 +1645,12 @@ p {
 }
 
 @media (max-width: 860px) {
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   .site-header {
     padding-top: 0.8rem;
   }

@@ -48,10 +48,6 @@ const appointmentFormatter = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
 });
 
-window.addEventListener("load", () => {
-  body.classList.add("is-ready");
-});
-
 const setNavbarState = () => {
   navbar?.classList.toggle("is-scrolled", window.scrollY > 18);
 };
