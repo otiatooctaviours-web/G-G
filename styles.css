@@ -1246,6 +1246,16 @@ p {
   gap: 0.85rem;
 }
 
+.contact-trust-copy {
+  margin: 1rem 0 0;
+  max-width: 42rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.contact-trust-copy a {
+  color: #f4d59d;
+}
+
 .contact-form {
   display: grid;
   gap: 1rem;
