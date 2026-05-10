@@ -1,0 +1,26 @@
+<svg width="420" height="120" viewBox="0 0 420 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="420" height="120" rx="24" fill="transparent"/>
+  <path d="M54 25C42 39 42 81 54 95" stroke="#F51B72" stroke-width="8" stroke-linecap="round"/>
+  <path d="M78 25C66 39 66 81 78 95" stroke="#F51B72" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="92" cy="60" r="16" fill="#F51B72"/>
+  <text
+    x="128"
+    y="74"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="64"
+    font-weight="700"
+    fill="#A61D67"
+  >
+    Elite
+  </text>
+  <text
+    x="130"
+    y="98"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="20"
+    font-weight="700"
+    fill="#2A1A1F"
+  >
+    DEBT MANAGEMENT LTD
+  </text>
+</svg>

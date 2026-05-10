@@ -1,0 +1,36 @@
+<svg width="320" height="96" viewBox="0 0 320 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="96" rx="24" fill="transparent"/>
+  <text
+    x="12"
+    y="62"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="42"
+    font-weight="700"
+    fill="#2C7BE5"
+    letter-spacing="1"
+  >
+    VICI
+  </text>
+  <text
+    x="118"
+    y="62"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="42"
+    font-weight="400"
+    fill="#C9D4E5"
+    letter-spacing="0.5"
+  >
+    dial
+  </text>
+  <text
+    x="14"
+    y="82"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="10"
+    font-weight="700"
+    fill="#8BA0BD"
+    letter-spacing="3"
+  >
+    CONTACT CENTER SUITE
+  </text>
+</svg>
