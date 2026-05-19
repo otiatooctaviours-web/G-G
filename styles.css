@@ -2915,6 +2915,24 @@ p {
   z-index: 2;
   filter: drop-shadow(0 24px 52px rgba(1, 7, 19, 0.34));
   transform: translateX(50%);
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 44%,
+    rgba(0, 0, 0, 0.96) 54%,
+    rgba(0, 0, 0, 0.78) 64%,
+    rgba(0, 0, 0, 0.36) 74%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 44%,
+    rgba(0, 0, 0, 0.96) 54%,
+    rgba(0, 0, 0, 0.78) 64%,
+    rgba(0, 0, 0, 0.36) 74%,
+    transparent 100%
+  );
 }
 
 .status-dot {
@@ -3401,4 +3419,202 @@ p {
   .metric {
     min-height: auto;
   }
+}
+
+/* Minimal no-card pass */
+.glass-pill {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding: 0;
+}
+
+.metric,
+.about-card,
+.founder-card,
+.stack-card,
+.service-card,
+.reason-card,
+.portfolio-card,
+.testimonial-shell,
+.cta-copy,
+.contact-form,
+.footer-grid,
+.footer-review,
+.footer-meta,
+.portfolio-visual,
+.portfolio-payroll-card,
+.portfolio-login-preview,
+.mini-card,
+.service-bullets li,
+.breadcrumb-trail,
+.review-qr-grid,
+.consultation-dialog,
+.brand-badge {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.metric,
+.service-card,
+.reason-card,
+.portfolio-card,
+.testimonial-shell,
+.cta-copy,
+.footer-grid,
+.footer-review {
+  padding: 0;
+}
+
+.about-note,
+.consultation-selected-date,
+.consultation-status {
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+
+.service-card::after,
+.visual-panel::before,
+.portfolio-visual::before,
+.founder-portrait-shell::after {
+  content: none;
+}
+
+.service-icon,
+.contact-icon,
+.testimonial-button,
+.calendar-nav,
+.calendar-day,
+.time-slot,
+.reason-index {
+  background: none;
+  box-shadow: none;
+}
+
+.service-icon,
+.contact-icon,
+.testimonial-button,
+.calendar-nav,
+.calendar-day,
+.time-slot {
+  border: 0;
+}
+
+.service-icon {
+  width: auto;
+  height: auto;
+  margin-bottom: 0.8rem;
+}
+
+.service-icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  stroke: var(--gold-strong);
+}
+
+.metric {
+  min-height: auto;
+  gap: 0.35rem;
+}
+
+.metrics {
+  gap: 1rem;
+}
+
+.metric-value {
+  margin-bottom: 0;
+}
+
+.services-grid,
+.reason-grid,
+.portfolio-grid {
+  gap: 2rem 1.5rem;
+}
+
+.service-card .button,
+.portfolio-card .button {
+  margin-top: 0.25rem;
+}
+
+.reason-index {
+  padding: 0;
+  margin-bottom: 0.8rem;
+}
+
+.portfolio-visual {
+  min-height: auto;
+  padding: 0 0 1rem;
+}
+
+.portfolio-logo-card,
+.portfolio-payroll-showcase,
+.portfolio-login-preview {
+  gap: 0.75rem;
+}
+
+.portfolio-payroll-card,
+.portfolio-login-preview {
+  padding: 0;
+}
+
+.testimonial-shell {
+  margin-top: 0.5rem;
+}
+
+.testimonial-controls {
+  margin-top: 0.75rem;
+}
+
+.footer-grid,
+.footer-contact-row,
+.footer-meta {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.founder-portrait-shell {
+  border: 0;
+  background: none;
+}
+
+.contact-form,
+.consultation-dialog {
+  background:
+    linear-gradient(180deg, rgba(9, 21, 43, 0.9), rgba(6, 14, 30, 0.86)),
+    linear-gradient(150deg, rgba(79, 121, 212, 0.1), rgba(214, 176, 106, 0.08));
+  border: 1px solid rgba(244, 222, 176, 0.14);
+  box-shadow: 0 24px 60px rgba(1, 8, 20, 0.28);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border-radius: 26px;
+}
+
+.contact-form {
+  padding: 1.35rem;
+}
+
+.consultation-dialog {
+  padding: 1.4rem;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea,
+.consultation-lead-fields input,
+.calendar-day,
+.time-slot,
+.consultation-selected-date,
+.consultation-status,
+.consultation-close {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+    rgba(8, 18, 38, 0.82);
+  border: 1px solid rgba(244, 222, 176, 0.12);
+  box-shadow: none;
 }
