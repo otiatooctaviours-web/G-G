@@ -3583,6 +3583,95 @@ p {
   background: none;
 }
 
+.reason-card,
+.service-card,
+.portfolio-card,
+.metric,
+.testimonial-shell,
+.footer-review,
+.footer-meta,
+.footer-grid,
+.about-card,
+.founder-card {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.reason-index,
+.testimonial-button,
+.contact-icon,
+.service-icon {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.portfolio-section {
+  overflow: hidden;
+}
+
+.portfolio-marquee {
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, black 10%, black 90%, transparent 100%);
+}
+
+.portfolio-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeLogos 24s linear infinite;
+  will-change: transform;
+}
+
+.portfolio-marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+  padding-right: 3.5rem;
+}
+
+.portfolio-marquee-item {
+  display: grid;
+  place-items: center;
+  min-width: 12rem;
+  opacity: 0.92;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.portfolio-marquee-item:hover,
+.portfolio-marquee-item:focus-visible {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.portfolio-marquee-item img {
+  width: auto;
+  height: auto;
+  max-width: 12rem;
+  max-height: 4.25rem;
+  object-fit: contain;
+}
+
+.portfolio-marquee-item:nth-child(2) img {
+  max-width: 11rem;
+}
+
+.portfolio-marquee-item:nth-child(4) img {
+  max-height: 4.75rem;
+}
+
+@keyframes marqueeLogos {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .contact-form,
 .consultation-dialog {
   background:
