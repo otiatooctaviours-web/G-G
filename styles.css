@@ -2903,17 +2903,17 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
-.hero-portrait-image {
+.hero-logo-image {
   position: absolute;
-  bottom: -0.4rem;
+  bottom: 2.2rem;
   right: 50%;
-  width: min(100%, 35.5rem);
+  width: min(100%, 25rem);
   height: auto;
-  max-height: 37rem;
+  max-height: 25rem;
   object-fit: contain;
-  object-position: center bottom;
+  object-position: center;
   z-index: 2;
-  filter: drop-shadow(0 28px 56px rgba(1, 7, 19, 0.32));
+  filter: drop-shadow(0 24px 52px rgba(1, 7, 19, 0.34));
   transform: translateX(50%);
 }
 
@@ -3244,9 +3244,9 @@ p {
     min-height: 34rem;
   }
 
-  .hero-portrait-image {
-    width: min(100%, 29rem);
-    max-height: 32rem;
+  .hero-logo-image {
+    width: min(100%, 22rem);
+    max-height: 22rem;
   }
 }
 
@@ -3339,11 +3339,11 @@ p {
     min-height: 23rem;
   }
 
-  .hero-portrait-image {
+  .hero-logo-image {
     right: 50%;
-    bottom: 0;
-    width: min(100%, 16.5rem);
-    max-height: 19rem;
+    bottom: 1.25rem;
+    width: min(100%, 13rem);
+    max-height: 13rem;
     transform: translateX(50%);
   }
 
@@ -3388,9 +3388,9 @@ p {
     min-height: 20rem;
   }
 
-  .hero-portrait-image {
-    width: min(100%, 14.5rem);
-    max-height: 17rem;
+  .hero-logo-image {
+    width: min(100%, 11.5rem);
+    max-height: 11.5rem;
   }
 
   .brand-badge img {
