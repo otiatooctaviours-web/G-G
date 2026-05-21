@@ -26,15 +26,128 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta
     name="description"
-    content="Eazzy Rent helps landlords and property managers handle rent collection, tenant records, notices, and reporting from one place."
+    content="Eazzy Rent is property management software in Kenya for landlords and property managers who need rent collection tracking, tenant records, notices, and reporting in one workspace."
   >
-  <title>Eazzy Rent | Smart Property Management</title>
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ggmarketing.co.ke/eazzy-rent.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="G&amp;G Marketing">
+  <meta property="og:title" content="Property Management Software in Kenya | Eazzy Rent by G&amp;G Marketing">
+  <meta
+    property="og:description"
+    content="Property management software for landlords and property managers in Kenya, built to simplify rent collection tracking, tenant records, notices, and reporting."
+  >
+  <meta property="og:url" content="https://ggmarketing.co.ke/eazzy-rent.html">
+  <meta property="og:image" content="https://ggmarketing.co.ke/assets/eazzy-dashboard.jpg">
+  <meta property="og:image:alt" content="Eazzy Rent property management software dashboard">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Property Management Software in Kenya | Eazzy Rent by G&amp;G Marketing">
+  <meta
+    name="twitter:description"
+    content="Property management software for landlords and property managers in Kenya, built to simplify rent collection tracking, tenant records, notices, and reporting."
+  >
+  <meta name="twitter:image" content="https://ggmarketing.co.ke/assets/eazzy-dashboard.jpg">
+  <meta name="twitter:image:alt" content="Eazzy Rent property management software dashboard">
+  <title>Property Management Software in Kenya | Eazzy Rent by G&amp;G Marketing</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ggmarketing.co.ke/#organization",
+          "name": "G&G Marketing",
+          "alternateName": "G and G Marketing",
+          "url": "https://ggmarketing.co.ke/",
+          "logo": "https://ggmarketing.co.ke/assets/logo-square.jpg",
+          "email": "info@ggmarketing.co.ke",
+          "telephone": "+254793553860"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://ggmarketing.co.ke/eazzy-rent.html#application",
+          "name": "Eazzy Rent",
+          "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "Property Management Software",
+          "operatingSystem": "Web",
+          "url": "https://ggmarketing.co.ke/eazzy-rent.html",
+          "image": "https://ggmarketing.co.ke/assets/eazzy-dashboard.jpg",
+          "description": "Property management software in Kenya for landlords and property managers who need rent collection tracking, tenant records, notices, and reporting in one workspace.",
+          "publisher": {
+            "@id": "https://ggmarketing.co.ke/#organization"
+          },
+          "provider": {
+            "@id": "https://ggmarketing.co.ke/#organization"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "Kenya"
+          },
+          "keywords": "property management software Kenya, rent collection system, tenant management software, landlord software Nairobi",
+          "featureList": [
+            "Tenant record management",
+            "Rent collection tracking",
+            "Notice management",
+            "Portfolio reporting",
+            "Tenant communication"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Who is Eazzy Rent built for?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Eazzy Rent is built for landlords, property managers, caretakers, and rental teams that need one workspace for tenant records, rent tracking, notices, and property reporting."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can Eazzy Rent help with rent collection tracking?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Eazzy Rent helps property teams track collected rent, balances, late payments, and occupancy status without relying on scattered spreadsheets or message threads."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is Eazzy Rent suitable for property managers in Kenya?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The platform is positioned for rental property operations in Kenya and supports the day-to-day workflows landlords and property managers need to keep visible."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ggmarketing.co.ke/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Eazzy Rent",
+              "item": "https://ggmarketing.co.ke/eazzy-rent.html"
+            }
+          ]
+        }
+      ]
+    }
+  </script>
   <style>
     :root {
       --bg: #07121d;
@@ -158,10 +271,50 @@
       box-shadow: 0 22px 48px rgba(73, 227, 164, 0.3);
     }
 
+    .button-secondary {
+      color: var(--text);
+      background: rgba(87, 168, 255, 0.1);
+      border: 1px solid rgba(87, 168, 255, 0.22);
+      box-shadow: none;
+    }
+
     .hero {
       display: block;
       max-width: 56rem;
       padding: clamp(1.5rem, 3vw, 2.5rem) 0 3rem;
+    }
+
+    .header-copy,
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .header-copy {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .utility-link,
+    .breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: #d5e5fb;
+      font-size: 0.92rem;
+    }
+
+    .utility-link {
+      color: #cdfce8;
+    }
+
+    .breadcrumb {
+      margin-bottom: 1rem;
+    }
+
+    .breadcrumb a {
+      color: #ffffff;
     }
 
     .eyebrow {
@@ -209,7 +362,10 @@
       line-height: 1.75;
     }
 
-    .hero-copy .button {
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
       margin-top: 1.6rem;
     }
 
@@ -357,6 +513,10 @@
       font-size: 0.88rem;
     }
 
+    .footer a {
+      color: #dff7ee;
+    }
+
     @media (max-width: 900px) {
       .hero,
       .features,
@@ -366,6 +526,12 @@
 
       h1 {
         max-width: none;
+      }
+
+      .site-header,
+      .header-actions {
+        flex-direction: column;
+        align-items: stretch;
       }
     }
 
@@ -383,6 +549,10 @@
         width: 100%;
       }
 
+      .hero-actions {
+        flex-direction: column;
+      }
+
       .brand {
         justify-content: center;
       }
@@ -392,57 +562,76 @@
 <body>
   <main class="page">
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="Eazzy Rent home">
-        <img src="./assets/eazzy-logo-transparent.png" alt="Eazzy Rent logo" width="300" height="250">
-      </a>
-      <a class="button" href="https://admin-eazzyrent.ggmarketing.co.ke" target="_blank" rel="noopener">Get Started</a>
+      <div class="header-copy">
+        <a class="utility-link" href="/">Back to G&amp;G Marketing</a>
+        <a class="brand" href="#top" aria-label="Eazzy Rent home">
+          <img src="./assets/eazzy-logo-transparent.png" alt="Eazzy Rent logo" width="300" height="250">
+        </a>
+      </div>
+      <div class="header-actions">
+        <a class="button button-secondary" href="/#contact">Talk to Us</a>
+        <a class="button" href="https://admin-eazzyrent.ggmarketing.co.ke" target="_blank" rel="noopener">Get Started</a>
+      </div>
     </header>
 
     <section class="hero" id="top">
       <div class="hero-copy">
-        <p class="eyebrow">Property management made easier</p>
-        <h1>Run rent operations from one clean workspace.</h1>
-        <p>
-          Eazzy Rent helps landlords and property managers keep tenant records, rent collection,
-          notices, and reporting in one place so the day-to-day work is easier to follow and much
-          easier to manage.
+        <p class="breadcrumb">
+          <a href="/">G&amp;G Marketing</a>
+          <span>/</span>
+          <span>Eazzy Rent</span>
         </p>
+        <p class="eyebrow">Property management software in Kenya</p>
+        <h1>Manage rent, tenants, and property operations from one workspace.</h1>
+        <p>
+          Eazzy Rent is built for landlords and property managers who need a clearer way to track
+          rent collection, tenant records, notices, and reporting without juggling scattered
+          spreadsheets and chats.
+        </p>
+        <p>
+          From rental units in Nairobi to growing property portfolios across Kenya, the platform
+          helps teams stay organized, follow up faster, and keep day-to-day property management visible.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#features">View Features</a>
+          <a class="button button-secondary" href="/#contact">Talk to G&amp;G Marketing</a>
+        </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="features">
       <div class="section-heading">
-        <h2>Built for the daily realities of managing rental property.</h2>
+        <h2>Property management software for landlords, caretakers, and rental teams.</h2>
         <p>
-          From occupancy visibility to payment follow-up and tenant communication, the platform is
-          shaped around the work property teams already do every day.
+          Whether you are looking for tenant management software, a rent collection system, or a
+          cleaner way to oversee rental property operations in Kenya, Eazzy Rent keeps the core work in one place.
         </p>
       </div>
 
       <div class="features">
         <article class="feature">
           <span>01</span>
-          <h3>Tenant records</h3>
-          <p>Keep unit assignments, lease dates, contact information, and account details together in one system.</p>
+          <h3>Tenant management</h3>
+          <p>Keep unit assignments, lease dates, contact information, and account details together in one tenant record system.</p>
         </article>
         <article class="feature">
           <span>02</span>
-          <h3>Rent tracking</h3>
-          <p>Monitor collected rent, late payments, balances, and occupancy status without relying on scattered files.</p>
+          <h3>Rent collection tracking</h3>
+          <p>Monitor collected rent, late payments, balances, and occupancy status without relying on scattered files or manual follow-up.</p>
         </article>
         <article class="feature">
           <span>03</span>
-          <h3>Notice management</h3>
-          <p>Prepare reminders and communicate with tenants directly from the same workspace your team already uses.</p>
+          <h3>Tenant notices and communication</h3>
+          <p>Prepare reminders, share updates, and communicate with tenants from the same workspace your team already uses.</p>
         </article>
       </div>
     </section>
 
     <section class="section">
       <div class="section-heading">
-        <h2>A closer look at how the platform supports the workflow.</h2>
+        <h2>A closer look at how the platform supports day-to-day property management.</h2>
         <p>
-          Each view is focused on helping teams move faster, stay organized, and keep property operations visible without extra clutter.
+          Each view is focused on helping teams move faster, stay organized, and keep rent operations visible without extra clutter.
         </p>
       </div>
 
@@ -469,7 +658,7 @@
           >
           <div>
             <h3>Tenant directory</h3>
-            <p>Brings tenant identity, linked accounts, unit information, rent figures, lease periods, and status into one straightforward list.</p>
+            <p>Brings tenant identity, linked accounts, unit information, rent figures, lease periods, and status into one straightforward tenant management view.</p>
           </div>
         </article>
 
@@ -490,16 +679,16 @@
 
     <section class="section">
       <div class="section-heading">
-        <h2>Why teams move away from manual tracking.</h2>
+        <h2>Why landlords and property managers in Kenya move away from manual tracking.</h2>
         <p>
-          When records, notices, and collections live in one system, it becomes much easier to keep the operation structured and responsive.
+          When records, notices, and collections live in one system, it becomes much easier to keep the operation structured, responsive, and easier to report on.
         </p>
       </div>
 
       <div class="benefits">
         <article class="benefit">
           <strong>Less admin friction</strong>
-          <p>Spend less time jumping between spreadsheets, notebooks, and message threads to understand what is happening.</p>
+          <p>Spend less time jumping between spreadsheets, notebooks, and message threads to understand what is happening across the portfolio.</p>
         </article>
         <article class="benefit">
           <strong>Clearer visibility</strong>
@@ -516,16 +705,48 @@
       </div>
     </section>
 
+    <section class="section">
+      <div class="section-heading">
+        <h2>Common questions about Eazzy Rent.</h2>
+        <p>
+          These are the questions landlords and property teams usually ask when comparing
+          property management software in Kenya.
+        </p>
+      </div>
+
+      <div class="benefits">
+        <article class="benefit">
+          <strong>Who is Eazzy Rent built for?</strong>
+          <p>Eazzy Rent is built for landlords, property managers, caretakers, and rental teams that need one workspace for tenant records, rent tracking, notices, and reporting.</p>
+        </article>
+        <article class="benefit">
+          <strong>Can it help with rent collection tracking?</strong>
+          <p>Yes. The system helps teams track collected rent, balances, late payments, and occupancy status without relying on scattered spreadsheets.</p>
+        </article>
+        <article class="benefit">
+          <strong>Is it suitable for rental teams in Kenya?</strong>
+          <p>Yes. The page is positioned around the real workflows landlords and property managers in Kenya need to keep visible every day.</p>
+        </article>
+        <article class="benefit">
+          <strong>How do I get started?</strong>
+          <p>You can open the Eazzy Rent workspace directly or contact G&amp;G Marketing if you want help launching or presenting the product more clearly.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="cta">
       <h2>Start managing rent with more clarity.</h2>
       <p>
         Access the Eazzy Rent workspace and bring tenant records, communication, and payment oversight into one place.
       </p>
-      <a class="button" href="https://admin-eazzyrent.ggmarketing.co.ke" target="_blank" rel="noopener">Get Started</a>
+      <div class="hero-actions">
+        <a class="button" href="https://admin-eazzyrent.ggmarketing.co.ke" target="_blank" rel="noopener">Get Started</a>
+        <a class="button button-secondary" href="/#contact">Contact G&amp;G Marketing</a>
+      </div>
     </section>
 
     <footer class="footer">
-      <p>&copy; 2026 Eazzy Rent.</p>
+      <p>&copy; 2026 Eazzy Rent by <a href="/">G&amp;G Marketing</a>. Property management software for landlords and rental teams in Kenya.</p>
     </footer>
   </main>
 </body>

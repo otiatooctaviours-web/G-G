@@ -148,6 +148,11 @@ export async function onRequest(context) {
     });
   }
 
+  if (!isEazzyDomain && url.pathname === "/index.html") {
+    url.pathname = "/";
+    return Response.redirect(url.toString(), 301);
+  }
+
   if (isEazzyDomain && isHomeRequest) {
     // Rewrite the Eazzy subdomain root to the product landing page asset.
     url.pathname = "/eazzy-rent.html";
