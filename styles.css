@@ -1176,6 +1176,12 @@ p {
   max-width: 45rem;
 }
 
+.testimonial-rating {
+  color: #f6c453;
+  font-size: 1.05rem;
+  letter-spacing: 0.16em;
+}
+
 .testimonial-meta strong,
 .testimonial-meta span {
   display: block;
@@ -1197,7 +1203,32 @@ p {
   flex: 0 0 auto;
 }
 
+.testimonial-avatar--initials {
+  display: inline-grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(233, 174, 73, 0.3), rgba(255, 255, 255, 0.12));
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
 .testimonial-meta span {
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+.testimonial-reply {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(246, 196, 83, 0.45);
+}
+
+.testimonial-reply strong,
+.testimonial-reply span {
+  display: block;
+}
+
+.testimonial-reply span {
   color: var(--muted);
   margin-top: 0.25rem;
 }
