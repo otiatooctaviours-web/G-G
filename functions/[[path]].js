@@ -611,6 +611,10 @@ export async function onRequest(context) {
     }
 
     const successfulDeliveries = [result.record, result.notify, result.confirmation].filter((entry) => entry?.ok).length;
+    const notificationHealthy = result.notify?.ok === true;
+    const recordHealthy = result.record?.ok === true;
+    const consultationConfirmationExpected = lead.type === "consultation" && Boolean(lead.phone);
+    const consultationConfirmationHealthy = consultationConfirmationExpected ? result.confirmation?.ok === true : true;
 
     if (successfulDeliveries === 0) {
       return json(
@@ -622,7 +626,7 @@ export async function onRequest(context) {
       );
     }
 
-    result.degraded = failures.length > 0;
+    result.degraded = failures.length > 0 || !recordHealthy || !notificationHealthy || !consultationConfirmationHealthy;
 
     return json(
       {
@@ -648,6 +652,12 @@ export async function onRequest(context) {
     const rawBody = await context.request.text();
     const providedSignature = context.request.headers.get("X-OpenWA-Signature");
     const webhookSecret = env.OPENWA_WEBHOOK_SECRET;
+    const isLocalWebhookHost = hostname === "127.0.0.1" || hostname === "localhost";
+
+    if (!webhookSecret && !isLocalWebhookHost) {
+      console.warn("Rejected OpenWA webhook because OPENWA_WEBHOOK_SECRET is not configured");
+      return json({ error: "Webhook secret not configured" }, { status: 503 });
+    }
 
     if (webhookSecret) {
       const expectedSignature = await createOpenWaSignature(rawBody, webhookSecret);
