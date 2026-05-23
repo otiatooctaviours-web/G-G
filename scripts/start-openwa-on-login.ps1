@@ -6,6 +6,7 @@ $apiRunner = Join-Path $repoRoot "scripts\\run-openwa-api.cmd"
 $dashboardRunner = Join-Path $repoRoot "scripts\\run-openwa-dashboard.cmd"
 $bridgeRunner = Join-Path $repoRoot "scripts\\run-openwa-bridge.cmd"
 $tunnelRunner = Join-Path $repoRoot "scripts\\run-openwa-tunnel.cmd"
+$watchdogRunner = Join-Path $repoRoot "scripts\\run-openwa-watchdog.cmd"
 $dnsSyncScript = Join-Path $repoRoot "scripts\\sync-openwa-dns.ps1"
 $publishOriginScript = Join-Path $repoRoot "scripts\\publish-openwa-origin.ps1"
 $dashboardPort = 2886
@@ -42,6 +43,16 @@ function Start-Runner {
   Start-Process -FilePath "cmd.exe" -ArgumentList "/c `"$RunnerPath`"" -WorkingDirectory $repoRoot -WindowStyle Minimized | Out-Null
 }
 
+function Test-CommandLineProcess {
+  param(
+    [string] $Needle
+  )
+
+  return [bool] (Get-CimInstance Win32_Process | Where-Object {
+      $_.CommandLine -and $_.CommandLine -like "*$Needle*"
+    } | Select-Object -First 1)
+}
+
 if (-not (Test-HttpReachable -Uri "http://127.0.0.1:$apiPort/api/health")) {
   Start-Runner -RunnerPath $apiRunner
 }
@@ -52,6 +63,10 @@ if (-not (Test-HttpReachable -Uri "http://127.0.0.1:$dashboardPort")) {
 
 if (-not (Test-HttpReachable -Uri "http://127.0.0.1:$bridgePort/send-text")) {
   Start-Runner -RunnerPath $bridgeRunner
+}
+
+if (-not (Test-CommandLineProcess -Needle "openwa-session-watchdog.mjs")) {
+  Start-Runner -RunnerPath $watchdogRunner
 }
 
 Get-CimInstance Win32_Process |

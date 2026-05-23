@@ -196,6 +196,73 @@ export async function onRequest(context) {
     return configured.includes("@") ? configured : toWhatsAppChatId(configured);
   };
 
+  const normalizeBoolean = (value) => {
+    if (typeof value === "boolean") {
+      return value;
+    }
+
+    if (typeof value === "number") {
+      return value === 1;
+    }
+
+    if (typeof value === "string") {
+      return /^(1|true|yes|y|on)$/i.test(value.trim());
+    }
+
+    return false;
+  };
+
+  const normalizeKey = (value, maxLength = 80) =>
+    trimString(value, maxLength)
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "_")
+      .replace(/^_+|_+$/g, "");
+
+  const resolveOpsToken = () => trimString(env.WHATSAPP_ADMIN_TOKEN || env.INTERNAL_API_TOKEN, 200);
+
+  const getProvidedOpsToken = (request) => {
+    const authorization = trimString(request.headers.get("Authorization"), 300);
+
+    if (authorization.toLowerCase().startsWith("bearer ")) {
+      return trimString(authorization.slice(7), 200);
+    }
+
+    return trimString(request.headers.get("X-WhatsApp-Admin-Token") || request.headers.get("X-Internal-Api-Token"), 200);
+  };
+
+  const isAuthorizedOpsRequest = (request) => {
+    const expectedToken = resolveOpsToken();
+
+    if (!expectedToken) {
+      return { ok: false, reason: "missing-admin-token-config" };
+    }
+
+    const providedToken = getProvidedOpsToken(request);
+
+    if (!providedToken) {
+      return { ok: false, reason: "missing-admin-token" };
+    }
+
+    return {
+      ok: hasExactMatch(providedToken, expectedToken),
+      reason: "invalid-admin-token",
+    };
+  };
+
+  const requireAuthorizedOpsRequest = (request) => {
+    const authResult = isAuthorizedOpsRequest(request);
+
+    if (authResult.ok) {
+      return null;
+    }
+
+    if (authResult.reason === "missing-admin-token-config") {
+      return json({ error: "WhatsApp admin token not configured" }, { status: 503 });
+    }
+
+    return json({ error: "Unauthorized" }, { status: 401 });
+  };
+
   const createOpenWaSignature = async (payload, secret) => {
     const cryptoKey = await crypto.subtle.importKey(
       "raw",
@@ -352,6 +419,192 @@ export async function onRequest(context) {
     return {
       ok: true,
       provider,
+      status: response.status,
+      body: responseBody,
+    };
+  };
+
+  const buildFriendlyRecipientName = ({ recipientName, company, fallback = "there" } = {}) =>
+    normalizeSingleLine(recipientName || company, 120) || fallback;
+
+  const buildWarmFollowUpMessage = ({ recipientName, company, stage, service, actionUrl, note }) => {
+    const name = buildFriendlyRecipientName({ recipientName, company });
+    const normalizedStage = normalizeKey(stage || "new_lead", 80);
+    const safeService = normalizeSingleLine(service, 160) || "your project";
+    const safeNote = normalizeMultiline(note, 500);
+    const safeActionUrl = sanitizeUrlValue(actionUrl, { maxLength: 500, fallback: `${siteOrigin}/#contact` });
+
+    const stageTemplates = {
+      new_lead: [
+        `Hi ${name}, thanks again for reaching out to G&G Marketing about ${safeService}.`,
+        "Checking in to see whether you would like us to recommend the best next step.",
+        `You can reply here or use ${safeActionUrl}.`,
+      ],
+      quote_follow_up: [
+        `Hi ${name}, following up on your quote request for ${safeService}.`,
+        "If you want, we can turn it into a clear scope and next-step plan for you.",
+        `Reply here or use ${safeActionUrl}.`,
+      ],
+      consultation_reminder: [
+        `Hi ${name}, this is a quick reminder from G&G Marketing about your consultation request.`,
+        "If you want us to lock in a time, reply here and we will confirm it with you.",
+        `You can also review details at ${safeActionUrl}.`,
+      ],
+      proposal_follow_up: [
+        `Hi ${name}, just checking whether you had time to review the proposal for ${safeService}.`,
+        "We can adjust the scope, timing, or rollout if needed.",
+        `Reply here or continue at ${safeActionUrl}.`,
+      ],
+      no_reply_nudge: [
+        `Hi ${name}, sharing a quick follow-up in case you still need support with ${safeService}.`,
+        "We are happy to help when you are ready.",
+        `You can reach us directly at ${safeActionUrl}.`,
+      ],
+    };
+
+    const lines = stageTemplates[normalizedStage] || stageTemplates.new_lead;
+
+    if (safeNote) {
+      lines.push(`Note: ${safeNote}`);
+    }
+
+    return lines.join("\n");
+  };
+
+  const buildTemplateMessage = ({ template, recipientName, company, service, actionUrl, note }) => {
+    const name = buildFriendlyRecipientName({ recipientName, company });
+    const safeService = normalizeSingleLine(service, 160) || "your project";
+    const safeNote = normalizeMultiline(note, 500);
+    const safeActionUrl = sanitizeUrlValue(actionUrl, { maxLength: 500, fallback: `${siteOrigin}/#contact` });
+    const normalizedTemplate = normalizeKey(template, 80);
+
+    const templates = {
+      warm_check_in: [
+        `Hi ${name}, just checking in from G&G Marketing about ${safeService}.`,
+        "If the timing is right, we can help you move the project forward quickly.",
+        `Reply here or continue at ${safeActionUrl}.`,
+      ],
+      discovery_nudge: [
+        `Hi ${name}, if you still want support with ${safeService}, we can help you shape the next step.`,
+        "A short discovery conversation is usually the fastest way to move.",
+        `You can reply here or use ${safeActionUrl}.`,
+      ],
+      proposal_follow_up: [
+        `Hi ${name}, following up on the proposal for ${safeService}.`,
+        "We can refine the scope, priorities, or rollout based on what matters most to you.",
+        `Reply here or use ${safeActionUrl}.`,
+      ],
+      payment_reminder: [
+        `Hi ${name}, this is a friendly reminder from G&G Marketing regarding the next step for ${safeService}.`,
+        "If you need the invoice or payment details resent, reply here and we will help.",
+        `You can also continue at ${safeActionUrl}.`,
+      ],
+      reengagement: [
+        `Hi ${name}, checking whether ${safeService} is still a priority for your team.`,
+        "If you are ready, we can pick things up without starting from scratch.",
+        `Reply here or use ${safeActionUrl}.`,
+      ],
+    };
+
+    const lines = templates[normalizedTemplate];
+
+    if (!lines) {
+      return "";
+    }
+
+    if (safeNote) {
+      lines.push(`Note: ${safeNote}`);
+    }
+
+    return lines.join("\n");
+  };
+
+  const buildClientStatusUpdateMessage = ({ recipientName, company, productName, status, reference, note, actionUrl }) => {
+    const name = buildFriendlyRecipientName({ recipientName, company });
+    const safeProductName = normalizeSingleLine(productName, 160) || "your service";
+    const safeStatus = normalizeSingleLine(status, 120);
+    const safeReference = normalizeSingleLine(reference, 120);
+    const safeNote = normalizeMultiline(note, 500);
+    const safeActionUrl = sanitizeUrlValue(actionUrl, { maxLength: 500, fallback: `${siteOrigin}/#contact` });
+    const lines = [
+      `Hi ${name}, here is your latest ${safeProductName} update from G&G Marketing.`,
+      `Status: ${safeStatus || "Update available"}`,
+    ];
+
+    if (safeReference) {
+      lines.push(`Reference: ${safeReference}`);
+    }
+
+    if (safeNote) {
+      lines.push(`Details: ${safeNote}`);
+    }
+
+    lines.push(`If you need anything, reply here or use ${safeActionUrl}.`);
+
+    return lines.join("\n");
+  };
+
+  const resolveOutboundChatId = (payload) => {
+    const directChatId = trimString(payload?.chatId, 120);
+
+    if (directChatId) {
+      return directChatId;
+    }
+
+    return toWhatsAppChatId(payload?.contact || payload?.phone || payload?.recipient || "");
+  };
+
+  const buildAutomationEndpoint = () =>
+    sanitizeUrlValue(env.AUTOMATION_WEBHOOK_URL || env.N8N_WEBHOOK_URL || env.CRM_WEBHOOK_URL, {
+      maxLength: 500,
+      fallback: "",
+    });
+
+  const fanOutAutomationEvent = async (eventType, payload) => {
+    const endpoint = buildAutomationEndpoint();
+
+    if (!endpoint) {
+      return { ok: false, skipped: "missing-automation-webhook" };
+    }
+
+    const webhookToken = trimString(env.AUTOMATION_WEBHOOK_TOKEN || env.N8N_WEBHOOK_TOKEN || env.CRM_WEBHOOK_TOKEN, 200);
+    const body = {
+      event: eventType,
+      siteOrigin: resolvedSiteOrigin,
+      createdAt: new Date().toISOString(),
+      payload,
+    };
+
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(webhookToken ? { Authorization: `Bearer ${webhookToken}` } : {}),
+      },
+      body: JSON.stringify(body),
+    });
+
+    const responseText = await response.text().catch(() => "");
+    let responseBody = null;
+
+    if (responseText) {
+      try {
+        responseBody = JSON.parse(responseText);
+      } catch (error) {
+        responseBody = responseText;
+      }
+    }
+
+    if (!response.ok) {
+      const detail =
+        typeof responseBody === "string"
+          ? responseBody
+          : responseBody?.message || responseBody?.error || response.statusText;
+      throw new Error(`Automation webhook failed: ${response.status} ${detail}`.trim());
+    }
+
+    return {
+      ok: true,
       status: response.status,
       body: responseBody,
     };
@@ -701,6 +954,46 @@ export async function onRequest(context) {
     };
   };
 
+  const validateFollowUpRequest = (payload) => {
+    if (!resolveOutboundChatId(payload)) {
+      return "Please provide a valid WhatsApp contact or chatId.";
+    }
+
+    if (!normalizeSingleLine(payload?.recipientName || payload?.company, 120)) {
+      return "Please provide the recipient name or company.";
+    }
+
+    return "";
+  };
+
+  const validateTemplateSendRequest = (payload) => {
+    if (!resolveOutboundChatId(payload)) {
+      return "Please provide a valid WhatsApp contact or chatId.";
+    }
+
+    if (!buildTemplateMessage(payload)) {
+      return "Please choose a supported template.";
+    }
+
+    return "";
+  };
+
+  const validateStatusUpdateRequest = (payload) => {
+    if (!resolveOutboundChatId(payload)) {
+      return "Please provide a valid WhatsApp contact or chatId.";
+    }
+
+    if (!normalizeBoolean(payload?.optInConfirmed)) {
+      return "Opt-in confirmation is required before sending a status update.";
+    }
+
+    if (!normalizeSingleLine(payload?.productName, 160)) {
+      return "Please provide the product or service name.";
+    }
+
+    return "";
+  };
+
   if (url.pathname === "/api/leads") {
     if (context.request.method !== "POST") {
       return new Response("Method Not Allowed", { status: 405 });
@@ -743,6 +1036,7 @@ export async function onRequest(context) {
       record: null,
       notify: null,
       confirmation: null,
+      automation: null,
       degraded: false,
     };
     const failures = [];
@@ -788,6 +1082,32 @@ export async function onRequest(context) {
 
     result.degraded = failures.length > 0 || !recordHealthy || !notificationHealthy || !consultationConfirmationHealthy;
 
+    try {
+      result.automation = await fanOutAutomationEvent("lead.received", {
+        leadType: lead.type,
+        source: lead.source,
+        name: lead.name,
+        email: lead.email,
+        contact: lead.contact,
+        phone: lead.phone,
+        service: lead.service,
+        message: lead.message,
+        appointmentDate: lead.appointmentDate,
+        appointmentTime: lead.appointmentTime,
+        pageUrl: lead.pageUrl,
+        referrer: lead.referrer,
+        submittedAt: lead.submittedAt,
+        deliveries: {
+          record: result.record?.ok === true,
+          notify: result.notify?.ok === true,
+          confirmation: result.confirmation?.ok === true,
+          degraded: result.degraded,
+        },
+      });
+    } catch (error) {
+      console.warn("Lead automation fanout failed", error);
+    }
+
     return json(
       {
         ok: true,
@@ -799,6 +1119,167 @@ export async function onRequest(context) {
               ? "Appointment request received. We have also sent a WhatsApp confirmation."
               : "Appointment request received. We will confirm the slot shortly."
             : "Inquiry sent successfully. We'll get back to you soon.",
+      },
+      { status: 200 }
+    );
+  }
+
+  if (url.pathname === "/api/whatsapp/follow-up") {
+    if (context.request.method !== "POST") {
+      return new Response("Method Not Allowed", { status: 405 });
+    }
+
+    const authFailure = requireAuthorizedOpsRequest(context.request);
+
+    if (authFailure) {
+      return authFailure;
+    }
+
+    const parsedBody = await parseJsonBody(context.request, { maxBytes: 12 * 1024 });
+
+    if (parsedBody.error) {
+      return json({ error: parsedBody.error }, { status: parsedBody.status });
+    }
+
+    const payload = parsedBody.value;
+    const validationError = validateFollowUpRequest(payload);
+
+    if (validationError) {
+      return json({ error: validationError }, { status: 400 });
+    }
+
+    const chatId = resolveOutboundChatId(payload);
+    const text = buildWarmFollowUpMessage(payload);
+    const sessionId = trimString(payload?.sessionId, 120);
+    const sendResult = await sendWhatsAppText({ chatId, text, sessionId });
+    let automationResult = null;
+
+    try {
+      automationResult = await fanOutAutomationEvent("whatsapp.follow_up_sent", {
+        chatId,
+        recipientName: normalizeSingleLine(payload?.recipientName, 120),
+        company: normalizeSingleLine(payload?.company, 160),
+        service: normalizeSingleLine(payload?.service, 160),
+        stage: normalizeKey(payload?.stage || "new_lead", 80),
+        actionUrl: sanitizeUrlValue(payload?.actionUrl, { maxLength: 500, fallback: "" }),
+      });
+    } catch (error) {
+      console.warn("Follow-up automation fanout failed", error);
+    }
+
+    return json(
+      {
+        ok: true,
+        message: "WhatsApp follow-up sent.",
+        send: sendResult,
+        automation: automationResult,
+      },
+      { status: 200 }
+    );
+  }
+
+  if (url.pathname === "/api/whatsapp/templates/send") {
+    if (context.request.method !== "POST") {
+      return new Response("Method Not Allowed", { status: 405 });
+    }
+
+    const authFailure = requireAuthorizedOpsRequest(context.request);
+
+    if (authFailure) {
+      return authFailure;
+    }
+
+    const parsedBody = await parseJsonBody(context.request, { maxBytes: 12 * 1024 });
+
+    if (parsedBody.error) {
+      return json({ error: parsedBody.error }, { status: parsedBody.status });
+    }
+
+    const payload = parsedBody.value;
+    const validationError = validateTemplateSendRequest(payload);
+
+    if (validationError) {
+      return json({ error: validationError }, { status: 400 });
+    }
+
+    const chatId = resolveOutboundChatId(payload);
+    const text = buildTemplateMessage(payload);
+    const sessionId = trimString(payload?.sessionId, 120);
+    const sendResult = await sendWhatsAppText({ chatId, text, sessionId });
+    let automationResult = null;
+
+    try {
+      automationResult = await fanOutAutomationEvent("whatsapp.template_sent", {
+        template: normalizeKey(payload?.template, 80),
+        chatId,
+        recipientName: normalizeSingleLine(payload?.recipientName, 120),
+        company: normalizeSingleLine(payload?.company, 160),
+        service: normalizeSingleLine(payload?.service, 160),
+      });
+    } catch (error) {
+      console.warn("Template automation fanout failed", error);
+    }
+
+    return json(
+      {
+        ok: true,
+        message: "WhatsApp template message sent.",
+        send: sendResult,
+        automation: automationResult,
+      },
+      { status: 200 }
+    );
+  }
+
+  if (url.pathname === "/api/whatsapp/status-update") {
+    if (context.request.method !== "POST") {
+      return new Response("Method Not Allowed", { status: 405 });
+    }
+
+    const authFailure = requireAuthorizedOpsRequest(context.request);
+
+    if (authFailure) {
+      return authFailure;
+    }
+
+    const parsedBody = await parseJsonBody(context.request, { maxBytes: 12 * 1024 });
+
+    if (parsedBody.error) {
+      return json({ error: parsedBody.error }, { status: parsedBody.status });
+    }
+
+    const payload = parsedBody.value;
+    const validationError = validateStatusUpdateRequest(payload);
+
+    if (validationError) {
+      return json({ error: validationError }, { status: 400 });
+    }
+
+    const chatId = resolveOutboundChatId(payload);
+    const text = buildClientStatusUpdateMessage(payload);
+    const sessionId = trimString(payload?.sessionId, 120);
+    const sendResult = await sendWhatsAppText({ chatId, text, sessionId });
+    let automationResult = null;
+
+    try {
+      automationResult = await fanOutAutomationEvent("whatsapp.status_update_sent", {
+        chatId,
+        productName: normalizeSingleLine(payload?.productName, 160),
+        status: normalizeSingleLine(payload?.status, 120),
+        reference: normalizeSingleLine(payload?.reference, 120),
+        recipientName: normalizeSingleLine(payload?.recipientName, 120),
+        optInConfirmed: true,
+      });
+    } catch (error) {
+      console.warn("Status update automation fanout failed", error);
+    }
+
+    return json(
+      {
+        ok: true,
+        message: "WhatsApp status update sent.",
+        send: sendResult,
+        automation: automationResult,
       },
       { status: 200 }
     );
@@ -850,13 +1331,26 @@ export async function onRequest(context) {
 
     console.log("Received OpenWA webhook", webhookMeta);
 
+    let workflowResult = { handled: false };
+
     try {
-      await handleIncomingWebhook(payload);
+      workflowResult = await handleIncomingWebhook(payload);
     } catch (error) {
       console.error("OpenWA webhook workflow failed", error);
     }
 
-    return json({ received: true }, { status: 200 });
+    try {
+      await fanOutAutomationEvent("whatsapp.webhook_received", {
+        webhook: webhookMeta,
+        workflow: workflowResult,
+        from: trimString(payload?.data?.from || payload?.data?.chatId, 120),
+        body: trimString(payload?.data?.body, 500),
+      });
+    } catch (error) {
+      console.warn("Webhook automation fanout failed", error);
+    }
+
+    return json({ received: true, handled: workflowResult.handled === true }, { status: 200 });
   }
 
   if (url.pathname === "/mpesa/stk-push") {

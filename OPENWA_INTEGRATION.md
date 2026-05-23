@@ -15,6 +15,7 @@ That endpoint now handles:
 - server-side fanout to Formspree for recordkeeping
 - internal WhatsApp lead alerts through OpenWA
 - automatic WhatsApp confirmations for consultation requests when a phone number is provided
+- optional automation fanout into n8n, a CRM webhook, or a Google Sheets bridge
 - same-origin enforcement for browser lead submissions
 - honeypot trap fields for low-effort bot submissions
 - input size and content-type checks before parsing JSON
@@ -28,8 +29,89 @@ That webhook now supports:
 - OpenWA signature verification with `OPENWA_WEBHOOK_SECRET`
 - inbound keyword auto-replies for quote, booking, services, and human handoff requests
 - optional human handoff alerting back to the internal notify chat
+- optional automation fanout for inbound WhatsApp events
 - minimal `{"received":true}` responses instead of leaking workflow details
 - metadata-only logging instead of full payload logging
+
+## Protected WhatsApp Ops Endpoints
+
+The worker now exposes admin-only routes for outbound WhatsApp workflows:
+
+- `POST /api/whatsapp/follow-up`
+- `POST /api/whatsapp/templates/send`
+- `POST /api/whatsapp/status-update`
+
+These routes require `WHATSAPP_ADMIN_TOKEN` and are meant for operator or server-to-server use, not for public browser traffic.
+
+Use either:
+
+- `Authorization: Bearer <WHATSAPP_ADMIN_TOKEN>`
+- `X-WhatsApp-Admin-Token: <WHATSAPP_ADMIN_TOKEN>`
+
+### Follow-up Stages
+
+- `new_lead`
+- `quote_follow_up`
+- `consultation_reminder`
+- `proposal_follow_up`
+- `no_reply_nudge`
+
+### Template Keys
+
+- `warm_check_in`
+- `discovery_nudge`
+- `proposal_follow_up`
+- `payment_reminder`
+- `reengagement`
+
+### Follow-up Example
+
+```bash
+curl -X POST https://ggmarketing.co.ke/api/whatsapp/follow-up \
+  -H "Authorization: Bearer $WHATSAPP_ADMIN_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "contact": "+254700000000",
+    "recipientName": "Warm Lead",
+    "company": "Example Co",
+    "service": "Website Design",
+    "stage": "proposal_follow_up",
+    "note": "Checking whether you are ready for the next step.",
+    "actionUrl": "https://ggmarketing.co.ke/#contact"
+  }'
+```
+
+### Template Send Example
+
+```bash
+curl -X POST https://ggmarketing.co.ke/api/whatsapp/templates/send \
+  -H "Authorization: Bearer $WHATSAPP_ADMIN_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "contact": "+254700000000",
+    "recipientName": "Warm Lead",
+    "service": "Lead Generation",
+    "template": "warm_check_in"
+  }'
+```
+
+### Opt-in Status Update Example
+
+```bash
+curl -X POST https://ggmarketing.co.ke/api/whatsapp/status-update \
+  -H "Authorization: Bearer $WHATSAPP_ADMIN_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "contact": "+254700000000",
+    "recipientName": "Client",
+    "productName": "Eazzy Rent",
+    "status": "Deployment complete",
+    "reference": "EZ-241",
+    "note": "Landing page update is live.",
+    "optInConfirmed": true,
+    "actionUrl": "https://eazzy.ggmarketing.co.ke/"
+  }'
+```
 
 ## Current Rollout By Phase
 
@@ -74,6 +156,16 @@ Implemented as an integration boundary, not a live provider swap.
 - `OPENWA_WEBHOOK_SECRET`
 - `SITE_URL`
 
+Optional env vars:
+
+- `WHATSAPP_ADMIN_TOKEN`
+- `AUTOMATION_WEBHOOK_URL`
+- `AUTOMATION_WEBHOOK_TOKEN`
+- `N8N_WEBHOOK_URL`
+- `N8N_WEBHOOK_TOKEN`
+- `CRM_WEBHOOK_URL`
+- `CRM_WEBHOOK_TOKEN`
+
 ## Transport Modes
 
 Production now supports two outbound transport modes:
@@ -92,6 +184,17 @@ The bridge requires `OPENWA_BRIDGE_TOKEN` and keeps the raw OpenWA API key on th
 - `POST /api/sessions/:id/messages/send-text`
 - `POST /api/sessions/:id/webhooks`
 - `GET /api/sessions/:id/messages`
+- `GET /api/sessions/:id`
+- `POST /api/sessions/:id/start`
+
+## Local Reliability
+
+The local startup flow now includes a watchdog:
+
+- [scripts/openwa-session-watchdog.mjs](</C:/Users/otiat/Desktop/My projects/g-and-g-marketing/scripts/openwa-session-watchdog.mjs>)
+- [scripts/run-openwa-watchdog.cmd](</C:/Users/otiat/Desktop/My projects/g-and-g-marketing/scripts/run-openwa-watchdog.cmd>)
+
+It polls the saved session, attempts a restart if the session falls to `disconnected`, and writes logs into `runtime/`.
 
 ## Recommended Production Setup
 
