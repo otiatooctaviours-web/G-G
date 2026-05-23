@@ -351,32 +351,27 @@ const getMonthIndex = (date) => date.getFullYear() * 12 + date.getMonth();
 const formatHour = (hour) => `${String(hour).padStart(2, "0")}:00`;
 const buildTimeRange = (hour) => `${formatHour(hour)} - ${formatHour((hour + 1) % 24)}`;
 const isEmailContact = (value) => /\S+@\S+\.\S+/.test(value);
-
-const getFormspreeEndpoint = (form) => form?.dataset.formspreeEndpoint ?? "";
-
-const submitToFormspree = async (form, formData) => {
-  const endpoint = getFormspreeEndpoint(form);
-
-  if (!endpoint || endpoint.includes("YOUR_FORM_ID")) {
-    throw new Error("Add your Formspree form ID before publishing.");
-  }
-
-  const response = await fetch(endpoint, {
+const submitLeadRequest = async (payload) => {
+  const response = await fetch("/api/leads", {
     method: "POST",
-    body: formData,
     headers: {
+      "Content-Type": "application/json",
       Accept: "application/json",
     },
+    body: JSON.stringify({
+      ...payload,
+      pageUrl: window.location.href,
+      referrer: document.referrer,
+    }),
   });
 
-  if (!response.ok) {
-    const data = await response.json().catch(() => null);
-    const message =
-      data?.errors?.map((item) => item.message).join(" ") ??
-      "We couldn't send your request right now. Please try again.";
+  const data = await response.json().catch(() => null);
 
-    throw new Error(message);
+  if (!response.ok) {
+    throw new Error(data?.error || "We couldn't send your request right now. Please try again.");
   }
+
+  return data;
 };
 
 const setConsultationStep = (stepName) => {
@@ -426,7 +421,7 @@ const renderTimeSlots = () => {
     `;
 
     button.addEventListener("click", async () => {
-      if (!consultationDate || !consultationRequestForm) {
+      if (!consultationDate) {
         return;
       }
 
@@ -455,49 +450,25 @@ const renderTimeSlots = () => {
         `Submitting your request for ${appointmentFormatter.format(consultationDate)} at ${timeRange}...`
       );
       setTimeSlotDisabledState(true);
-
-      const appointmentDateField = consultationRequestForm.querySelector('input[name="appointment_date"]');
-      const appointmentTimeField = consultationRequestForm.querySelector('input[name="appointment_time"]');
-      const nameField = consultationRequestForm.querySelector('input[name="name"]');
-      const contactField = consultationRequestForm.querySelector('input[name="contact"]');
-      const emailField = consultationRequestForm.querySelector('input[name="email"]');
-      const serviceField = consultationRequestForm.querySelector('input[name="service"]');
-      const messageField = consultationRequestForm.querySelector('input[name="message"]');
       const appointmentSummary = `Consultation requested for ${appointmentFormatter.format(consultationDate)} at ${timeRange}. Contact: ${contactValue}.`;
 
-      if (appointmentDateField) {
-        appointmentDateField.value = formatDateValue(consultationDate);
-      }
-
-      if (appointmentTimeField) {
-        appointmentTimeField.value = timeRange;
-      }
-
-      if (nameField) {
-        nameField.value = contactName;
-      }
-
-      if (contactField) {
-        contactField.value = contactValue;
-      }
-
-      if (emailField) {
-        emailField.value = isEmailContact(contactValue) ? contactValue : "";
-      }
-
-      if (serviceField) {
-        serviceField.value = "Consultation Booking";
-      }
-
-      if (messageField) {
-        messageField.value = appointmentSummary;
-      }
-
       try {
-        await submitToFormspree(consultationRequestForm, new FormData(consultationRequestForm));
+        const response = await submitLeadRequest({
+          type: "consultation",
+          source: "Consultation Modal",
+          name: contactName,
+          contact: contactValue,
+          email: isEmailContact(contactValue) ? contactValue : "",
+          service: "Consultation Booking",
+          message: appointmentSummary,
+          appointmentDate: formatDateValue(consultationDate),
+          appointmentTime: timeRange,
+        });
+
         setStatusMessage(
           consultationStatus,
-          `Appointment request sent for ${appointmentFormatter.format(consultationDate)} at ${timeRange}. We'll follow up shortly.`,
+          response?.message ||
+            `Appointment request sent for ${appointmentFormatter.format(consultationDate)} at ${timeRange}. We'll follow up shortly.`,
           "success"
         );
       } catch (error) {
@@ -743,9 +714,18 @@ if (contactForm) {
     }
 
     try {
-      await submitToFormspree(contactForm, new FormData(contactForm));
+      const formData = new FormData(contactForm);
+      const response = await submitLeadRequest({
+        type: "inquiry",
+        source: "Inquiry Modal",
+        name: formData.get("name"),
+        email: formData.get("email"),
+        service: formData.get("service"),
+        message: formData.get("message"),
+      });
+
       contactForm.reset();
-      setStatusMessage(status, "Inquiry sent successfully. We'll get back to you soon.", "success");
+      setStatusMessage(status, response?.message || "Inquiry sent successfully. We'll get back to you soon.", "success");
 
       if (button) {
         button.textContent = "Inquiry Received";

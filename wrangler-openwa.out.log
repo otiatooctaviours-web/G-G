@@ -1,0 +1,28 @@
+
+ ⛅️ wrangler 4.82.2
+───────────────────
+No Functions. Shimming...
+Using secrets defined in .dev.vars
+Your Worker has access to the following bindings:
+Binding                                                                     Resource                  Mode
+env.CF_PAGES ("1")                                                          Environment Variable      local
+env.CF_PAGES_BRANCH ("main")                                                Environment Variable      local
+env.CF_PAGES_COMMIT_SHA ("bf8890d8e1520f99fd9af27b3638d9e5f8110...")        Environment Variable      local
+env.CF_PAGES_URL ("https://bf8890d.g-g.pages.dev")                          Environment Variable      local
+env.OPENWA_WEBHOOK_SECRET ("(hidden)")                                      Environment Variable      local
+
+⎔ Starting local server...
+[wrangler:warn] Unable to fetch the `Request.cf` object! Falling back to a default placeholder...
+ConnectTimeoutError: Connect Timeout Error (attempted addresses: 104.16.196.131:443, 2606:4700::6810:c483:443, 104.16.197.131:443, 2606:4700::6810:c583:443, timeout: 10000ms)
+    at onConnectTimeout (C:\Users\otiat\AppData\Roaming\npm\node_modules\wrangler\node_modules\undici\lib\core\util.js:871:19)
+    at Immediate._onImmediate (C:\Users\otiat\AppData\Roaming\npm\node_modules\wrangler\node_modules\undici\lib\core\util.js:822:35)
+    at process.processImmediate (node:internal/timers:504:21)
+[wrangler:warn] Unable to fetch the `Request.cf` object! Falling back to a default placeholder...
+ConnectTimeoutError: Connect Timeout Error (attempted addresses: 104.16.196.131:443, 2606:4700::6810:c483:443, 104.16.197.131:443, 2606:4700::6810:c583:443, timeout: 10000ms)
+    at onConnectTimeout (C:\Users\otiat\AppData\Roaming\npm\node_modules\wrangler\node_modules\undici\lib\core\util.js:871:19)
+    at Immediate._onImmediate (C:\Users\otiat\AppData\Roaming\npm\node_modules\wrangler\node_modules\undici\lib\core\util.js:822:35)
+    at process.processImmediate (node:internal/timers:504:21)
+
+[32mIf you think this is a bug then please create an issue at https://github.com/cloudflare/workers-sdk/issues/new/choose[0m
+? Would you like to report this error to Cloudflare? Wrangler's output and the error details will be shared with the Wrangler team to help us diagnose and fix the issue.
+🤖 Using fallback value in non-interactive context: no
