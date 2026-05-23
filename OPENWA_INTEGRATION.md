@@ -15,6 +15,9 @@ That endpoint now handles:
 - server-side fanout to Formspree for recordkeeping
 - internal WhatsApp lead alerts through OpenWA
 - automatic WhatsApp confirmations for consultation requests when a phone number is provided
+- same-origin enforcement for browser lead submissions
+- honeypot trap fields for low-effort bot submissions
+- input size and content-type checks before parsing JSON
 
 The OpenWA webhook receiver remains available at:
 
@@ -25,6 +28,8 @@ That webhook now supports:
 - OpenWA signature verification with `OPENWA_WEBHOOK_SECRET`
 - inbound keyword auto-replies for quote, booking, services, and human handoff requests
 - optional human handoff alerting back to the internal notify chat
+- minimal `{"received":true}` responses instead of leaking workflow details
+- metadata-only logging instead of full payload logging
 
 ## Current Rollout By Phase
 
@@ -62,13 +67,27 @@ Implemented as an integration boundary, not a live provider swap.
 - `FORMSPREE_ENDPOINT`
 - `WHATSAPP_PROVIDER`
 - `OPENWA_BASE_URL`
+- `OPENWA_BRIDGE_TOKEN`
 - `OPENWA_API_KEY`
 - `OPENWA_SESSION_ID`
 - `OPENWA_NOTIFY_CHAT_ID`
 - `OPENWA_WEBHOOK_SECRET`
 - `SITE_URL`
 
-## OpenWA Endpoints Used
+## Transport Modes
+
+Production now supports two outbound transport modes:
+
+- direct OpenWA API mode
+- bridge mode through `scripts/openwa-bridge.mjs`
+
+Bridge mode is preferred for production hardening because the public endpoint only exposes:
+
+- `POST /send-text`
+
+The bridge requires `OPENWA_BRIDGE_TOKEN` and keeps the raw OpenWA API key on the host machine instead of inside the Cloudflare worker path.
+
+## OpenWA Endpoints Used Internally
 
 - `POST /api/sessions/:id/messages/send-text`
 - `POST /api/sessions/:id/webhooks`
@@ -77,10 +96,11 @@ Implemented as an integration boundary, not a live provider swap.
 ## Recommended Production Setup
 
 1. Keep OpenWA running as a separate service.
-2. Keep all OpenWA credentials only in Cloudflare environment variables.
-3. Point the OpenWA webhook to `https://ggmarketing.co.ke/whatsapp/webhook`.
-4. Make sure `OPENWA_BASE_URL` is reachable from Cloudflare, not just from localhost.
-5. Keep Formspree or another recordkeeping sink enabled even if WhatsApp is the main alert channel.
+2. Prefer a small bridge in front of OpenWA instead of exposing the raw OpenWA API publicly.
+3. Keep the raw OpenWA API key only on the OpenWA host when bridge mode is active.
+4. Point the OpenWA webhook to `https://ggmarketing.co.ke/whatsapp/webhook`.
+5. Make sure `OPENWA_BASE_URL` reaches the bridge or private ingress, not an unrestricted localhost tunnel.
+6. Keep Formspree or another recordkeeping sink enabled even if WhatsApp is the main alert channel.
 
 ## Important Note
 

@@ -7,4 +7,6 @@ wrangler-dev*.result.txt
 openwa-local-adapter*.log
 wrangler-openwa*.log
 cloudflared-openwa*.log
+openwa-bridge*.log
+.pages-deploy-temp/
 external/openwa/

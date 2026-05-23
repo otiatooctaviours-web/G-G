@@ -807,11 +807,11 @@
             >
               <label>
                 Name
-                <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
+                <input type="text" name="name" placeholder="Your name" autocomplete="name" maxlength="120" required />
               </label>
               <label>
                 Email
-                <input type="email" name="email" placeholder="Your email" autocomplete="email" required />
+                <input type="email" name="email" placeholder="Your email" autocomplete="email" maxlength="160" required />
               </label>
               <label>
                 Service Needed
@@ -831,8 +831,13 @@
                   name="message"
                   rows="5"
                   placeholder="Tell us about the growth stage you are entering."
+                  maxlength="2500"
                   required
                 ></textarea>
+              </label>
+              <label class="trap-field" aria-hidden="true">
+                Company
+                <input type="text" name="company" tabindex="-1" autocomplete="off" />
               </label>
               <input type="hidden" name="_subject" value="New inquiry from the G&amp;G Marketing website" />
               <p class="form-status" role="status" aria-live="polite"></p>
@@ -858,6 +863,7 @@
                   name="consultation_name"
                   placeholder="Your full name"
                   autocomplete="name"
+                  maxlength="120"
                   data-consultation-name
                   required
                 />
@@ -869,9 +875,14 @@
                   name="consultation_contact"
                   placeholder="e.g. +254 700 000 000 or name@example.com"
                   autocomplete="email"
+                  maxlength="160"
                   data-consultation-contact
                   required
                 />
+              </label>
+              <label class="trap-field" aria-hidden="true">
+                Website
+                <input type="text" name="website" tabindex="-1" autocomplete="off" data-consultation-trap />
               </label>
             </div>
 

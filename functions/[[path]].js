@@ -3,11 +3,19 @@ export async function onRequest(context) {
   const hostname = url.hostname.toLowerCase();
   const isEazzyDomain = hostname === "eazzy.ggmarketing.co.ke";
   const isHomeRequest = url.pathname === "/" || url.pathname === "/index.html";
+  const isLocalHost = hostname === "127.0.0.1" || hostname === "localhost";
 
   const env = context.env || {};
   const textEncoder = new TextEncoder();
   const defaultFormspreeEndpoint = "https://formspree.io/f/xlgwyzwb";
   const siteOrigin = (env.SITE_URL || url.origin).replace(/\/$/, "");
+  const resolvedSiteOrigin = (() => {
+    try {
+      return new URL(siteOrigin).origin;
+    } catch (error) {
+      return url.origin;
+    }
+  })();
 
   const base64 = (str) => {
     if (typeof btoa === "function") return btoa(str);
@@ -20,6 +28,11 @@ export async function onRequest(context) {
       ...init,
       headers: {
         "Content-Type": "application/json",
+        "Cache-Control": "no-store, private, max-age=0",
+        Pragma: "no-cache",
+        "Referrer-Policy": "same-origin",
+        "X-Content-Type-Options": "nosniff",
+        "X-Robots-Tag": "noindex, nofollow, noarchive",
         ...(init.headers || {}),
       },
     });
@@ -32,7 +45,109 @@ export async function onRequest(context) {
   const trimString = (value, maxLength = 1000) =>
     typeof value === "string" ? value.trim().slice(0, maxLength) : "";
 
+  const normalizeSingleLine = (value, maxLength = 1000) =>
+    trimString(value, maxLength)
+      .replace(/[\u0000-\u001f\u007f]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+  const normalizeMultiline = (value, maxLength = 2500) =>
+    trimString(value, maxLength)
+      .replace(/\r\n/g, "\n")
+      .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]+/g, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+
   const isEmailAddress = (value) => /\S+@\S+\.\S+/.test(value);
+
+  const hasExactMatch = (firstValue, secondValue) => {
+    if (typeof firstValue !== "string" || typeof secondValue !== "string" || firstValue.length !== secondValue.length) {
+      return false;
+    }
+
+    let mismatch = 0;
+
+    for (let index = 0; index < firstValue.length; index += 1) {
+      mismatch |= firstValue.charCodeAt(index) ^ secondValue.charCodeAt(index);
+    }
+
+    return mismatch === 0;
+  };
+
+  const sanitizeUrlValue = (value, { maxLength = 500, sameOriginOnly = false, fallback = "" } = {}) => {
+    const candidate = normalizeSingleLine(value, maxLength);
+
+    if (!candidate) {
+      return fallback;
+    }
+
+    try {
+      const parsed = new URL(candidate, resolvedSiteOrigin);
+
+      if (!/^https?:$/.test(parsed.protocol)) {
+        return fallback;
+      }
+
+      if (sameOriginOnly && parsed.origin !== resolvedSiteOrigin) {
+        return fallback;
+      }
+
+      return parsed.toString();
+    } catch (error) {
+      return fallback;
+    }
+  };
+
+  const byteLength = (value) => textEncoder.encode(value).byteLength;
+
+  const parseJsonBody = async (request, { maxBytes = 16 * 1024, requireJson = true } = {}) => {
+    const contentType = trimString(request.headers.get("Content-Type"), 120).toLowerCase();
+
+    if (requireJson && !contentType.includes("application/json")) {
+      return { error: "Content-Type must be application/json", status: 415 };
+    }
+
+    const rawBody = await request.text();
+
+    if (byteLength(rawBody) > maxBytes) {
+      return { error: "Payload too large", status: 413 };
+    }
+
+    try {
+      return {
+        value: rawBody ? JSON.parse(rawBody) : {},
+        rawBody,
+      };
+    } catch (error) {
+      return { error: "Invalid JSON payload", status: 400 };
+    }
+  };
+
+  const isTrustedBrowserLeadRequest = (request) => {
+    if (isLocalHost) {
+      return true;
+    }
+
+    const secFetchSite = trimString(request.headers.get("Sec-Fetch-Site"), 40).toLowerCase();
+
+    if (secFetchSite === "cross-site") {
+      return false;
+    }
+
+    const origin = trimString(request.headers.get("Origin"), 300);
+
+    if (origin) {
+      return origin === resolvedSiteOrigin;
+    }
+
+    const referer = trimString(request.headers.get("Referer"), 500);
+
+    if (referer) {
+      return referer === resolvedSiteOrigin || referer.startsWith(`${resolvedSiteOrigin}/`);
+    }
+
+    return false;
+  };
 
   const normalizePhoneNumber = (value) => {
     const digits = trimString(value, 40).replace(/[^\d+]/g, "");
@@ -187,22 +302,32 @@ export async function onRequest(context) {
 
     const baseUrl = trimString(env.OPENWA_BASE_URL, 300).replace(/\/$/, "");
     const apiKey = trimString(env.OPENWA_API_KEY, 200);
+    const bridgeToken = trimString(env.OPENWA_BRIDGE_TOKEN, 200);
     const resolvedSessionId = trimString(sessionId || env.OPENWA_SESSION_ID, 120);
 
-    if (!baseUrl || !apiKey || !resolvedSessionId) {
+    if (!baseUrl || !resolvedSessionId || (!bridgeToken && !apiKey)) {
       return { ok: false, skipped: "missing-openwa-config" };
     }
 
-    const response = await fetch(`${baseUrl}/api/sessions/${resolvedSessionId}/messages/send-text`, {
+    const usingBridge = Boolean(bridgeToken);
+    const response = await fetch(usingBridge ? `${baseUrl}/send-text` : `${baseUrl}/api/sessions/${resolvedSessionId}/messages/send-text`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": apiKey,
+        ...(usingBridge ? { "x-openwa-bridge-token": bridgeToken } : { "x-api-key": apiKey }),
       },
-      body: JSON.stringify({
-        chatId,
-        text,
-      }),
+      body: JSON.stringify(
+        usingBridge
+          ? {
+              chatId,
+              text,
+              sessionId: resolvedSessionId,
+            }
+          : {
+              chatId,
+              text,
+            }
+      ),
     });
 
     const responseText = await response.text().catch(() => "");
@@ -235,18 +360,26 @@ export async function onRequest(context) {
   const buildLeadPayload = (payload) => {
     const rawType = trimString(payload?.type, 40).toLowerCase();
     const type = rawType === "consultation" ? "consultation" : "inquiry";
-    const name = trimString(payload?.name, 120);
-    const email = trimString(payload?.email, 160).toLowerCase();
-    const contact = trimString(payload?.contact, 160);
-    const message = trimString(payload?.message, 2500);
-    const service = trimString(payload?.service, 160);
-    const source = trimString(payload?.source, 160) || (type === "consultation" ? "Consultation Modal" : "Inquiry Modal");
-    const appointmentDate = trimString(payload?.appointmentDate, 40);
-    const appointmentTime = trimString(payload?.appointmentTime, 80);
-    const pageUrl = trimString(payload?.pageUrl, 500) || `${siteOrigin}${url.pathname}`;
-    const referrer = trimString(payload?.referrer, 500);
+    const name = normalizeSingleLine(payload?.name, 120);
+    const email = normalizeSingleLine(payload?.email, 160).toLowerCase();
+    const contact = normalizeSingleLine(payload?.contact, 160);
+    const message = normalizeMultiline(payload?.message, 2500);
+    const service = normalizeSingleLine(payload?.service, 160);
+    const source = normalizeSingleLine(payload?.source, 160) || (type === "consultation" ? "Consultation Modal" : "Inquiry Modal");
+    const appointmentDate = normalizeSingleLine(payload?.appointmentDate, 40);
+    const appointmentTime = normalizeSingleLine(payload?.appointmentTime, 80);
+    const pageUrl = sanitizeUrlValue(payload?.pageUrl, {
+      maxLength: 500,
+      sameOriginOnly: true,
+      fallback: `${resolvedSiteOrigin}${url.pathname}`,
+    });
+    const referrer = sanitizeUrlValue(payload?.referrer, {
+      maxLength: 500,
+      fallback: "",
+    });
     const phone = normalizePhoneNumber(contact);
     const fallbackEmail = !email && isEmailAddress(contact) ? contact.toLowerCase() : "";
+    const spamTrap = normalizeSingleLine(payload?.website || payload?.company || payload?.organization, 160);
 
     return {
       type,
@@ -261,6 +394,7 @@ export async function onRequest(context) {
       appointmentTime,
       pageUrl,
       referrer,
+      spamTrap,
       submittedAt: new Date().toISOString(),
     };
   };
@@ -277,6 +411,14 @@ export async function onRequest(context) {
 
       if (!lead.appointmentDate || !lead.appointmentTime) {
         return "Please choose a consultation date and time.";
+      }
+
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(lead.appointmentDate)) {
+        return "Please choose a valid consultation date.";
+      }
+
+      if (!/^\d{2}:\d{2} - \d{2}:\d{2}$/.test(lead.appointmentTime)) {
+        return "Please choose a valid consultation time.";
       }
 
       return "";
@@ -564,14 +706,32 @@ export async function onRequest(context) {
       return new Response("Method Not Allowed", { status: 405 });
     }
 
-    let payload;
-    try {
-      payload = await context.request.json();
-    } catch (error) {
-      return json({ error: "Invalid JSON payload" }, { status: 400 });
+    if (!isTrustedBrowserLeadRequest(context.request)) {
+      return json({ error: "Request origin not allowed" }, { status: 403 });
     }
 
+    const parsedBody = await parseJsonBody(context.request, { maxBytes: 12 * 1024 });
+
+    if (parsedBody.error) {
+      return json({ error: parsedBody.error }, { status: parsedBody.status });
+    }
+
+    const payload = parsedBody.value;
+
     const lead = buildLeadPayload(payload);
+
+    if (lead.spamTrap) {
+      return json(
+        {
+          ok: true,
+          leadType: lead.type,
+          degraded: false,
+          message: lead.type === "consultation" ? "Appointment request received. We will confirm the slot shortly." : "Inquiry sent successfully. We'll get back to you soon.",
+        },
+        { status: 200 }
+      );
+    }
+
     const validationError = validateLeadPayload(lead);
 
     if (validationError) {
@@ -649,12 +809,21 @@ export async function onRequest(context) {
       return new Response("Method Not Allowed", { status: 405 });
     }
 
-    const rawBody = await context.request.text();
+    const parsedBody = await parseJsonBody(context.request, { maxBytes: 64 * 1024 });
+
+    if (parsedBody.error) {
+      if (parsedBody.status === 400) {
+        console.warn("Rejected OpenWA webhook due to invalid JSON");
+      }
+
+      return json({ error: parsedBody.error }, { status: parsedBody.status });
+    }
+
+    const rawBody = parsedBody.rawBody;
     const providedSignature = context.request.headers.get("X-OpenWA-Signature");
     const webhookSecret = env.OPENWA_WEBHOOK_SECRET;
-    const isLocalWebhookHost = hostname === "127.0.0.1" || hostname === "localhost";
 
-    if (!webhookSecret && !isLocalWebhookHost) {
+    if (!webhookSecret && !isLocalHost) {
       console.warn("Rejected OpenWA webhook because OPENWA_WEBHOOK_SECRET is not configured");
       return json({ error: "Webhook secret not configured" }, { status: 503 });
     }
@@ -662,19 +831,13 @@ export async function onRequest(context) {
     if (webhookSecret) {
       const expectedSignature = await createOpenWaSignature(rawBody, webhookSecret);
 
-      if (!providedSignature || providedSignature !== expectedSignature) {
+      if (!providedSignature || !hasExactMatch(providedSignature, expectedSignature)) {
         console.warn("Rejected OpenWA webhook due to invalid signature");
         return json({ error: "Invalid webhook signature" }, { status: 401 });
       }
     }
 
-    let payload;
-    try {
-      payload = rawBody ? JSON.parse(rawBody) : {};
-    } catch (error) {
-      console.warn("Rejected OpenWA webhook due to invalid JSON");
-      return json({ error: "Invalid JSON payload" }, { status: 400 });
-    }
+    const payload = parsedBody.value;
 
     const webhookMeta = {
       event: context.request.headers.get("X-OpenWA-Event") || payload?.event || null,
@@ -686,16 +849,14 @@ export async function onRequest(context) {
     };
 
     console.log("Received OpenWA webhook", webhookMeta);
-    console.log("OpenWA webhook payload:", payload);
 
-    let workflow = null;
     try {
-      workflow = await handleIncomingWebhook(payload);
+      await handleIncomingWebhook(payload);
     } catch (error) {
       console.error("OpenWA webhook workflow failed", error);
     }
 
-    return json({ received: true, workflow }, { status: 200 });
+    return json({ received: true }, { status: 200 });
   }
 
   if (url.pathname === "/mpesa/stk-push") {
@@ -703,12 +864,13 @@ export async function onRequest(context) {
       return new Response("Method Not Allowed", { status: 405 });
     }
 
-    let payload;
-    try {
-      payload = await context.request.json();
-    } catch (error) {
-      return json({ error: "Invalid JSON payload" }, { status: 400 });
+    const parsedBody = await parseJsonBody(context.request, { maxBytes: 8 * 1024 });
+
+    if (parsedBody.error) {
+      return json({ error: parsedBody.error }, { status: parsedBody.status });
     }
+
+    const payload = parsedBody.value;
 
     const { amount, phone, accountReference, description } = payload;
     if (!amount || !phone) {
@@ -730,16 +892,29 @@ export async function onRequest(context) {
       return new Response("Method Not Allowed", { status: 405 });
     }
 
-    let payloadText = "";
-    try {
-      const payload = await context.request.json();
-      payloadText = JSON.stringify(payload);
-    } catch (error) {
-      payloadText = await context.request.text();
+    const rawBody = await context.request.text();
+
+    if (byteLength(rawBody) > 64 * 1024) {
+      return json({ error: "Payload too large" }, { status: 413 });
     }
 
-    console.log("Received M-Pesa callback for host", hostname, "path", url.pathname);
-    console.log("Callback body:", payloadText);
+    let payload = null;
+
+    try {
+      payload = rawBody ? JSON.parse(rawBody) : null;
+    } catch (error) {
+      payload = null;
+    }
+
+    const callbackMeta = {
+      host: hostname,
+      path: url.pathname,
+      merchantRequestId: payload?.Body?.stkCallback?.MerchantRequestID || payload?.MerchantRequestID || null,
+      checkoutRequestId: payload?.Body?.stkCallback?.CheckoutRequestID || payload?.CheckoutRequestID || null,
+      resultCode: payload?.Body?.stkCallback?.ResultCode ?? payload?.ResultCode ?? null,
+    };
+
+    console.log("Received M-Pesa callback", callbackMeta);
 
     return json(
       {

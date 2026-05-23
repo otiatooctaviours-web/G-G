@@ -33,6 +33,7 @@ const consultationResetButton = consultationModal?.querySelector("[data-reset-co
 const consultationRequestForm = document.querySelector(".consultation-request");
 const consultationNameInput = consultationModal?.querySelector("[data-consultation-name]");
 const consultationContactInput = consultationModal?.querySelector("[data-consultation-contact]");
+const consultationTrapInput = consultationModal?.querySelector("[data-consultation-trap]");
 const emailLinks = document.querySelectorAll("[data-email-link]");
 
 let activeIndex = 0;
@@ -463,6 +464,7 @@ const renderTimeSlots = () => {
           message: appointmentSummary,
           appointmentDate: formatDateValue(consultationDate),
           appointmentTime: timeRange,
+          website: consultationTrapInput?.value ?? "",
         });
 
         setStatusMessage(
@@ -722,6 +724,7 @@ if (contactForm) {
         email: formData.get("email"),
         service: formData.get("service"),
         message: formData.get("message"),
+        company: formData.get("company"),
       });
 
       contactForm.reset();
