@@ -3,6 +3,7 @@ $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $runtimeDir = Join-Path $repoRoot "runtime"
 $tunnelLogPath = Join-Path $runtimeDir "cloudflared-openwa-bridge.err.log"
+$namedOriginPath = Join-Path $runtimeDir "openwa-public-origin.txt"
 $projectName = "g-g"
 $cloudflareToken = [Environment]::GetEnvironmentVariable("CLOUDFLARE_API_TOKEN", "User")
 
@@ -11,6 +12,21 @@ if (-not $cloudflareToken) {
 }
 
 function Get-TunnelUrl {
+  if (Test-Path $namedOriginPath) {
+    $namedOrigin = (Get-Content $namedOriginPath -Raw).Trim()
+    if ($namedOrigin) {
+      return $namedOrigin
+    }
+  }
+
+  $explicitOrigin = [Environment]::GetEnvironmentVariable("OPENWA_PUBLIC_BASE_URL", "User")
+  if (-not $explicitOrigin) {
+    $explicitOrigin = [Environment]::GetEnvironmentVariable("OPENWA_PUBLIC_BASE_URL", "Process")
+  }
+  if ($explicitOrigin) {
+    return $explicitOrigin.Trim()
+  }
+
   $deadline = (Get-Date).AddMinutes(3)
   $pattern = "https://[a-z0-9-]+\.trycloudflare\.com"
 
