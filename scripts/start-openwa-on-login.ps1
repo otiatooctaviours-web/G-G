@@ -7,11 +7,13 @@ $dashboardRunner = Join-Path $repoRoot "scripts\\run-openwa-dashboard.cmd"
 $bridgeRunner = Join-Path $repoRoot "scripts\\run-openwa-bridge.cmd"
 $tunnelRunner = Join-Path $repoRoot "scripts\\run-openwa-tunnel.cmd"
 $watchdogRunner = Join-Path $repoRoot "scripts\\run-openwa-watchdog.cmd"
+$n8nRunner = Join-Path $repoRoot "scripts\\run-n8n.cmd"
 $dnsSyncScript = Join-Path $repoRoot "scripts\\sync-openwa-dns.ps1"
 $publishOriginScript = Join-Path $repoRoot "scripts\\publish-openwa-origin.ps1"
 $dashboardPort = 2886
 $apiPort = 2785
 $bridgePort = 8789
+$n8nPort = 5678
 $redisServiceName = "Redis"
 
 if (-not (Test-Path $runtimeDir)) {
@@ -85,6 +87,10 @@ if (-not (Test-HttpReachable -Uri "http://127.0.0.1:$bridgePort/send-text")) {
 
 if (-not (Test-CommandLineProcess -Needle "openwa-session-watchdog.mjs")) {
   Start-Runner -RunnerPath $watchdogRunner
+}
+
+if (-not (Test-HttpReachable -Uri "http://127.0.0.1:$n8nPort")) {
+  Start-Runner -RunnerPath $n8nRunner
 }
 
 Get-CimInstance Win32_Process |
