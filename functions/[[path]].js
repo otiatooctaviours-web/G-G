@@ -8,6 +8,8 @@ export async function onRequest(context) {
   const env = context.env || {};
   const textEncoder = new TextEncoder();
   const defaultFormspreeEndpoint = "https://formspree.io/f/xlgwyzwb";
+  const defaultAutomationWebhookUrl =
+    "https://script.google.com/macros/s/AKfycbzzJmYV5EX5i34Zm5f1aVRiRL4j6hwX6ersysrZ5AaG0YJ54UXYEnCu2fPDhfheG9tm/exec";
   const siteOrigin = (env.SITE_URL || url.origin).replace(/\/$/, "");
   const resolvedSiteOrigin = (() => {
     try {
@@ -555,7 +557,7 @@ export async function onRequest(context) {
   };
 
   const buildAutomationEndpoint = () =>
-    sanitizeUrlValue(env.AUTOMATION_WEBHOOK_URL || env.N8N_WEBHOOK_URL || env.CRM_WEBHOOK_URL, {
+    sanitizeUrlValue(env.AUTOMATION_WEBHOOK_URL || env.N8N_WEBHOOK_URL || env.CRM_WEBHOOK_URL || defaultAutomationWebhookUrl, {
       maxLength: 500,
       fallback: "",
     });
