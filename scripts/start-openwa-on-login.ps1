@@ -12,6 +12,7 @@ $publishOriginScript = Join-Path $repoRoot "scripts\\publish-openwa-origin.ps1"
 $dashboardPort = 2886
 $apiPort = 2785
 $bridgePort = 8789
+$redisServiceName = "Redis"
 
 if (-not (Test-Path $runtimeDir)) {
   New-Item -ItemType Directory -Path $runtimeDir | Out-Null
@@ -43,6 +44,21 @@ function Start-Runner {
   Start-Process -FilePath "cmd.exe" -ArgumentList "/c `"$RunnerPath`"" -WorkingDirectory $repoRoot -WindowStyle Minimized | Out-Null
 }
 
+function Ensure-ServiceRunning {
+  param(
+    [string] $ServiceName
+  )
+
+  try {
+    $service = Get-Service -Name $ServiceName -ErrorAction Stop
+    if ($service.Status -ne "Running") {
+      Start-Service -Name $ServiceName -ErrorAction Stop
+    }
+  } catch {
+    # Ignore missing services so the OpenWA startup flow can continue.
+  }
+}
+
 function Test-CommandLineProcess {
   param(
     [string] $Needle
@@ -52,6 +68,8 @@ function Test-CommandLineProcess {
       $_.CommandLine -and $_.CommandLine -like "*$Needle*"
     } | Select-Object -First 1)
 }
+
+Ensure-ServiceRunning -ServiceName $redisServiceName
 
 if (-not (Test-HttpReachable -Uri "http://127.0.0.1:$apiPort/api/health")) {
   Start-Runner -RunnerPath $apiRunner
