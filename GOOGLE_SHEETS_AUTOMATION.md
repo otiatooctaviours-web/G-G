@@ -2,6 +2,8 @@
 
 This repo includes a ready-to-paste Google Apps Script at [GOOGLE_SHEETS_AUTOMATION.gs](</C:/Users/otiat/Desktop/My projects/g-and-g-marketing/GOOGLE_SHEETS_AUTOMATION.gs>) for logging website and WhatsApp automation events into separate tabs inside one Google Sheet.
 
+It now also supports automatic email notifications when new events are written, so you do not have to keep the sheet open to notice new submissions.
+
 ## Tabs Created
 
 - `Raw Events`
@@ -69,11 +71,21 @@ Fields include:
 1. Open the target Google Sheet.
 2. Go to `Extensions > Apps Script`.
 3. Replace the existing code with the contents of [GOOGLE_SHEETS_AUTOMATION.gs](</C:/Users/otiat/Desktop/My projects/g-and-g-marketing/GOOGLE_SHEETS_AUTOMATION.gs>).
-4. Optionally set `EXPECTED_BEARER_TOKEN` if you want header-based protection.
-5. Deploy as a `Web app`.
-6. Keep `Execute as` set to `Me`.
-7. Keep `Who has access` set to `Anyone` if the Cloudflare worker is calling it directly.
-8. Update the deployment.
+4. Set `NOTIFICATION_EMAILS` to one or more inboxes you want alerted.
+5. Leave `EMAIL_NOTIFICATIONS.leads` as `true` if you want every new form submission emailed to you.
+6. Optionally turn on `EMAIL_NOTIFICATIONS.whatsappOps` or `EMAIL_NOTIFICATIONS.inboundMessages` if you also want alerts for WhatsApp activity.
+7. Optionally set `EXPECTED_BEARER_TOKEN` if you want header-based protection.
+8. Deploy as a `Web app`.
+9. Keep `Execute as` set to `Me`.
+10. Keep `Who has access` set to `Anyone` if the Cloudflare worker is calling it directly.
+11. Update the deployment.
+
+## Notification Behavior
+
+- `lead.received` sends an email by default
+- WhatsApp operation and inbound-message emails are off by default to avoid noisy inboxes
+- Duplicate notifications are suppressed for a short window so webhook retries do not spam you
+- Emails include the submission details plus delivery health flags
 
 ## Production Notes
 

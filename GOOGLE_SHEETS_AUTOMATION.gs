@@ -1,4 +1,14 @@
 const EXPECTED_BEARER_TOKEN = "";
+const NOTIFICATION_EMAILS = [
+  ""
+];
+const EMAIL_NOTIFICATIONS = {
+  leads: true,
+  whatsappOps: false,
+  inboundMessages: false,
+};
+const NOTIFICATION_TIMEZONE = "Africa/Nairobi";
+const NOTIFICATION_DEDUPE_WINDOW_SECONDS = 600;
 
 const SHEET_NAMES = {
   raw: "Raw Events",
@@ -39,6 +49,8 @@ function doPost(e) {
     } else if (eventName === "whatsapp.webhook_received") {
       appendInboundWebhookEvent_(body, payload);
     }
+
+    maybeSendNotificationEmail_(body, payload, eventName);
 
     return jsonResponse_({ ok: true, routed: resolveRouteName_(eventName) });
   } catch (error) {
@@ -195,6 +207,156 @@ function appendInboundWebhookEvent_(body, payload) {
     stringValue_(webhook.timestamp),
     stringValue_(body.siteOrigin),
   ]);
+}
+
+function maybeSendNotificationEmail_(body, payload, eventName) {
+  const recipients = NOTIFICATION_EMAILS
+    .map(function(value) { return stringValue_(value).trim(); })
+    .filter(function(value) { return value !== ""; });
+
+  if (recipients.length === 0) {
+    return;
+  }
+
+  if (eventName === "lead.received" && !EMAIL_NOTIFICATIONS.leads) {
+    return;
+  }
+
+  if (
+    (eventName === "whatsapp.follow_up_sent" ||
+      eventName === "whatsapp.template_sent" ||
+      eventName === "whatsapp.status_update_sent") &&
+    !EMAIL_NOTIFICATIONS.whatsappOps
+  ) {
+    return;
+  }
+
+  if (eventName === "whatsapp.webhook_received" && !EMAIL_NOTIFICATIONS.inboundMessages) {
+    return;
+  }
+
+  const dedupeKey = buildNotificationKey_(body, payload, eventName);
+  if (notificationAlreadySent_(dedupeKey)) {
+    return;
+  }
+
+  MailApp.sendEmail({
+    to: recipients.join(","),
+    subject: buildNotificationSubject_(payload, eventName),
+    body: buildNotificationBody_(body, payload, eventName),
+  });
+
+  markNotificationSent_(dedupeKey);
+}
+
+function buildNotificationKey_(body, payload, eventName) {
+  const candidateParts = [
+    eventName,
+    stringValue_(body.createdAt),
+    stringValue_(payload.submittedAt),
+    stringValue_(payload.email),
+    stringValue_(payload.contact),
+    stringValue_(payload.phone),
+    stringValue_(payload.reference),
+    stringValue_(payload.chatId),
+    stringValue_(payload.from),
+    stringValue_(payload.message || payload.body),
+  ];
+
+  return candidateParts.join("|");
+}
+
+function notificationAlreadySent_(dedupeKey) {
+  const cache = CacheService.getScriptCache();
+  return cache.get(dedupeKey) === "sent";
+}
+
+function markNotificationSent_(dedupeKey) {
+  const cache = CacheService.getScriptCache();
+  cache.put(dedupeKey, "sent", NOTIFICATION_DEDUPE_WINDOW_SECONDS);
+}
+
+function buildNotificationSubject_(payload, eventName) {
+  if (eventName === "lead.received") {
+    const leadType = stringValue_(payload.leadType || "lead");
+    const name = stringValue_(payload.name || payload.contact || "Unknown");
+    return "[GG Marketing] New " + leadType + " submission from " + name;
+  }
+
+  if (
+    eventName === "whatsapp.follow_up_sent" ||
+    eventName === "whatsapp.template_sent" ||
+    eventName === "whatsapp.status_update_sent"
+  ) {
+    return "[GG Marketing] WhatsApp operation logged";
+  }
+
+  if (eventName === "whatsapp.webhook_received") {
+    return "[GG Marketing] Inbound WhatsApp message logged";
+  }
+
+  return "[GG Marketing] Automation event logged";
+}
+
+function buildNotificationBody_(body, payload, eventName) {
+  const lines = [
+    "A new automation event has been recorded in Google Sheets.",
+    "",
+    "Event: " + stringValue_(eventName),
+    "Received At: " + formatDateTime_(new Date()),
+    "Site Origin: " + stringValue_(body.siteOrigin),
+  ];
+
+  if (eventName === "lead.received") {
+    const deliveries = payload.deliveries || {};
+    lines.push(
+      "Lead Type: " + stringValue_(payload.leadType),
+      "Name: " + stringValue_(payload.name),
+      "Email: " + stringValue_(payload.email),
+      "Contact: " + stringValue_(payload.contact || payload.phone),
+      "Service: " + stringValue_(payload.service),
+      "Appointment Date: " + stringValue_(payload.appointmentDate),
+      "Appointment Time: " + stringValue_(payload.appointmentTime),
+      "Message: " + stringValue_(payload.message),
+      "Source: " + stringValue_(payload.source),
+      "Record Delivered: " + boolCell_(deliveries.record),
+      "WhatsApp Alert Delivered: " + boolCell_(deliveries.notify),
+      "Confirmation Delivered: " + boolCell_(deliveries.confirmation),
+      "Degraded: " + boolCell_(deliveries.degraded)
+    );
+  } else if (
+    eventName === "whatsapp.follow_up_sent" ||
+    eventName === "whatsapp.template_sent" ||
+    eventName === "whatsapp.status_update_sent"
+  ) {
+    lines.push(
+      "Recipient: " + stringValue_(payload.recipientName),
+      "Chat ID: " + stringValue_(payload.chatId),
+      "Template: " + stringValue_(payload.template),
+      "Stage: " + stringValue_(payload.stage),
+      "Status: " + stringValue_(payload.status),
+      "Reference: " + stringValue_(payload.reference)
+    );
+  } else if (eventName === "whatsapp.webhook_received") {
+    const workflow = payload.workflow || {};
+    lines.push(
+      "From: " + stringValue_(payload.from),
+      "Message: " + stringValue_(payload.body),
+      "Workflow Handled: " + boolCell_(workflow.handled),
+      "Intent: " + stringValue_(workflow.intent)
+    );
+  }
+
+  lines.push(
+    "",
+    "This email was sent by the Google Sheets Apps Script notification layer."
+  );
+
+  return lines.join("\n");
+}
+
+function formatDateTime_(value) {
+  return Utilities.formatDate(value, NOTIFICATION_TIMEZONE, "yyyy-MM-dd HH:mm:ss");
 }
 
 function resolveRouteName_(eventName) {
