@@ -1,9 +1,10 @@
 const EXPECTED_BEARER_TOKEN = "";
 const NOTIFICATION_EMAILS = [
-  ""
+  "otiatooctaviours@gmail.com"
 ];
 const NOTIFICATION_BRAND_NAME = "GG Marketing";
 const NOTIFICATION_BRAND_EMAIL = "info@ggmarketing.co.ke";
+const NOTIFICATION_SENDER_ALIAS = "info@ggmarketing.co.ke";
 const EMAIL_NOTIFICATIONS = {
   leads: true,
   whatsappOps: false,
@@ -248,7 +249,7 @@ function maybeSendNotificationEmail_(body, payload, eventName) {
   const emailBody = buildNotificationBody_(body, payload, eventName);
 
   try {
-    MailApp.sendEmail({
+    sendNotificationEmail_({
       to: recipients.join(","),
       subject: subject,
       body: emailBody,
@@ -394,6 +395,49 @@ function appendNotificationLog_(eventName, recipient, status, details) {
   ]);
 }
 
+function sendNotificationEmail_(message) {
+  const baseOptions = {
+    name: NOTIFICATION_BRAND_NAME,
+    replyTo: NOTIFICATION_BRAND_EMAIL,
+  };
+
+  const alias = resolveNotificationSenderAlias_();
+
+  if (alias) {
+    GmailApp.sendEmail(message.to, message.subject, message.body, {
+      name: baseOptions.name,
+      replyTo: baseOptions.replyTo,
+      from: alias,
+    });
+    return;
+  }
+
+  MailApp.sendEmail({
+    to: message.to,
+    subject: message.subject,
+    body: message.body,
+    name: baseOptions.name,
+    replyTo: baseOptions.replyTo,
+  });
+}
+
+function resolveNotificationSenderAlias_() {
+  const desiredAlias = stringValue_(NOTIFICATION_SENDER_ALIAS).trim().toLowerCase();
+  if (!desiredAlias) {
+    return "";
+  }
+
+  try {
+    const aliases = GmailApp.getAliases();
+    const match = aliases.find(function(alias) {
+      return stringValue_(alias).trim().toLowerCase() === desiredAlias;
+    });
+    return match || "";
+  } catch (error) {
+    return "";
+  }
+}
+
 function sendNotificationTest() {
   const recipients = NOTIFICATION_EMAILS
     .map(function(value) { return stringValue_(value).trim(); })
@@ -412,7 +456,7 @@ function sendNotificationTest() {
     "Timezone: " + NOTIFICATION_TIMEZONE,
   ].join("\n");
 
-  MailApp.sendEmail({
+  sendNotificationEmail_({
     to: recipients.join(","),
     subject: subject,
     body: body,

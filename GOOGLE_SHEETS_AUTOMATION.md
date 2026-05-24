@@ -6,6 +6,8 @@ It now also supports automatic email notifications when new events are written, 
 
 The recommended setup is to deliver those emails to your primary inbox while keeping the message branding tied to `GG Marketing / info@ggmarketing.co.ke`.
 
+The script now prefers sending notification emails through your Gmail account with the configured `info@ggmarketing.co.ke` alias when that alias is available in Gmail `Send mail as`. If the alias is not available, it falls back to standard Apps Script mail sending.
+
 ## Tabs Created
 
 - `Raw Events`
@@ -97,6 +99,7 @@ This records whether the Apps Script attempted to send a notification email, whe
 - Emails include the submission details plus delivery health flags
 - Emails can be sent to your primary inbox while still clearly showing `GG Marketing / info@ggmarketing.co.ke` in the subject and body
 - The `Notification Log` tab shows `sent`, `failed`, or `skipped` outcomes for each attempt
+- Notification delivery bypasses Cloudflare Email Routing when sent directly to your primary inbox
 
 ## Timezone Behavior
 
@@ -110,9 +113,10 @@ If a submission appears in the sheet but no email arrives:
 
 1. Check the `Notification Log` tab first.
 2. Run `sendNotificationTest()` from the Apps Script editor.
-3. Approve any Google permission prompt for sending email.
+3. Approve any Google permission prompt for Gmail and email sending.
 4. Check spam/junk for the recipient inbox.
 5. Confirm the deployment was updated after pasting the new script.
+6. In Gmail settings, confirm `info@ggmarketing.co.ke` exists under `Send mail as` if you want the notification to send from that alias.
 
 ## Production Notes
 
