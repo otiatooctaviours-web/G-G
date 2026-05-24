@@ -12,3 +12,6 @@ openwa-bridge*.log
 .pages-deploy-temp/
 runtime/
 external/openwa/
+external/n8n/
+external/umami/
+external/chatwoot/

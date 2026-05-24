@@ -42,6 +42,18 @@ let consultationCloseTimeoutId;
 let consultationMonth = new Date();
 let consultationDate = null;
 
+const trackAnalyticsEvent = (eventName, eventData = {}) => {
+  if (!window.umami || typeof window.umami.track !== "function") {
+    return;
+  }
+
+  try {
+    window.umami.track(eventName, eventData);
+  } catch (error) {
+    console.warn("Analytics tracking skipped", error);
+  }
+};
+
 const monthFormatter = new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric" });
 const appointmentFormatter = new Intl.DateTimeFormat("en-US", {
   weekday: "long",
@@ -473,6 +485,12 @@ const renderTimeSlots = () => {
             `Appointment request sent for ${appointmentFormatter.format(consultationDate)} at ${timeRange}. We'll follow up shortly.`,
           "success"
         );
+        trackAnalyticsEvent("consultation_request_submitted", {
+          date: formatDateValue(consultationDate),
+          timeRange,
+          contactType: isEmailContact(contactValue) ? "email" : "phone",
+          location: window.location.pathname,
+        });
       } catch (error) {
         setStatusMessage(consultationStatus, error.message, "error");
       } finally {
@@ -576,6 +594,9 @@ const openConsultationModal = () => {
     return;
   }
 
+  trackAnalyticsEvent("consultation_modal_opened", {
+    location: window.location.pathname,
+  });
   window.clearTimeout(consultationCloseTimeoutId);
   consultationModal.hidden = false;
   consultationModal.setAttribute("aria-hidden", "false");
@@ -608,6 +629,9 @@ const openInquiryForm = () => {
     return;
   }
 
+  trackAnalyticsEvent("inquiry_modal_opened", {
+    location: window.location.pathname,
+  });
   const status = contactForm.querySelector(".form-status");
   setStatusMessage(status);
   window.clearTimeout(consultationCloseTimeoutId);
@@ -729,6 +753,10 @@ if (contactForm) {
 
       contactForm.reset();
       setStatusMessage(status, response?.message || "Inquiry sent successfully. We'll get back to you soon.", "success");
+      trackAnalyticsEvent("inquiry_submitted", {
+        service: String(formData.get("service") || ""),
+        location: window.location.pathname,
+      });
 
       if (button) {
         button.textContent = "Inquiry Received";
@@ -754,3 +782,21 @@ if (contactForm) {
     }
   });
 }
+
+document.addEventListener("click", (event) => {
+  const anchor = event.target instanceof Element ? event.target.closest("a") : null;
+
+  if (!anchor) {
+    return;
+  }
+
+  const href = anchor.getAttribute("href") || "";
+
+  if (/wa\.me|whatsapp\.com/i.test(href)) {
+    trackAnalyticsEvent("whatsapp_cta_clicked", {
+      href,
+      label: anchor.textContent?.trim() || "",
+      location: window.location.pathname,
+    });
+  }
+});
