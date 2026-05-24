@@ -4,6 +4,8 @@ This repo includes a ready-to-paste Google Apps Script at [GOOGLE_SHEETS_AUTOMAT
 
 It now also supports automatic email notifications when new events are written, so you do not have to keep the sheet open to notice new submissions.
 
+The recommended setup is to deliver those emails to your primary inbox while keeping the message branding tied to `GG Marketing / info@ggmarketing.co.ke`.
+
 ## Tabs Created
 
 - `Raw Events`
@@ -77,6 +79,7 @@ This records whether the Apps Script attempted to send a notification email, whe
 2. Go to `Extensions > Apps Script`.
 3. Replace the existing code with the contents of [GOOGLE_SHEETS_AUTOMATION.gs](</C:/Users/otiat/Desktop/My projects/g-and-g-marketing/GOOGLE_SHEETS_AUTOMATION.gs>).
 4. Set `NOTIFICATION_EMAILS` to one or more inboxes you want alerted.
+   Example: `otiatooctaviours@gmail.com`
 5. Leave `EMAIL_NOTIFICATIONS.leads` as `true` if you want every new form submission emailed to you.
 6. Optionally turn on `EMAIL_NOTIFICATIONS.whatsappOps` or `EMAIL_NOTIFICATIONS.inboundMessages` if you also want alerts for WhatsApp activity.
 7. Optionally set `EXPECTED_BEARER_TOKEN` if you want header-based protection.
@@ -92,6 +95,7 @@ This records whether the Apps Script attempted to send a notification email, whe
 - WhatsApp operation and inbound-message emails are off by default to avoid noisy inboxes
 - Duplicate notifications are suppressed for a short window so webhook retries do not spam you
 - Emails include the submission details plus delivery health flags
+- Emails can be sent to your primary inbox while still clearly showing `GG Marketing / info@ggmarketing.co.ke` in the subject and body
 - The `Notification Log` tab shows `sent`, `failed`, or `skipped` outcomes for each attempt
 
 ## Timezone Behavior

@@ -2,6 +2,8 @@ const EXPECTED_BEARER_TOKEN = "";
 const NOTIFICATION_EMAILS = [
   ""
 ];
+const NOTIFICATION_BRAND_NAME = "GG Marketing";
+const NOTIFICATION_BRAND_EMAIL = "info@ggmarketing.co.ke";
 const EMAIL_NOTIFICATIONS = {
   leads: true,
   whatsappOps: false,
@@ -292,10 +294,12 @@ function markNotificationSent_(dedupeKey) {
 }
 
 function buildNotificationSubject_(payload, eventName) {
+  const brandPrefix = "[" + NOTIFICATION_BRAND_NAME + " / " + NOTIFICATION_BRAND_EMAIL + "]";
+
   if (eventName === "lead.received") {
     const leadType = stringValue_(payload.leadType || "lead");
     const name = stringValue_(payload.name || payload.contact || "Unknown");
-    return "[GG Marketing] New " + leadType + " submission from " + name;
+    return brandPrefix + " New " + leadType + " submission from " + name;
   }
 
   if (
@@ -303,19 +307,20 @@ function buildNotificationSubject_(payload, eventName) {
     eventName === "whatsapp.template_sent" ||
     eventName === "whatsapp.status_update_sent"
   ) {
-    return "[GG Marketing] WhatsApp operation logged";
+    return brandPrefix + " WhatsApp operation logged";
   }
 
   if (eventName === "whatsapp.webhook_received") {
-    return "[GG Marketing] Inbound WhatsApp message logged";
+    return brandPrefix + " Inbound WhatsApp message logged";
   }
 
-  return "[GG Marketing] Automation event logged";
+  return brandPrefix + " Automation event logged";
 }
 
 function buildNotificationBody_(body, payload, eventName) {
   const lines = [
-    "A new automation event has been recorded in Google Sheets.",
+    "A new " + NOTIFICATION_BRAND_NAME + " automation event has been recorded in Google Sheets.",
+    "Public contact: " + NOTIFICATION_BRAND_EMAIL,
     "",
     "Event: " + stringValue_(eventName),
     "Received At: " + formatDateTime_(new Date()),
@@ -400,7 +405,8 @@ function sendNotificationTest() {
 
   const subject = "[GG Marketing] Google Sheets notification test";
   const body = [
-    "This is a test email from the Google Sheets Apps Script notification layer.",
+    "This is a test email from the " + NOTIFICATION_BRAND_NAME + " Google Sheets notification layer.",
+    "Public contact: " + NOTIFICATION_BRAND_EMAIL,
     "",
     "Sent At: " + formatDateTime_(new Date()),
     "Timezone: " + NOTIFICATION_TIMEZONE,
