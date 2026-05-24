@@ -9,7 +9,7 @@ export async function onRequest(context) {
   const textEncoder = new TextEncoder();
   const defaultFormspreeEndpoint = "https://formspree.io/f/xlgwyzwb";
   const defaultAutomationWebhookUrl =
-    "https://script.google.com/macros/s/AKfycbzzJmYV5EX5i34Zm5f1aVRiRL4j6hwX6ersysrZ5AaG0YJ54UXYEnCu2fPDhfheG9tm/exec";
+    "https://script.google.com/macros/s/AKfycbzjtEhE-3YSA5za99a6g5HnIG0N7GRepiC2pB7xyBVmSUYfcE97jAD__frxfPHs-DbT/exec";
   const siteOrigin = (env.SITE_URL || url.origin).replace(/\/$/, "");
   const resolvedSiteOrigin = (() => {
     try {
