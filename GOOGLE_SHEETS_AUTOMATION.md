@@ -10,6 +10,7 @@ It now also supports automatic email notifications when new events are written, 
 - `Leads`
 - `WhatsApp Ops`
 - `Inbound Messages`
+- `Notification Log`
 
 ## What Goes Where
 
@@ -66,6 +67,10 @@ Fields include:
 - detected intent
 - webhook delivery metadata
 
+### `Notification Log`
+
+This records whether the Apps Script attempted to send a notification email, whether it succeeded, and any failure detail returned by Google Apps Script.
+
 ## Deploy Steps
 
 1. Open the target Google Sheet.
@@ -79,6 +84,7 @@ Fields include:
 9. Keep `Execute as` set to `Me`.
 10. Keep `Who has access` set to `Anyone` if the Cloudflare worker is calling it directly.
 11. Update the deployment.
+12. In the Apps Script editor, run `sendNotificationTest()` once and approve mail permissions if Google prompts you.
 
 ## Notification Behavior
 
@@ -86,6 +92,23 @@ Fields include:
 - WhatsApp operation and inbound-message emails are off by default to avoid noisy inboxes
 - Duplicate notifications are suppressed for a short window so webhook retries do not spam you
 - Emails include the submission details plus delivery health flags
+- The `Notification Log` tab shows `sent`, `failed`, or `skipped` outcomes for each attempt
+
+## Timezone Behavior
+
+- Sheet timestamps are written in `Africa/Nairobi`
+- Incoming UTC timestamps from the worker are converted into Nairobi time before being written to the visible tabs
+- The raw JSON audit tab is still preserved for traceability
+
+## Troubleshooting
+
+If a submission appears in the sheet but no email arrives:
+
+1. Check the `Notification Log` tab first.
+2. Run `sendNotificationTest()` from the Apps Script editor.
+3. Approve any Google permission prompt for sending email.
+4. Check spam/junk for the recipient inbox.
+5. Confirm the deployment was updated after pasting the new script.
 
 ## Production Notes
 

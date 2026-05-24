@@ -9,6 +9,7 @@ const EMAIL_NOTIFICATIONS = {
 };
 const NOTIFICATION_TIMEZONE = "Africa/Nairobi";
 const NOTIFICATION_DEDUPE_WINDOW_SECONDS = 600;
+const NOTIFICATION_LOG_SHEET = "Notification Log";
 
 const SHEET_NAMES = {
   raw: "Raw Events",
@@ -73,10 +74,10 @@ function appendRawEvent_(body) {
   ]);
 
   sheet.appendRow([
-    new Date().toISOString(),
+    formatDateTime_(new Date()),
     stringValue_(body.event),
     stringValue_(body.siteOrigin),
-    stringValue_(body.createdAt),
+    normalizeTimestamp_(body.createdAt),
     safeJson_(body.payload || {}),
     safeJson_(body),
   ]);
@@ -110,7 +111,7 @@ function appendLeadEvent_(body, payload) {
   ]);
 
   sheet.appendRow([
-    new Date().toISOString(),
+    formatDateTime_(new Date()),
     stringValue_(body.event),
     stringValue_(payload.leadType),
     stringValue_(payload.name),
@@ -124,7 +125,7 @@ function appendLeadEvent_(body, payload) {
     stringValue_(payload.source),
     stringValue_(payload.pageUrl),
     stringValue_(payload.referrer),
-    stringValue_(payload.submittedAt),
+    normalizeTimestamp_(payload.submittedAt || body.createdAt),
     boolCell_(deliveries.record),
     boolCell_(deliveries.notify),
     boolCell_(deliveries.confirmation),
@@ -154,7 +155,7 @@ function appendWhatsAppOpEvent_(body, payload) {
   ]);
 
   sheet.appendRow([
-    new Date().toISOString(),
+    formatDateTime_(new Date()),
     stringValue_(body.event),
     stringValue_(payload.chatId),
     stringValue_(payload.recipientName),
@@ -167,7 +168,7 @@ function appendWhatsAppOpEvent_(body, payload) {
     stringValue_(payload.reference),
     boolCell_(payload.optInConfirmed),
     stringValue_(body.siteOrigin),
-    stringValue_(body.createdAt),
+    normalizeTimestamp_(body.createdAt),
   ]);
 }
 
@@ -193,7 +194,7 @@ function appendInboundWebhookEvent_(body, payload) {
   ]);
 
   sheet.appendRow([
-    new Date().toISOString(),
+    formatDateTime_(new Date()),
     stringValue_(body.event),
     stringValue_(payload.from),
     stringValue_(payload.body),
@@ -204,7 +205,7 @@ function appendInboundWebhookEvent_(body, payload) {
     stringValue_(webhook.idempotencyKey),
     stringValue_(webhook.retryCount),
     stringValue_(webhook.sessionId),
-    stringValue_(webhook.timestamp),
+    normalizeTimestamp_(webhook.timestamp),
     stringValue_(body.siteOrigin),
   ]);
 }
@@ -237,16 +238,30 @@ function maybeSendNotificationEmail_(body, payload, eventName) {
 
   const dedupeKey = buildNotificationKey_(body, payload, eventName);
   if (notificationAlreadySent_(dedupeKey)) {
+    appendNotificationLog_(eventName, recipients.join(","), "skipped", "Duplicate notification suppressed");
     return;
   }
 
-  MailApp.sendEmail({
-    to: recipients.join(","),
-    subject: buildNotificationSubject_(payload, eventName),
-    body: buildNotificationBody_(body, payload, eventName),
-  });
+  const subject = buildNotificationSubject_(payload, eventName);
+  const emailBody = buildNotificationBody_(body, payload, eventName);
 
-  markNotificationSent_(dedupeKey);
+  try {
+    MailApp.sendEmail({
+      to: recipients.join(","),
+      subject: subject,
+      body: emailBody,
+    });
+
+    markNotificationSent_(dedupeKey);
+    appendNotificationLog_(eventName, recipients.join(","), "sent", subject);
+  } catch (error) {
+    appendNotificationLog_(
+      eventName,
+      recipients.join(","),
+      "failed",
+      error && error.message ? error.message : String(error)
+    );
+  }
 }
 
 function buildNotificationKey_(body, payload, eventName) {
@@ -355,8 +370,65 @@ function buildNotificationBody_(body, payload, eventName) {
   return lines.join("\n");
 }
 
+function appendNotificationLog_(eventName, recipient, status, details) {
+  const sheet = getOrCreateSheet_(NOTIFICATION_LOG_SHEET);
+  ensureHeader_(sheet, [
+    "attemptedAt",
+    "event",
+    "recipient",
+    "status",
+    "details",
+  ]);
+
+  sheet.appendRow([
+    formatDateTime_(new Date()),
+    stringValue_(eventName),
+    stringValue_(recipient),
+    stringValue_(status),
+    stringValue_(details),
+  ]);
+}
+
+function sendNotificationTest() {
+  const recipients = NOTIFICATION_EMAILS
+    .map(function(value) { return stringValue_(value).trim(); })
+    .filter(function(value) { return value !== ""; });
+
+  if (recipients.length === 0) {
+    throw new Error("Set NOTIFICATION_EMAILS before running sendNotificationTest().");
+  }
+
+  const subject = "[GG Marketing] Google Sheets notification test";
+  const body = [
+    "This is a test email from the Google Sheets Apps Script notification layer.",
+    "",
+    "Sent At: " + formatDateTime_(new Date()),
+    "Timezone: " + NOTIFICATION_TIMEZONE,
+  ].join("\n");
+
+  MailApp.sendEmail({
+    to: recipients.join(","),
+    subject: subject,
+    body: body,
+  });
+
+  appendNotificationLog_("notification.test", recipients.join(","), "sent", subject);
+}
+
 function formatDateTime_(value) {
   return Utilities.formatDate(value, NOTIFICATION_TIMEZONE, "yyyy-MM-dd HH:mm:ss");
+}
+
+function normalizeTimestamp_(value) {
+  if (!value) {
+    return "";
+  }
+
+  try {
+    return formatDateTime_(new Date(value));
+  } catch (error) {
+    return stringValue_(value);
+  }
 }
 
 function resolveRouteName_(eventName) {
