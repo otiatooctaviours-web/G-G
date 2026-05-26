@@ -420,8 +420,7 @@ p {
 }
 
 .brand-strip-list li,
-.contact-chip,
-.contact-links a {
+.contact-chip {
   padding: 12px 16px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -505,8 +504,7 @@ p {
 }
 
 .service-card a,
-.case-study-copy a,
-.contact-links a {
+.case-study-copy a {
   font-weight: 700;
   color: var(--text);
 }
@@ -842,12 +840,6 @@ p {
 .contact-copy {
   display: grid;
   gap: 18px;
-}
-
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
 }
 
 .contact-form-card {
