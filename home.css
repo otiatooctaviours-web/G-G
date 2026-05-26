@@ -334,8 +334,8 @@ p {
 }
 
 .hero-visual {
-  display: grid;
-  gap: 22px;
+  position: relative;
+  min-height: 760px;
 }
 
 .hero-card {
@@ -347,30 +347,52 @@ p {
 }
 
 .hero-profile-card {
-  padding: 18px;
+  position: relative;
+  min-height: 760px;
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .hero-image-frame {
+  position: relative;
+  height: 100%;
   overflow: hidden;
-  border-radius: calc(var(--radius-lg) - 8px);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+}
+
+.hero-image-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.02)),
-    radial-gradient(circle at top, rgba(216, 179, 106, 0.26), transparent 45%);
+    linear-gradient(180deg, rgba(8, 18, 35, 0.16), transparent 28%, rgba(8, 18, 35, 0.56) 100%),
+    linear-gradient(90deg, rgba(8, 18, 35, 0.08), transparent 34%);
 }
 
 .hero-image-frame img {
   width: 100%;
-  aspect-ratio: 0.95;
+  height: 100%;
   object-fit: cover;
 }
 
 .hero-badge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 2;
   display: grid;
   gap: 8px;
-  margin-top: 16px;
+  max-width: 320px;
   padding: 18px;
   border-radius: 22px;
-  background: rgba(5, 11, 22, 0.48);
+  background: rgba(5, 11, 22, 0.68);
+  backdrop-filter: blur(16px);
 }
 
 .hero-badge span,
@@ -389,7 +411,14 @@ p {
 }
 
 .hero-proof-card {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
   padding: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
 }
 
 .proof-metrics {
@@ -912,6 +941,11 @@ body.is-nav-open {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .hero-visual,
+  .hero-profile-card {
+    min-height: 680px;
+  }
+
   .brand-strip-list {
     justify-content: flex-start;
   }
@@ -981,6 +1015,19 @@ body.is-nav-open {
   .proof-metrics {
     grid-template-columns: 1fr;
   }
+
+  .hero-visual,
+  .hero-profile-card {
+    min-height: auto;
+  }
+
+  .hero-proof-card {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin-top: 18px;
+  }
 }
 
 @media (max-width: 560px) {
@@ -1007,5 +1054,12 @@ body.is-nav-open {
   .faq-item,
   .case-study-copy {
     padding: 22px;
+  }
+
+  .hero-badge {
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    max-width: none;
   }
 }
