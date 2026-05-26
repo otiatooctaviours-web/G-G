@@ -147,6 +147,34 @@
         margin-top: 1.15rem;
       }
 
+      .portfolio-payroll-showcase {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .portfolio-payroll-card {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .portfolio-payroll-brand {
+        display: block;
+        width: 100%;
+        height: 110px;
+        max-width: 100%;
+        padding: 12px;
+        border-radius: 20px;
+        object-fit: contain;
+        object-position: center;
+        background: linear-gradient(180deg, rgba(248, 249, 245, 0.98), rgba(238, 243, 250, 0.96));
+        overflow: visible;
+      }
+
+      .portfolio-payroll-brand-lehigh,
+      .portfolio-payroll-brand-elite {
+        justify-self: stretch;
+      }
+
       @media (max-width: 860px) {
         .hero-visual {
           min-height: auto;
@@ -156,6 +184,11 @@
           position: relative;
           top: auto;
           min-height: auto;
+        }
+
+        .portfolio-payroll-brand {
+          height: 92px;
+          padding: 10px;
         }
       }
     </style>
