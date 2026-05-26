@@ -488,15 +488,28 @@ p {
   padding: 28px;
 }
 
+.service-card-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  height: clamp(220px, 24vw, 280px);
+  padding: 14px;
+  border-radius: 18px;
+  overflow: visible;
+  background:
+    linear-gradient(180deg, rgba(248, 249, 245, 0.98), rgba(238, 243, 250, 0.96));
+  box-shadow: inset 0 0 0 1px rgba(8, 18, 35, 0.06);
+}
+
 .service-card-image {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  border-radius: 18px;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   object-position: center;
-  background: rgba(238, 243, 250, 0.92);
-  padding: 10px;
-  box-shadow: inset 0 0 0 1px rgba(8, 18, 35, 0.06);
+  border-radius: 14px;
 }
 
 .service-index,
@@ -1061,6 +1074,12 @@ body.is-nav-open {
   .faq-item,
   .case-study-copy {
     padding: 22px;
+  }
+
+  .service-card-media {
+    min-height: 190px;
+    height: 190px;
+    padding: 12px;
   }
 
   .testimonial-card-header,
