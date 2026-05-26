@@ -6,6 +6,7 @@ const contactForm = document.querySelector(".contact-form-card");
 const submitButton = contactForm?.querySelector(".submit-button");
 const formStatus = contactForm?.querySelector(".form-status");
 const yearNode = document.getElementById("year");
+const defaultFormspreeEndpoint = "https://formspree.io/f/xlgwyzwb";
 
 const setHeaderState = () => {
   siteHeader?.classList.toggle("is-scrolled", window.scrollY > 18);
@@ -23,6 +24,8 @@ const setStatus = (message = "", tone = "") => {
     formStatus.classList.add(`is-${tone}`);
   }
 };
+
+const getFormspreeEndpoint = () => contactForm?.getAttribute("action") || contactForm?.dataset.formspreeEndpoint || defaultFormspreeEndpoint;
 
 const closeNav = () => {
   if (!siteNav || !navToggle) {
@@ -67,35 +70,28 @@ if (contactForm && submitButton) {
     setStatus();
 
     const formData = new FormData(contactForm);
-    const payload = {
-      type: "inquiry",
-      source: "Homepage Contact Form",
-      name: formData.get("name"),
-      email: formData.get("email"),
-      company: formData.get("company"),
-      service: formData.get("service"),
-      message: formData.get("message"),
-      website: formData.get("website"),
-      pageUrl: window.location.href,
-      referrer: document.referrer,
-    };
+    formData.append("type", "inquiry");
+    formData.append("source", "Homepage Contact Form");
+    formData.append("pageUrl", window.location.href);
+    formData.append("referrer", document.referrer);
 
     submitButton.disabled = true;
     submitButton.textContent = "Sending...";
 
     try {
-      const response = await fetch("/api/leads", {
+      const response = await fetch(getFormspreeEndpoint(), {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(payload),
+        body: formData,
       });
 
       const body = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        throw new Error(body?.error || "Something went wrong while sending your inquiry.");
+        const detail = Array.isArray(body?.errors) ? body.errors.map((entry) => entry.message).join(" ") : body?.error;
+        throw new Error(detail || "Something went wrong while sending your inquiry.");
       }
 
       contactForm.reset();

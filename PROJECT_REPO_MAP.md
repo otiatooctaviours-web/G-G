@@ -8,7 +8,6 @@ The project matches below are practical recommendations based on the current pro
 
 These have been cloned locally into `external/` for future integration reference and are ignored from git:
 
-- `external/openwa`
 - `external/n8n`
 - `external/umami`
 - `external/chatwoot`
@@ -33,8 +32,8 @@ Why:
 
 Immediate useful implementation status:
 
-- OpenWA plus Google Sheets automation is already live
-- `n8n` is the strongest next repo to operationalize that automation
+- Formspree is handling website inquiries today
+- `n8n` is the strongest next repo if you want structured automation later
 - `Umami` is the strongest next repo for measurement
 
 ### `rent-management-system`
@@ -193,12 +192,9 @@ Why:
 
 ## What I Already Implemented For `g-and-g-marketing`
 
-- OpenWA WhatsApp transport
-- lead endpoint
-- consultation confirmations
-- inbound auto-replies
-- named Cloudflare tunnel
-- Google Sheets automation webhook fanout
+- Formspree inquiry handling
+- consultation and inquiry UI flows
+- static marketing pages on Cloudflare
 
 So the most useful repo to integrate next into `ggmarketing` is:
 

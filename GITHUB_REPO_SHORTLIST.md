@@ -9,7 +9,7 @@ This is a practical shortlist of free or source-available GitHub repos that fit 
 - Repo: `n8n-io/n8n`
 - Link: <https://github.com/n8n-io/n8n>
 - Why it fits:
-  - Best next step for orchestrating OpenWA, Google Sheets, email, CRM, and follow-up workflows
+  - Best next step for orchestrating forms, email, CRM, and follow-up workflows
   - Natural replacement for one-off webhook fanout once automations become more complex
   - Good fit for lead qualification, reminders, internal alerts, and report scheduling
 
@@ -19,7 +19,7 @@ This is a practical shortlist of free or source-available GitHub repos that fit 
 - Link: <https://github.com/chatwoot/chatwoot>
 - Why it fits:
   - Gives you a proper support inbox for website chat, email, and messaging channels
-  - Useful if you want a team inbox instead of handling all inbound WhatsApp manually
+  - Useful if you want a team inbox instead of handling inquiries from separate channels manually
   - Strong fit for lead handoff and customer support operations
 
 ### Umami
@@ -49,7 +49,7 @@ This is a practical shortlist of free or source-available GitHub repos that fit 
 - Why it fits:
   - Modern open CRM for managing leads, deals, and follow-ups
   - Strong candidate if you want to move beyond Sheets into a real pipeline
-  - Good long-term home for website leads, WhatsApp contacts, and proposal tracking
+  - Good long-term home for website leads, proposals, and follow-up tracking
 
 ### NocoDB
 
@@ -68,7 +68,7 @@ This is a practical shortlist of free or source-available GitHub repos that fit 
 - Link: <https://github.com/appsmithorg/appsmith>
 - Why it fits:
   - Best if you want a custom internal dashboard on top of APIs, Sheets, or databases
-  - Good for building an operator console for leads, WhatsApp actions, and admin workflows
+  - Good for building an operator console for leads and admin workflows
   - Better choice than building every internal tool from scratch
 
 ## Not My First Pick Right Now

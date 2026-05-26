@@ -35,6 +35,7 @@ const consultationNameInput = consultationModal?.querySelector("[data-consultati
 const consultationContactInput = consultationModal?.querySelector("[data-consultation-contact]");
 const consultationTrapInput = consultationModal?.querySelector("[data-consultation-trap]");
 const emailLinks = document.querySelectorAll("[data-email-link]");
+const defaultFormspreeEndpoint = "https://formspree.io/f/xlgwyzwb";
 
 let activeIndex = 0;
 let testimonialIntervalId;
@@ -364,24 +365,43 @@ const getMonthIndex = (date) => date.getFullYear() * 12 + date.getMonth();
 const formatHour = (hour) => `${String(hour).padStart(2, "0")}:00`;
 const buildTimeRange = (hour) => `${formatHour(hour)} - ${formatHour((hour + 1) % 24)}`;
 const isEmailContact = (value) => /\S+@\S+\.\S+/.test(value);
-const submitLeadRequest = async (payload) => {
-  const response = await fetch("/api/leads", {
+const getFormspreeEndpoint = (form) => form?.getAttribute("action") || form?.dataset.formspreeEndpoint || defaultFormspreeEndpoint;
+const submitLeadRequest = async (payload, form) => {
+  const endpoint = getFormspreeEndpoint(form || consultationRequestForm || contactForm);
+  const formData = new FormData();
+  Object.entries({
+    type: payload.type || "",
+    source: payload.source || "",
+    name: payload.name || "",
+    email: payload.email || "",
+    contact: payload.contact || "",
+    company: payload.company || "",
+    service: payload.service || "",
+    message: payload.message || "",
+    appointmentDate: payload.appointmentDate || "",
+    appointmentTime: payload.appointmentTime || "",
+    website: payload.website || "",
+    pageUrl: window.location.href,
+    referrer: document.referrer,
+  }).forEach(([key, value]) => {
+    if (value) {
+      formData.append(key, value);
+    }
+  });
+
+  const response = await fetch(endpoint, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
       Accept: "application/json",
     },
-    body: JSON.stringify({
-      ...payload,
-      pageUrl: window.location.href,
-      referrer: document.referrer,
-    }),
+    body: formData,
   });
 
   const data = await response.json().catch(() => null);
 
   if (!response.ok) {
-    throw new Error(data?.error || "We couldn't send your request right now. Please try again.");
+    const detail = Array.isArray(data?.errors) ? data.errors.map((entry) => entry.message).join(" ") : data?.error;
+    throw new Error(detail || "We couldn't send your request right now. Please try again.");
   }
 
   return data;
@@ -466,7 +486,8 @@ const renderTimeSlots = () => {
       const appointmentSummary = `Consultation requested for ${appointmentFormatter.format(consultationDate)} at ${timeRange}. Contact: ${contactValue}.`;
 
       try {
-        const response = await submitLeadRequest({
+        const response = await submitLeadRequest(
+          {
           type: "consultation",
           source: "Consultation Modal",
           name: contactName,
@@ -477,7 +498,9 @@ const renderTimeSlots = () => {
           appointmentDate: formatDateValue(consultationDate),
           appointmentTime: timeRange,
           website: consultationTrapInput?.value ?? "",
-        });
+          },
+          consultationRequestForm || contactForm
+        );
 
         setStatusMessage(
           consultationStatus,
@@ -741,15 +764,18 @@ if (contactForm) {
 
     try {
       const formData = new FormData(contactForm);
-      const response = await submitLeadRequest({
-        type: "inquiry",
-        source: "Inquiry Modal",
-        name: formData.get("name"),
-        email: formData.get("email"),
-        service: formData.get("service"),
-        message: formData.get("message"),
-        company: formData.get("company"),
-      });
+      const response = await submitLeadRequest(
+        {
+          type: "inquiry",
+          source: "Inquiry Modal",
+          name: formData.get("name"),
+          email: formData.get("email"),
+          service: formData.get("service"),
+          message: formData.get("message"),
+          company: formData.get("company"),
+        },
+        contactForm
+      );
 
       contactForm.reset();
       setStatusMessage(status, response?.message || "Inquiry sent successfully. We'll get back to you soon.", "success");
