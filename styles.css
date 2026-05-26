@@ -504,6 +504,21 @@ p {
   box-shadow: 0 0 0 6px rgba(216, 179, 106, 0.12);
 }
 
+.service-hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  margin-bottom: 1rem;
+  padding: 12px;
+  border-radius: 24px;
+  object-fit: contain;
+  object-position: center;
+  background:
+    linear-gradient(180deg, rgba(248, 249, 245, 0.98), rgba(238, 243, 250, 0.96));
+  box-shadow: 0 20px 50px rgba(6, 15, 30, 0.18);
+}
+
 .brand-badge,
 .mini-card,
 .service-bullets li,
@@ -880,6 +895,10 @@ body.is-nav-open {
   .hero.section {
     margin-top: -76px;
     padding-top: 8rem;
+  }
+
+  .service-hero-image {
+    max-height: 320px;
   }
 
   .services-grid,
