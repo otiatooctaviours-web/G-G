@@ -609,12 +609,33 @@ p {
   overflow: hidden;
 }
 
-.case-study-card img {
-  width: 100%;
+.case-study-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 220px;
-  object-fit: cover;
+  overflow: hidden;
   background: linear-gradient(180deg, #eff4fb, #dfe8f5);
-  padding: 24px;
+}
+
+.case-study-media img {
+  width: 100%;
+  height: 100%;
+}
+
+.case-study-media-dashboard img {
+  object-fit: cover;
+}
+
+.case-study-media-logo {
+  padding: 18px 26px;
+}
+
+.case-study-media-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .case-study-copy {
