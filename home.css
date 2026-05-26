@@ -678,17 +678,21 @@ p {
   align-items: center;
 }
 
+.approach-media {
+  display: flex;
+  justify-content: center;
+}
+
 .approach-image-shell {
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
+  width: min(100%, 24rem);
 }
 
 .approach-image-shell img {
+  display: block;
   width: 100%;
-  min-height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
 }
 
 .approach-copy {
