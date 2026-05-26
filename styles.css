@@ -128,6 +128,11 @@ textarea {
   position: relative;
 }
 
+.site-header .navbar.glass {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(18px);
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -155,6 +160,14 @@ textarea {
 
 .brand-copy small {
   color: rgba(247, 247, 242, 0.72);
+}
+
+.site-header .navbar.glass .brand-copy {
+  color: var(--text);
+}
+
+.site-header .navbar.glass .brand-copy small {
+  color: var(--text-muted);
 }
 
 .glass {
@@ -197,6 +210,11 @@ textarea {
   padding: 0;
   list-style: none;
   color: rgba(247, 247, 242, 0.86);
+}
+
+.site-header .navbar.glass .nav-links,
+.site-header .navbar.glass .dropdown-trigger {
+  color: var(--text);
 }
 
 .nav-links a,
@@ -291,6 +309,12 @@ textarea {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.18);
   color: var(--text-inverse);
+}
+
+.site-header .navbar.glass .nav-cta {
+  background: rgba(8, 18, 35, 0.05);
+  border-color: var(--line);
+  color: var(--text);
 }
 
 .services-grid .button-ghost,
@@ -558,13 +582,11 @@ p {
 
 .about-card,
 .founder-card,
-.service-card,
-.footer-grid.glass {
+.service-card {
   background: rgba(255, 255, 255, 0.92);
 }
 
 .founder-card,
-.footer-grid.glass,
 .service-card,
 .about-card {
   border: 1px solid var(--line);
@@ -628,6 +650,11 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.site-footer .footer-grid.glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .footer-grid h3 {
   margin-bottom: 0.7rem;
   font-size: 1.3rem;
@@ -660,6 +687,10 @@ p {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-inverse);
+}
+
+.site-footer .contact-item span:last-child {
+  color: rgba(247, 247, 242, 0.76);
 }
 
 .contact-icon {
@@ -784,6 +815,14 @@ body.is-nav-open {
     display: inline-block;
   }
 
+  .site-header .navbar.glass .nav-toggle {
+    background: rgba(8, 18, 35, 0.08);
+  }
+
+  .site-header .navbar.glass .nav-toggle span {
+    background: var(--text);
+  }
+
   .nav-menu {
     position: absolute;
     top: calc(100% + 0.8rem);
@@ -805,6 +844,17 @@ body.is-nav-open {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
+  }
+
+  .site-header .navbar.glass .nav-links,
+  .site-header .navbar.glass .dropdown-trigger,
+  .site-header .navbar.glass .nav-cta {
+    color: var(--text-inverse);
+  }
+
+  .site-header .navbar.glass .nav-cta {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.18);
   }
 
   .nav-links {
