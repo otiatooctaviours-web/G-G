@@ -180,7 +180,7 @@ textarea {
   background:
     linear-gradient(90deg, rgba(8, 18, 35, 0.94) 0%, rgba(8, 18, 35, 0.84) 34%, rgba(8, 18, 35, 0.42) 66%, rgba(8, 18, 35, 0.6) 100%),
     linear-gradient(180deg, rgba(8, 18, 35, 0.18), rgba(8, 18, 35, 0.4)),
-    url("./assets/webdesign.png") center center / cover no-repeat;
+    image-set(url("./assets/webdesign.webp") type("image/webp"), url("./assets/webdesign.jpg") type("image/jpeg")) center center / cover no-repeat;
   color: var(--text-inverse);
 }
 

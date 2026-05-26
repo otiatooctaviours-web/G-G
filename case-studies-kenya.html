@@ -4,16 +4,47 @@
     <script
       id="cookieyes"
       type="text/javascript"
-      src="https://cdn-cookieyes.com/client_data/3f81fca7ae2733ba9f7410bb/script.js"
-    ></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VVM3M0D0RQ"></script>
+      src="https://cdn-cookieyes.com/client_data/3f81fca7ae2733ba9f7410bb/script.js" async></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag("js", new Date());
-      gtag("config", "G-VVM3M0D0RQ");
+      window.gtag = gtag;
+
+      const loadDeferredAnalytics = () => {
+        if (window.__ggAnalyticsLoaded) {
+          return;
+        }
+
+        window.__ggAnalyticsLoaded = true;
+
+        const analyticsScript = document.createElement("script");
+        analyticsScript.async = true;
+        analyticsScript.src = "https://www.googletagmanager.com/gtag/js?id=G-VVM3M0D0RQ";
+        analyticsScript.dataset.cookieyes = "cookieyes-analytics";
+        analyticsScript.addEventListener("load", () => {
+          gtag("js", new Date());
+          gtag("config", "G-VVM3M0D0RQ");
+        });
+
+        document.head.appendChild(analyticsScript);
+      };
+
+      window.addEventListener(
+        "load",
+        () => {
+          if ("requestIdleCallback" in window) {
+            requestIdleCallback(() => window.setTimeout(loadDeferredAnalytics, 1200), {
+              timeout: 4000,
+            });
+            return;
+          }
+
+          window.setTimeout(loadDeferredAnalytics, 1800);
+        },
+        { once: true }
+      );
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -47,8 +78,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap"
-      media="(min-width: 861px)"
-      rel="stylesheet"
+      rel="stylesheet" media="print" onload="this.media='all'"
     />
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
     <link rel="stylesheet" href="./styles.css?v=20260519-minimal2" />
@@ -120,7 +150,7 @@
             "name": "G&G Marketing",
             "alternateName": "G and G Marketing",
             "url": "https://ggmarketing.co.ke/",
-            "logo": "https://ggmarketing.co.ke/assets/logo-square.jpg",
+            "logo": "https://ggmarketing.co.ke/assets/logo-square.webp",
             "email": "info@ggmarketing.co.ke",
             "telephone": "+254793553860"
           },
@@ -167,7 +197,7 @@
       <header class="site-header" id="home">
         <nav class="navbar glass" aria-label="Primary navigation">
           <a class="brand" href="/" aria-label="G and G Marketing home">
-            <img class="brand-logo" src="./assets/logo-square.jpg" alt="G&G Marketing logo" width="54" height="54" decoding="async" />
+            <img class="brand-logo" src="./assets/logo-square.webp" alt="G&G Marketing logo" width="54" height="54" decoding="async" />
           </a>
           <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
             <span></span>
@@ -285,7 +315,7 @@
         <div class="footer-grid glass">
           <div>
             <a class="brand footer-brand" href="/">
-              <img class="brand-logo" src="./assets/logo-square.jpg" alt="G&G Marketing logo" width="54" height="54" decoding="async" />
+              <img class="brand-logo" src="./assets/logo-square.webp" alt="G&G Marketing logo" width="54" height="54" decoding="async" />
               <span class="brand-copy">
                 <strong>G&amp;G Marketing</strong>
                 <small>Strategy, design, growth</small>
