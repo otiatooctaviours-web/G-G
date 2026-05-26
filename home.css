@@ -719,7 +719,7 @@ p {
 
 .testimonial-card-header,
 .testimonial-foot {
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 16px;
 }
 
@@ -754,23 +754,12 @@ p {
   background: linear-gradient(135deg, #d9e1f3, #eef3fb);
 }
 
-.testimonial-badge,
 .testimonial-foot span {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   border-radius: 999px;
   white-space: nowrap;
-}
-
-.testimonial-badge {
-  padding: 8px 12px;
-  background: rgba(157, 122, 54, 0.1);
-  color: #7a5a1e;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 .testimonial-stars {
@@ -1077,7 +1066,6 @@ body.is-nav-open {
     align-items: flex-start;
   }
 
-  .testimonial-badge,
   .testimonial-foot span {
     white-space: normal;
   }
