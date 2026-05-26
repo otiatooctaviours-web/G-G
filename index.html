@@ -1,31 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#081223" />
+    <meta name="author" content="G&amp;G Marketing" />
+    <meta name="geo.region" content="KE-30" />
+    <meta name="geo.placename" content="Nairobi" />
+    <meta name="ICBM" content="-1.28333, 36.81667" />
+    <link rel="canonical" href="https://ggmarketing.co.ke/" />
+    <link rel="alternate" hreflang="en-ke" href="https://ggmarketing.co.ke/" />
+    <link rel="alternate" hreflang="x-default" href="https://ggmarketing.co.ke/" />
+    <link rel="dns-prefetch" href="//cdn-cookieyes.com" />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="preconnect" href="https://cdn-cookieyes.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="./assets/founder-portrait.webp" fetchpriority="high" />
     <script
       id="cookieyes"
       type="text/javascript"
       src="https://cdn-cookieyes.com/client_data/3f81fca7ae2733ba9f7410bb/script.js"
+      async
     ></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VVM3M0D0RQ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag("js", new Date());
+      window.gtag = gtag;
 
-      gtag("config", "G-VVM3M0D0RQ");
+      const loadDeferredAnalytics = () => {
+        if (window.__ggAnalyticsLoaded) {
+          return;
+        }
+
+        window.__ggAnalyticsLoaded = true;
+
+        const analyticsScript = document.createElement("script");
+        analyticsScript.async = true;
+        analyticsScript.src = "https://www.googletagmanager.com/gtag/js?id=G-VVM3M0D0RQ";
+        analyticsScript.dataset.cookieyes = "cookieyes-analytics";
+        analyticsScript.addEventListener("load", () => {
+          gtag("js", new Date());
+          gtag("config", "G-VVM3M0D0RQ");
+        });
+
+        document.head.appendChild(analyticsScript);
+      };
+
+      window.addEventListener(
+        "load",
+        () => {
+          if ("requestIdleCallback" in window) {
+            requestIdleCallback(() => window.setTimeout(loadDeferredAnalytics, 1200), {
+              timeout: 4000,
+            });
+            return;
+          }
+
+          window.setTimeout(loadDeferredAnalytics, 1800);
+        },
+        { once: true }
+      );
     </script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
       content="G&G Marketing is a Nairobi digital marketing agency offering web design, SEO services, social media marketing, branding, content strategy, and lead generation for businesses across Kenya."
     />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://ggmarketing.co.ke/" />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_KE" />
     <meta property="og:site_name" content="G&amp;G Marketing" />
     <meta property="og:title" content="Digital Marketing Agency in Nairobi | Web Design &amp; SEO | G&amp;G Marketing" />
     <meta
@@ -42,19 +90,14 @@
       content="Nairobi digital marketing agency for web design, SEO, social media marketing, branding, and lead generation across Kenya."
     />
     <meta name="twitter:image" content="https://ggmarketing.co.ke/assets/offer-founder-hero.jpg" />
+    <meta name="twitter:site" content="@g_g.marketing" />
     <title>Digital Marketing Agency in Nairobi | Web Design &amp; SEO | G&amp;G Marketing</title>
-    <script>
-      document.documentElement.classList.add("js");
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap"
-      media="(min-width: 861px)"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
-    <link rel="stylesheet" href="./styles.css?v=20260519-minimal2" />
+    <link rel="stylesheet" href="./home.css?v=20260526-landwind" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -69,6 +112,7 @@
             "description": "Nairobi digital marketing agency offering web design, SEO services, social media marketing, branding, content strategy, and lead generation for businesses across Kenya.",
             "email": "info@ggmarketing.co.ke",
             "telephone": "+254793553860",
+            "image": "https://ggmarketing.co.ke/assets/offer-founder-hero.jpg",
             "sameAs": [
               "https://www.instagram.com/g_g.marketing",
               "https://www.facebook.com/ggmarketingco"
@@ -140,6 +184,17 @@
             }
           },
           {
+            "@type": "WebSite",
+            "@id": "https://ggmarketing.co.ke/#website",
+            "url": "https://ggmarketing.co.ke/",
+            "name": "G&G Marketing",
+            "description": "Nairobi digital marketing agency for web design, SEO, social media marketing, branding, and lead generation across Kenya.",
+            "publisher": {
+              "@id": "https://ggmarketing.co.ke/#organization"
+            },
+            "inLanguage": "en-KE"
+          },
+          {
             "@type": ["LocalBusiness", "ProfessionalService"],
             "@id": "https://ggmarketing.co.ke/#localbusiness",
             "name": "G&G Marketing",
@@ -149,11 +204,17 @@
             "description": "Local digital marketing business in Nairobi offering web design, SEO services, social media marketing, branding, content strategy, and lead generation across Kenya.",
             "email": "info@ggmarketing.co.ke",
             "telephone": "+254793553860",
+            "priceRange": "$$",
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Nairobi",
               "addressRegion": "Nairobi County",
               "addressCountry": "KE"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": -1.28333,
+              "longitude": 36.81667
             },
             "areaServed": [
               {
@@ -188,877 +249,547 @@
               "Lead Generation",
               "Content Strategy"
             ],
-            "mainEntityOfPage": "https://ggmarketing.co.ke/",
+            "mainEntityOfPage": {
+              "@id": "https://ggmarketing.co.ke/#website"
+            },
             "parentOrganization": {
               "@id": "https://ggmarketing.co.ke/#organization"
             }
-          },
-          {
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What does a digital marketing agency in Nairobi do?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "A digital marketing agency helps businesses improve online visibility, strengthen brand messaging, attract traffic from Google and social media, and convert that attention into leads and sales."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How much does web design cost in Kenya?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Web design costs depend on the number of pages, design depth, content needs, integrations such as M-Pesa, and whether the project includes SEO, copy, or lead generation features."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How long does SEO take to work?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "SEO usually takes time because rankings improve as search engines recrawl, understand, and compare your pages. Well-structured changes often start showing movement within a few months, especially when the content is useful and technically sound."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Do you work with businesses outside Nairobi?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes. G&G Marketing supports businesses in Nairobi and across Kenya with website design, SEO services, social media marketing, branding, and conversion-focused digital strategy."
-                }
-              }
-            ]
           }
         ]
       }
     </script>
   </head>
   <body>
-    <div class="page-shell">
-      <div class="ambient ambient-one"></div>
-      <div class="ambient ambient-two"></div>
-      <div class="ambient ambient-three"></div>
+    <header class="site-header" id="home">
+      <div class="container nav-shell">
+        <a class="brand" href="#home" aria-label="G and G Marketing home">
+          <img src="./assets/logo-square.jpg" alt="G&amp;G Marketing logo" width="56" height="56" />
+          <span class="brand-copy">
+            <strong>G&amp;G Marketing</strong>
+            <small>Nairobi growth partner</small>
+          </span>
+        </a>
 
-      <header class="site-header" id="home">
-        <nav class="navbar glass" aria-label="Primary navigation">
-            <a class="brand" href="#home" aria-label="G and G Marketing home">
-            <img class="brand-logo" src="./assets/logo-square.jpg" alt="G&G Marketing logo" width="54" height="54" decoding="async" />
-          </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Toggle navigation"
+        >
+          <span></span>
+          <span></span>
+        </button>
 
-          <button
-            class="nav-toggle"
-            type="button"
-            aria-expanded="false"
-            aria-controls="nav-menu"
-            aria-label="Toggle menu"
-          >
-            <span></span>
-            <span></span>
-          </button>
-
-          <div class="nav-menu" id="nav-menu">
-            <ul class="nav-links">
-              <li><a href="#home">Home</a></li>
-              <li class="has-dropdown">
-                <button
-                  class="dropdown-trigger"
-                  type="button"
-                  aria-expanded="false"
-                  aria-haspopup="true"
-                >
-                  Services
-                </button>
-                <div class="dropdown glass">
-                  <a href="#services">All Services</a>
-                  <a href="./social-media-marketing-nairobi.html">Social Media Marketing</a>
-                  <a href="./brand-strategy-nairobi.html">Brand Strategy</a>
-                  <a href="./web-design-nairobi.html">Web Design</a>
-                  <a href="./seo-services-kenya.html">SEO &amp; Optimization</a>
-                  <a href="./lead-generation-kenya.html">Lead Generation</a>
-                  <a href="./content-strategy-kenya.html">Content Strategy</a>
-                </div>
-              </li>
-              <li class="has-dropdown">
-                <button
-                  class="dropdown-trigger"
-                  type="button"
-                  aria-expanded="false"
-                  aria-haspopup="true"
-                >
-                  Products
-                </button>
-                <div class="dropdown glass">
-                  <a href="https://go.ggmarketing.co.ke" target="_blank" rel="noopener noreferrer">URL Shortener</a>
-                  <a href="./eazzy-rent.html">Eazzy Rent</a>
-                </div>
-              </li>
-              <li><a href="#about">About</a></li>
-              <li><a href="./case-studies-kenya.html">Case Studies</a></li>
-              <li><a href="#testimonials">Testimonials</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-
-            <a class="button button-secondary nav-cta" href="#contact">Book a Consultation</a>
-          </div>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#work">Case Studies</a>
+          <a href="#approach">Approach</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact">Contact</a>
+          <a class="nav-cta" href="#contact-form">Book a Consultation</a>
         </nav>
-      </header>
+      </div>
+    </header>
 
-      <main>
-        <section class="hero section">
-          <div class="hero-grid">
-            <div class="hero-copy" data-reveal>
-              <p class="eyebrow glass-pill">Digital Marketing Agency in Nairobi</p>
-              <h1>Web Design, SEO and Digital Marketing for Brands Ready to Grow.</h1>
-              <p class="hero-text">
-                G&amp;G Marketing helps businesses in Nairobi and across Kenya grow through
-                strategic web design, SEO services, social media marketing, branding, and
-                lead generation.
-              </p>
-              <p class="hero-subtext">
-                We create fast websites, stronger brand positioning, and conversion-focused
-                campaigns that help people find your business on Google and turn interest
-                into qualified enquiries.
-              </p>
-
-              <div class="hero-actions">
-                <a class="button button-primary" href="#contact">Get Started</a>
-                <a class="button button-ghost" href="#services">View Services</a>
-              </div>
-
+    <main>
+      <section class="hero-section">
+        <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+        <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Digital Marketing Agency in Nairobi</p>
+            <h1>Digital marketing, web design, and SEO for Kenyan brands that want real traction.</h1>
+            <p class="hero-text">
+              G&amp;G Marketing helps ambitious businesses across Kenya combine brand strategy,
+              websites, SEO, social media, and lead generation into a clearer growth system that
+              attracts attention and turns it into real inquiries.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#contact-form">Start Your Project</a>
+              <a class="button button-secondary" href="#services">Explore Services</a>
             </div>
-
-            <div class="hero-visual" data-reveal>
-              <div class="visual-panel hero-portrait-panel glass tilt-card">
-                <div class="hero-portrait-stage">
-                  <div class="hero-portrait-glow" aria-hidden="true"></div>
-
-                  <img
-                    src="./assets/logo-hero-soft.png"
-                    alt="G&amp;G Marketing logo"
-                    class="hero-logo-image"
-                    width="820"
-                    height="820"
-                    loading="eager"
-                    decoding="async"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div class="metrics" data-reveal>
-              <article class="metric glass">
-                <span class="metric-value" data-counter="120">0</span>
-                <span class="metric-label">Brand launches shaped with measurable growth systems.</span>
-              </article>
-              <article class="metric glass">
-                <span class="metric-value" data-counter="320">0</span>
-                <span class="metric-label">Average lead lift from conversion-focused redesigns.</span>
-              </article>
-              <article class="metric glass">
-                <span class="metric-value" data-counter="4.9">0</span>
-                <span class="metric-label">Average partner satisfaction across retained clients.</span>
-              </article>
-            </div>
+            <ul class="hero-points" aria-label="Agency highlights">
+              <li>Web design, SEO, social media, branding, and lead generation under one roof</li>
+              <li>Built for businesses in Nairobi and across Kenya</li>
+              <li>Fast inquiry flow connected to the existing `/api/leads` endpoint</li>
+            </ul>
           </div>
-        </section>
 
-        <section class="section about-section" id="about">
-          <div class="about-grid">
-            <div class="about-column" data-reveal>
-              <div class="section-heading about-heading">
-                <p class="eyebrow">About G&amp;G</p>
-                <h2>A Nairobi digital marketing agency built for brands that want clarity and growth.</h2>
-              </div>
-              <article class="about-card">
-                <p>
-                  G&amp;G Marketing helps startups, SMEs, and growing businesses improve how
-                  they look online, how they rank on search engines, and how they convert
-                  visitors into enquiries.
-                </p>
-                <p>
-                  Our work combines digital marketing strategy, social media marketing, SEO,
-                  brand strategy, website design, and lead generation so your digital
-                  presence supports real business growth instead of empty visibility.
-                </p>
-                <div class="about-note">
-                  <strong>What makes us different</strong>
-                  <span>
-                    Strategy shapes everything together: the brand, the website, the search
-                    terms, the messaging, and the conversion path your audience follows.
-                  </span>
-                </div>
-              </article>
-            </div>
-
-            <article class="founder-card" data-reveal>
-              <div class="founder-portrait-shell">
+          <div class="hero-visual">
+            <article class="hero-card hero-profile-card">
+              <div class="hero-image-frame">
                 <img
-                  src="./assets/founder-hero-cutout.png"
+                  src="./assets/founder-portrait.webp"
                   alt="Founder of G&amp;G Marketing"
-                  class="founder-portrait"
-                  width="1024"
-                  height="1536"
-                  loading="lazy"
+                  width="800"
+                  height="1000"
+                  loading="eager"
                   decoding="async"
+                  fetchpriority="high"
                 />
               </div>
-              <div class="founder-copy">
-                <span class="stack-kicker">Founder Spotlight</span>
-                <strong>Hands-on creative leadership from strategy to final launch.</strong>
-                <p>
-                  We work as a close growth partner for businesses that need a stronger
-                  website, better SEO visibility, clearer messaging, and more qualified
-                  leads from their marketing.
-                </p>
+              <div class="hero-badge">
+                <span>Trusted locally</span>
+                <strong>5-star Google feedback and repeat-client work</strong>
               </div>
             </article>
-          </div>
-        </section>
 
-        <section class="section services-section" id="services">
-          <div class="section-heading" data-reveal>
+            <article class="hero-card hero-proof-card">
+              <p class="proof-label">Recent proof</p>
+              <div class="proof-metrics">
+                <div>
+                  <strong>6</strong>
+                  <span>Core service lines</span>
+                </div>
+                <div>
+                  <strong>3</strong>
+                  <span>Featured case studies</span>
+                </div>
+                <div>
+                  <strong>KE</strong>
+                  <span>Nairobi based, Kenya-wide delivery</span>
+                </div>
+              </div>
+              <ul class="proof-links">
+                <li><a href="./web-design-nairobi.html">Website Design &amp; Development</a></li>
+                <li><a href="./seo-services-kenya.html">SEO &amp; Optimization</a></li>
+                <li><a href="./social-media-marketing-nairobi.html">Social Media Marketing</a></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="brand-strip" aria-label="Agency positioning">
+        <div class="container brand-strip-grid">
+          <p>Built for brands that want polish, clarity, and measurable growth.</p>
+          <ul class="brand-strip-list">
+            <li>Strategy-first execution</li>
+            <li>Conversion-focused websites</li>
+            <li>SEO-ready content systems</li>
+            <li>Campaign support across key channels</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section-surface" id="services">
+        <div class="container">
+          <div class="section-heading">
             <p class="eyebrow">Services</p>
             <h2>Digital marketing services in Nairobi for businesses that want measurable growth.</h2>
             <p>
-              From website design and SEO to social media management, brand strategy, and
-              lead generation, we build practical systems that help businesses across Kenya
-              attract traffic, earn trust, and convert more customers.
+              From website design and SEO to social media management, brand strategy, and lead
+              generation, we build practical systems that help businesses across Kenya attract
+              traffic, earn trust, and convert more customers.
             </p>
           </div>
 
-          <div class="services-grid">
-            <article class="service-card glass tilt-card" data-reveal id="service-social">
-              <div class="service-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11Z" />
-                  <path d="M8 15c1.8-2.7 6.2-2.7 8 0" />
-                  <circle cx="12" cy="10" r="2.25" />
-                </svg>
-              </div>
+          <div class="service-grid">
+            <article class="service-card">
+              <span class="service-index">01</span>
               <h3>Social Media Marketing</h3>
-              <p>
-                Social media strategy, content planning, campaign management, and paid
-                social support that help businesses grow on Instagram, Facebook, TikTok,
-                and other key channels.
-              </p>
-              <a class="button button-ghost" href="./social-media-marketing-nairobi.html">Learn More</a>
+              <p>Content planning, campaign support, and branded creative across the platforms your audience actually uses.</p>
+              <a href="./social-media-marketing-nairobi.html">Learn more</a>
             </article>
-
-            <article class="service-card glass tilt-card" data-reveal id="service-brand">
-              <div class="service-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 3 4 7.5 12 12l8-4.5L12 3Z" />
-                  <path d="M4 12.5 12 17l8-4.5" />
-                  <path d="M4 17.5 12 22l8-4.5" />
-                </svg>
-              </div>
-              <h3>Brand Strategy &amp; Identity Design</h3>
-              <p>
-                Brand strategy, messaging, and identity design that help your business look
-                credible, memorable, and ready to compete in a crowded market.
-              </p>
-              <a class="button button-ghost" href="./brand-strategy-nairobi.html">Learn More</a>
+            <article class="service-card">
+              <span class="service-index">02</span>
+              <h3>Brand Strategy &amp; Identity</h3>
+              <p>Messaging and design systems that make your business feel credible, memorable, and investment-ready.</p>
+              <a href="./brand-strategy-nairobi.html">Learn more</a>
             </article>
-
-            <article class="service-card glass tilt-card" data-reveal id="service-web">
-              <div class="service-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="3.5" y="5" width="17" height="14" rx="2.5" />
-                  <path d="M8 9.5h8M8 13h5" />
-                </svg>
-              </div>
+            <article class="service-card">
+              <span class="service-index">03</span>
               <h3>Website Design &amp; Development</h3>
-              <p>
-                Custom website design and development for businesses that need fast,
-                mobile-friendly, SEO-ready websites built to turn visitors into enquiries
-                and sales.
-              </p>
-              <a class="button button-ghost" href="./web-design-nairobi.html">Learn More</a>
+              <p>Fast, mobile-friendly websites with a clearer content flow and stronger conversion paths.</p>
+              <a href="./web-design-nairobi.html">Learn more</a>
             </article>
-
-            <article class="service-card glass tilt-card" data-reveal id="service-seo">
-              <div class="service-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="11" cy="11" r="6.5" />
-                  <path d="m16 16 4 4M8.5 11h5M11 8.5v5" />
-                </svg>
-              </div>
+            <article class="service-card">
+              <span class="service-index">04</span>
               <h3>SEO &amp; Website Optimization</h3>
-              <p>
-                On-page SEO, technical SEO, local SEO, and content optimization that help
-                your website rank better on Google and attract more qualified traffic.
-              </p>
-              <a class="button button-ghost" href="./seo-services-kenya.html">Learn More</a>
+              <p>On-page, technical, and local SEO work designed to improve visibility where your customers search.</p>
+              <a href="./seo-services-kenya.html">Learn more</a>
             </article>
-
-            <article class="service-card glass tilt-card" data-reveal id="service-leads">
-              <div class="service-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 18V6m5 12V10m5 8V4m5 14v-6" />
-                </svg>
-              </div>
+            <article class="service-card">
+              <span class="service-index">05</span>
               <h3>Lead Generation Systems</h3>
-              <p>
-                Landing pages, funnels, automation, and conversion systems that help
-                businesses generate leads consistently from search, social media, and paid
-                campaigns.
-              </p>
-              <a class="button button-ghost" href="./lead-generation-kenya.html">Learn More</a>
+              <p>Landing pages, funnels, and automated handoff flows that support consistent inquiries.</p>
+              <a href="./lead-generation-kenya.html">Learn more</a>
             </article>
-
-            <article class="service-card glass tilt-card" data-reveal>
-              <div class="service-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M5 7.5h14M5 12h9M5 16.5h11" />
-                  <path d="M16.5 5 19 7.5 16.5 10" />
-                </svg>
-              </div>
+            <article class="service-card">
+              <span class="service-index">06</span>
               <h3>Content Strategy</h3>
-              <p>
-                Website copy, campaign messaging, and content planning shaped around what
-                your customers search for, ask about, and need before they are ready to buy.
-              </p>
-              <a class="button button-ghost" href="./content-strategy-kenya.html">Learn More</a>
+              <p>Website and campaign messaging shaped around what people search for, ask about, and need before buying.</p>
+              <a href="./content-strategy-kenya.html">Learn more</a>
             </article>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="section reason-section">
-          <div class="section-heading" data-reveal>
-            <p class="eyebrow">Search Visibility</p>
-            <h2>Digital growth support for businesses in Nairobi and across Kenya.</h2>
+      <section class="section" id="pricing">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Web Design Pricing</p>
+            <h2>Website design packages priced for the current Kenyan market.</h2>
             <p>
-              Businesses searching for a digital marketing agency in Nairobi usually need
-              more than attractive visuals. They need a website that loads fast, service
-              pages that explain the offer clearly, SEO that improves search visibility,
-              and marketing systems that turn traffic into real enquiries.
+              Clear pricing helps serious clients qualify themselves faster. These packages create
+              a simple path from a fast starter website to a stronger business site, a premium
+              conversion-focused build, and an ecommerce launch option.
             </p>
           </div>
 
-          <div class="reason-grid">
-            <article class="reason-card glass" data-reveal>
-              <span class="reason-index">01</span>
-              <h3>Need a digital marketing agency in Nairobi?</h3>
-              <p>Strategy, design, SEO, and campaign support brought together in one growth partner.</p>
+          <div class="pricing-grid">
+            <article class="pricing-card">
+              <p class="pricing-kicker">Starter</p>
+              <h3>Starter Website Package</h3>
+              <p class="pricing-price">KES 8,000</p>
+              <p class="pricing-audience">Best for small businesses, personal brands, consultants, and startups.</p>
+              <ul>
+                <li>1-page modern website or landing page</li>
+                <li>Mobile-responsive design</li>
+                <li>Basic SEO setup</li>
+                <li>Contact form or WhatsApp button</li>
+                <li>Social media links</li>
+                <li>Basic speed optimization</li>
+                <li>3 days delivery timeline</li>
+              </ul>
+              <p class="pricing-fit">Ideal for: portfolios, small business profiles, simple service pages.</p>
             </article>
-            <article class="reason-card glass" data-reveal>
-              <span class="reason-index">02</span>
-              <h3>Looking for a web design company in Nairobi?</h3>
-              <p>Modern websites built to look credible, load quickly, and turn visitors into leads.</p>
+
+            <article class="pricing-card pricing-card-featured">
+              <p class="pricing-kicker">Business</p>
+              <h3>Business Website Package</h3>
+              <p class="pricing-price">KES 15,000</p>
+              <p class="pricing-audience">Best for businesses that need a stronger online presence.</p>
+              <ul>
+                <li>Up to 5 pages</li>
+                <li>Home, About, Services, Gallery or Portfolio, Contact</li>
+                <li>Mobile-responsive design</li>
+                <li>WhatsApp and call CTA integration</li>
+                <li>Google Maps integration</li>
+                <li>Basic on-page SEO</li>
+                <li>Contact form</li>
+                <li>Social media integration</li>
+                <li>1 round of revisions</li>
+              </ul>
+              <p class="pricing-fit">Ideal for: agencies, SMEs, clinics, salons, restaurants, schools, and consultancies.</p>
             </article>
-            <article class="reason-card glass" data-reveal>
-              <span class="reason-index">03</span>
-              <h3>Need SEO services in Kenya?</h3>
-              <p>On-page and technical optimization designed to improve rankings for relevant searches.</p>
+
+            <article class="pricing-card">
+              <p class="pricing-kicker">Premium</p>
+              <h3>Premium Website Package</h3>
+              <p class="pricing-price">KES 25,000</p>
+              <p class="pricing-audience">Best for brands that want a polished, premium, conversion-focused website.</p>
+              <ul>
+                <li>Up to 8 pages</li>
+                <li>Premium UI and UX layout</li>
+                <li>Lead capture forms</li>
+                <li>WhatsApp, call, and email CTA setup</li>
+                <li>Blog or news section</li>
+                <li>Advanced SEO structure</li>
+                <li>Speed optimization</li>
+                <li>Google Analytics and tracking setup</li>
+                <li>2 rounds of revisions</li>
+                <li>Basic training on how to manage content</li>
+              </ul>
+              <p class="pricing-fit">Ideal for: serious businesses, BPO companies, real estate, law firms, financial services, and corporate brands.</p>
             </article>
-            <article class="reason-card glass" data-reveal>
-              <span class="reason-index">04</span>
-              <h3>Need a social media marketing agency in Kenya?</h3>
-              <p>Content and campaign management that help brands stay visible and trusted across platforms.</p>
+
+            <article class="pricing-card">
+              <p class="pricing-kicker">Ecommerce</p>
+              <h3>E-Commerce Website Package</h3>
+              <p class="pricing-price">From KES 35,000</p>
+              <p class="pricing-audience">Best for businesses selling products online.</p>
+              <ul>
+                <li>Online shop setup</li>
+                <li>Product categories</li>
+                <li>Product upload setup</li>
+                <li>Cart and checkout</li>
+                <li>Payment integration guidance</li>
+                <li>WhatsApp order button</li>
+                <li>Delivery and contact information setup</li>
+                <li>Mobile-responsive design</li>
+                <li>Basic SEO for products</li>
+              </ul>
+              <p class="pricing-fit">Ideal for: boutiques, electronics shops, beauty brands, food businesses, and online stores.</p>
             </article>
           </div>
-        </section>
 
-        <section class="section reason-section">
-          <div class="section-heading" data-reveal>
-            <p class="eyebrow">Why Choose Us</p>
-            <h2>Built for brands that want polish, clarity, and growth.</h2>
-          </div>
+          <article class="addons-card">
+            <div>
+              <p class="eyebrow">Optional Add-Ons</p>
+              <h3>Extras clients can add as the project grows.</h3>
+            </div>
+            <div class="addons-grid">
+              <p><strong>Domain registration assistance</strong><span>From KES 1,500/year</span></p>
+              <p><strong>Hosting setup</strong><span>From KES 3,500/year</span></p>
+              <p><strong>Logo design</strong><span>From KES 3,000</span></p>
+              <p><strong>Business profile design</strong><span>From KES 2,500</span></p>
+              <p><strong>SEO blog article</strong><span>KES 1,500 per article</span></p>
+              <p><strong>Monthly website maintenance</strong><span>From KES 3,000/month</span></p>
+              <p><strong>Website redesign</strong><span>From KES 10,000</span></p>
+            </div>
+          </article>
+        </div>
+      </section>
 
-          <div class="reason-grid">
-            <article class="reason-card glass" data-reveal>
-              <span class="reason-index">01</span>
-              <h3>Strategy-first approach</h3>
-              <p>We align creative direction with business goals before design ever begins.</p>
-            </article>
-            <article class="reason-card glass" data-reveal>
-              <span class="reason-index">02</span>
-              <h3>Premium brand design</h3>
-              <p>Every visual system is built to look elevated, cohesive, and investment-ready.</p>
-            </article>
-            <article class="reason-card glass" data-reveal>
-              <span class="reason-index">03</span>
-              <h3>Conversion-focused websites</h3>
-              <p>Elegant interfaces are paired with strong calls to action and smart content flow.</p>
-            </article>
-            <article class="reason-card glass" data-reveal>
-              <span class="reason-index">04</span>
-              <h3>Data-driven decisions</h3>
-              <p>We refine what performs so your digital presence becomes a long-term asset.</p>
-            </article>
-            <article class="reason-card glass" data-reveal>
-              <span class="reason-index">05</span>
-              <h3>Scalable growth systems</h3>
-              <p>Campaigns, funnels, and websites are planned to grow with your next stage.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section portfolio-section" id="portfolio">
-          <div class="section-heading" data-reveal>
-            <p class="eyebrow">Proof From Recent Client Projects</p>
-            <h2>Recent software wins and client delivery milestones.</h2>
+      <section class="section" id="work">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Case Studies</p>
+            <h2>Recent delivery examples that make the homepage feel grounded, not generic.</h2>
             <p>
-              Current proof on the site comes from recent client projects across a
-              customized VICIdial deployment, branded payroll system rollouts, and the
-              Eazzy Rent property management software experience for live business use cases.
+              The homepage proof now reflects actual work from the business: customized dialer
+              deployments, payroll-related software delivery, and property management system support.
             </p>
           </div>
 
-          <div class="portfolio-marquee" data-reveal aria-label="Recent software wins logo marquee">
-            <div class="portfolio-marquee-track">
-              <div class="portfolio-marquee-group">
-                <a class="portfolio-marquee-item" href="./vicidial-case-study.html" aria-label="VICIdial case study">
-                  <img src="./assets/vicidial-logo.svg" alt="VICIdial logo" width="320" height="96" />
-                </a>
-                <a class="portfolio-marquee-item" href="./payroll-case-study.html" aria-label="Lehigh payroll case study">
-                  <img src="./assets/payroll-logo.png" alt="Lehigh Business Solutions logo" width="1601" height="600" />
-                </a>
-                <a class="portfolio-marquee-item" href="./payroll-case-study.html" aria-label="Elite payroll case study">
-                  <img src="./assets/elite-logo.svg" alt="Elite Debt Management Ltd logo" width="420" height="120" />
-                </a>
-                <a class="portfolio-marquee-item" href="./eazzy-rent.html" aria-label="Eazzy Rent property management software">
-                  <img src="./assets/eazzy-logo-transparent.png" alt="Eazzy Rent System logo" width="300" height="250" />
-                </a>
+          <div class="case-study-grid">
+            <article class="case-study-card">
+              <img src="./assets/eazzy-dashboard.jpg" alt="Eazzy Rent dashboard preview" width="1578" height="888" loading="lazy" decoding="async" />
+              <div class="case-study-copy">
+                <p class="case-study-tag">Property software</p>
+                <h3>Eazzy Rent</h3>
+                <p>Property management software experience designed for live business use, clarity, and smoother navigation.</p>
+                <a href="./eazzy-rent.html">View case study</a>
               </div>
-              <div class="portfolio-marquee-group" aria-hidden="true">
-                <a class="portfolio-marquee-item" href="./vicidial-case-study.html" tabindex="-1">
-                  <img src="./assets/vicidial-logo.svg" alt="" width="320" height="96" />
-                </a>
-                <a class="portfolio-marquee-item" href="./payroll-case-study.html" tabindex="-1">
-                  <img src="./assets/payroll-logo.png" alt="" width="1601" height="600" />
-                </a>
-                <a class="portfolio-marquee-item" href="./payroll-case-study.html" tabindex="-1">
-                  <img src="./assets/elite-logo.svg" alt="" width="420" height="120" />
-                </a>
-                <a class="portfolio-marquee-item" href="./eazzy-rent.html" tabindex="-1">
-                  <img src="./assets/eazzy-logo-transparent.png" alt="" width="300" height="250" />
-                </a>
+            </article>
+
+            <article class="case-study-card">
+              <img src="./assets/payroll-logo.png" alt="Payroll system branding preview" width="1601" height="600" loading="lazy" decoding="async" />
+              <div class="case-study-copy">
+                <p class="case-study-tag">Payroll systems</p>
+                <h3>Payroll Delivery</h3>
+                <p>Payroll rollout work supported with clearer product presentation, supporting content, and delivery structure.</p>
+                <a href="./payroll-case-study.html">View case study</a>
               </div>
+            </article>
+
+            <article class="case-study-card">
+              <img src="./assets/vicidial-logo.svg" alt="VICIdial project logo" width="320" height="96" loading="lazy" decoding="async" />
+              <div class="case-study-copy">
+                <p class="case-study-tag">Communications stack</p>
+                <h3>Customized VICIdial</h3>
+                <p>Configured and presented for teams that need a more reliable calling setup and easier operational handoff.</p>
+                <a href="./vicidial-case-study.html">View case study</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-contrast" id="approach">
+        <div class="container approach-grid">
+          <div class="approach-media">
+            <div class="approach-image-shell">
+              <img src="./assets/offer-founder-hero.jpg" alt="G&amp;G Marketing team visual" width="1280" height="960" loading="lazy" decoding="async" />
             </div>
           </div>
-        </section>
 
-        <section class="section testimonials-section" id="testimonials">
-          <div class="section-heading" data-reveal>
+          <div class="approach-copy">
+            <p class="eyebrow">Approach</p>
+            <h2>Built for brands that want polish, clarity, and growth.</h2>
+            <p>
+              Every project starts with the business goal first, then moves into messaging,
+              structure, design, and conversion. That keeps the final website from looking nice
+              but underperforming where it matters.
+            </p>
+            <ul class="approach-list">
+              <li>Strategy-first direction before design decisions are locked in</li>
+              <li>Sharper call-to-action placement for discovery, trust, and direct inquiry</li>
+              <li>Mobile-first layouts built to feel fast and easy to navigate</li>
+              <li>Lead capture paths designed to move visitors toward contact and conversion</li>
+            </ul>
+            <div class="approach-actions">
+              <a class="button button-primary" href="#contact-form">Request a Consultation</a>
+              <a class="button button-secondary" href="./case-studies-kenya.html">See More Work</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-surface" id="testimonials">
+        <div class="container">
+          <div class="section-heading">
             <p class="eyebrow">Testimonials</p>
             <h2>Trusted by teams that care about quality and results.</h2>
           </div>
 
-          <div class="testimonial-shell" data-reveal>
-            <div class="testimonial-track">
-              <article class="testimonial-slide is-active">
-                <div class="testimonial-rating" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p>
-                  "Nice website"
-                </p>
-                <div class="testimonial-meta">
-                  <div class="testimonial-avatar testimonial-avatar--initials" aria-hidden="true">KG</div>
-                  <div>
-                    <strong>Kelvin Gitonga</strong>
-                    <span>Google Business Profile &middot; 2 reviews &bull; 0 photos &middot; 6 weeks ago</span>
-                  </div>
-                </div>
-                <div class="testimonial-reply">
-                  <strong>G&amp;G Marketing</strong>
-                  <span>Owner reply: Appreciate your feedback</span>
-                </div>
-              </article>
-              <article class="testimonial-slide">
-                <div class="testimonial-rating" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p>
-                  "Very professional and reliable service"
-                </p>
-                <div class="testimonial-meta">
-                  <div class="testimonial-avatar testimonial-avatar--initials" aria-hidden="true">BO</div>
-                  <div>
-                    <strong>Byron Omondi</strong>
-                    <span>Google Business Profile &middot; 1 review &bull; 0 photos &middot; 7 weeks ago</span>
-                  </div>
-                </div>
-                <div class="testimonial-reply">
-                  <strong>G&amp;G Marketing</strong>
-                  <span>Owner reply: Thanks,hope to do more with you in future.</span>
-                </div>
-              </article>
-              <article class="testimonial-slide">
-                <div class="testimonial-rating" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p>
-                  5-star Google Business Profile review
-                </p>
-                <div class="testimonial-meta">
-                  <div class="testimonial-avatar testimonial-avatar--initials" aria-hidden="true">TN</div>
-                  <div>
-                    <strong>Tracy Nekesa</strong>
-                    <span>Google Business Profile &middot; 0 reviews &bull; 0 photos &middot; 8 weeks ago</span>
-                  </div>
-                </div>
-                <div class="testimonial-reply">
-                  <strong>G&amp;G Marketing</strong>
-                  <span>Owner reply: Thank you.</span>
-                </div>
-              </article>
-            </div>
-
-            <div class="testimonial-controls">
-              <button class="testimonial-button" type="button" data-direction="prev" aria-label="Previous testimonial">
-                Prev
-              </button>
-              <div class="testimonial-dots" aria-label="Testimonials navigation">
-                <button class="dot is-active" type="button" aria-label="Show testimonial 1"></button>
-                <button class="dot" type="button" aria-label="Show testimonial 2"></button>
-                <button class="dot" type="button" aria-label="Show testimonial 3"></button>
+          <div class="testimonial-grid">
+            <article class="testimonial-card">
+              <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p>"Nice website"</p>
+              <div class="testimonial-meta">
+                <strong>Kelvin Gitonga</strong>
+                <span>Google Business Profile, 6 weeks ago</span>
               </div>
-              <button class="testimonial-button" type="button" data-direction="next" aria-label="Next testimonial">
-                Next
-              </button>
-            </div>
+            </article>
+            <article class="testimonial-card">
+              <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p>"Very professional and reliable service"</p>
+              <div class="testimonial-meta">
+                <strong>Byron Omondi</strong>
+                <span>Google Business Profile, 7 weeks ago</span>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p>"5-star Google Business Profile review"</p>
+              <div class="testimonial-meta">
+                <strong>Tracy Nekesa</strong>
+                <span>Google Business Profile, 8 weeks ago</span>
+              </div>
+            </article>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="section services-section" id="faq">
-          <div class="section-heading" data-reveal>
+      <section class="section" id="faq">
+        <div class="container">
+          <div class="section-heading">
             <p class="eyebrow">FAQs</p>
             <h2>Questions businesses ask before hiring a web design or SEO agency in Kenya.</h2>
           </div>
 
-          <div class="services-grid">
-            <article class="service-card glass tilt-card" data-reveal>
-              <h3>What does a digital marketing agency in Nairobi do?</h3>
+          <div class="faq-grid">
+            <details class="faq-item" open>
+              <summary>What does a digital marketing agency in Nairobi do?</summary>
               <p>
-                A digital marketing agency helps businesses improve online visibility,
-                strengthen brand messaging, attract traffic from Google and social media,
-                and convert that attention into leads and sales.
+                A digital marketing agency helps businesses improve online visibility, strengthen
+                brand messaging, attract traffic from Google and social media, and convert that
+                attention into leads and sales.
               </p>
-            </article>
-
-            <article class="service-card glass tilt-card" data-reveal>
-              <h3>How much does web design cost in Kenya?</h3>
+            </details>
+            <details class="faq-item">
+              <summary>How much does web design cost in Kenya?</summary>
               <p>
-                Web design costs depend on the number of pages, design depth, content needs,
-                integrations such as M-Pesa, and whether the project includes SEO, copy, or
-                lead generation features.
+                Web design costs depend on the number of pages, design depth, integrations such as
+                M-Pesa, and whether the project includes SEO, copy, or lead generation features.
               </p>
-            </article>
-
-            <article class="service-card glass tilt-card" data-reveal>
-              <h3>How long does SEO take to work?</h3>
+            </details>
+            <details class="faq-item">
+              <summary>How long does SEO take to work?</summary>
               <p>
-                SEO usually takes time because rankings improve as search engines recrawl,
-                understand, and compare your pages. Well-structured changes often start
-                showing movement within a few months, especially when the content is useful
-                and technically sound.
+                SEO takes time because search engines need to recrawl, understand, and compare your
+                pages. Strong structure and useful content usually create movement over a few months.
               </p>
-            </article>
-
-            <article class="service-card glass tilt-card" data-reveal>
-              <h3>Do you work with businesses outside Nairobi?</h3>
+            </details>
+            <details class="faq-item">
+              <summary>Do you work with businesses outside Nairobi?</summary>
               <p>
-                Yes. G&amp;G Marketing supports businesses in Nairobi and across Kenya with
-                website design, SEO services, social media marketing, branding, and
-                conversion-focused digital strategy.
+                Yes. G&amp;G Marketing supports businesses in Nairobi and across Kenya with website
+                design, SEO services, social media marketing, branding, and conversion-focused
+                digital strategy.
               </p>
-            </article>
+            </details>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="section cta-section" id="contact">
-          <div class="cta-grid">
-            <div class="cta-copy" data-reveal>
-              <p class="eyebrow">Ready to Grow Your Brand?</p>
-              <h2>Let&apos;s build a digital presence that ranks, earns trust, and converts.</h2>
-              <p>
-                Share your goals and we&apos;ll help shape the right web design, SEO, social
-                media, and growth strategy for your next stage.
-              </p>
-              <div class="contact-chips">
-                <button
-                  class="button button-primary"
-                  type="button"
-                  data-open-consultation
-                  aria-haspopup="dialog"
-                  aria-controls="consultation-modal"
-                >
-                  Request a Consultation
-                </button>
-                <button
-                  class="button button-secondary"
-                  type="button"
-                  data-open-inquiry
-                  aria-haspopup="dialog"
-                  aria-expanded="false"
-                  aria-controls="inquiry-modal"
-                >
-                  Send Inquiry
-                </button>
-                <a class="button button-secondary" href="https://wa.me/254793553860">Chat on WhatsApp</a>
-              </div>
-              <p class="contact-trust-copy">
-                Serving businesses in Nairobi and across Kenya. Call
-                <a href="tel:+254793553860">0793 553860</a> to discuss web design, SEO,
-                social media marketing, branding, or lead generation.
-              </p>
+      <section class="section section-contact" id="contact">
+        <div class="container contact-grid">
+          <div class="contact-copy">
+            <p class="eyebrow">Contact</p>
+            <h2>Let&apos;s build a digital presence that ranks, earns trust, and converts.</h2>
+            <p>
+              Share your goals and we&apos;ll help shape the right web design, SEO, social media,
+              and growth strategy for your next stage.
+            </p>
+
+            <div class="contact-actions">
+              <a class="contact-chip" href="https://wa.me/254793553860">WhatsApp</a>
+              <a class="contact-chip" href="tel:+254793553860">Call 0793 553860</a>
+              <a class="contact-chip" href="mailto:info@ggmarketing.co.ke">Email Us</a>
+            </div>
+
+            <div class="contact-links">
+              <a href="./social-media-marketing-nairobi.html">Social Media Marketing</a>
+              <a href="./web-design-nairobi.html">Web Design</a>
+              <a href="./seo-services-kenya.html">SEO Services</a>
+              <a href="./lead-generation-kenya.html">Lead Generation</a>
             </div>
           </div>
-        </section>
-        <div class="consultation-modal inquiry-modal" id="inquiry-modal" data-inquiry-modal aria-hidden="true" hidden>
-          <button class="consultation-backdrop" type="button" data-close-inquiry aria-label="Close inquiry form"></button>
-          <section class="consultation-dialog inquiry-dialog glass" role="dialog" aria-modal="true" aria-labelledby="inquiry-title" tabindex="-1">
-            <button class="consultation-close" type="button" data-close-inquiry aria-label="Close inquiry form">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <p class="eyebrow">Send Inquiry</p>
-            <h3 id="inquiry-title">Tell Us About Your Project</h3>
-            <p class="consultation-copy">Share your goals and we'll get back to you with the right next step.</p>
 
-            <form
-              id="contact-inquiry-form"
-              class="contact-form glass"
-              method="POST"
-            >
+          <form class="contact-form-card" id="contact-form" novalidate>
+            <div class="form-grid">
               <label>
-                Name
-                <input type="text" name="name" placeholder="Your name" autocomplete="name" maxlength="120" required />
+                <span>Name</span>
+                <input name="name" type="text" autocomplete="name" placeholder="Your full name" required />
               </label>
               <label>
-                Email
-                <input type="email" name="email" placeholder="Your email" autocomplete="email" maxlength="160" required />
+                <span>Email</span>
+                <input name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
               </label>
               <label>
-                Service Needed
+                <span>Company</span>
+                <input name="company" type="text" autocomplete="organization" placeholder="Business name" />
+              </label>
+              <label>
+                <span>Service</span>
                 <select name="service">
-                  <option>Social Media Marketing</option>
-                  <option>Brand Strategy &amp; Identity Design</option>
-                  <option>Website Design &amp; Development</option>
-                  <option>SEO &amp; Website Optimization</option>
-                  <option>Lead Generation Systems</option>
-                  <option>Content Strategy</option>
-                  <option>Digital Growth Consulting</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Website Design & Development">Website Design &amp; Development</option>
+                  <option value="SEO & Website Optimization">SEO &amp; Website Optimization</option>
+                  <option value="Social Media Marketing">Social Media Marketing</option>
+                  <option value="Brand Strategy & Identity">Brand Strategy &amp; Identity</option>
+                  <option value="Lead Generation Systems">Lead Generation Systems</option>
+                  <option value="Content Strategy">Content Strategy</option>
                 </select>
               </label>
-              <label>
-                Project Goals
-                <textarea
-                  name="message"
-                  rows="5"
-                  placeholder="Tell us about the growth stage you are entering."
-                  maxlength="2500"
-                  required
-                ></textarea>
-              </label>
-              <label class="trap-field" aria-hidden="true">
-                Company
-                <input type="text" name="company" tabindex="-1" autocomplete="off" />
-              </label>
-              <input type="hidden" name="_subject" value="New inquiry from the G&amp;G Marketing website" />
-              <p class="form-status" role="status" aria-live="polite"></p>
-              <button class="button button-secondary form-button" type="submit">Send Inquiry</button>
-            </form>
-          </section>
+            </div>
+
+            <label class="message-field">
+              <span>Project goals</span>
+              <textarea
+                name="message"
+                rows="6"
+                placeholder="Tell us what you want to improve, launch, or grow."
+                required
+              ></textarea>
+            </label>
+
+            <label class="honeypot-field" aria-hidden="true">
+              <span>Website</span>
+              <input name="website" type="text" tabindex="-1" autocomplete="off" />
+            </label>
+
+            <button class="button button-primary submit-button" type="submit">Send Inquiry</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
-        <div class="consultation-modal" id="consultation-modal" data-consultation-modal aria-hidden="true" hidden>
-          <button class="consultation-backdrop" type="button" data-close-consultation aria-label="Close appointment selector"></button>
-          <section class="consultation-dialog glass" role="dialog" aria-modal="true" aria-labelledby="consultation-title" tabindex="-1">
-            <button class="consultation-close" type="button" data-close-consultation aria-label="Close appointment selector">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <p class="eyebrow">Consultation Booking</p>
-            <h3 id="consultation-title">Select an Appointment</h3>
-            <p class="consultation-copy" data-consultation-copy>Choose a date to request your consultation call.</p>
+      </section>
+    </main>
 
-            <div class="consultation-lead-fields">
-              <label>
-                Name
-                <input
-                  type="text"
-                  name="consultation_name"
-                  placeholder="Your full name"
-                  autocomplete="name"
-                  maxlength="120"
-                  data-consultation-name
-                  required
-                />
-              </label>
-              <label>
-                Phone Number or Email
-                <input
-                  type="text"
-                  name="consultation_contact"
-                  placeholder="e.g. +254 700 000 000 or name@example.com"
-                  autocomplete="email"
-                  maxlength="160"
-                  data-consultation-contact
-                  required
-                />
-              </label>
-              <label class="trap-field" aria-hidden="true">
-                Website
-                <input type="text" name="website" tabindex="-1" autocomplete="off" data-consultation-trap />
-              </label>
-            </div>
-
-            <div class="consultation-step" data-consultation-step="calendar">
-              <div class="calendar-toolbar">
-                <button class="calendar-nav" type="button" data-calendar-nav="prev" aria-label="Show previous month">
-                  Prev
-                </button>
-                <strong data-calendar-label></strong>
-                <button class="calendar-nav" type="button" data-calendar-nav="next" aria-label="Show next month">
-                  Next
-                </button>
-              </div>
-              <div class="calendar-weekdays" aria-hidden="true">
-                <span>Sun</span>
-                <span>Mon</span>
-                <span>Tue</span>
-                <span>Wed</span>
-                <span>Thu</span>
-                <span>Fri</span>
-                <span>Sat</span>
-              </div>
-              <div class="calendar-grid" data-calendar-grid></div>
-            </div>
-
-            <div class="consultation-step" data-consultation-step="time" hidden>
-              <div class="consultation-step-top">
-                <button class="button button-ghost consultation-back" type="button" data-consultation-back>
-                  Choose another date
-                </button>
-                <p class="consultation-selected-date" data-selected-date></p>
-              </div>
-              <div class="time-slot-list" data-time-slot-list></div>
-            </div>
-
-            <div class="consultation-step" data-consultation-step="result" hidden>
-              <p class="consultation-status" data-consultation-status role="status" aria-live="polite"></p>
-              <div class="consultation-actions">
-                <button class="button button-secondary" type="button" data-close-consultation>Close</button>
-                <button class="button button-ghost" type="button" data-reset-consultation>Book Another Slot</button>
-              </div>
-            </div>
-
-            <form
-              class="consultation-request"
-              method="POST"
-              hidden
-            >
-              <input type="hidden" name="_subject" value="New consultation request from the G&amp;G Marketing website" />
-              <input type="hidden" name="request_type" value="Consultation Request" />
-              <input type="hidden" name="source" value="Consultation Modal" />
-              <input type="hidden" name="appointment_date" />
-              <input type="hidden" name="appointment_time" />
-              <input type="hidden" name="name" />
-              <input type="hidden" name="contact" />
-              <input type="hidden" name="email" />
-              <input type="hidden" name="service" />
-              <input type="hidden" name="message" />
-            </form>
-          </section>
-        </div>
-      </main>
-
-      <footer class="site-footer">
-        <div class="footer-grid glass">
-          <div>
-            <a class="brand footer-brand" href="#home">
-              <img class="brand-logo" src="./assets/logo-square.jpg" alt="G&G Marketing logo" width="54" height="54" decoding="async" />
-              <span class="brand-copy">
-                <strong>G&amp;G Marketing</strong>
-                <small>Strategy, design, growth</small>
-              </span>
-            </a>
-            <p>Nairobi digital marketing agency for web design, SEO, social media marketing, branding, and lead generation across Kenya.</p>
-          </div>
-          <div>
-            <h3>Quick Links</h3>
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
-            <a href="./case-studies-kenya.html">Case Studies</a>
-            <a href="#faq">FAQs</a>
-          </div>
-          <div>
-            <h3>Services</h3>
-            <a href="./social-media-marketing-nairobi.html">Social Media Marketing</a>
-            <a href="./brand-strategy-nairobi.html">Brand Strategy</a>
-            <a href="./web-design-nairobi.html">Web Design</a>
-            <a href="./seo-services-kenya.html">SEO</a>
-            <a href="./lead-generation-kenya.html">Lead Generation</a>
-            <a href="./content-strategy-kenya.html">Content Strategy</a>
-          </div>
-          <div>
-            <h3>Contact</h3>
-            <p>Reach us directly through email, WhatsApp, Instagram, or Facebook.</p>
-          </div>
-        </div>
-        <div class="footer-contact-row">
-          <a
-            class="contact-item"
-            href="#contact"
-            aria-label="Email G and G Marketing"
-            data-email-link
-            data-email-user="info"
-            data-email-domain="ggmarketing"
-            data-email-tld="co.ke"
-          >
-            <span class="contact-icon contact-icon-gmail" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M3.5 6.75 12 13l8.5-6.25" />
-                <path d="M4.75 5.5h14.5A1.75 1.75 0 0 1 21 7.25v9.5A1.75 1.75 0 0 1 19.25 18.5H4.75A1.75 1.75 0 0 1 3 16.75v-9.5A1.75 1.75 0 0 1 4.75 5.5Z" />
-              </svg>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="#home" aria-label="G and G Marketing home">
+            <img src="./assets/logo-square.jpg" alt="G&amp;G Marketing logo" width="56" height="56" />
+            <span class="brand-copy">
+              <strong>G&amp;G Marketing</strong>
+              <small>Strategy, design, growth</small>
             </span>
-            <span data-email-label>Email us</span>
           </a>
-          <a class="contact-item" href="https://wa.me/254793553860" aria-label="WhatsApp">
-            <span class="contact-icon contact-icon-whatsapp" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M12 4.25a7.75 7.75 0 0 0-6.72 11.61L4 20l4.3-1.24A7.75 7.75 0 1 0 12 4.25Z" />
-                <path d="M9.25 8.9c.2-.44.41-.45.6-.46.15-.01.34-.01.52-.01.17 0 .45.06.68.56.22.5.77 1.88.84 2.02.07.14.12.31.02.49-.1.18-.15.3-.3.45-.15.16-.3.35-.43.46-.15.13-.3.27-.13.52.18.25.79 1.3 1.7 2.11 1.17 1.04 2.15 1.37 2.46 1.52.31.15.49.13.67-.08.18-.22.78-.9.98-1.2.2-.31.41-.26.68-.16.28.09 1.75.83 2.05.98.3.15.5.22.57.34.07.12.07.72-.17 1.42-.24.7-1.39 1.34-1.94 1.43-.49.08-1.11.12-1.79-.1-.42-.14-.96-.32-1.66-.62-2.91-1.27-4.82-4.32-4.97-4.53-.15-.2-1.18-1.57-1.18-3 0-1.42.75-2.11 1.01-2.39Z" />
-              </svg>
-            </span>
-            <span>Whatsapp</span>
-          </a>
-          <a class="contact-item" href="https://www.instagram.com/g_g.marketing" aria-label="Instagram">
-            <span class="contact-icon contact-icon-instagram" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
-                <circle cx="12" cy="12" r="4.25" />
-                <circle cx="17.25" cy="6.75" r="1.1" />
-              </svg>
-            </span>
-            <span>@g_g.marketing</span>
-          </a>
-          <a class="contact-item" href="https://www.facebook.com/ggmarketingco" aria-label="Facebook">
-            <span class="contact-icon contact-icon-facebook" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M13.4 20v-7h2.35l.35-2.75H13.4V8.5c0-.8.22-1.35 1.36-1.35H16.2V4.68c-.25-.03-1.08-.1-2.05-.1-2.03 0-3.43 1.24-3.43 3.52v2.15H8.4V13h2.32v7h2.68Z" />
-              </svg>
-            </span>
-            <span>ggmarketingco</span>
-          </a>
+          <p class="footer-note">
+            Nairobi digital marketing agency for web design, SEO, social media marketing, branding,
+            content strategy, and lead generation across Kenya.
+          </p>
         </div>
-        <div class="footer-review glass" data-reveal>
-          <div class="review-qr-copy">
-            <p class="eyebrow">Share Your Experience</p>
-            <h3>Tell us your experience with us</h3>
-            <p>Tell us your experience with us by scanning the code below.</p>
-            <div class="review-qr-actions">
-              <a class="button button-primary review-cta" href="https://g.page/r/Cb3WbaUUGN4wEBM/review" target="_blank" rel="noopener">Leave us a review</a>
-              <div class="review-qr-image">
-                <a href="https://g.page/r/Cb3WbaUUGN4wEBM/review" target="_blank" rel="noopener">
-                  <img src="./assets/qr-code.png" alt="Google review QR code for G&G Marketing" width="186" height="194" loading="lazy" decoding="async" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="footer-meta" data-reveal>
-          <p>&copy; 2026 G&amp;G Marketing. This page was built by G&amp;G Marketing and powered by Cloudflare.</p>
-        </div>
-      </footer>
-    </div>
 
-    <script src="./script.js" defer></script>
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#work">Case Studies</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <p class="footer-copy">© <span id="year"></span> G&amp;G Marketing. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="./home.js" defer></script>
   </body>
 </html>
