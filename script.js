@@ -44,14 +44,16 @@ let consultationMonth = new Date();
 let consultationDate = null;
 
 const trackAnalyticsEvent = (eventName, eventData = {}) => {
-  if (!window.umami || typeof window.umami.track !== "function") {
-    return;
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, eventData);
   }
 
-  try {
-    window.umami.track(eventName, eventData);
-  } catch (error) {
-    console.warn("Analytics tracking skipped", error);
+  if (window.umami && typeof window.umami.track === "function") {
+    try {
+      window.umami.track(eventName, eventData);
+    } catch (error) {
+      console.warn("Analytics tracking skipped", error);
+    }
   }
 };
 
@@ -820,6 +822,18 @@ document.addEventListener("click", (event) => {
 
   if (/wa\.me|whatsapp\.com/i.test(href)) {
     trackAnalyticsEvent("whatsapp_cta_clicked", {
+      href,
+      label: anchor.textContent?.trim() || "",
+      location: window.location.pathname,
+    });
+  } else if (href.startsWith("tel:")) {
+    trackAnalyticsEvent("phone_cta_clicked", {
+      href,
+      label: anchor.textContent?.trim() || "",
+      location: window.location.pathname,
+    });
+  } else if (href.startsWith("mailto:")) {
+    trackAnalyticsEvent("email_cta_clicked", {
       href,
       label: anchor.textContent?.trim() || "",
       location: window.location.pathname,

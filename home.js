@@ -8,6 +8,20 @@ const formStatus = contactForm?.querySelector(".form-status");
 const yearNode = document.getElementById("year");
 const defaultFormspreeEndpoint = "https://formspree.io/f/xlgwyzwb";
 
+const trackAnalyticsEvent = (eventName, eventData = {}) => {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, eventData);
+  }
+
+  if (window.umami && typeof window.umami.track === "function") {
+    try {
+      window.umami.track(eventName, eventData);
+    } catch (error) {
+      console.warn("Analytics tracking skipped", error);
+    }
+  }
+};
+
 const setHeaderState = () => {
   siteHeader?.classList.toggle("is-scrolled", window.scrollY > 18);
 };
@@ -96,6 +110,10 @@ if (contactForm && submitButton) {
 
       contactForm.reset();
       setStatus(body?.message || "Inquiry sent successfully. We'll get back to you soon.", "success");
+      trackAnalyticsEvent("homepage_inquiry_submitted", {
+        service: String(formData.get("service") || ""),
+        location: window.location.pathname,
+      });
       submitButton.textContent = "Inquiry Received";
     } catch (error) {
       const message = error instanceof Error ? error.message : "Something went wrong while sending your inquiry.";
@@ -109,3 +127,27 @@ if (contactForm && submitButton) {
     }
   });
 }
+
+document.addEventListener("click", (event) => {
+  const anchor = event.target instanceof Element ? event.target.closest("a") : null;
+
+  if (!anchor) {
+    return;
+  }
+
+  const href = anchor.getAttribute("href") || "";
+  const label = anchor.textContent?.trim() || "";
+  const eventData = {
+    href,
+    label,
+    location: window.location.pathname,
+  };
+
+  if (/wa\.me|whatsapp\.com/i.test(href)) {
+    trackAnalyticsEvent("whatsapp_cta_clicked", eventData);
+  } else if (href.startsWith("tel:")) {
+    trackAnalyticsEvent("phone_cta_clicked", eventData);
+  } else if (href.startsWith("mailto:")) {
+    trackAnalyticsEvent("email_cta_clicked", eventData);
+  }
+});
