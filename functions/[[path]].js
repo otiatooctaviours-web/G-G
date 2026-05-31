@@ -16,8 +16,8 @@ const HTML_PAGE_PATHS = new Set([
 ]);
 
 const LEGACY_REDIRECTS = new Map([
-  ["/freeweb", "/web-design-nairobi.html"],
-  ["/freeweb.html", "/web-design-nairobi.html"],
+  ["/freeweb", "/web-design-nairobi"],
+  ["/freeweb.html", "/web-design-nairobi"],
 ]);
 
 function normalizePathname(pathname) {
@@ -32,6 +32,9 @@ export async function onRequest(context) {
   const url = new URL(context.request.url);
   const hostname = url.hostname.toLowerCase();
   const normalizedPathname = normalizePathname(url.pathname);
+  const normalizedWithoutHtml = normalizedPathname.endsWith(".html")
+    ? normalizedPathname.slice(0, -5)
+    : normalizedPathname;
   const isEazzyHost = hostname === EAZZY_HOST;
 
   let targetHost = hostname;
@@ -51,16 +54,18 @@ export async function onRequest(context) {
     if (
       normalizedPathname === "/" ||
       normalizedPathname === "/index.html" ||
-      normalizedPathname === "/eazzy-rent" ||
-      normalizedPathname === "/eazzy-rent.html"
+      normalizedWithoutHtml === "/eazzy-rent"
     ) {
       targetHost = CANONICAL_HOST;
-      targetPathname = "/eazzy-rent.html";
+      targetPathname = "/eazzy-rent";
     }
   } else if (normalizedPathname === "/index.html") {
     targetPathname = "/";
-  } else if (HTML_PAGE_PATHS.has(normalizedPathname)) {
-    targetPathname = `${normalizedPathname}.html`;
+  } else if (
+    normalizedPathname.endsWith(".html") &&
+    HTML_PAGE_PATHS.has(normalizedWithoutHtml)
+  ) {
+    targetPathname = normalizedWithoutHtml;
   }
 
   if (targetHost !== hostname || targetPathname !== url.pathname) {
