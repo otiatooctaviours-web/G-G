@@ -1,0 +1,352 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "G and G Marketing home" [ref=e4] [cursor=pointer]:
+        - /url: "#home"
+        - img "G&G Marketing logo" [ref=e5]
+        - generic [ref=e6]:
+          - strong [ref=e7]: G&G Marketing
+          - generic [ref=e8]: Nairobi growth partner
+      - navigation "Primary navigation" [ref=e9]:
+        - link "Services" [ref=e10] [cursor=pointer]:
+          - /url: "#services"
+        - link "Pricing" [ref=e11] [cursor=pointer]:
+          - /url: "#pricing"
+        - link "Case Studies" [ref=e12] [cursor=pointer]:
+          - /url: "#work"
+        - link "Approach" [ref=e13] [cursor=pointer]:
+          - /url: "#approach"
+        - link "Testimonials" [ref=e14] [cursor=pointer]:
+          - /url: "#testimonials"
+        - link "Contact" [ref=e15] [cursor=pointer]:
+          - /url: "#contact"
+        - link "Book a Consultation" [ref=e16] [cursor=pointer]:
+          - /url: "#contact-form"
+  - main [ref=e17]:
+    - generic [ref=e22]:
+      - paragraph [ref=e23]: Digital Marketing Agency in Nairobi
+      - heading "Web design, SEO, and digital marketing for businesses that want to grow online." [level=1] [ref=e24]
+      - paragraph [ref=e25]: If your business needs a better website, better visibility on Google, or more consistent marketing, we can help. We work with businesses in Nairobi and across Kenya on websites, branding, social media, SEO, and lead generation.
+      - generic [ref=e26]:
+        - link "Start Your Project" [ref=e27] [cursor=pointer]:
+          - /url: "#contact-form"
+        - link "Explore Services" [ref=e28] [cursor=pointer]:
+          - /url: "#services"
+      - list "Agency highlights" [ref=e29]:
+        - listitem [ref=e30]: Web design, SEO, social media, branding, and lead generation in one place
+        - listitem [ref=e31]: Working with businesses in Nairobi and across Kenya
+        - listitem [ref=e32]: Simple inquiry process and quick response
+      - generic "Agency highlights summary" [ref=e33]:
+        - article [ref=e34]:
+          - text: Trusted locally
+          - strong [ref=e35]: 5-star Google feedback and repeat-client work
+        - article [ref=e36]:
+          - text: Main services
+          - strong [ref=e37]: Web design, SEO, social media, branding, and lead generation
+        - article [ref=e38]:
+          - text: Where we work
+          - strong [ref=e39]: Based in Nairobi, working with businesses across Kenya
+    - region "Agency positioning" [ref=e40]:
+      - generic [ref=e41]:
+        - paragraph [ref=e42]: Practical digital work for businesses that want to look professional and get results.
+        - list [ref=e43]:
+          - listitem [ref=e44]: Clear direction
+          - listitem [ref=e45]: Websites that are easy to use
+          - listitem [ref=e46]: SEO that helps people find you
+          - listitem [ref=e47]: Marketing support that fits your business
+    - generic [ref=e49]:
+      - generic [ref=e50]:
+        - paragraph [ref=e51]: Services
+        - heading "Digital marketing services for businesses in Nairobi and across Kenya." [level=2] [ref=e52]
+        - paragraph [ref=e53]: We help businesses build a stronger online presence and make it easier for people to find, trust, and contact them.
+      - generic [ref=e54]:
+        - article [ref=e55]:
+          - generic [ref=e56]: "01"
+          - heading "Social Media Marketing" [level=3] [ref=e57]
+          - paragraph [ref=e58]: Content planning, post design, and campaign support for the platforms your audience uses most.
+          - link "Learn more →" [ref=e59] [cursor=pointer]:
+            - /url: ./social-media-marketing-nairobi.html
+        - article [ref=e60]:
+          - generic [ref=e61]: "02"
+          - heading "Brand Strategy & Identity" [level=3] [ref=e62]
+          - paragraph [ref=e63]: Brand direction, visuals, and messaging that help your business look clear, consistent, and professional.
+          - link "Learn more →" [ref=e64] [cursor=pointer]:
+            - /url: ./brand-strategy-nairobi.html
+        - article [ref=e65]:
+          - generic [ref=e66]: "03"
+          - heading "Website Design & Development" [level=3] [ref=e67]
+          - paragraph [ref=e68]: Responsive websites built to look good, load well, and make it easy for customers to reach you.
+          - link "Learn more →" [ref=e69] [cursor=pointer]:
+            - /url: ./web-design-nairobi.html
+        - article [ref=e70]:
+          - generic [ref=e71]: "04"
+          - heading "SEO & Website Optimization" [level=3] [ref=e72]
+          - paragraph [ref=e73]: On-page, technical, and local SEO to help your website show up for the searches that matter.
+          - link "Learn more →" [ref=e74] [cursor=pointer]:
+            - /url: ./seo-services-kenya.html
+        - article [ref=e75]:
+          - generic [ref=e76]: "05"
+          - heading "Lead Generation Systems" [level=3] [ref=e77]
+          - paragraph [ref=e78]: Landing pages and inquiry flows built to help you get more calls, messages, and leads.
+          - link "Learn more →" [ref=e79] [cursor=pointer]:
+            - /url: ./lead-generation-kenya.html
+        - article [ref=e80]:
+          - generic [ref=e81]: "06"
+          - heading "Content Strategy" [level=3] [ref=e82]
+          - paragraph [ref=e83]: Website and campaign copy that explains what you do clearly and helps people take the next step.
+          - link "Learn more →" [ref=e84] [cursor=pointer]:
+            - /url: ./content-strategy-kenya.html
+    - generic [ref=e86]:
+      - generic [ref=e87]:
+        - paragraph [ref=e88]: Web Design Pricing
+        - heading "Website packages for different business needs and budgets." [level=2] [ref=e89]
+        - paragraph [ref=e90]: These packages cover the most common website needs, from a simple starter site to a full ecommerce setup.
+      - generic [ref=e91]:
+        - article [ref=e92]:
+          - paragraph [ref=e93]: Starter
+          - heading "Starter Website Package" [level=3] [ref=e94]
+          - paragraph [ref=e95]: KES 8,000
+          - paragraph [ref=e96]: Best for small businesses, personal brands, consultants, and startups.
+          - list [ref=e97]:
+            - listitem [ref=e98]: 1-page modern website or landing page
+            - listitem [ref=e99]: Mobile-responsive design
+            - listitem [ref=e100]: Basic SEO setup
+            - listitem [ref=e101]: Contact form or WhatsApp button
+            - listitem [ref=e102]: Social media links
+            - listitem [ref=e103]: Basic speed optimization
+            - listitem [ref=e104]: 3 days delivery timeline
+          - paragraph [ref=e105]: "Ideal for: portfolios, small business profiles, simple service pages."
+        - article [ref=e106]:
+          - paragraph [ref=e107]: Business
+          - heading "Business Website Package" [level=3] [ref=e108]
+          - paragraph [ref=e109]: KES 15,000
+          - paragraph [ref=e110]: Best for businesses that need a stronger online presence.
+          - list [ref=e111]:
+            - listitem [ref=e112]: Up to 5 pages
+            - listitem [ref=e113]: Home, About, Services, Gallery or Portfolio, Contact
+            - listitem [ref=e114]: Mobile-responsive design
+            - listitem [ref=e115]: WhatsApp and call CTA integration
+            - listitem [ref=e116]: Google Maps integration
+            - listitem [ref=e117]: Basic on-page SEO
+            - listitem [ref=e118]: Contact form
+            - listitem [ref=e119]: Social media integration
+            - listitem [ref=e120]: 1 round of revisions
+          - paragraph [ref=e121]: "Ideal for: agencies, SMEs, clinics, salons, restaurants, schools, and consultancies."
+        - article [ref=e122]:
+          - paragraph [ref=e123]: Premium
+          - heading "Premium Website Package" [level=3] [ref=e124]
+          - paragraph [ref=e125]: KES 25,000
+          - paragraph [ref=e126]: Best for businesses that want a more polished website built to bring in leads.
+          - list [ref=e127]:
+            - listitem [ref=e128]: Up to 8 pages
+            - listitem [ref=e129]: Premium UI and UX layout
+            - listitem [ref=e130]: Lead capture forms
+            - listitem [ref=e131]: WhatsApp, call, and email CTA setup
+            - listitem [ref=e132]: Blog or news section
+            - listitem [ref=e133]: Advanced SEO structure
+            - listitem [ref=e134]: Speed optimization
+            - listitem [ref=e135]: Google Analytics and tracking setup
+            - listitem [ref=e136]: 2 rounds of revisions
+            - listitem [ref=e137]: Basic training on how to manage content
+          - paragraph [ref=e138]: "Ideal for: serious businesses, BPO companies, real estate, law firms, financial services, and corporate brands."
+        - article [ref=e139]:
+          - paragraph [ref=e140]: Ecommerce
+          - heading "E-Commerce Website Package" [level=3] [ref=e141]
+          - paragraph [ref=e142]: From KES 35,000
+          - paragraph [ref=e143]: Best for businesses selling products online.
+          - list [ref=e144]:
+            - listitem [ref=e145]: Online shop setup
+            - listitem [ref=e146]: Product categories
+            - listitem [ref=e147]: Product upload setup
+            - listitem [ref=e148]: Cart and checkout
+            - listitem [ref=e149]: Payment integration guidance
+            - listitem [ref=e150]: WhatsApp order button
+            - listitem [ref=e151]: Delivery and contact information setup
+            - listitem [ref=e152]: Mobile-responsive design
+            - listitem [ref=e153]: Basic SEO for products
+          - paragraph [ref=e154]: "Ideal for: boutiques, electronics shops, beauty brands, food businesses, and online stores."
+      - article [ref=e155]:
+        - generic [ref=e156]:
+          - paragraph [ref=e157]: Optional Add-Ons
+          - heading "Optional extras if you need them." [level=3] [ref=e158]
+        - generic [ref=e159]:
+          - paragraph [ref=e160]:
+            - strong [ref=e161]: Domain registration assistance
+            - generic [ref=e162]: From KES 1,500/year
+          - paragraph [ref=e163]:
+            - strong [ref=e164]: Hosting setup
+            - generic [ref=e165]: From KES 3,500/year
+          - paragraph [ref=e166]:
+            - strong [ref=e167]: Logo design
+            - generic [ref=e168]: From KES 3,000
+          - paragraph [ref=e169]:
+            - strong [ref=e170]: Business profile design
+            - generic [ref=e171]: From KES 2,500
+          - paragraph [ref=e172]:
+            - strong [ref=e173]: SEO blog article
+            - generic [ref=e174]: KES 1,500 per article
+          - paragraph [ref=e175]:
+            - strong [ref=e176]: Monthly website maintenance
+            - generic [ref=e177]: From KES 3,000/month
+          - paragraph [ref=e178]:
+            - strong [ref=e179]: Website redesign
+            - generic [ref=e180]: From KES 10,000
+    - generic [ref=e182]:
+      - generic [ref=e183]:
+        - paragraph [ref=e184]: Case Studies
+        - heading "Some of the recent projects we've worked on." [level=2] [ref=e185]
+        - paragraph [ref=e186]: From VICIdial setups and payroll systems to property management software, these are a few examples of the kind of work we do for clients.
+      - generic [ref=e187]:
+        - article [ref=e188]:
+          - img "Eazzy Rent dashboard preview" [ref=e189]
+          - generic [ref=e190]:
+            - paragraph [ref=e191]: Property software
+            - heading "Eazzy Rent" [level=3] [ref=e192]
+            - paragraph [ref=e193]: Property management software support with a cleaner interface and a better user experience.
+            - link "View case study →" [ref=e194] [cursor=pointer]:
+              - /url: ./eazzy-rent.html
+        - article [ref=e195]:
+          - img "Payroll system branding preview" [ref=e196]
+          - generic [ref=e197]:
+            - paragraph [ref=e198]: Payroll systems
+            - heading "Payroll Delivery" [level=3] [ref=e199]
+            - paragraph [ref=e200]: Payroll system work tailored for client use, with clearer presentation and branding.
+            - link "View case study →" [ref=e201] [cursor=pointer]:
+              - /url: ./payroll-case-study.html
+        - article [ref=e202]:
+          - img "VICIdial project logo" [ref=e203]
+          - generic [ref=e204]:
+            - paragraph [ref=e205]: Communications stack
+            - heading "Customized VICIdial" [level=3] [ref=e206]
+            - paragraph [ref=e207]: Custom VICIdial setup work for teams that need a system that fits how they operate.
+            - link "View case study →" [ref=e208] [cursor=pointer]:
+              - /url: ./vicidial-case-study.html
+    - generic [ref=e210]:
+      - img "G&G Marketing team visual" [ref=e213]
+      - generic [ref=e214]:
+        - paragraph [ref=e215]: Approach
+        - heading "How we work." [level=2] [ref=e216]
+        - paragraph [ref=e217]: We start by understanding what you need the website or campaign to do. From there, we plan the structure, shape the message, design the pages, and make sure the final result is built to bring in real inquiries.
+        - list [ref=e218]:
+          - listitem [ref=e219]: • We start with your business goals, not just the design
+          - listitem [ref=e220]: • We keep the message clear and easy for customers to understand
+          - listitem [ref=e221]: • We make sure the site works well on mobile
+          - listitem [ref=e222]: • We build clear paths for calls, messages, and inquiries
+        - generic [ref=e223]:
+          - link "Request a Consultation" [ref=e224] [cursor=pointer]:
+            - /url: "#contact-form"
+          - link "See More Work" [ref=e225] [cursor=pointer]:
+            - /url: ./case-studies-kenya.html
+    - generic [ref=e227]:
+      - generic [ref=e228]:
+        - paragraph [ref=e229]: Testimonials
+        - heading "What clients have said." [level=2] [ref=e230]
+      - generic [ref=e231]:
+        - article [ref=e232]:
+          - generic "5 out of 5 stars" [ref=e233]: ★★★★★
+          - paragraph [ref=e234]: "\"Nice website\""
+          - generic [ref=e235]:
+            - strong [ref=e236]: Kelvin Gitonga
+            - generic [ref=e237]: Google Business Profile, 6 weeks ago
+        - article [ref=e238]:
+          - generic "5 out of 5 stars" [ref=e239]: ★★★★★
+          - paragraph [ref=e240]: "\"Very professional and reliable service\""
+          - generic [ref=e241]:
+            - strong [ref=e242]: Byron Omondi
+            - generic [ref=e243]: Google Business Profile, 7 weeks ago
+        - article [ref=e244]:
+          - generic "5 out of 5 stars" [ref=e245]: ★★★★★
+          - paragraph [ref=e246]: "\"5-star Google Business Profile review\""
+          - generic [ref=e247]:
+            - strong [ref=e248]: Tracy Nekesa
+            - generic [ref=e249]: Google Business Profile, 8 weeks ago
+    - generic [ref=e251]:
+      - generic [ref=e252]:
+        - paragraph [ref=e253]: FAQs
+        - heading "A few common questions." [level=2] [ref=e254]
+      - generic [ref=e255]:
+        - group [ref=e256]:
+          - generic "What does a digital marketing agency in Nairobi do?" [ref=e257] [cursor=pointer]
+          - paragraph [ref=e258]: A digital marketing agency helps businesses improve online visibility, strengthen brand messaging, attract traffic from Google and social media, and convert that attention into leads and sales.
+        - group [ref=e259]:
+          - generic "How much does web design cost in Kenya?" [ref=e260] [cursor=pointer]
+        - group [ref=e261]:
+          - generic "How long does SEO take to work?" [ref=e262] [cursor=pointer]
+        - group [ref=e263]:
+          - generic "Do you work with businesses outside Nairobi?" [ref=e264] [cursor=pointer]
+    - generic [ref=e266]:
+      - generic [ref=e267]:
+        - paragraph [ref=e268]: Contact
+        - heading "Tell us what you need and we'll get back to you." [level=2] [ref=e269]
+        - paragraph [ref=e270]: If you need a website, SEO help, branding, or social media support, send us the details and we'll advise you on the best next step.
+        - generic [ref=e271]:
+          - link "WhatsApp" [ref=e272] [cursor=pointer]:
+            - /url: https://wa.me/254793553860
+          - link "Call 0793 553860" [ref=e273] [cursor=pointer]:
+            - /url: tel:+254793553860
+          - link "Email Us" [ref=e274] [cursor=pointer]:
+            - /url: mailto:info@ggmarketing.co.ke
+        - generic [ref=e275]:
+          - link "Social Media Marketing" [ref=e276] [cursor=pointer]:
+            - /url: ./social-media-marketing-nairobi.html
+          - link "Web Design" [ref=e277] [cursor=pointer]:
+            - /url: ./web-design-nairobi.html
+          - link "SEO Services" [ref=e278] [cursor=pointer]:
+            - /url: ./seo-services-kenya.html
+          - link "Lead Generation" [ref=e279] [cursor=pointer]:
+            - /url: ./lead-generation-kenya.html
+      - generic [ref=e280]:
+        - generic [ref=e281]:
+          - generic [ref=e282]:
+            - generic [ref=e283]: Name
+            - textbox "Name" [ref=e284]:
+              - /placeholder: Your full name
+          - generic [ref=e285]:
+            - generic [ref=e286]: Email
+            - textbox "Email" [ref=e287]:
+              - /placeholder: you@example.com
+          - generic [ref=e288]:
+            - generic [ref=e289]: Company
+            - textbox "Company" [ref=e290]:
+              - /placeholder: Business name
+          - generic [ref=e291]:
+            - generic [ref=e292]: Service
+            - combobox "Service" [ref=e293]:
+              - option "General Inquiry" [selected]
+              - option "Website Design & Development"
+              - option "SEO & Website Optimization"
+              - option "Social Media Marketing"
+              - option "Brand Strategy & Identity"
+              - option "Lead Generation Systems"
+              - option "Content Strategy"
+        - generic [ref=e294]:
+          - generic [ref=e295]: Project goals
+          - textbox "Project goals" [ref=e296]:
+            - /placeholder: Tell us what you want to improve, launch, or grow.
+        - generic [ref=e297]:
+          - generic [ref=e298]: Website
+          - textbox [ref=e299]
+        - button "Send Inquiry" [ref=e300] [cursor=pointer]
+        - status [ref=e301]
+  - contentinfo [ref=e302]:
+    - generic [ref=e303]:
+      - generic [ref=e304]:
+        - link "G and G Marketing home" [ref=e305] [cursor=pointer]:
+          - /url: "#home"
+          - img "G&G Marketing logo" [ref=e306]
+          - generic [ref=e307]:
+            - strong [ref=e308]: G&G Marketing
+            - generic [ref=e309]: Strategy, design, growth
+        - paragraph [ref=e310]: Nairobi digital marketing agency for web design, SEO, social media marketing, branding, content strategy, and lead generation across Kenya.
+      - generic [ref=e311]:
+        - link "Services" [ref=e312] [cursor=pointer]:
+          - /url: "#services"
+        - link "Pricing" [ref=e313] [cursor=pointer]:
+          - /url: "#pricing"
+        - link "Case Studies" [ref=e314] [cursor=pointer]:
+          - /url: "#work"
+        - link "Testimonials" [ref=e315] [cursor=pointer]:
+          - /url: "#testimonials"
+        - link "Contact" [ref=e316] [cursor=pointer]:
+          - /url: "#contact"
+      - paragraph [ref=e317]: © 2026 G&G Marketing. All rights reserved.

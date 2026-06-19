@@ -1,0 +1,4 @@
+[      19ms] Uncaught Error: Looks like your website URL has changed. To ensure the proper functioning of your banner, update the registered URL on your CookieYes account (navigate to the Organizations & Sites page (https://app.cookieyes.com/settings/organizations-and-sites) and click the More button associated with your site). Then, reload this page to retry. If the issue persists, please contact us at https://www.cookieyes.com/support.
+    at <anonymous> (https://cdn-cookieyes.com/client_data/3f81fca7ae2733ba9f7410bb/script.js:0:15368)
+    at <anonymous> (https://cdn-cookieyes.com/client_data/3f81fca7ae2733ba9f7410bb/script.js:0:24110)
+    at <anonymous> (https://cdn-cookieyes.com/client_data/3f81fca7ae2733ba9f7410bb/script.js:0:24113)

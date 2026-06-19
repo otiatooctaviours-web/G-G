@@ -660,6 +660,42 @@ p {
   object-position: center;
 }
 
+.case-study-media-pangisha {
+  background: #f2f6fa;
+}
+
+.pangisha-logo-lockup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.case-study-media-logo .pangisha-logo-lockup img {
+  width: 72px;
+  height: 72px;
+}
+
+.pangisha-logo-lockup span {
+  display: grid;
+  line-height: 1;
+}
+
+.pangisha-logo-lockup strong {
+  color: #0b1d3a;
+  font-family: var(--font-body);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.pangisha-logo-lockup small {
+  margin-top: 5px;
+  color: #0fa3a3;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
 .case-study-copy {
   display: grid;
   gap: 14px;

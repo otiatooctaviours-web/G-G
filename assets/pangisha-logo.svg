@@ -1,0 +1,32 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pangishaIconTitle">
+  <title id="pangishaIconTitle">Pangisha app icon</title>
+  <defs>
+    <linearGradient id="iconCard" x1="72" y1="150" x2="162" y2="150" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0FA3A3"/>
+      <stop offset="1" stop-color="#22C5B2"/>
+    </linearGradient>
+    <filter id="iconShadow" x="20" y="18" width="216" height="220" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#0B1D3A" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect width="256" height="256" rx="58" fill="#F2F6FA"/>
+  <g filter="url(#iconShadow)">
+    <rect x="46" y="38" width="164" height="164" rx="36" fill="#0B1D3A"/>
+    <path d="M72 181V106L128 61L184 106V181H72Z" fill="#FFFFFF"/>
+    <path d="M72 181V106L128 61L184 106V181" stroke="#F2F6FA" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M58 110L128 53L198 110" stroke="#F2F6FA" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M100 92V51" stroke="#0FA3A3" stroke-width="14" stroke-linecap="round"/>
+    <path d="M129 70V38" stroke="#F2F6FA" stroke-width="14" stroke-linecap="round"/>
+    <path d="M158 92V56" stroke="#F2F6FA" stroke-width="14" stroke-linecap="round"/>
+    <rect x="87" y="139" width="82" height="42" rx="8" fill="url(#iconCard)"/>
+    <rect x="97" y="149" width="42" height="5" rx="2.5" fill="#F2F6FA"/>
+    <circle cx="108" cy="169" r="4" fill="#F2F6FA"/>
+    <circle cx="124" cy="169" r="4" fill="#F2F6FA"/>
+    <rect x="116" y="99" width="8" height="8" fill="#0B1D3A"/>
+    <rect x="132" y="99" width="8" height="8" fill="#0B1D3A"/>
+    <rect x="116" y="115" width="8" height="8" fill="#0B1D3A"/>
+    <rect x="132" y="115" width="8" height="8" fill="#0B1D3A"/>
+    <circle cx="174" cy="183" r="28" fill="#22C55E" stroke="#F2F6FA" stroke-width="7"/>
+    <path d="M160 183L171 194L189 171" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

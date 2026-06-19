@@ -1,0 +1,204 @@
+- generic [active] [ref=e1]:
+  - region "We value your privacy" [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e5]:
+        - heading "We value your privacy" [level=2] [ref=e6]
+        - generic [ref=e7]:
+          - paragraph [ref=e9]: We use cookies to enhance your browsing experience, serve personalised ads or content, and analyse our traffic. By clicking "Accept All", you consent to our use of cookies.
+          - generic [ref=e10]:
+            - button "Customise" [ref=e11] [cursor=pointer]
+            - button "Reject All" [ref=e12] [cursor=pointer]
+            - button "Accept All" [ref=e13] [cursor=pointer]
+      - generic [ref=e16]:
+        - text: Powered by
+        - link "Visit CookieYes website" [ref=e17] [cursor=pointer]:
+          - /url: https://www.cookieyes.com/product/cookie-consent/?ref=cypbcyb&utm_source=cookie-banner&utm_medium=fl-branding
+          - img [ref=e18]
+  - generic [ref=e31]:
+    - banner [ref=e32]:
+      - navigation "Primary navigation" [ref=e33]:
+        - link "G and G Marketing home" [ref=e34] [cursor=pointer]:
+          - /url: /
+          - img "G&G Marketing logo" [ref=e35]
+        - generic [ref=e36]:
+          - list [ref=e37]:
+            - listitem [ref=e38]:
+              - link "Home" [ref=e39] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e40]:
+              - button "Services" [ref=e41] [cursor=pointer]
+              - generic:
+                - link "All Services":
+                  - /url: /#services
+                - link "Social Media Marketing":
+                  - /url: ./social-media-marketing-nairobi.html
+                - link "Brand Strategy":
+                  - /url: ./brand-strategy-nairobi.html
+                - link "Web Design":
+                  - /url: ./web-design-nairobi.html
+                - link "SEO & Optimization":
+                  - /url: ./seo-services-kenya.html
+                - link "Lead Generation":
+                  - /url: ./lead-generation-kenya.html
+                - link "Content Strategy":
+                  - /url: ./content-strategy-kenya.html
+            - listitem [ref=e42]:
+              - link "Case Studies" [ref=e43] [cursor=pointer]:
+                - /url: ./case-studies-kenya.html
+            - listitem [ref=e44]:
+              - link "Testimonials" [ref=e45] [cursor=pointer]:
+                - /url: /#testimonials
+            - listitem [ref=e46]:
+              - link "Contact" [ref=e47] [cursor=pointer]:
+                - /url: /#contact
+          - link "Book a Consultation" [ref=e48] [cursor=pointer]:
+            - /url: /#contact
+    - main [ref=e49]:
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - generic [ref=e53]:
+            - link "Home" [ref=e54] [cursor=pointer]:
+              - /url: /
+            - generic [ref=e55]: /
+            - generic [ref=e56]: Web Design
+          - paragraph [ref=e57]: Web Design Company in Nairobi
+          - heading "Website design and development for businesses that want a stronger online presence." [level=1] [ref=e58]
+          - paragraph [ref=e59]: We build websites for businesses in Nairobi and across Kenya that look professional, work well on mobile, and make it easier for customers to understand what you offer.
+          - paragraph [ref=e60]: A good website should not just look nice. It should explain your business clearly, help people trust you, and make it easy for them to call, message, or send an inquiry.
+          - generic [ref=e61]:
+            - link "Request a Consultation" [ref=e62] [cursor=pointer]:
+              - /url: /#contact
+            - link "Chat on WhatsApp" [ref=e63] [cursor=pointer]:
+              - /url: https://wa.me/254793553860
+        - generic [ref=e65]:
+          - generic [ref=e68]: Web design preview
+          - img "Web design preview by G&G Marketing" [ref=e69]
+          - generic [ref=e71]:
+            - strong [ref=e72]: Clean, modern website design
+            - generic [ref=e73]: Built to look professional, work well on mobile, and guide visitors toward getting in touch.
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - paragraph [ref=e78]: Why It Matters
+            - heading "Your website often decides the first impression people have of your business." [level=2] [ref=e79]
+          - article [ref=e80]:
+            - paragraph [ref=e81]: When someone lands on your website, they quickly decide whether your business feels trustworthy, clear, and worth contacting. That is why the design, wording, speed, and structure all matter.
+            - paragraph [ref=e82]: We build websites that help you explain what you do properly and make the next step simple for the customer.
+        - article [ref=e83]:
+          - generic [ref=e84]: Best For
+          - list [ref=e85]:
+            - listitem [ref=e86]:
+              - strong [ref=e87]: Professional service businesses
+              - generic [ref=e88]: Firms that need a clean, confident online presence that builds trust.
+            - listitem [ref=e89]:
+              - strong [ref=e90]: Growing SMEs
+              - generic [ref=e91]: Businesses that have outgrown a basic site and need stronger performance.
+            - listitem [ref=e92]:
+              - strong [ref=e93]: Brands launching new offers
+              - generic [ref=e94]: Teams that need landing pages and content that support enquiries or sales.
+      - generic [ref=e95]:
+        - generic [ref=e96]:
+          - paragraph [ref=e97]: What's Included
+          - heading "What's included in our web design work." [level=2] [ref=e98]
+        - generic [ref=e99]:
+          - article [ref=e100]:
+            - heading "Custom page structure" [level=3] [ref=e101]
+            - paragraph [ref=e102]: Homepages, service pages, and landing pages planned around what your customers need to know.
+          - article [ref=e103]:
+            - heading "Mobile-friendly development" [level=3] [ref=e104]
+            - paragraph [ref=e105]: Responsive layouts that keep forms, buttons, and contact points easy to use on smaller screens.
+          - article [ref=e106]:
+            - heading "SEO foundations" [level=3] [ref=e107]
+            - paragraph [ref=e108]: Page titles, headings, and content structure set up in a way that supports SEO.
+          - article [ref=e109]:
+            - heading "Lead capture improvements" [level=3] [ref=e110]
+            - paragraph [ref=e111]: Inquiry forms, WhatsApp options, and clearer paths that help turn visits into real inquiries.
+      - generic [ref=e113]:
+        - paragraph [ref=e114]: Related Services
+        - heading "Your website works even better when it connects with your SEO, brand, and lead generation." [level=2] [ref=e115]
+        - generic [ref=e116]:
+          - link "SEO Services" [ref=e117] [cursor=pointer]:
+            - /url: ./seo-services-kenya.html
+          - link "Brand Strategy" [ref=e118] [cursor=pointer]:
+            - /url: ./brand-strategy-nairobi.html
+          - link "Lead Generation" [ref=e119] [cursor=pointer]:
+            - /url: ./lead-generation-kenya.html
+      - generic [ref=e120]:
+        - generic [ref=e121]:
+          - paragraph [ref=e122]: Proof
+          - heading "Some related project work." [level=2] [ref=e123]
+        - generic [ref=e124]:
+          - article [ref=e125]:
+            - heading "VICIdial case study" [level=3] [ref=e126]
+            - paragraph [ref=e127]: A branded login experience that shows how presentation can make a digital product feel more professional.
+            - link "View Case Study" [ref=e128] [cursor=pointer]:
+              - /url: ./vicidial-case-study.html
+          - article [ref=e129]:
+            - heading "Payroll system case study" [level=3] [ref=e130]
+            - paragraph [ref=e131]: Two payroll versions that show how branding and interface design can change how a system feels to the user.
+            - link "View Case Study" [ref=e132] [cursor=pointer]:
+              - /url: ./payroll-case-study.html
+      - generic [ref=e133]:
+        - generic [ref=e134]:
+          - paragraph [ref=e135]: FAQs
+          - heading "Common questions about website design." [level=2] [ref=e136]
+        - generic [ref=e137]:
+          - article [ref=e138]:
+            - heading "How much does web design cost in Nairobi?" [level=3] [ref=e139]
+            - paragraph [ref=e140]: Pricing depends on page count, design depth, copy needs, custom integrations, and whether the site includes SEO or landing page work.
+          - article [ref=e141]:
+            - heading "Will my website be SEO-ready?" [level=3] [ref=e142]
+            - paragraph [ref=e143]: Yes. We structure pages with search visibility in mind so your website starts with a stronger technical and content foundation.
+          - article [ref=e144]:
+            - heading "Can you redesign an existing site?" [level=3] [ref=e145]
+            - paragraph [ref=e146]: Yes. We can improve layout, messaging, lead flow, and page structure without losing the parts of your current site that still help your business.
+      - generic [ref=e149]:
+        - paragraph [ref=e150]: Need a Better Website?
+        - heading "Let's build a website that represents your business properly." [level=2] [ref=e151]
+        - paragraph [ref=e152]: If your current website feels outdated, unclear, or hard to use, we can help you redesign it into something cleaner, stronger, and easier for customers to respond to.
+        - generic [ref=e153]:
+          - link "Start Your Project" [ref=e154] [cursor=pointer]:
+            - /url: /#contact
+          - link "Explore SEO Services" [ref=e155] [cursor=pointer]:
+            - /url: ./seo-services-kenya.html
+    - contentinfo [ref=e156]:
+      - generic [ref=e157]:
+        - generic [ref=e158]:
+          - link "G&G Marketing logo G&G Marketing Strategy, design, growth" [ref=e159] [cursor=pointer]:
+            - /url: /
+            - img "G&G Marketing logo" [ref=e160]
+            - generic [ref=e161]:
+              - strong [ref=e162]: G&G Marketing
+              - generic [ref=e163]: Strategy, design, growth
+          - paragraph [ref=e164]: Nairobi digital marketing agency for web design, SEO, social media marketing, branding, and lead generation across Kenya.
+        - generic [ref=e165]:
+          - heading "Quick Links" [level=3] [ref=e166]
+          - link "Home" [ref=e167] [cursor=pointer]:
+            - /url: /
+          - link "Services" [ref=e168] [cursor=pointer]:
+            - /url: /#services
+          - link "Case Studies" [ref=e169] [cursor=pointer]:
+            - /url: ./case-studies-kenya.html
+          - link "Contact" [ref=e170] [cursor=pointer]:
+            - /url: /#contact
+        - generic [ref=e171]:
+          - heading "Related Services" [level=3] [ref=e172]
+          - link "SEO Services" [ref=e173] [cursor=pointer]:
+            - /url: ./seo-services-kenya.html
+          - link "Brand Strategy" [ref=e174] [cursor=pointer]:
+            - /url: ./brand-strategy-nairobi.html
+          - link "Lead Generation" [ref=e175] [cursor=pointer]:
+            - /url: ./lead-generation-kenya.html
+        - generic [ref=e176]:
+          - heading "Contact" [level=3] [ref=e177]
+          - paragraph [ref=e178]: Reach us directly through email, WhatsApp, Instagram, or Facebook.
+      - generic [ref=e179]:
+        - link "Email G and G Marketing" [ref=e180] [cursor=pointer]:
+          - /url: mailto:info@ggmarketing.co.ke
+          - img [ref=e182]
+          - generic [ref=e185]: info@ggmarketing.co.ke
+        - link "WhatsApp" [ref=e186] [cursor=pointer]:
+          - /url: https://wa.me/254793553860
+          - img [ref=e188]
+          - generic [ref=e191]: Whatsapp
+      - paragraph [ref=e193]: © 2026 G&G Marketing. This page was built by G&G Marketing and powered by Cloudflare.
