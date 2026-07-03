@@ -431,15 +431,16 @@ p {
 }
 
 .contact-chip-logo {
-  width: 54px;
-  height: 54px;
+  width: 46px;
+  height: 46px;
   padding: 0;
+  background: transparent;
+  border-color: transparent;
 }
 
 .contact-chip-badge {
   width: auto;
-  min-width: 110px;
-  padding: 0 16px;
+  min-width: 86px;
 }
 
 .contact-logo {

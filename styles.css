@@ -706,15 +706,17 @@ p {
 .contact-item-logo {
   justify-content: center;
   gap: 0;
-  width: 72px;
-  min-height: 72px;
-  padding: 0.9rem;
+  width: 48px;
+  min-height: 48px;
+  padding: 0;
+  background: transparent;
+  border-color: transparent;
 }
 
 .contact-item-badge {
   width: auto;
-  min-width: 116px;
-  min-height: 72px;
+  min-width: 86px;
+  min-height: 48px;
 }
 
 .contact-logo {
@@ -921,7 +923,7 @@ body.is-nav-open {
   }
 
   .contact-item.contact-item-logo {
-    width: 72px;
+    width: 48px;
   }
 
   .contact-item.contact-item-badge {
