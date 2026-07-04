@@ -1,0 +1,47 @@
+<svg width="1180" height="820" viewBox="0 0 1180 820" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">OfficeOps RMM public interface preview</title>
+  <desc id="desc">A sanitized operations dashboard illustration showing generic device, department, alert, and support activity labels.</desc>
+  <rect width="1180" height="820" rx="44" fill="#ffffff"/>
+  <rect x="42" y="42" width="1096" height="736" rx="34" fill="#f6f9ff" stroke="#d9e6f8" stroke-width="2"/>
+  <rect x="84" y="96" width="254" height="628" rx="28" fill="#071a36"/>
+  <circle cx="132" cy="148" r="24" fill="#1674ff"/>
+  <rect x="174" y="132" width="118" height="18" rx="9" fill="#ffffff"/>
+  <rect x="174" y="160" width="82" height="10" rx="5" fill="#86a6ce"/>
+  <g opacity=".92">
+    <rect x="122" y="230" width="178" height="44" rx="15" fill="#1674ff"/>
+    <rect x="122" y="298" width="178" height="44" rx="15" fill="#102b52"/>
+    <rect x="122" y="366" width="178" height="44" rx="15" fill="#102b52"/>
+    <rect x="122" y="434" width="178" height="44" rx="15" fill="#102b52"/>
+    <rect x="122" y="502" width="178" height="44" rx="15" fill="#102b52"/>
+  </g>
+  <rect x="394" y="112" width="330" height="24" rx="12" fill="#061a35"/>
+  <rect x="394" y="154" width="520" height="16" rx="8" fill="#6a7c95"/>
+  <rect x="394" y="224" width="168" height="116" rx="24" fill="#ffffff" stroke="#d6e5f6" stroke-width="2"/>
+  <rect x="592" y="224" width="168" height="116" rx="24" fill="#ffffff" stroke="#d6e5f6" stroke-width="2"/>
+  <rect x="790" y="224" width="168" height="116" rx="24" fill="#ffffff" stroke="#d6e5f6" stroke-width="2"/>
+  <rect x="988" y="224" width="74" height="116" rx="24" fill="#ffffff" stroke="#d6e5f6" stroke-width="2"/>
+  <rect x="428" y="258" width="70" height="15" rx="7.5" fill="#6a7c95"/>
+  <rect x="428" y="286" width="94" height="28" rx="14" fill="#1674ff"/>
+  <rect x="626" y="258" width="74" height="15" rx="7.5" fill="#6a7c95"/>
+  <rect x="626" y="286" width="82" height="28" rx="14" fill="#23a36d"/>
+  <rect x="824" y="258" width="70" height="15" rx="7.5" fill="#6a7c95"/>
+  <rect x="824" y="286" width="92" height="28" rx="14" fill="#ffb629"/>
+  <rect x="1012" y="258" width="26" height="62" rx="13" fill="#1674ff"/>
+  <rect x="394" y="394" width="420" height="272" rx="30" fill="#ffffff" stroke="#d6e5f6" stroke-width="2"/>
+  <rect x="430" y="430" width="160" height="18" rx="9" fill="#061a35"/>
+  <rect x="430" y="468" width="320" height="12" rx="6" fill="#8393aa"/>
+  <rect x="430" y="516" width="324" height="14" rx="7" fill="#dbe8f7"/>
+  <rect x="430" y="558" width="260" height="14" rx="7" fill="#dbe8f7"/>
+  <rect x="430" y="600" width="302" height="14" rx="7" fill="#dbe8f7"/>
+  <circle cx="764" cy="522" r="18" fill="#1674ff"/>
+  <circle cx="718" cy="566" r="18" fill="#23a36d"/>
+  <circle cx="766" cy="612" r="18" fill="#ffb629"/>
+  <rect x="854" y="394" width="208" height="272" rx="30" fill="#ffffff" stroke="#d6e5f6" stroke-width="2"/>
+  <rect x="890" y="430" width="112" height="18" rx="9" fill="#061a35"/>
+  <rect x="890" y="482" width="136" height="14" rx="7" fill="#dbe8f7"/>
+  <rect x="890" y="524" width="104" height="14" rx="7" fill="#dbe8f7"/>
+  <rect x="890" y="566" width="126" height="14" rx="7" fill="#dbe8f7"/>
+  <rect x="890" y="608" width="86" height="14" rx="7" fill="#dbe8f7"/>
+  <path d="M430 704C518 650 592 734 666 682C724 641 760 666 814 704" stroke="#1674ff" stroke-width="12" stroke-linecap="round"/>
+  <path d="M882 704C920 676 972 676 1024 704" stroke="#23a36d" stroke-width="12" stroke-linecap="round"/>
+</svg>

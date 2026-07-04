@@ -6,6 +6,7 @@ const HTML_PAGE_PATHS = new Set([
   "/case-studies-kenya",
   "/content-strategy-kenya",
   "/lead-generation-kenya",
+  "/officeops-rmm",
   "/payroll-case-study",
   "/seo-services-kenya",
   "/social-media-marketing-nairobi",
