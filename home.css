@@ -1188,3 +1188,165 @@ body.is-nav-open {
     white-space: normal;
   }
 }
+
+/* Direct-to-background presentation */
+.hero-summary {
+  gap: 24px;
+}
+
+.hero-summary-card,
+.service-card,
+.testimonial-card,
+.faq-item,
+.case-study-card,
+.pricing-card,
+.addons-card,
+.contact-form-card {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.hero-summary-card,
+.service-card,
+.testimonial-card,
+.faq-item,
+.pricing-card,
+.addons-card,
+.contact-form-card,
+.case-study-copy {
+  padding: 0;
+}
+
+.service-grid,
+.case-study-grid,
+.testimonial-grid,
+.pricing-grid {
+  gap: clamp(2rem, 4vw, 4.5rem);
+}
+
+.service-card,
+.pricing-card,
+.testimonial-card,
+.faq-item {
+  align-content: start;
+}
+
+.service-card-media,
+.case-study-media {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.service-card-image,
+.case-study-media img {
+  border-radius: 0;
+}
+
+.case-study-card {
+  display: grid;
+  gap: 22px;
+  overflow: visible;
+}
+
+.case-study-media {
+  height: clamp(180px, 24vw, 260px);
+}
+
+.pricing-card-featured {
+  background: transparent;
+  border-color: transparent;
+}
+
+.pricing-card,
+.faq-item,
+.testimonial-card {
+  border-top: 1px solid rgba(8, 18, 35, 0.14);
+  padding-top: 22px;
+}
+
+.section-contrast .pricing-card,
+.section-contrast .faq-item,
+.section-contrast .testimonial-card,
+.section-contrast .approach-list li {
+  border-top-color: rgba(255, 255, 255, 0.18);
+}
+
+.addons-card {
+  margin-top: 30px;
+}
+
+.addons-grid p,
+.approach-list li,
+.testimonial-foot span:last-child,
+.brand-strip-list li {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.brand-strip-list {
+  gap: 18px 24px;
+}
+
+.brand-strip-list li::after {
+  content: "/";
+  margin-left: 24px;
+  color: rgba(8, 18, 35, 0.24);
+}
+
+.brand-strip-list li:last-child::after {
+  content: "";
+  margin: 0;
+}
+
+.contact-form-card {
+  border-top: 1px solid rgba(8, 18, 35, 0.14);
+  padding-top: 24px;
+}
+
+@keyframes skeletonSweep {
+  0% {
+    background-position: 140% 0;
+  }
+  100% {
+    background-position: -140% 0;
+  }
+}
+
+html:not(.is-ready) main :is(h1, h2, h3, p, li, summary, .eyebrow, .button, .pricing-price, .testimonial-stars, label span),
+html:not(.is-ready) footer :is(h3, p, a, .brand-copy strong, .brand-copy small) {
+  color: transparent !important;
+  border-color: transparent !important;
+  background-image: linear-gradient(100deg, rgba(216, 179, 106, 0.12) 0%, rgba(255, 255, 255, 0.58) 24%, rgba(216, 179, 106, 0.12) 48%) !important;
+  background-size: 240% 100% !important;
+  border-radius: 8px;
+  animation: skeletonSweep 1.15s ease-in-out infinite;
+}
+
+html:not(.is-ready) .hero-section main :is(h1, h2, h3, p),
+html:not(.is-ready) .hero-section :is(h1, h2, h3, p, li, .eyebrow, .button) {
+  background-image: linear-gradient(100deg, rgba(255, 255, 255, 0.08) 0%, rgba(241, 207, 141, 0.42) 24%, rgba(255, 255, 255, 0.08) 48%) !important;
+}
+
+html:not(.is-ready) main img,
+html:not(.is-ready) footer img {
+  opacity: 0.18;
+  background-image: linear-gradient(100deg, rgba(216, 179, 106, 0.12) 0%, rgba(255, 255, 255, 0.52) 24%, rgba(216, 179, 106, 0.12) 48%);
+  background-size: 240% 100%;
+  animation: skeletonSweep 1.15s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not(.is-ready) main :is(h1, h2, h3, p, li, summary, .eyebrow, .button, .pricing-price, .testimonial-stars, label span),
+  html:not(.is-ready) footer :is(h3, p, a, .brand-copy strong, .brand-copy small),
+  html:not(.is-ready) main img,
+  html:not(.is-ready) footer img {
+    animation: none;
+  }
+}

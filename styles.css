@@ -944,3 +944,119 @@ body.is-nav-open {
     font-size: clamp(2rem, 9vw, 3rem);
   }
 }
+
+/* Direct-to-background presentation */
+.visual-panel,
+.cta-copy,
+.about-card,
+.founder-card,
+.service-card,
+.case-hub-card,
+.case-metric,
+.mini-card,
+.brand-badge,
+.service-bullets li,
+.case-list li,
+.portfolio-login-preview,
+.footer-grid,
+.site-footer .footer-grid.glass {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.visual-panel,
+.cta-copy,
+.about-card,
+.founder-card,
+.service-card,
+.case-hub-card,
+.case-metric,
+.mini-card,
+.brand-badge,
+.service-bullets li,
+.case-list li,
+.footer-grid {
+  padding: 0;
+}
+
+.service-hero-image,
+.portfolio-login-preview,
+.portfolio-login-field,
+.portfolio-login-action {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.services-grid,
+.case-hub-grid,
+.mini-list,
+.service-bullets,
+.case-list {
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.service-card,
+.case-hub-card,
+.case-metric,
+.mini-card,
+.service-bullets li,
+.case-list li {
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  padding-top: 1.15rem;
+}
+
+.services-section .service-card,
+.about-card,
+.founder-card {
+  border-top-color: rgba(8, 18, 35, 0.14);
+}
+
+.brand-badge {
+  grid-template-columns: auto minmax(0, 1fr);
+}
+
+.site-footer .footer-grid.glass {
+  grid-template-columns: minmax(0, 1.25fr) repeat(3, minmax(0, 0.8fr));
+}
+
+@keyframes skeletonSweep {
+  0% {
+    background-position: 140% 0;
+  }
+  100% {
+    background-position: -140% 0;
+  }
+}
+
+html:not(.is-ready) main :is(h1, h2, h3, p, li, summary, .eyebrow, .glass-pill, .button, .stack-kicker, .case-hub-kicker, .proof-label, label span),
+html:not(.is-ready) footer :is(h3, p, a, .brand-copy strong, .brand-copy small) {
+  color: transparent !important;
+  border-color: transparent !important;
+  background-image: linear-gradient(100deg, rgba(255, 255, 255, 0.08) 0%, rgba(241, 207, 141, 0.42) 24%, rgba(255, 255, 255, 0.08) 48%) !important;
+  background-size: 240% 100% !important;
+  border-radius: 8px;
+  animation: skeletonSweep 1.15s ease-in-out infinite;
+}
+
+html:not(.is-ready) main img,
+html:not(.is-ready) footer img {
+  opacity: 0.18;
+  background-image: linear-gradient(100deg, rgba(255, 255, 255, 0.08) 0%, rgba(241, 207, 141, 0.42) 24%, rgba(255, 255, 255, 0.08) 48%);
+  background-size: 240% 100%;
+  animation: skeletonSweep 1.15s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not(.is-ready) main :is(h1, h2, h3, p, li, summary, .eyebrow, .glass-pill, .button, .stack-kicker, .case-hub-kicker, .proof-label, label span),
+  html:not(.is-ready) footer :is(h3, p, a, .brand-copy strong, .brand-copy small),
+  html:not(.is-ready) main img,
+  html:not(.is-ready) footer img {
+    animation: none;
+  }
+}

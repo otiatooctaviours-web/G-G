@@ -1,12 +1,10 @@
 const CANONICAL_HOST = "ggmarketing.co.ke";
-const EAZZY_HOST = "eazzy.ggmarketing.co.ke";
 const WWW_HOST = `www.${CANONICAL_HOST}`;
 
 const HTML_PAGE_PATHS = new Set([
   "/brand-strategy-nairobi",
   "/case-studies-kenya",
   "/content-strategy-kenya",
-  "/eazzy-rent",
   "/lead-generation-kenya",
   "/payroll-case-study",
   "/seo-services-kenya",
@@ -35,7 +33,6 @@ export async function onRequest(context) {
   const normalizedWithoutHtml = normalizedPathname.endsWith(".html")
     ? normalizedPathname.slice(0, -5)
     : normalizedPathname;
-  const isEazzyHost = hostname === EAZZY_HOST;
 
   let targetHost = hostname;
   let targetPathname = url.pathname;
@@ -50,15 +47,6 @@ export async function onRequest(context) {
   if (legacyRedirect) {
     targetHost = CANONICAL_HOST;
     targetPathname = legacyRedirect;
-  } else if (isEazzyHost) {
-    if (
-      normalizedPathname === "/" ||
-      normalizedPathname === "/index.html" ||
-      normalizedWithoutHtml === "/eazzy-rent"
-    ) {
-      targetHost = CANONICAL_HOST;
-      targetPathname = "/eazzy-rent";
-    }
   } else if (normalizedPathname === "/index.html") {
     targetPathname = "/";
   } else if (

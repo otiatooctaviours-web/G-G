@@ -1,49 +1,75 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" role="img" aria-labelledby="gg-tech-logo-title gg-tech-logo-desc">
   <title id="gg-tech-logo-title">G&amp;G Tech logo</title>
-  <desc id="gg-tech-logo-desc">A dark square G and G Tech mark with gold lettering, blue circuit lines, and a TECH wordmark.</desc>
+  <desc id="gg-tech-logo-desc">A navy and gold G and G Tech mark with a circular gold seal, geometric chevrons, and a TECH wordmark.</desc>
   <defs>
-    <linearGradient id="bg" x1="24" y1="18" x2="254" y2="264" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#081a3a" />
-      <stop offset="0.52" stop-color="#0d244c" />
-      <stop offset="1" stop-color="#06111f" />
+    <radialGradient id="bgGlow" cx="42%" cy="40%" r="74%">
+      <stop offset="0" stop-color="#14284c" />
+      <stop offset="0.58" stop-color="#091a35" />
+      <stop offset="1" stop-color="#040b18" />
+    </radialGradient>
+    <linearGradient id="edgeShade" x1="16" y1="10" x2="264" y2="270" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14284c" stop-opacity="0.55" />
+      <stop offset="0.5" stop-color="#06142b" stop-opacity="0" />
+      <stop offset="1" stop-color="#010511" stop-opacity="0.66" />
     </linearGradient>
-    <linearGradient id="panel" x1="58" y1="48" x2="222" y2="228" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#102f60" />
-      <stop offset="1" stop-color="#09172d" />
+    <linearGradient id="gold" x1="84" y1="70" x2="198" y2="206" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff0be" />
+      <stop offset="0.42" stop-color="#dba94f" />
+      <stop offset="0.72" stop-color="#fff0b7" />
+      <stop offset="1" stop-color="#9c6921" />
     </linearGradient>
-    <linearGradient id="gold" x1="70" y1="74" x2="204" y2="178" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#ffe5a3" />
-      <stop offset="1" stop-color="#c28b2f" />
+    <linearGradient id="goldLine" x1="40" y1="36" x2="236" y2="232" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8c5a1d" />
+      <stop offset="0.34" stop-color="#ffeaa8" />
+      <stop offset="0.68" stop-color="#c28b32" />
+      <stop offset="1" stop-color="#fff2bd" />
     </linearGradient>
-    <linearGradient id="blue" x1="46" y1="52" x2="232" y2="226" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#8ed4ff" />
-      <stop offset="1" stop-color="#2d6dff" />
-    </linearGradient>
+    <filter id="letterShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="4" stdDeviation="2" flood-color="#020612" flood-opacity="0.62" />
+    </filter>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" />
+    </filter>
+    <pattern id="grain" width="42" height="42" patternUnits="userSpaceOnUse">
+      <rect width="42" height="42" fill="#ffffff" opacity="0" />
+      <circle cx="7" cy="9" r="0.7" fill="#ffffff" opacity="0.07" />
+      <circle cx="29" cy="12" r="0.55" fill="#ffffff" opacity="0.05" />
+      <circle cx="18" cy="31" r="0.65" fill="#d8b36a" opacity="0.08" />
+      <circle cx="38" cy="35" r="0.5" fill="#ffffff" opacity="0.04" />
+    </pattern>
   </defs>
 
-  <rect width="280" height="280" rx="36" fill="url(#bg)" />
+  <rect width="280" height="280" rx="0" fill="url(#bgGlow)" />
+  <rect width="280" height="280" fill="url(#edgeShade)" />
+  <rect width="280" height="280" fill="url(#grain)" opacity="0.55" />
 
-  <g fill="none" stroke="url(#blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" opacity="0.9">
-    <path d="M38 78h42l18 18" />
-    <path d="M242 78h-42l-18 18" />
-    <path d="M38 202h42l18-18" />
-    <path d="M242 202h-42l-18-18" />
-    <path d="M140 32v34" />
-    <path d="M140 214v34" />
+  <path d="M-14 130 C34 68 53 42 110 -8" fill="none" stroke="#0d1831" stroke-width="22" opacity="0.66" />
+  <path d="M-10 129 C36 68 56 40 113 -10" fill="none" stroke="url(#goldLine)" stroke-width="2.4" opacity="0.9" />
+  <path d="M235 292 C253 238 285 205 311 176" fill="none" stroke="#0d1831" stroke-width="23" opacity="0.62" />
+  <path d="M238 290 C256 238 286 207 310 179" fill="none" stroke="url(#goldLine)" stroke-width="2.5" opacity="0.94" />
+
+  <circle cx="140" cy="140" r="103" fill="none" stroke="#071329" stroke-width="7" opacity="0.58" />
+  <circle cx="140" cy="140" r="101" fill="none" stroke="url(#goldLine)" stroke-width="2.8" />
+  <circle cx="42" cy="91" r="9" fill="#fff0b5" opacity="0.2" filter="url(#softGlow)" />
+  <circle cx="239" cy="210" r="8" fill="#ffe7a0" opacity="0.22" filter="url(#softGlow)" />
+
+  <g fill="none" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M113 91 L140 64 L167 91" stroke="#091228" stroke-width="10" opacity="0.6" />
+    <path d="M113 91 L140 64 L167 91" stroke="url(#goldLine)" stroke-width="3.2" />
+    <path d="M119 101 L140 81 L161 101" stroke="#2f6faa" stroke-width="3.2" opacity="0.82" />
+    <path d="M124 111 L140 96 L156 111" stroke="url(#goldLine)" stroke-width="3.2" />
+    <path d="M140 86 L154 100 L140 114 L126 100 Z" fill="url(#gold)" stroke="#5d3c15" stroke-width="0.8" />
   </g>
 
-  <g fill="#8ed4ff">
-    <circle cx="38" cy="78" r="6" />
-    <circle cx="242" cy="78" r="6" />
-    <circle cx="38" cy="202" r="6" />
-    <circle cx="242" cy="202" r="6" />
-    <circle cx="140" cy="32" r="5" />
-    <circle cx="140" cy="248" r="5" />
+  <g filter="url(#letterShadow)">
+    <text x="140" y="156" text-anchor="middle" fill="url(#gold)" font-family="Georgia, Times New Roman, serif" font-size="72" font-weight="700" letter-spacing="1.5">G&amp;G</text>
+    <text x="140" y="192" text-anchor="middle" fill="url(#gold)" font-family="Georgia, Times New Roman, serif" font-size="27" font-weight="700" letter-spacing="3.8">TECH</text>
   </g>
 
-  <rect x="54" y="54" width="172" height="172" rx="30" fill="url(#panel)" stroke="#ffe5a3" stroke-opacity="0.35" stroke-width="2" />
-  <path d="M82 84h116M82 196h116" stroke="url(#gold)" stroke-linecap="round" stroke-width="4" opacity="0.78" />
-
-  <text x="140" y="132" text-anchor="middle" fill="url(#gold)" font-family="Georgia, Times New Roman, serif" font-size="64" font-weight="700" letter-spacing="3">G&amp;G</text>
-  <text x="140" y="176" text-anchor="middle" fill="#9bd6ff" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800" letter-spacing="6">TECH</text>
+  <g fill="none" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M113 205 L140 232 L167 205" stroke="#091228" stroke-width="10" opacity="0.62" />
+    <path d="M113 205 L140 232 L167 205" stroke="url(#goldLine)" stroke-width="3.2" />
+    <path d="M119 195 L140 215 L161 195" stroke="#2f6faa" stroke-width="3.2" opacity="0.82" />
+    <path d="M124 185 L140 200 L156 185" stroke="url(#goldLine)" stroke-width="3.2" />
+  </g>
 </svg>

@@ -39,7 +39,7 @@ This is a practical shortlist of free or source-available GitHub repos that fit 
 - Link: <https://github.com/formbricks/formbricks>
 - Why it fits:
   - Useful for collecting on-site surveys, customer feedback, and post-service sentiment
-  - Good match for G&G service feedback loops and Eazzy Rent tenant/product research
+  - Good match for G&G service feedback loops and product research
   - Can help improve offers, onboarding, and landing pages with real user insight
 
 ### Twenty

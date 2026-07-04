@@ -37,6 +37,20 @@ const consultationTrapInput = consultationModal?.querySelector("[data-consultati
 const emailLinks = document.querySelectorAll("[data-email-link]");
 const defaultFormspreeEndpoint = "https://formspree.io/f/xlgwyzwb";
 
+const markPageReady = () => {
+  document.documentElement.classList.add("is-ready");
+};
+
+requestAnimationFrame(() => window.setTimeout(markPageReady, 360));
+
+if (document.readyState === "complete") {
+  window.setTimeout(markPageReady, 280);
+} else {
+  window.addEventListener("load", () => window.setTimeout(markPageReady, 280), { once: true });
+}
+
+window.setTimeout(markPageReady, 2400);
+
 let activeIndex = 0;
 let testimonialIntervalId;
 let consultationCloseTimeoutId;

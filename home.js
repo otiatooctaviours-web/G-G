@@ -8,6 +8,20 @@ const formStatus = contactForm?.querySelector(".form-status");
 const yearNode = document.getElementById("year");
 const defaultFormspreeEndpoint = "https://formspree.io/f/xlgwyzwb";
 
+const markPageReady = () => {
+  document.documentElement.classList.add("is-ready");
+};
+
+requestAnimationFrame(() => window.setTimeout(markPageReady, 360));
+
+if (document.readyState === "complete") {
+  window.setTimeout(markPageReady, 280);
+} else {
+  window.addEventListener("load", () => window.setTimeout(markPageReady, 280), { once: true });
+}
+
+window.setTimeout(markPageReady, 2400);
+
 const trackAnalyticsEvent = (eventName, eventData = {}) => {
   if (typeof window.gtag === "function") {
     window.gtag("event", eventName, eventData);
