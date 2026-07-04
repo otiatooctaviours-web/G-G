@@ -597,7 +597,7 @@ p {
 
 .case-study-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 22px;
 }
 
@@ -718,6 +718,10 @@ p {
 
 .case-study-media-pangisha {
   background: #f2f6fa;
+}
+
+.case-study-media-officeops img {
+  transform: scale(1.08);
 }
 
 .pangisha-logo-lockup {
