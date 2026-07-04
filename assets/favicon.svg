@@ -1,32 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" role="img" aria-labelledby="favicon-title">
-  <title id="favicon-title">G&amp;G Marketing favicon</title>
+  <title id="favicon-title">G&amp;G Tech favicon</title>
   <defs>
-    <linearGradient id="gold" x1="0%" x2="100%" y1="0%" y2="100%">
-      <stop offset="0%" stop-color="#f7dd9c" />
-      <stop offset="100%" stop-color="#bb8a2f" />
+    <linearGradient id="bg" x1="44" y1="34" x2="472" y2="490" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#081a3a" />
+      <stop offset="0.55" stop-color="#0d244c" />
+      <stop offset="1" stop-color="#06111f" />
     </linearGradient>
-    <linearGradient id="blue" x1="0%" x2="100%" y1="0%" y2="100%">
-      <stop offset="0%" stop-color="#7cb3ff" />
-      <stop offset="100%" stop-color="#2b65ff" />
+    <linearGradient id="gold" x1="130" y1="150" x2="386" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffe5a3" />
+      <stop offset="1" stop-color="#c28b2f" />
+    </linearGradient>
+    <linearGradient id="blue" x1="70" y1="110" x2="450" y2="410" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8ed4ff" />
+      <stop offset="1" stop-color="#2d6dff" />
     </linearGradient>
   </defs>
 
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="18">
-    <path d="M138 122 260 38l122 84" stroke="url(#gold)" />
-    <path d="M160 168 260 98l100 70" stroke="url(#blue)" />
-    <path d="M182 214 260 158l78 56" stroke="url(#gold)" />
+  <rect width="520" height="520" rx="96" fill="url(#bg)" />
+  <g fill="none" stroke="url(#blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="18" opacity="0.92">
+    <path d="M86 150h86l42 42" />
+    <path d="M434 150h-86l-42 42" />
+    <path d="M86 370h86l42-42" />
+    <path d="M434 370h-86l-42-42" />
   </g>
-
-  <text
-    x="260"
-    y="340"
-    text-anchor="middle"
-    font-size="172"
-    font-family="Georgia, Times New Roman, serif"
-    font-weight="700"
-    letter-spacing="4"
-    fill="url(#gold)"
-  >
-    G&amp;G
-  </text>
+  <g fill="#8ed4ff">
+    <circle cx="86" cy="150" r="18" />
+    <circle cx="434" cy="150" r="18" />
+    <circle cx="86" cy="370" r="18" />
+    <circle cx="434" cy="370" r="18" />
+  </g>
+  <text x="260" y="315" text-anchor="middle" font-size="168" font-family="Georgia, Times New Roman, serif" font-weight="700" letter-spacing="8" fill="url(#gold)">G&amp;G</text>
 </svg>

@@ -140,8 +140,13 @@ textarea {
 }
 
 .site-nav a:hover::after,
-.site-nav a:focus-visible::after {
+.site-nav a:focus-visible::after,
+.site-nav a[aria-current="page"]::after {
   transform: scaleX(1);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--text-inverse);
 }
 
 .nav-cta {
@@ -182,6 +187,27 @@ textarea {
     linear-gradient(180deg, rgba(8, 18, 35, 0.18), rgba(8, 18, 35, 0.4)),
     image-set(url("./assets/webdesign.webp") type("image/webp"), url("./assets/webdesign.jpg") type("image/jpeg")) center center / cover no-repeat;
   color: var(--text-inverse);
+}
+
+.page-hero {
+  min-height: auto;
+  padding-bottom: 82px;
+}
+
+.page-hero .hero-grid {
+  min-height: auto;
+}
+
+.page-hero .hero-copy {
+  max-width: 760px;
+}
+
+.page-hero h1 {
+  max-width: 13ch;
+}
+
+.page-hero .hero-text {
+  max-width: 64ch;
 }
 
 .hero-orb {

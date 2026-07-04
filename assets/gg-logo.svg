@@ -1,36 +1,54 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" role="img" aria-labelledby="gg-logo-title gg-logo-desc">
-  <title id="gg-logo-title">G&amp;G Marketing logo</title>
-  <desc id="gg-logo-desc">A navy square logo with gold and blue chevrons framing the G and G Marketing wordmark.</desc>
+  <title id="gg-logo-title">G&amp;G Tech logo</title>
+  <desc id="gg-logo-desc">A dark square G and G Tech mark with gold lettering, blue circuit lines, and a TECH wordmark.</desc>
   <defs>
-    <linearGradient id="gold" x1="0%" x2="100%" y1="0%" y2="100%">
-      <stop offset="0%" stop-color="#f7dd9c" />
-      <stop offset="100%" stop-color="#bb8a2f" />
+    <linearGradient id="bg" x1="44" y1="34" x2="472" y2="490" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#081a3a" />
+      <stop offset="0.52" stop-color="#0d244c" />
+      <stop offset="1" stop-color="#06111f" />
     </linearGradient>
-    <linearGradient id="blue" x1="0%" x2="100%" y1="0%" y2="100%">
-      <stop offset="0%" stop-color="#7cb3ff" />
-      <stop offset="100%" stop-color="#2b65ff" />
+    <linearGradient id="panel" x1="108" y1="90" x2="412" y2="424" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#102f60" />
+      <stop offset="1" stop-color="#09172d" />
+    </linearGradient>
+    <linearGradient id="gold" x1="130" y1="138" x2="380" y2="330" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffe5a3" />
+      <stop offset="1" stop-color="#c28b2f" />
+    </linearGradient>
+    <linearGradient id="blue" x1="86" y1="96" x2="430" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8ed4ff" />
+      <stop offset="1" stop-color="#2d6dff" />
     </linearGradient>
     <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#020712" flood-opacity="0.3" />
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#020712" flood-opacity="0.35" />
     </filter>
   </defs>
 
-  <rect width="520" height="520" rx="44" fill="#0a1b43" />
+  <rect width="520" height="520" rx="64" fill="url(#bg)" />
 
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="10" filter="url(#soft-shadow)">
-    <path d="M170 76 260 14l90 62" stroke="url(#gold)" />
-    <path d="M184 108 260 56l76 52" stroke="url(#blue)" />
-    <path d="M198 140 260 96l62 44" stroke="url(#gold)" />
+  <g fill="none" stroke="url(#blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="10" opacity="0.9">
+    <path d="M70 146h78l34 34" />
+    <path d="M450 146h-78l-34 34" />
+    <path d="M70 374h78l34-34" />
+    <path d="M450 374h-78l-34-34" />
+    <path d="M260 60v64" />
+    <path d="M260 396v64" />
   </g>
+
+  <g fill="#8ed4ff">
+    <circle cx="70" cy="146" r="12" />
+    <circle cx="450" cy="146" r="12" />
+    <circle cx="70" cy="374" r="12" />
+    <circle cx="450" cy="374" r="12" />
+    <circle cx="260" cy="60" r="10" />
+    <circle cx="260" cy="460" r="10" />
+  </g>
+
+  <rect x="100" y="100" width="320" height="320" rx="54" fill="url(#panel)" stroke="#ffe5a3" stroke-opacity="0.35" stroke-width="4" filter="url(#soft-shadow)" />
+  <path d="M154 156h212M154 364h212" stroke="url(#gold)" stroke-linecap="round" stroke-width="8" opacity="0.78" />
 
   <g fill="url(#gold)">
-    <text x="260" y="268" text-anchor="middle" font-size="154" font-family="Georgia, Times New Roman, serif" letter-spacing="6">G&amp;G</text>
-    <text x="260" y="356" text-anchor="middle" font-size="70" font-family="Georgia, Times New Roman, serif" letter-spacing="5">MARKETING</text>
+    <text x="260" y="248" text-anchor="middle" font-size="126" font-family="Georgia, Times New Roman, serif" font-weight="700" letter-spacing="7">G&amp;G</text>
   </g>
-
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="10" filter="url(#soft-shadow)">
-    <path d="M204 372 260 412l56-40" stroke="url(#blue)" />
-    <path d="M190 404 260 456l70-52" stroke="url(#blue)" />
-    <path d="M172 434 260 498l88-64" stroke="url(#gold)" />
-  </g>
+  <text x="260" y="330" text-anchor="middle" fill="#9bd6ff" font-size="64" font-family="Arial, Helvetica, sans-serif" font-weight="800" letter-spacing="12">TECH</text>
 </svg>
