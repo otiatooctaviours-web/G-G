@@ -1410,7 +1410,32 @@ body.is-nav-open {
 
 .officeops-preview {
   width: 100%;
-  filter: drop-shadow(0 34px 70px rgba(22, 116, 255, 0.13));
+  filter: none;
+}
+
+.officeops-gallery-heading {
+  max-width: 720px;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.officeops-gallery-heading p:last-child {
+  color: #40516a;
+}
+
+.officeops-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.officeops-gallery img {
+  width: 100%;
+}
+
+.officeops-gallery img:first-child,
+.officeops-gallery img:last-child {
+  grid-column: 1 / -1;
 }
 
 .officeops-strip {
@@ -1515,7 +1540,8 @@ html:not(.is-ready) footer img {
 
 @media (max-width: 1080px) {
   .officeops-hero-grid,
-  .officeops-two-column {
+  .officeops-two-column,
+  .officeops-gallery {
     grid-template-columns: 1fr;
   }
 }

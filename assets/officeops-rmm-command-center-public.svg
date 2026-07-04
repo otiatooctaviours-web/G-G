@@ -1,0 +1,166 @@
+<svg width="1366" height="640" viewBox="0 0 1366 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">OfficeOps RMM command center public screenshot</title>
+  <desc id="desc">A sanitized Command Center view showing live device metrics, active time summaries, and anonymized device cards.</desc>
+  <style>
+    .bg{fill:#020403}.panel{fill:#020704;stroke:#0c7a39;stroke-width:1.2}.soft{fill:#041207;stroke:#0b6b34}.text{fill:#fff;font-family:Inter,Arial,sans-serif}.muted{fill:#a8b9ad;font-family:Inter,Arial,sans-serif}.accent{fill:#30f07f}.tiny{font-size:10px;font-weight:700}.small{font-size:12px}.body{font-size:14px}.label{font-size:13px;font-weight:700}.headline{font-size:38px;font-weight:800}.metric{font-size:30px;font-weight:900}.chip{fill:#12351d;stroke:#0ca94c}.danger{fill:#321018;stroke:#ff415d}.button{fill:#050906;stroke:#113f22}.grid{stroke:#102b1a;stroke-width:1}
+  </style>
+  <rect class="bg" width="1366" height="640"/>
+  <rect x="0" y="0" width="216" height="640" fill="#010201"/>
+  <rect x="206" y="0" width="8" height="640" rx="4" fill="#787878"/>
+  <rect x="16" y="18" width="34" height="34" rx="9" class="soft"/>
+  <text x="58" y="32" class="text body" font-weight="800">OfficeOps <tspan fill="#1b7dff">RMM</tspan></text>
+  <text x="58" y="46" class="muted tiny">Workforce &amp; device command</text>
+  <rect x="155" y="21" width="24" height="24" rx="8" class="soft"/>
+  <path d="M170 28l-6 5 6 5" stroke="#30f07f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="translate(16 78)">
+    <rect width="46" height="58" rx="15" fill="#063a1c" stroke="#30f07f" stroke-width="1.4"/>
+    <text x="23" y="30" class="text label" text-anchor="middle">+</text>
+    <text x="23" y="54" class="text tiny" text-anchor="middle">Command</text>
+  </g>
+  <g transform="translate(78 84)">
+    <rect width="34" height="34" rx="10" fill="#021210" stroke="#00d9c7"/>
+    <text x="17" y="58" class="text tiny" text-anchor="middle">Departments</text>
+  </g>
+  <g transform="translate(140 84)">
+    <rect width="34" height="34" rx="10" fill="#02101b" stroke="#1887ff"/>
+    <text x="17" y="58" class="text tiny" text-anchor="middle">Remote</text>
+  </g>
+  <g transform="translate(16 152)">
+    <rect width="34" height="34" rx="10" fill="#100a20" stroke="#9e7aff"/>
+    <text x="17" y="58" class="text tiny" text-anchor="middle">People</text>
+  </g>
+  <g transform="translate(78 152)">
+    <rect width="34" height="34" rx="10" fill="#190f00" stroke="#ffb629"/>
+    <text x="17" y="58" class="text tiny" text-anchor="middle">Alerts</text>
+  </g>
+  <g transform="translate(140 152)">
+    <rect width="34" height="34" rx="10" fill="#041821" stroke="#21d8ff"/>
+    <text x="17" y="58" class="text tiny" text-anchor="middle">Reports</text>
+  </g>
+  <line x1="13" y1="298" x2="182" y2="298" stroke="#0c6f37"/>
+  <text x="14" y="322" class="accent tiny">WORKSPACE TOOLS</text>
+  <text x="14" y="344" class="text tiny">Search</text>
+  <rect x="14" y="350" width="166" height="30" rx="9" class="button"/>
+  <text x="26" y="369" class="muted tiny">Employee, team, desk</text>
+  <rect x="14" y="390" width="166" height="50" rx="12" class="button"/>
+  <text x="97" y="416" class="text small" text-anchor="middle" font-weight="800">Supervisor package</text>
+  <line x1="13" y1="460" x2="182" y2="460" stroke="#0c6f37"/>
+  <text x="14" y="484" class="accent tiny">LIVE DEVICES</text>
+  <text x="14" y="504" class="text tiny">Department for new device</text>
+  <rect x="14" y="512" width="166" height="30" rx="9" class="button"/>
+  <text x="26" y="532" class="text tiny" font-weight="800">Ops Desk</text>
+  <rect x="14" y="552" width="166" height="34" rx="12" fill="#001e0c" stroke="#30f07f"/>
+  <text x="97" y="574" class="accent small" text-anchor="middle" font-weight="900">Create device code</text>
+  <rect x="14" y="594" width="166" height="34" rx="12" class="button"/>
+  <text x="97" y="616" class="text small" text-anchor="middle" font-weight="800">Create login</text>
+  <g transform="translate(238 14)">
+    <text x="0" y="0" class="accent tiny">REAL-TIME OPERATIONS VIEW</text>
+    <text x="0" y="38" class="text headline">Command Center</text>
+    <rect x="994" y="8" width="90" height="36" rx="12" class="button"/>
+    <text x="1039" y="31" class="text small" text-anchor="middle" font-weight="800">Light mode</text>
+  </g>
+  <g transform="translate(238 86)">
+    <rect width="262" height="112" rx="22" class="panel"/>
+    <text x="16" y="28" class="muted small">Live Devices</text>
+    <text x="16" y="88" class="accent metric">0</text>
+    <rect x="276" width="262" height="112" rx="22" class="panel"/>
+    <text x="292" y="28" class="muted small">On Active Call</text>
+    <text x="292" y="88" class="accent metric">0</text>
+    <rect x="552" width="262" height="112" rx="22" class="panel"/>
+    <text x="568" y="28" class="muted small">Idle Desks</text>
+    <text x="568" y="88" class="accent metric">0</text>
+    <rect x="828" width="262" height="112" rx="22" class="panel"/>
+    <text x="844" y="28" class="muted small">Offline Machines</text>
+    <text x="844" y="88" class="accent metric">18</text>
+  </g>
+  <g transform="translate(238 212)">
+    <rect width="536" height="112" rx="22" class="panel"/>
+    <text x="16" y="28" class="muted small">Today's Call Time</text>
+    <text x="16" y="76" class="accent metric">0h 0m</text>
+    <text x="16" y="96" class="muted tiny">Utilization 0% today</text>
+    <rect x="548" width="536" height="112" rx="22" class="panel"/>
+    <text x="564" y="28" class="muted small">Today's Online Time</text>
+    <text x="564" y="76" class="accent metric">0h 0m</text>
+    <text x="564" y="96" class="muted tiny">Idle today 0h 0m</text>
+  </g>
+  <rect x="238" y="342" width="1084" height="278" rx="22" class="panel"/>
+  <text x="256" y="373" class="text body" font-weight="900">Live Device Activity</text>
+  <text x="256" y="400" class="muted small">Foreground app, browser domain, microphone state, and measured duration. No titles, content, audio, or full URLs are collected.</text>
+  <text x="1130" y="366" class="muted tiny" font-weight="800">DEPARTMENT</text>
+  <rect x="1132" y="374" width="174" height="28" rx="8" class="button"/>
+  <text x="1144" y="393" class="text tiny">All teams (18)</text>
+  <rect x="1228" y="410" width="78" height="22" rx="11" class="chip"/>
+  <text x="1267" y="424" class="accent tiny" text-anchor="middle">Live Telemetry</text>
+  <g transform="translate(256 458)">
+    <rect width="250" height="158" rx="14" class="panel"/>
+    <text x="14" y="25" class="text label">OPS-1001</text>
+    <text x="14" y="43" class="muted tiny">front-desk</text>
+    <rect x="166" y="14" width="44" height="22" rx="11" fill="#242424"/>
+    <text x="188" y="29" class="text tiny" text-anchor="middle">Offline</text>
+    <circle cx="226" cy="25" r="11" class="danger"/>
+    <text x="14" y="70" class="text body" font-weight="800">No current activity</text>
+    <text x="14" y="94" class="muted tiny">0 sec</text>
+    <text x="178" y="94" class="muted tiny">No sample yet</text>
+    <rect x="14" y="110" width="60" height="38" rx="8" class="button"/>
+    <text x="44" y="132" class="muted tiny" text-anchor="middle">Message</text>
+    <rect x="82" y="110" width="82" height="38" rx="8" class="button"/>
+    <text x="123" y="126" class="muted tiny" text-anchor="middle">Notification</text>
+    <text x="123" y="140" class="muted tiny" text-anchor="middle">setup</text>
+    <rect x="172" y="110" width="64" height="38" rx="8" class="danger"/>
+    <text x="204" y="132" class="muted tiny" text-anchor="middle">Disconnect</text>
+  </g>
+  <g transform="translate(518 458)">
+    <rect width="250" height="158" rx="14" class="panel"/>
+    <text x="14" y="25" class="text label">OPS-1002</text>
+    <text x="14" y="43" class="muted tiny">support-node</text>
+    <rect x="166" y="14" width="44" height="22" rx="11" fill="#242424"/>
+    <text x="188" y="29" class="text tiny" text-anchor="middle">Offline</text>
+    <circle cx="226" cy="25" r="11" class="danger"/>
+    <text x="14" y="70" class="text body" font-weight="800">No current activity</text>
+    <text x="14" y="94" class="muted tiny">7m 54s</text>
+    <text x="150" y="94" class="muted tiny">Seen Jul 1, 11:59 AM</text>
+    <rect x="14" y="110" width="60" height="38" rx="8" class="button"/>
+    <text x="44" y="132" class="muted tiny" text-anchor="middle">Message</text>
+    <rect x="82" y="110" width="82" height="38" rx="8" class="button"/>
+    <text x="123" y="126" class="muted tiny" text-anchor="middle">Notification</text>
+    <text x="123" y="140" class="muted tiny" text-anchor="middle">setup</text>
+    <rect x="172" y="110" width="64" height="38" rx="8" class="danger"/>
+    <text x="204" y="132" class="muted tiny" text-anchor="middle">Disconnect</text>
+  </g>
+  <g transform="translate(780 458)">
+    <rect width="250" height="158" rx="14" class="panel"/>
+    <text x="14" y="25" class="text label">OPS-1003</text>
+    <text x="14" y="43" class="muted tiny">dispatch</text>
+    <rect x="166" y="14" width="44" height="22" rx="11" fill="#242424"/>
+    <text x="188" y="29" class="text tiny" text-anchor="middle">Offline</text>
+    <circle cx="226" cy="25" r="11" class="danger"/>
+    <text x="14" y="70" class="text body" font-weight="800">No current activity</text>
+    <text x="14" y="94" class="muted tiny">0 sec</text>
+    <text x="178" y="94" class="muted tiny">No sample yet</text>
+    <rect x="14" y="110" width="60" height="38" rx="8" class="button"/>
+    <text x="44" y="132" class="muted tiny" text-anchor="middle">Message</text>
+    <rect x="82" y="110" width="82" height="38" rx="8" class="button"/>
+    <text x="123" y="126" class="muted tiny" text-anchor="middle">Notification</text>
+    <text x="123" y="140" class="muted tiny" text-anchor="middle">setup</text>
+    <rect x="172" y="110" width="64" height="38" rx="8" class="danger"/>
+    <text x="204" y="132" class="muted tiny" text-anchor="middle">Disconnect</text>
+  </g>
+  <g transform="translate(1042 458)">
+    <rect width="250" height="158" rx="14" class="panel"/>
+    <text x="14" y="25" class="text label">OPS-1004</text>
+    <text x="14" y="43" class="muted tiny">back-office</text>
+    <rect x="166" y="14" width="44" height="22" rx="11" fill="#242424"/>
+    <text x="188" y="29" class="text tiny" text-anchor="middle">Offline</text>
+    <circle cx="226" cy="25" r="11" class="danger"/>
+    <text x="14" y="70" class="text body" font-weight="800">No current activity</text>
+    <text x="14" y="94" class="muted tiny">0 sec</text>
+    <text x="178" y="94" class="muted tiny">No sample yet</text>
+    <rect x="14" y="110" width="60" height="38" rx="8" class="button"/>
+    <text x="44" y="132" class="muted tiny" text-anchor="middle">Message</text>
+    <rect x="82" y="110" width="82" height="38" rx="8" class="button"/>
+    <text x="123" y="126" class="muted tiny" text-anchor="middle">Notification</text>
+    <text x="123" y="140" class="muted tiny" text-anchor="middle">setup</text>
+    <rect x="172" y="110" width="64" height="38" rx="8" class="danger"/>
+    <text x="204" y="132" class="muted tiny" text-anchor="middle">Disconnect</text>
+  </g>
+</svg>

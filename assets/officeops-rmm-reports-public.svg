@@ -1,0 +1,60 @@
+<svg width="1120" height="520" viewBox="0 0 1120 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">OfficeOps RMM reports public screenshot</title>
+  <desc id="desc">A sanitized Reports screen showing department comparison data with anonymized department names.</desc>
+  <style>
+    .bg{fill:#020403}.panel{fill:#020704;stroke:#0b7c38;stroke-width:1.2}.text{fill:#fff;font-family:Inter,Arial,sans-serif}.muted{fill:#a8b9ad;font-family:Inter,Arial,sans-serif}.accent{fill:#30f07f}.pale{fill:#affccc}.tiny{font-size:10px;font-weight:700}.small{font-size:12px}.body{font-size:15px}.headline{font-size:36px;font-weight:900}.grid{stroke:#0b4224;stroke-width:1;stroke-dasharray:2 4}.axis{stroke:#b8c6ba;stroke-width:1}
+  </style>
+  <rect class="bg" width="1120" height="520"/>
+  <text x="18" y="24" class="accent tiny">REAL-TIME OPERATIONS VIEW</text>
+  <text x="18" y="62" class="text headline">Reports</text>
+  <rect x="1012" y="28" width="88" height="38" rx="13" class="panel"/>
+  <text x="1056" y="52" class="text small" text-anchor="middle" font-weight="800">Light mode</text>
+  <rect x="18" y="92" width="1084" height="412" rx="22" class="panel"/>
+  <text x="36" y="124" class="text body" font-weight="900">Attendance and Department Comparison</text>
+  <text x="36" y="154" class="muted small">Trend snapshots for staffing and cross-department productivity.</text>
+  <g transform="translate(64 184)">
+    <line x1="20" y1="0" x2="532" y2="0" class="grid"/>
+    <line x1="20" y1="37" x2="532" y2="37" class="grid"/>
+    <line x1="20" y1="74" x2="532" y2="74" class="grid"/>
+    <line x1="20" y1="111" x2="532" y2="111" class="grid"/>
+    <line x1="20" y1="148" x2="532" y2="148" class="axis"/>
+    <line x1="20" y1="0" x2="20" y2="148" class="axis"/>
+    <line x1="122" y1="0" x2="122" y2="148" class="grid"/>
+    <line x1="224" y1="0" x2="224" y2="148" class="grid"/>
+    <line x1="326" y1="0" x2="326" y2="148" class="grid"/>
+    <line x1="428" y1="0" x2="428" y2="148" class="grid"/>
+    <text x="0" y="4" class="muted small">28</text>
+    <text x="0" y="41" class="muted small">21</text>
+    <text x="0" y="78" class="muted small">14</text>
+    <text x="6" y="115" class="muted small">7</text>
+    <text x="8" y="153" class="muted small">0</text>
+    <rect x="32" y="116" width="40" height="32" rx="5" class="accent"/>
+    <rect x="76" y="116" width="40" height="32" rx="5" class="pale"/>
+    <rect x="134" y="64" width="40" height="84" rx="5" class="accent"/>
+    <rect x="178" y="80" width="40" height="68" rx="5" class="pale"/>
+    <rect x="238" y="16" width="40" height="132" rx="5" class="accent"/>
+    <rect x="282" y="90" width="40" height="58" rx="5" class="pale"/>
+    <rect x="338" y="106" width="40" height="42" rx="5" class="accent"/>
+    <rect x="440" y="64" width="40" height="84" rx="5" class="accent"/>
+    <rect x="484" y="122" width="40" height="26" rx="5" class="pale"/>
+    <text x="38" y="170" class="muted small">2026-06-29</text>
+    <text x="140" y="170" class="muted small">2026-06-30</text>
+    <text x="242" y="170" class="muted small">2026-07-01</text>
+    <text x="344" y="170" class="muted small">2026-07-02</text>
+    <text x="446" y="170" class="muted small">2026-07-03</text>
+  </g>
+  <g transform="translate(614 180)">
+    <rect width="468" height="94" rx="15" class="panel"/>
+    <text x="14" y="28" class="text small" font-weight="900">CLIENT SUPPORT</text>
+    <text x="14" y="54" class="text small" font-weight="800">12 employees</text>
+    <text x="14" y="82" class="muted tiny">2972.3 active minutes - 0 idle minutes</text>
+    <rect y="106" width="468" height="94" rx="15" class="panel"/>
+    <text x="14" y="134" class="text small" font-weight="900">OPS DESK</text>
+    <text x="14" y="160" class="text small" font-weight="800">7 employees</text>
+    <text x="14" y="188" class="muted tiny">83.1 active minutes - 0 idle minutes</text>
+    <rect y="212" width="468" height="94" rx="15" class="panel"/>
+    <text x="14" y="240" class="text small" font-weight="900">UNASSIGNED</text>
+    <text x="14" y="266" class="text small" font-weight="800">1 employees</text>
+    <text x="14" y="294" class="muted tiny">0 active minutes - 0 idle minutes</text>
+  </g>
+</svg>

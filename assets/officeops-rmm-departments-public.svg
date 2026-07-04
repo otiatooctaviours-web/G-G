@@ -1,0 +1,64 @@
+<svg width="1120" height="650" viewBox="0 0 1120 650" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">OfficeOps RMM departments public screenshot</title>
+  <desc id="desc">A sanitized Departments screen showing floor plan placement with anonymized department names.</desc>
+  <style>
+    .bg{fill:#020403}.panel{fill:#020704;stroke:#0b7c38;stroke-width:1.2}.input{fill:#020403;stroke:#0b7c38}.text{fill:#fff;font-family:Inter,Arial,sans-serif}.muted{fill:#a8b9ad;font-family:Inter,Arial,sans-serif}.accent{fill:#30f07f}.tiny{font-size:10px;font-weight:700}.small{font-size:12px}.body{font-size:15px}.headline{font-size:36px;font-weight:900}.wall{stroke:#cfd9d4;stroke-width:1}.door{stroke:#cfd9d4;stroke-width:1;fill:none}.chip{fill:#06180b;stroke:#0b7c38}
+  </style>
+  <rect class="bg" width="1120" height="650"/>
+  <text x="18" y="26" class="accent tiny">REAL-TIME OPERATIONS VIEW</text>
+  <text x="18" y="66" class="text headline">Departments</text>
+  <rect x="1012" y="32" width="88" height="36" rx="12" class="panel"/>
+  <text x="1056" y="55" class="text small" text-anchor="middle" font-weight="800">Light mode</text>
+  <rect x="18" y="98" width="1084" height="550" rx="22" class="panel"/>
+  <text x="36" y="130" class="text body" font-weight="900">Real-Time Department Floor Plans</text>
+  <rect x="1008" y="116" width="78" height="24" rx="12" class="chip"/>
+  <text x="1047" y="132" class="accent tiny" text-anchor="middle">3 Teams</text>
+  <text x="36" y="158" class="text small">Create departments, move devices into the appropriate room, then drag each workstation into position.</text>
+  <rect x="38" y="202" width="1048" height="78" rx="16" class="panel"/>
+  <text x="52" y="225" class="muted tiny">New department</text>
+  <rect x="50" y="234" width="840" height="34" rx="10" class="input"/>
+  <text x="64" y="256" class="muted small">e.g. Support, Finance, Operations</text>
+  <text x="898" y="225" class="muted tiny">Floor color</text>
+  <rect x="900" y="234" width="38" height="34" rx="7" class="input"/>
+  <rect x="907" y="241" width="24" height="22" fill="#30f07f"/>
+  <rect x="954" y="234" width="118" height="34" rx="10" class="input"/>
+  <text x="1013" y="256" class="accent small" text-anchor="middle" font-weight="800">Add department</text>
+  <g transform="translate(38 300)">
+    <rect width="118" height="24" rx="12" class="chip"/>
+    <circle cx="15" cy="12" r="5" fill="#d6e6df"/>
+    <text x="28" y="16" class="text tiny" font-weight="800">Unassigned</text>
+    <text x="88" y="16" class="muted tiny">0/0 live</text>
+    <rect x="126" width="104" height="24" rx="12" class="chip"/>
+    <circle cx="142" cy="12" r="5" fill="#1887ff"/>
+    <text x="154" y="16" class="text tiny" font-weight="800">Ops Desk</text>
+    <text x="198" y="16" class="muted tiny">0/8 live</text>
+    <rect x="238" width="168" height="24" rx="12" class="chip"/>
+    <circle cx="254" cy="12" r="5" fill="#30f07f"/>
+    <text x="266" y="16" class="text tiny" font-weight="800">Client Support</text>
+    <text x="354" y="16" class="muted tiny">0/10 live</text>
+  </g>
+  <rect x="38" y="338" width="1048" height="298" rx="18" fill="#020403" stroke="#8db0a0" stroke-width="1.2"/>
+  <text x="66" y="382" class="text body" font-weight="900">Unassigned</text>
+  <text x="66" y="398" class="muted tiny">Unassigned devices - 0/0 devices live</text>
+  <rect x="664" y="352" width="410" height="32" rx="8" class="input"/>
+  <text x="678" y="373" class="text small" font-weight="800">Two wings</text>
+  <rect x="788" y="390" width="188" height="32" rx="8" class="input"/>
+  <text x="882" y="411" class="text small" text-anchor="middle" font-weight="800">Move device here (18)</text>
+  <rect x="984" y="390" width="90" height="32" rx="8" fill="#090909" stroke="#1f3728"/>
+  <text x="1029" y="411" class="muted small" text-anchor="middle" font-weight="800">Auto arrange</text>
+  <text x="510" y="632" class="text small" font-weight="900">Empty department</text>
+  <g transform="translate(82 466)">
+    <rect width="428" height="144" fill="#020403"/>
+    <path d="M0 0H428V144H0V0Z" class="wall"/>
+    <path d="M107 0V144M214 0V144M321 0V144M0 72H428" class="wall"/>
+    <path d="M0 63Q10 63 10 72M107 63Q117 63 117 72M214 63Q224 63 224 72M321 63Q331 63 331 72" class="door"/>
+    <path d="M0 135Q10 135 10 144M107 135Q117 135 117 144M214 135Q224 135 224 144M321 135Q331 135 331 144" class="door"/>
+  </g>
+  <g transform="translate(612 466)">
+    <rect width="428" height="144" fill="#020403"/>
+    <path d="M0 0H428V144H0V0Z" class="wall"/>
+    <path d="M107 0V144M214 0V144M321 0V144M0 72H428" class="wall"/>
+    <path d="M0 63Q10 63 10 72M107 63Q117 63 117 72M214 63Q224 63 224 72M321 63Q331 63 331 72" class="door"/>
+    <path d="M0 135Q10 135 10 144M107 135Q117 135 117 144M214 135Q224 135 224 144M321 135Q331 135 331 144" class="door"/>
+  </g>
+</svg>
