@@ -1011,6 +1011,33 @@ body.is-nav-open {
   padding-top: 1.15rem;
 }
 
+.portfolio-login-preview {
+  color: var(--text-inverse);
+}
+
+.portfolio-login-links span,
+.portfolio-login-row strong {
+  color: var(--text-inverse);
+}
+
+.portfolio-login-field,
+.portfolio-login-action {
+  min-height: 40px;
+  border-radius: 12px;
+}
+
+.portfolio-login-field {
+  border: 1px solid rgba(247, 247, 242, 0.2);
+  background: rgba(247, 247, 242, 0.08);
+}
+
+.portfolio-login-action {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 800;
+}
+
 .services-section .service-card,
 .about-card,
 .founder-card {

@@ -140,7 +140,7 @@
 
       .case-list span {
         margin-top: 0.35rem;
-        color: rgba(232, 239, 255, 0.76);
+        color: var(--text-muted);
       }
 
       .related-links {
@@ -155,6 +155,16 @@
       .portfolio-payroll-card {
         display: grid;
         gap: 0.9rem;
+        color: var(--text);
+      }
+
+      .portfolio-payroll-card strong {
+        color: var(--text);
+      }
+
+      .portfolio-payroll-card p {
+        margin: 0;
+        color: var(--text-muted);
       }
 
       .portfolio-payroll-brand {
@@ -173,6 +183,28 @@
       .portfolio-payroll-brand-lehigh,
       .portfolio-payroll-brand-elite {
         justify-self: stretch;
+      }
+
+      .portfolio-payroll-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 36px;
+        padding: 0 0.95rem;
+        border-radius: 999px;
+        border: 1px solid rgba(17, 32, 57, 0.14);
+        font-weight: 800;
+      }
+
+      .portfolio-payroll-button-primary {
+        background: #1f6fff;
+        border-color: #1f6fff;
+        color: #ffffff;
+      }
+
+      .portfolio-payroll-button-secondary {
+        background: transparent;
+        color: var(--text);
       }
 
       @media (max-width: 860px) {
