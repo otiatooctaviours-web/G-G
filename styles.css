@@ -1011,6 +1011,27 @@ body.is-nav-open {
   padding-top: 1.15rem;
 }
 
+.cta-copy {
+  color: var(--text);
+}
+
+.cta-copy .eyebrow,
+.cta-copy .glass-pill,
+.cta-copy .stack-kicker {
+  color: #9d7a36;
+}
+
+.cta-copy p {
+  color: var(--text-muted);
+}
+
+.cta-copy .button-secondary,
+.cta-copy .button-ghost {
+  border-color: var(--line);
+  background: rgba(8, 18, 35, 0.03);
+  color: var(--text);
+}
+
 .portfolio-login-preview {
   color: var(--text-inverse);
 }
