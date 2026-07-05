@@ -1011,6 +1011,54 @@ body.is-nav-open {
   padding-top: 1.15rem;
 }
 
+.about-section .brand-badge,
+.about-section .mini-card,
+.about-section .service-bullets li,
+.about-section .case-list li,
+.services-section .brand-badge,
+.services-section .mini-card,
+.services-section .service-bullets li,
+.services-section .case-list li,
+.reason-section .brand-badge,
+.reason-section .mini-card,
+.reason-section .service-bullets li,
+.reason-section .case-list li {
+  border-top-color: rgba(8, 18, 35, 0.14);
+  border-radius: 0;
+  color: var(--text);
+  padding: 1.15rem 0 0;
+}
+
+.about-section .brand-badge strong,
+.about-section .mini-card strong,
+.about-section .service-bullets strong,
+.about-section .case-list strong,
+.services-section .brand-badge strong,
+.services-section .mini-card strong,
+.services-section .service-bullets strong,
+.services-section .case-list strong,
+.reason-section .brand-badge strong,
+.reason-section .mini-card strong,
+.reason-section .service-bullets strong,
+.reason-section .case-list strong {
+  color: var(--text);
+}
+
+.about-section .brand-badge span,
+.about-section .mini-card span,
+.about-section .service-bullets span,
+.about-section .case-list span,
+.services-section .brand-badge span,
+.services-section .mini-card span,
+.services-section .service-bullets span,
+.services-section .case-list span,
+.reason-section .brand-badge span,
+.reason-section .mini-card span,
+.reason-section .service-bullets span,
+.reason-section .case-list span {
+  color: var(--text-muted);
+}
+
 .cta-copy {
   color: var(--text);
 }
