@@ -177,7 +177,7 @@ Total rows: 45
 | 82 | img | `_(empty alt, decorative)_` | src=./assets/gmail.svg 34x34 |
 | 83 | link | _(empty/decorative)_ | href=https://wa.me/254793553860 target=_blank rel=noopener |
 | 84 | img | `_(empty alt, decorative)_` | src=./assets/whatsapp.svg 34x34 |
-| 85 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.marketing target=_blank rel=noopener |
+| 85 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.tech/ target=_blank rel=noopener |
 | 86 | img | `_(empty alt, decorative)_` | src=./assets/instagram.svg 34x34 |
 | 87 | link | _(empty/decorative)_ | href=https://www.facebook.com/profile.php?id=61592070290200 target=_blank rel=noopener |
 | 88 | img | `_(empty alt, decorative)_` | src=./assets/facebook.svg 34x34 |
@@ -253,7 +253,7 @@ Total rows: 91
 | 55 | img | `_(empty alt, decorative)_` | src=./assets/gmail.svg 34x34 |
 | 56 | link | _(empty/decorative)_ | href=https://wa.me/254793553860 target=_blank rel=noopener |
 | 57 | img | `_(empty alt, decorative)_` | src=./assets/whatsapp.svg 34x34 |
-| 58 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.marketing target=_blank rel=noopener |
+| 58 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.tech/ target=_blank rel=noopener |
 | 59 | img | `_(empty alt, decorative)_` | src=./assets/instagram.svg 34x34 |
 | 60 | link | _(empty/decorative)_ | href=https://www.facebook.com/profile.php?id=61592070290200 target=_blank rel=noopener |
 | 61 | img | `_(empty alt, decorative)_` | src=./assets/facebook.svg 34x34 |
@@ -292,7 +292,7 @@ Total rows: 64
 | 18 | img | `_(empty alt, decorative)_` | src=./assets/phone.svg 32x32 |
 | 19 | link | _(empty/decorative)_ | href=mailto:info@ggmarketing.co.ke |
 | 20 | img | `_(empty alt, decorative)_` | src=./assets/gmail.svg 32x32 |
-| 21 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.marketing target=_blank rel=noopener |
+| 21 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.tech/ target=_blank rel=noopener |
 | 22 | img | `_(empty alt, decorative)_` | src=./assets/instagram.svg 32x32 |
 | 23 | link | _(empty/decorative)_ | href=https://www.facebook.com/profile.php?id=61592070290200 target=_blank rel=noopener |
 | 24 | img | `_(empty alt, decorative)_` | src=./assets/facebook.svg 32x32 |
@@ -425,7 +425,7 @@ Total rows: 57
 | 82 | img | `_(empty alt, decorative)_` | src=./assets/gmail.svg 34x34 |
 | 83 | link | _(empty/decorative)_ | href=https://wa.me/254793553860 target=_blank rel=noopener |
 | 84 | img | `_(empty alt, decorative)_` | src=./assets/whatsapp.svg 34x34 |
-| 85 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.marketing target=_blank rel=noopener |
+| 85 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.tech/ target=_blank rel=noopener |
 | 86 | img | `_(empty alt, decorative)_` | src=./assets/instagram.svg 34x34 |
 | 87 | link | _(empty/decorative)_ | href=https://www.facebook.com/profile.php?id=61592070290200 target=_blank rel=noopener |
 | 88 | img | `_(empty alt, decorative)_` | src=./assets/facebook.svg 34x34 |
@@ -598,7 +598,7 @@ Total rows: 91
 | 152 | img | `_(empty alt, decorative)_` | src=./assets/phone.svg 32x32 |
 | 153 | link | _(empty/decorative)_ | href=mailto:info@ggmarketing.co.ke |
 | 154 | img | `_(empty alt, decorative)_` | src=./assets/gmail.svg 32x32 |
-| 155 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.marketing target=_blank rel=noopener |
+| 155 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.tech/ target=_blank rel=noopener |
 | 156 | img | `_(empty alt, decorative)_` | src=./assets/instagram.svg 32x32 |
 | 157 | link | _(empty/decorative)_ | href=https://www.facebook.com/profile.php?id=61592070290200 target=_blank rel=noopener |
 | 158 | img | `_(empty alt, decorative)_` | src=./assets/facebook.svg 32x32 |
@@ -731,7 +731,7 @@ Total rows: 191
 | 82 | img | `_(empty alt, decorative)_` | src=./assets/gmail.svg 34x34 |
 | 83 | link | _(empty/decorative)_ | href=https://wa.me/254793553860 target=_blank rel=noopener |
 | 84 | img | `_(empty alt, decorative)_` | src=./assets/whatsapp.svg 34x34 |
-| 85 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.marketing target=_blank rel=noopener |
+| 85 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.tech/ target=_blank rel=noopener |
 | 86 | img | `_(empty alt, decorative)_` | src=./assets/instagram.svg 34x34 |
 | 87 | link | _(empty/decorative)_ | href=https://www.facebook.com/profile.php?id=61592070290200 target=_blank rel=noopener |
 | 88 | img | `_(empty alt, decorative)_` | src=./assets/facebook.svg 34x34 |
@@ -881,7 +881,7 @@ Total rows: 42
 | 75 | img | `_(empty alt, decorative)_` | src=./assets/gmail.svg 34x34 |
 | 76 | link | _(empty/decorative)_ | href=https://wa.me/254793553860 target=_blank rel=noopener |
 | 77 | img | `_(empty alt, decorative)_` | src=./assets/whatsapp.svg 34x34 |
-| 78 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.marketing target=_blank rel=noopener |
+| 78 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.tech/ target=_blank rel=noopener |
 | 79 | img | `_(empty alt, decorative)_` | src=./assets/instagram.svg 34x34 |
 | 80 | link | _(empty/decorative)_ | href=https://www.facebook.com/profile.php?id=61592070290200 target=_blank rel=noopener |
 | 81 | img | `_(empty alt, decorative)_` | src=./assets/facebook.svg 34x34 |
@@ -1028,7 +1028,7 @@ Total rows: 32
 | 82 | img | `_(empty alt, decorative)_` | src=./assets/gmail.svg 34x34 |
 | 83 | link | _(empty/decorative)_ | href=https://wa.me/254793553860 target=_blank rel=noopener |
 | 84 | img | `_(empty alt, decorative)_` | src=./assets/whatsapp.svg 34x34 |
-| 85 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.marketing target=_blank rel=noopener |
+| 85 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.tech/ target=_blank rel=noopener |
 | 86 | img | `_(empty alt, decorative)_` | src=./assets/instagram.svg 34x34 |
 | 87 | link | _(empty/decorative)_ | href=https://www.facebook.com/profile.php?id=61592070290200 target=_blank rel=noopener |
 | 88 | img | `_(empty alt, decorative)_` | src=./assets/facebook.svg 34x34 |
@@ -1198,7 +1198,7 @@ Total rows: 55
 | 82 | img | `_(empty alt, decorative)_` | src=./assets/gmail.svg 34x34 |
 | 83 | link | _(empty/decorative)_ | href=https://wa.me/254793553860 target=_blank rel=noopener |
 | 84 | img | `_(empty alt, decorative)_` | src=./assets/whatsapp.svg 34x34 |
-| 85 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.marketing target=_blank rel=noopener |
+| 85 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.tech/ target=_blank rel=noopener |
 | 86 | img | `_(empty alt, decorative)_` | src=./assets/instagram.svg 34x34 |
 | 87 | link | _(empty/decorative)_ | href=https://www.facebook.com/profile.php?id=61592070290200 target=_blank rel=noopener |
 | 88 | img | `_(empty alt, decorative)_` | src=./assets/facebook.svg 34x34 |
@@ -1349,7 +1349,7 @@ Total rows: 45
 | 73 | img | `_(empty alt, decorative)_` | src=./assets/gmail.svg 34x34 |
 | 74 | link | _(empty/decorative)_ | href=https://wa.me/254793553860 target=_blank rel=noopener |
 | 75 | img | `_(empty alt, decorative)_` | src=./assets/whatsapp.svg 34x34 |
-| 76 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.marketing target=_blank rel=noopener |
+| 76 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.tech/ target=_blank rel=noopener |
 | 77 | img | `_(empty alt, decorative)_` | src=./assets/instagram.svg 34x34 |
 | 78 | link | _(empty/decorative)_ | href=https://www.facebook.com/profile.php?id=61592070290200 target=_blank rel=noopener |
 | 79 | img | `_(empty alt, decorative)_` | src=./assets/facebook.svg 34x34 |
@@ -1450,7 +1450,7 @@ Total rows: 82
 | 80 | img | `_(empty alt, decorative)_` | src=./assets/gmail.svg 34x34 |
 | 81 | link | _(empty/decorative)_ | href=https://wa.me/254793553860 target=_blank rel=noopener |
 | 82 | img | `_(empty alt, decorative)_` | src=./assets/whatsapp.svg 34x34 |
-| 83 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.marketing target=_blank rel=noopener |
+| 83 | link | _(empty/decorative)_ | href=https://www.instagram.com/g_g.tech/ target=_blank rel=noopener |
 | 84 | img | `_(empty alt, decorative)_` | src=./assets/instagram.svg 34x34 |
 | 85 | link | _(empty/decorative)_ | href=https://www.facebook.com/profile.php?id=61592070290200 target=_blank rel=noopener |
 | 86 | img | `_(empty alt, decorative)_` | src=./assets/facebook.svg 34x34 |
