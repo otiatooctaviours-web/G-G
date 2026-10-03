@@ -1,5 +1,7 @@
-@import url("tokens.css");
-@import url("components.css");
+/* tokens.css and components.css are linked from the HTML with the shared
+ * version stamp, not @imported here. An unversioned @import is fetched once
+ * and then held by the HTTP cache, so editing either file reached only
+ * browsers that had never seen it. A <link> also loads in parallel. */
 
 /* System A presentation preset.
  * These seven pages put cards directly on the section instead of on a raised

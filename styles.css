@@ -1,5 +1,7 @@
-@import url("tokens.css");
-@import url("components.css");
+/* tokens.css and components.css are linked from the HTML with the shared
+ * version stamp, not @imported here. An unversioned @import is fetched once
+ * and then held by the HTTP cache, so editing either file reached only
+ * browsers that had never seen it. A <link> also loads in parallel. */
 
 /* The old 24-line :root, the box-sizing reset, html/body/img/a/form defaults
  * and the .section > */.footer-* container rule are all now in tokens.css and
@@ -718,6 +720,33 @@ body.is-nav-open {
 
 .site-footer .footer-grid.glass {
   grid-template-columns: minmax(0, 1.25fr) repeat(3, minmax(0, 0.8fr));
+}
+
+/* The four fixed columns above give each cell about 44px on a 320px screen,
+ * which is narrower than the links inside it, so the row runs past the
+ * viewport and the page scrolls sideways. Two things fix that: letting the
+ * cells shrink below their content, and breaking a long string rather than
+ * pushing the column wider. The cells here are divs, and the anchors are
+ * display:block from further up, so neither needed min-width:0 to wrap - the
+ * wrap behaviour is what was missing. */
+.site-footer .footer-grid.glass > * {
+  min-width: 0;
+}
+
+.footer-grid a,
+.footer-grid p,
+.footer-meta a,
+.footer-meta p {
+  overflow-wrap: anywhere;
+}
+
+/* Below this the four columns cannot hold their own content, so drop to one.
+ * At 641px and up the widest cell is still wider than the widest string. */
+@media (max-width: 640px) {
+  .site-footer .footer-grid.glass {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+  }
 }
 
 @keyframes skeletonSweep {

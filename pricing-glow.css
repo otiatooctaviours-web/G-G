@@ -1,4 +1,5 @@
-@import url("tokens.css");
+/* tokens.css is linked from the HTML with the shared version stamp, not
+ * @imported here. See the note in home.css. */
 
 /* Cursor-following gold glow behind the pricing cards.
    Loaded by pricing.html only. Kept out of home.css on purpose.
