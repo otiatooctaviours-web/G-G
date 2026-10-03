@@ -9,6 +9,7 @@ window.GG_PRICING = {
   groups: [
     {
       id: "websites",
+      shortLabel: "Websites & Landing Pages",
       eyebrow: "Websites & Landing Pages",
       heading: "Get online and get found.",
       tiers: [
@@ -52,6 +53,7 @@ window.GG_PRICING = {
 
     {
       id: "dashboards",
+      shortLabel: "Dashboards & Tools",
       eyebrow: "Dashboards & Internal Tools",
       heading: "Replace spreadsheets and paperwork.",
       tiers: [
@@ -85,6 +87,7 @@ window.GG_PRICING = {
 
     {
       id: "apps",
+      shortLabel: "Apps & Platforms",
       eyebrow: "Apps & Platforms",
       heading: "Build a product people use.",
       tiers: [
@@ -111,6 +114,7 @@ window.GG_PRICING = {
           slug: "enterprise-build",
           summary: "Multi-system work scoped with you, line by line.",
           price: { custom: true },
+          ctaLabel: "Talk to us",
           includes: ["Multi-system integrations", "High-scale platforms", "Multi-tenant platforms"],
           delivery: "Delivery scoped per project",
         },

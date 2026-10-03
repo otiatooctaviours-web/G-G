@@ -104,7 +104,7 @@
     panel.append(priceLine);
     panel.append(create("p", "pricing-audience", tier.summary));
 
-    const cta = create("a", "button button-primary pricing-cta", "Start this project");
+    const cta = create("a", "button pricing-cta", tier.ctaLabel || "Start this project");
     cta.href = contactLink(tier.slug);
     cta.dataset.packageName = tier.name;
     panel.append(cta);
@@ -149,28 +149,6 @@
     return card;
   };
 
-  const buildGroup = (group) => {
-    const section = create("section", "pricing-group");
-    const headingId = `${group.id}-heading`;
-
-    section.setAttribute("aria-labelledby", headingId);
-
-    const heading = create("div", "section-heading");
-    heading.append(create("p", "eyebrow", group.eyebrow));
-
-    const title = create("h2", null, group.heading);
-    title.id = headingId;
-    heading.append(title);
-
-    section.append(heading);
-
-    const grid = create("div", "pricing-grid");
-    group.tiers.forEach((tier) => grid.append(buildTierCard(tier)));
-    section.append(grid);
-
-    return section;
-  };
-
   const buildAddOn = (addOn) => {
     const item = create("p", "addon-item");
     item.append(create("strong", null, addOn.name));
@@ -208,6 +186,117 @@
     return item;
   };
 
+  /* Tabbed pricing groups */
+  const tabs = [];
+  const panels = [];
+  let activeIndex = 0;
+
+  const animatePanel = (panel) => {
+    panel.classList.remove("is-entering");
+    void panel.offsetWidth;
+    panel.classList.add("is-entering");
+  };
+
+  const selectTab = (index, { focus = false, animate = true } = {}) => {
+    tabs.forEach((tab, position) => {
+      const isActive = position === index;
+
+      tab.setAttribute("aria-selected", String(isActive));
+      tab.tabIndex = isActive ? 0 : -1;
+      panels[position].hidden = !isActive;
+    });
+
+    activeIndex = index;
+
+    if (focus) {
+      tabs[index].focus();
+    }
+
+    if (animate) {
+      animatePanel(panels[index]);
+    }
+  };
+
+  const buildGroupTabs = (groups) => {
+    const section = create("section", "pricing-group");
+    const container = create("div", "container");
+
+    const tablist = create("div", "pricing-tabs");
+    tablist.setAttribute("role", "tablist");
+    tablist.setAttribute("aria-label", "Pricing categories");
+
+    groups.forEach((group, index) => {
+      const tab = create("button", "pricing-tab", group.shortLabel || group.eyebrow);
+
+      tab.type = "button";
+      tab.id = `pricing-tab-${group.id}`;
+      tab.setAttribute("role", "tab");
+      tab.setAttribute("aria-controls", `pricing-panel-${group.id}`);
+      tab.setAttribute("aria-selected", String(index === 0));
+      tab.tabIndex = index === 0 ? 0 : -1;
+      tab.addEventListener("click", () => selectTab(index));
+
+      tablist.append(tab);
+      tabs.push(tab);
+    });
+
+    const panelStack = create("div", "pricing-panels");
+
+    groups.forEach((group, index) => {
+      const panel = create("div", "pricing-tabpanel");
+
+      panel.id = `pricing-panel-${group.id}`;
+      panel.setAttribute("role", "tabpanel");
+      panel.setAttribute("aria-labelledby", `pricing-tab-${group.id}`);
+      panel.tabIndex = 0;
+      panel.hidden = index !== 0;
+
+      const heading = create("div", "section-heading");
+      heading.append(create("p", "eyebrow", group.eyebrow));
+
+      const title = create("h2", null, group.heading);
+      title.id = `${group.id}-heading`;
+      heading.append(title);
+
+      panel.append(heading);
+
+      const grid = create("div", "pricing-grid");
+      grid.style.setProperty("--cols", String(Math.min(group.tiers.length, 3)));
+      group.tiers.forEach((tier) => grid.append(buildTierCard(tier)));
+      panel.append(grid);
+
+      panelStack.append(panel);
+      panels.push(panel);
+    });
+
+    tablist.addEventListener("keydown", (event) => {
+      const lastIndex = tabs.length - 1;
+      let next = null;
+
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        next = activeIndex === lastIndex ? 0 : activeIndex + 1;
+      } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        next = activeIndex === 0 ? lastIndex : activeIndex - 1;
+      } else if (event.key === "Home") {
+        next = 0;
+      } else if (event.key === "End") {
+        next = lastIndex;
+      }
+
+      if (next === null) {
+        return;
+      }
+
+      event.preventDefault();
+      selectTab(next, { focus: true });
+    });
+
+    container.append(tablist, panelStack);
+    section.append(container);
+
+    return section;
+  };
+
   const mount = (selector, nodes) => {
     const root = document.querySelector(selector);
 
@@ -218,7 +307,7 @@
     nodes.forEach((node) => root.append(node));
   };
 
-  mount("#pricing-groups", data.groups.map(buildGroup));
+  mount("#pricing-groups", [buildGroupTabs(data.groups)]);
   mount("#pricing-addons", data.addOns.map(buildAddOn));
   mount("#payment-steps", data.paymentSteps.map(buildPaymentStep));
   mount("#pricing-faq-list", data.faqs.map(buildFaq));
