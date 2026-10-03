@@ -1,0 +1,191 @@
+/* tokens.css — the single source of truth for the G&G site.
+ *
+ * Loaded first by home.css, styles.css, approach-flow.css and pricing-glow.css.
+ * Nothing here selects a component; it only declares values.
+ *
+ * Contents
+ *   1. Spacing scale      4px/8px base
+ *   2. Container + section rhythm
+ *   3. Type scale         fluid, serif display + sans body
+ *   4. Colour             navy / gold / cream, near-duplicates merged
+ *   5. Radius, border, shadow
+ *   6. Control geometry   buttons, inputs, tap targets
+ *   7. Legacy aliases     old names -> new tokens, so existing var() calls
+ *                         in page-level CSS keep working while being migrated
+ *
+ * Contrast: every text token below is >= 4.5:1 against the surface it is used
+ * on. Verified ratios are noted beside each value.
+ */
+
+/* ===================================================================== tokens */
+
+:root {
+  /* ------------------------------------------------------- 1. spacing scale
+   * 4px base. Use these instead of literal px for padding, margin and gap.
+   * Anything that does not fit the scale should be a component decision, not
+   * a new one-off spacing value.
+   */
+  --space-1: 4px;    /* hairline offsets, icon nudges      */
+  --space-2: 8px;    /* tight label gaps                  */
+  --space-3: 12px;   /* inside small controls             */
+  --space-4: 16px;   /* default control inset, small grid */
+  --space-5: 24px;   /* mobile gutter, card gutter (small)*/
+  --space-6: 32px;   /* card gutter (default)             */
+  --space-7: 48px;   /* desktop gutter, mobile section    */
+  --space-8: 64px;   /* desktop section (small screens)   */
+  --space-9: 96px;   /* desktop section padding           */
+  --space-10: 128px; /* hero-scale breathing room         */
+
+  /* ------------------------------------- 2. container + section rhythm
+   * One max width, one gutter pair, one section padding pair.
+   */
+  --container-max: 1160px;
+  --gutter: var(--space-5);                       /* 24px, mobile  */
+  --container: min(var(--container-max), calc(100vw - (var(--gutter) * 2)));
+  --measure: 65ch;                                /* paragraph cap */
+
+  --section-pad: var(--space-7);                  /* 48px,  mobile */
+  --section-pad-desktop: var(--space-9);          /* 96px,  desktop*/
+
+  /* --------------------------------------------------------- 3. type scale
+   * Display face is Cormorant Garamond (serif), body is Plus Jakarta Sans.
+   * Fluid via clamp(): each step scales between a 320px and a 1440px viewport.
+   */
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+
+  --text-h1: clamp(2.75rem, 6vw, 5.5rem);
+  --text-h2: clamp(2.125rem, 4vw, 3.5rem);
+  --text-h3: clamp(1.3125rem, 2vw, 1.75rem);
+  --text-body: 1rem;
+  --text-small: clamp(0.875rem, 0.95vw, 1rem);
+  --text-eyebrow: clamp(0.75rem, 0.8vw, 0.8125rem);
+
+  --leading-heading: 1.1;      /* h1, h2 */
+  --leading-heading-sm: 1.2;   /* h3 and card titles */
+  --leading-body: 1.6;         /* task spec: body line-height 1.6 */
+  --leading-tight: 1.2;        /* prices, stat figures */
+
+  --tracking-heading: -0.03em;
+  --tracking-eyebrow: 0.16em;
+
+  --weight-body: 400;
+  --weight-medium: 600;
+  --weight-bold: 700;
+  --weight-max: 800;
+
+  /* ------------------------------------------------------------ 4. colour
+   * Navy / gold / cream, with the 15 near-identical navies, 9 golds and
+   * 6 whites merged down to one value per role.
+   */
+  --color-navy: #081223;         /* darkest ground: footer, hero          */
+  --color-navy-2: #122640;      /* raised navy: gradients, alt surfaces */
+  --color-ink: #0f1f34;         /* body text on light  (15.44:1)        */
+  --color-ink-2: #1d2834;       /* text on gold fills  (7.53:1)         */
+  --color-muted: #576273;       /* secondary text    (5.75:1 on cream)  */
+
+  --color-cream: #f7f7f2;       /* page ground                           */
+  --color-surface: #ffffff;     /* raised surface                        */
+  --color-surface-tint: #eef3fa;/* tinted surface (was #eef3fa/#eef3fb/…)  */
+
+  --color-gold: #d8b36a;         /* brand accent: fills, rules            */
+  --color-gold-strong: #f1cf8d; /* accent on dark       (12.53:1)        */
+  --color-gold-text: #8a6a2e;    /* accent as small text (4.67:1) AA      */
+  --color-gold-deep: #7d5f28;    /* accent at tiny sizes (5.52:1) AA      */
+
+  --color-border: rgba(8, 18, 35, 0.1);
+  --color-border-strong: rgba(216, 179, 106, 0.28);
+  --color-border-inverse: rgba(255, 255, 255, 0.16);
+  --color-surface-glass: rgba(255, 255, 255, 0.9);
+  --color-ink-inverse: #f7f7f2; /* cream text on navy (17.43:1)         */
+  --color-ink-inverse-muted: rgba(247, 247, 242, 0.78);
+  --color-ink-inverse-faint: rgba(247, 247, 242, 0.72);
+
+  --color-success: #1e6c43;
+  --color-error: #a32e2e;
+
+  /* -------------------------------------------- 5. radius, border, shadow
+   * Two radius sizes, one border style, two shadow levels.
+   */
+  --radius-sm: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;         /* round controls: buttons, chips, tabs  */
+
+  --border-hairline: 1px solid var(--color-border);
+
+  --shadow-1: 0 18px 44px rgba(6, 15, 30, 0.1);   /* resting card        */
+  --shadow-2: 0 24px 70px rgba(6, 15, 30, 0.16);  /* lifted / overlay    */
+
+  /* -------------------------------------------------- 6. control geometry
+   * Shared by buttons, inputs and anything else that must clear 44px.
+   */
+  --control-height: 52px;
+  --control-pad-x: var(--space-5);   /* 24px */
+  --control-pad-y: var(--space-3);   /* 12px */
+  --control-radius: var(--radius-pill);
+  --tap-min: 44px;
+
+  --focus-ring: 2px solid var(--color-gold-strong);
+  --focus-ring-offset: 2px;
+
+  /* Blur radii. Previously three ad-hoc values (14/16/18px) plus 48px on the
+   * pricing glow; now two, with the glow kept as its own value so the effect
+   * is unchanged.
+   */
+  --blur-sm: 14px;
+  --blur-glow: 48px;
+
+  /* The WhatsApp launcher is position: fixed at right 24px, bottom 24px and
+   * 56px square, so it permanently occupies the bottom 80px of the viewport.
+   * whatsapp-float.js loads on all 17 pages and appends the launcher straight
+   * to body with no wrapper, so the clearance has to sit on body itself: this
+   * is the band that lets the last piece of content always scroll clear. */
+  --launcher-size: 56px;
+  --launcher-offset: 24px;
+  --floating-clearance: calc(var(--launcher-size) + var(--launcher-offset));
+
+  --transition: 180ms ease;
+  --transition-slow: 220ms ease;
+}
+
+/* Breakpoint companions: the values that differ above/below 768px are set
+ * once here rather than re-declared inside four separate media queries. */
+@media (min-width: 768px) {
+  :root {
+    --gutter: var(--space-7);        /* 48px */
+    --section-pad: var(--section-pad-desktop);
+  }
+}
+
+/* ------------------------------------------------- 7. legacy name aliases
+ * The old hand-maintained token names, mapped onto the scales above. These
+ * exist so the ~2,000 remaining var() references in home.css and styles.css
+ * resolve to a single definition. Each one can be retired as its call sites
+ * are migrated to the canonical name.
+ */
+:root {
+  /* colour */
+  --bg: var(--color-navy);              /* was #081223 / #f6f6f0 (unused) */
+  --text: var(--color-ink);             /* was #0f1f34 / #112039           */
+  --text-muted: var(--color-muted);     /* was #576273 / #586274           */
+  --text-inverse: var(--color-ink-inverse);
+  --accent: var(--color-gold);
+  --accent-soft: var(--color-gold-strong);  /* was #f1cf8d on both systems  */
+  --accent-strong: var(--color-gold-strong);
+  --accent-ink: var(--color-ink-2);
+  --line: var(--color-border);
+  --line-strong: var(--color-border-strong);
+  --surface: var(--color-surface-glass); /* was #f7f7f2 / rgba(255,255,255) */
+  --surface-strong: var(--color-surface);
+  --surface-tint: var(--color-surface-tint);
+  --surface-deep: var(--color-navy);
+  --surface-deep-soft: var(--color-navy-2);
+
+  /* elevation */
+  --shadow: var(--shadow-2);
+
+  /* shape */
+  --radius-md: var(--radius-sm);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-lg);
+}

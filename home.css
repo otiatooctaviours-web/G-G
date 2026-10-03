@@ -1,180 +1,30 @@
+@import url("tokens.css");
+@import url("components.css");
+
+/* System A presentation preset.
+ * These seven pages put cards directly on the section instead of on a raised
+ * surface. That used to be eight hard-coded `padding: 0` / `border: 0` /
+ * `background: transparent` / `box-shadow: none` declarations near the bottom
+ * of this file. It is now four card tokens, so components.css owns the card
+ * rule outright and this file only declares how this system dresses it. */
 :root {
-  --bg: #081223;
-  --bg-soft: #0e1b31;
-  --surface: #f7f7f2;
-  --surface-strong: #ffffff;
-  --surface-tint: #eef3fa;
-  --surface-deep: #122640;
-  --line: rgba(8, 18, 35, 0.1);
-  --line-strong: rgba(234, 203, 145, 0.28);
-  --text: #0f1f34;
-  --text-muted: #576273;
-  --text-inverse: #f7f7f2;
-  --accent: #d8b36a;
-  --accent-strong: #f1cf8d;
-  --accent-ink: #1d2834;
-  --shadow: 0 24px 70px rgba(6, 15, 30, 0.16);
-  --radius-lg: 32px;
-  --radius-md: 20px;
-  --radius-sm: 14px;
-  --container: min(1160px, calc(100vw - 40px));
-  --font-body: "Plus Jakarta Sans", sans-serif;
-  --font-display: "Cormorant Garamond", serif;
+  --card-pad: 0;
+  --card-radius: 0;
+  --card-border: 0;
+  --card-bg: transparent;
+  --card-shadow: none;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+/* Page ground. Type, colour, spacing and the overflow guard come from
+ * components.css. */
 body {
-  margin: 0;
-  font-family: var(--font-body);
-  color: var(--text);
   background:
     radial-gradient(circle at top left, rgba(216, 179, 106, 0.12), transparent 26%),
     linear-gradient(180deg, #f4f6fb 0%, #f8f7f2 42%, #ffffff 100%);
 }
 
-img {
-  display: block;
-  max-width: 100%;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
-
-.container {
-  width: var(--container);
-  margin: 0 auto;
-}
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  padding: 18px 0;
-  transition: background-color 180ms ease, box-shadow 180ms ease, backdrop-filter 180ms ease;
-}
-
-.site-header.is-scrolled {
-  background: rgba(8, 18, 35, 0.74);
-  box-shadow: 0 10px 40px rgba(4, 10, 20, 0.28);
-  backdrop-filter: blur(18px);
-}
-
-.nav-shell {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.brand img {
-  width: 56px;
-  height: 56px;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  object-fit: cover;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
-
-.brand-copy {
-  display: grid;
-  gap: 2px;
-  color: var(--text-inverse);
-}
-
-.brand-copy strong {
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.brand-copy small {
-  color: rgba(247, 247, 242, 0.72);
-}
-
-.site-nav {
-  display: flex;
-  align-items: center;
-  gap: 26px;
-  color: rgba(247, 247, 242, 0.86);
-}
-
-.site-nav a {
-  position: relative;
-  font-size: 0.96rem;
-}
-
-.site-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 100%;
-  height: 1px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 180ms ease;
-}
-
-.site-nav a:hover::after,
-.site-nav a:focus-visible::after,
-.site-nav a[aria-current="page"]::after {
-  transform: scaleX(1);
-}
-
-.site-nav a[aria-current="page"] {
-  color: var(--text-inverse);
-}
-
-.nav-cta {
-  padding: 13px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.nav-toggle {
-  display: none;
-  width: 50px;
-  height: 50px;
-  padding: 0;
-  border: 0;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.08);
-  cursor: pointer;
-}
-
-.nav-toggle span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  margin: 6px auto;
-  background: var(--text-inverse);
-  transition: transform 180ms ease, opacity 180ms ease;
-}
+/* Nav, brand, nav-toggle and the hero below are page composition and stay
+ * here; the shared header, nav-link and button rules live in components.css. */
 
 .hero-section {
   position: relative;
@@ -242,42 +92,12 @@ textarea {
   min-height: 720px;
 }
 
-.eyebrow {
-  margin: 0 0 14px;
-  font-size: 0.84rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent-strong);
-}
-
-h1,
-h2,
-h3 {
-  margin: 0;
-  font-family: var(--font-display);
-  letter-spacing: -0.03em;
-}
+/* h1/h2/h3/p, the eyebrow label and their measures now come from
+ * components.css. This page keeps only its own h1 measure and the hero
+ * lead paragraph, which is larger than body copy. */
 
 h1 {
   max-width: 12ch;
-  font-size: clamp(3.3rem, 6vw, 6rem);
-  line-height: 0.92;
-}
-
-h2 {
-  font-size: clamp(2.3rem, 4vw, 3.9rem);
-  line-height: 0.96;
-}
-
-h3 {
-  font-size: clamp(1.4rem, 2vw, 1.9rem);
-  line-height: 1;
-}
-
-p {
-  margin: 0;
-  line-height: 1.7;
 }
 
 .hero-text,
@@ -303,22 +123,12 @@ p {
 .contact-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 28px;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
 }
 
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 52px;
-  padding: 0 22px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  font-weight: 700;
-  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
-}
-
+/* Button geometry and all three variants live in components.css. The hover
+ * lift below is kept only for the two non-button targets it also covers. */
 .button:hover,
 .button:focus-visible,
 .contact-chip:hover,
@@ -328,17 +138,6 @@ p {
 .case-study-copy a:hover,
 .case-study-copy a:focus-visible {
   transform: translateY(-2px);
-}
-
-.button-primary {
-  background: var(--accent);
-  color: var(--accent-ink);
-}
-
-.button-secondary {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-inverse);
 }
 
 .hero-points {
@@ -390,22 +189,21 @@ p {
   margin-top: 28px;
 }
 
+/* These five declarations were dead: the direct-to-background layer later in
+ * this file used to zero them. They are removed rather than left in place,
+ * because a rule here would now beat the --card-* tokens and put a dark
+ * panel back on a card that is meant to sit flush on the hero. */
 .hero-summary-card {
-  padding: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 22px;
-  background: rgba(5, 11, 22, 0.58);
-  box-shadow: 0 18px 40px rgba(4, 10, 20, 0.18);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(var(--blur-sm));
 }
 
 .hero-summary-card span {
   display: block;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: var(--text-eyebrow);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--accent-strong);
+  color: var(--color-gold-strong);
 }
 
 .hero-summary-card strong {
@@ -483,9 +281,8 @@ p {
   padding: 0;
 }
 
-.section {
-  padding: 88px 0;
-}
+/* Section padding and the surface/contrast variants now come from
+ * components.css. */
 
 .section-surface {
   background:
@@ -527,23 +324,9 @@ p {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.service-card,
-.testimonial-card,
-.faq-item,
-.case-study-card,
-.contact-form-card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: var(--shadow);
-}
-
-.service-card {
-  display: grid;
-  gap: 16px;
-  padding: 28px;
-}
-
+/* Card surface, radius, border, shadow, padding, the flex column and the
+ * trailing-CTA alignment all come from components.css. Only each family's
+ * page-specific layout stays here. */
 .service-card-media {
   display: flex;
   align-items: center;
@@ -570,17 +353,19 @@ p {
 
 .service-index,
 .case-study-tag {
-  color: #9d7a36;
+  color: var(--color-gold-text);
 }
 
+/* .footer-note and .footer-copy are deliberately absent: both live inside
+ * <footer> on all seven of these pages, which is navy, so they take the
+ * inverse cream from components.css. --text-muted here would be dark grey on
+ * navy. */
 .service-card p,
 .case-study-copy p,
 .testimonial-meta span,
 .faq-item p,
-.contact-copy p,
-.footer-note,
-.footer-copy {
-  color: var(--text-muted);
+.contact-copy p {
+  color: var(--color-muted);
 }
 
 .service-card a,
@@ -592,7 +377,7 @@ p {
 .service-card a::after,
 .case-study-copy a::after {
   content: " \2192";
-  color: #9d7a36;
+  color: var(--color-gold-text);
 }
 
 .case-study-grid {
@@ -606,33 +391,14 @@ p {
   margin-bottom: 24px;
 }
 
-.pricing-card,
-.addons-card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: var(--shadow);
-}
-
-.pricing-card {
-  display: grid;
-  gap: 14px;
-  padding: 28px;
-}
 
 .pricing-card-featured {
-  border-color: rgba(216, 179, 106, 0.42);
   background:
     linear-gradient(180deg, rgba(255, 248, 230, 0.96), rgba(255, 255, 255, 0.92));
 }
 
-.pricing-kicker {
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #9d7a36;
-}
+/* Eyebrow metrics come from components.css; only the colour needed fixing
+ * for AA (#9d7a36 was 3.71:1 on cream). */
 
 .pricing-price {
   font-size: 2rem;
@@ -654,15 +420,10 @@ p {
   color: var(--text);
 }
 
-.addons-card {
-  display: grid;
-  gap: 24px;
-  padding: 28px;
-}
 
 .addons-card .eyebrow {
   margin-bottom: 8px;
-  color: #9d7a36;
+  color: var(--color-gold-text);
 }
 
 .addons-grid {
@@ -829,12 +590,6 @@ p {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.testimonial-card {
-  display: grid;
-  gap: 18px;
-  padding: 28px;
-  align-content: start;
-}
 
 .testimonial-card-header,
 .testimonial-person,
@@ -936,10 +691,6 @@ p {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.faq-item {
-  padding: 22px 24px;
-}
-
 .faq-item summary {
   cursor: pointer;
   list-style: none;
@@ -970,103 +721,24 @@ p {
   gap: 18px;
 }
 
-.contact-form-card {
-  padding: 28px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.contact-form-card label {
-  display: grid;
-  gap: 10px;
-  color: var(--text);
-  font-weight: 600;
-}
-
-.contact-form-card input,
-.contact-form-card select,
-.contact-form-card textarea {
-  width: 100%;
-  padding: 15px 16px;
-  border: 1px solid rgba(8, 18, 35, 0.14);
-  border-radius: 16px;
-  background: rgba(248, 248, 246, 0.92);
-  color: var(--text);
-}
-
-.contact-form-card input:focus,
-.contact-form-card select:focus,
-.contact-form-card textarea:focus {
-  outline: 2px solid rgba(216, 179, 106, 0.32);
-  border-color: rgba(216, 179, 106, 0.56);
-}
-
+/* Form controls, the label treatment, focus ring, honeypot, submit button and
+ * status colours all live in components.css. Only the layout hook below is
+ * page-specific. */
 .message-field,
 .submit-button,
 .form-status {
-  margin-top: 18px;
+  margin-top: var(--space-4);
 }
 
-.honeypot-field {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-}
-
-.submit-button {
-  width: 100%;
-  border: 0;
-  cursor: pointer;
-}
-
-.form-status {
-  min-height: 24px;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.form-status.is-success {
-  color: #1e6c43;
-}
-
-.form-status.is-error {
-  color: #a32e2e;
-}
-
-.site-footer {
-  padding: 42px 0;
-  background: #081223;
-  color: var(--text-inverse);
-}
-
+/* Footer background, link layout and copy colours come from components.css.
+ * Only the grid shape and the brand offset are page-specific. */
 .footer-grid {
   grid-template-columns: minmax(0, 1.2fr) auto auto;
   align-items: center;
 }
 
 .footer-brand {
-  margin-bottom: 16px;
-}
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  color: rgba(247, 247, 242, 0.78);
-}
-
-.footer-copy {
-  color: rgba(247, 247, 242, 0.7);
-}
-
-body.is-nav-open {
-  overflow: hidden;
+  margin-bottom: var(--space-4);
 }
 
 @media (max-width: 1080px) {
@@ -1155,30 +827,12 @@ body.is-nav-open {
 }
 
 @media (max-width: 560px) {
-  :root {
-    --container: min(100vw - 28px, 1160px);
-  }
-
-  .hero-section,
-  .section {
-    padding-bottom: 72px;
-  }
-
-  h1 {
-    font-size: clamp(2.7rem, 12vw, 4rem);
-  }
-
-  h2 {
-    font-size: clamp(2rem, 10vw, 3rem);
-  }
-
-  .service-card,
-  .testimonial-card,
-  .contact-form-card,
-  .faq-item,
-  .case-study-copy {
-    padding: 22px;
-  }
+  /* --container, the section padding and the h1/h2 sizes used to be
+   * re-declared here, which silently overrode the tokens and gave this system
+   * a 14px gutter and a third section rhythm on small screens. They are set
+   * once in tokens.css now. Card padding likewise comes from --card-pad: the
+   * old `padding: 22px` here meant cards were flush above 560px but padded
+   * below it. */
 
   .service-card-media {
     min-height: 190px;
@@ -1197,34 +851,13 @@ body.is-nav-open {
   }
 }
 
-/* Direct-to-background presentation */
+/* Direct-to-background presentation.
+ * The eight-way `border: 0 / border-radius: 0 / background: transparent /
+ * box-shadow: none` reset and the eight-way `padding: 0` reset that used to
+ * sit here are now the four --card-* tokens declared at the top of this file.
+ * components.css owns the card rule; nothing here restates a surface. */
 .hero-summary {
-  gap: 24px;
-}
-
-.hero-summary-card,
-.service-card,
-.testimonial-card,
-.faq-item,
-.case-study-card,
-.pricing-card,
-.addons-card,
-.contact-form-card {
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-}
-
-.hero-summary-card,
-.service-card,
-.testimonial-card,
-.faq-item,
-.pricing-card,
-.addons-card,
-.contact-form-card,
-.case-study-copy {
-  padding: 0;
+  gap: var(--space-5);
 }
 
 .service-grid,
@@ -1234,29 +867,15 @@ body.is-nav-open {
   gap: clamp(2rem, 4vw, 4.5rem);
 }
 
-.service-card,
-.pricing-card,
-.testimonial-card,
-.faq-item {
-  align-content: start;
-}
 
+/* Media wells are frameless on this system too. */
 .service-card-media,
 .case-study-media {
-  padding: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-}
-
-.service-card-image,
-.case-study-media img {
   border-radius: 0;
 }
 
+/* display/gap come from components.css so the trailing CTA can be pinned. */
 .case-study-card {
-  display: grid;
-  gap: 22px;
   overflow: visible;
 }
 
@@ -1913,7 +1532,7 @@ html:not(.is-ready) footer img {
   font-family: var(--font-display);
   font-size: 2.6rem;
   line-height: 0.9;
-  color: #9d7a36;
+  color: var(--color-gold-text);
 }
 
 .payment-step h3 {
@@ -1951,7 +1570,7 @@ html:not(.is-ready) footer img {
   flex: none;
   font-size: 1.3rem;
   line-height: 1;
-  color: #9d7a36;
+  color: var(--color-gold-text);
 }
 
 .pricing-page .faq-item[open] summary::after {

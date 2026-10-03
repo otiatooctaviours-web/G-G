@@ -1,63 +1,15 @@
-:root {
-  --bg: #f6f6f0;
-  --bg-soft: #eef3fa;
-  --surface: rgba(255, 255, 255, 0.92);
-  --surface-strong: #ffffff;
-  --surface-deep: #081223;
-  --surface-deep-soft: #10213b;
-  --line: rgba(8, 18, 35, 0.1);
-  --line-strong: rgba(216, 179, 106, 0.28);
-  --text: #112039;
-  --text-muted: #586274;
-  --text-inverse: #f7f7f2;
-  --accent: #d8b36a;
-  --accent-soft: #f1cf8d;
-  --accent-ink: #1d2834;
-  --shadow: 0 24px 70px rgba(6, 15, 30, 0.14);
-  --radius-xl: 32px;
-  --radius-lg: 24px;
-  --radius-md: 18px;
-  --radius-sm: 14px;
-  --container: min(1160px, calc(100vw - 40px));
-  --font-body: "Plus Jakarta Sans", sans-serif;
-  --font-display: "Cormorant Garamond", serif;
-}
+@import url("tokens.css");
+@import url("components.css");
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+/* The old 24-line :root, the box-sizing reset, html/body/img/a/form defaults
+ * and the .navbar/.section > */.footer-* container rule are all now in
+ * tokens.css and components.css. This file keeps only what is specific to
+ * these nine pages: the page ground and the ambient blobs behind it. */
 
 body {
-  margin: 0;
-  font-family: var(--font-body);
-  color: var(--text);
   background:
     radial-gradient(circle at top left, rgba(216, 179, 106, 0.1), transparent 25%),
     linear-gradient(180deg, #f4f6fb 0%, #f8f7f2 42%, #ffffff 100%);
-  overflow-x: hidden;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-input,
-select,
-textarea {
-  font: inherit;
 }
 
 .page-shell {
@@ -97,247 +49,55 @@ textarea {
   background: radial-gradient(circle, rgba(216, 179, 106, 0.12), transparent 72%);
 }
 
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  padding: 1rem 0;
-  transition: background-color 180ms ease, box-shadow 180ms ease, backdrop-filter 180ms ease;
-}
-
-.site-header.is-scrolled {
-  background: rgba(8, 18, 35, 0.78);
-  box-shadow: 0 10px 36px rgba(4, 10, 20, 0.25);
-  backdrop-filter: blur(16px);
-}
-
-.navbar,
-.section > *,
-.footer-grid,
-.footer-contact-row,
-.footer-meta {
-  width: var(--container);
-  margin: 0 auto;
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.25rem;
-  position: relative;
-}
-
+/* Header, navbar, brand, nav links, dropdown and the container rule are all
+ * in components.css. The glass variant of the sticky bar stays here because
+ * it is specific to these pages. */
 .site-header .navbar.glass {
   background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(var(--blur-sm));
 }
 
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-
-.brand-logo {
-  width: 56px;
-  height: 56px;
-  border-radius: 18px;
-  object-fit: cover;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
-}
-
-.brand-copy {
-  display: grid;
-  gap: 0.15rem;
-  color: var(--text-inverse);
-}
-
-.brand-copy strong {
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.brand-copy small {
-  color: rgba(247, 247, 242, 0.72);
-}
-
-.site-header .navbar.glass .brand-copy {
-  color: var(--text);
+/* Brand, nav toggle, nav menu, nav links, dropdown and the glass surface are
+ * in components.css. Only the light-header colour inversions stay here. */
+.site-header .navbar.glass .brand-copy,
+.site-header .navbar.glass .nav-links,
+.site-header .navbar.glass .dropdown-trigger {
+  color: var(--color-ink);
 }
 
 .site-header .navbar.glass .brand-copy small {
-  color: var(--text-muted);
-}
-
-.glass {
-  border: 1px solid var(--line);
-  background: var(--surface);
-  box-shadow: var(--shadow);
-}
-
-.nav-toggle {
-  display: none;
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  border: 0;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.08);
-  cursor: pointer;
-}
-
-.nav-toggle span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  margin: 6px auto;
-  background: var(--text-inverse);
-  transition: transform 180ms ease;
-}
-
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  color: rgba(247, 247, 242, 0.86);
-}
-
-.site-header .navbar.glass .nav-links,
-.site-header .navbar.glass .dropdown-trigger {
-  color: var(--text);
-}
-
-.nav-links a,
-.dropdown-trigger {
-  position: relative;
-  border: 0;
-  padding: 0;
-  background: transparent;
-  color: inherit;
-  font-size: 0.95rem;
-  cursor: pointer;
-}
-
-.nav-links a::after,
-.dropdown-trigger::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.35rem;
-  width: 100%;
-  height: 1px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 180ms ease;
-}
-
-.nav-links a:hover::after,
-.nav-links a:focus-visible::after,
-.dropdown-trigger:hover::after,
-.dropdown-trigger:focus-visible::after {
-  transform: scaleX(1);
-}
-
-.has-dropdown {
-  position: relative;
-}
-
-.dropdown {
-  position: absolute;
-  top: calc(100% + 1rem);
-  left: 0;
-  min-width: 240px;
-  display: grid;
-  gap: 0.85rem;
-  padding: 1rem;
-  border-radius: 20px;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-8px);
-  transition: opacity 180ms ease, transform 180ms ease;
-  z-index: 15;
-}
-
-.has-dropdown.is-open .dropdown {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
+  color: var(--color-muted);
 }
 
 .dropdown a {
   color: var(--text);
 }
 
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 52px;
-  padding: 0 1.3rem;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  font-weight: 700;
-  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
-}
-
-.button:hover,
-.button:focus-visible,
-.contact-item:hover,
-.contact-item:focus-visible {
-  transform: translateY(-2px);
-}
-
-.button-primary {
-  background: var(--accent);
-  color: var(--accent-ink);
-}
-
-.button-secondary,
-.button-ghost,
-.nav-cta {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.18);
-  color: var(--text-inverse);
-}
-
+/* Button geometry and all three variants are in components.css. The two
+ * light-ground inversions below stay because they depend on this file's
+ * section classes. */
 .site-header .navbar.glass .nav-cta {
   background: rgba(8, 18, 35, 0.05);
-  border-color: var(--line);
-  color: var(--text);
+  border-color: var(--color-border);
+  color: var(--color-ink);
 }
 
 .services-grid .button-ghost,
 .reason-section .button-ghost,
 .about-grid .button-ghost {
   background: rgba(8, 18, 35, 0.03);
-  border-color: var(--line);
-  color: var(--text);
+  border-color: var(--color-border);
+  color: var(--color-ink);
 }
 
-.section {
-  position: relative;
-  z-index: 1;
-  padding: 5.4rem 0;
-}
-
+/* Section padding is now one value for every section on both systems. */
 .hero.section {
   margin-top: -88px;
   padding-top: 9.5rem;
-  padding-bottom: 5.4rem;
+  padding-bottom: var(--section-pad);
   background:
     linear-gradient(135deg, rgba(8, 18, 35, 0.98) 0%, rgba(14, 27, 49, 0.96) 52%, rgba(15, 37, 64, 0.98) 100%);
-  color: var(--text-inverse);
+  color: var(--color-ink-inverse);
   overflow: clip;
 }
 
@@ -368,34 +128,8 @@ textarea {
   z-index: 1;
 }
 
-h1,
-h2,
-h3 {
-  margin: 0;
-  font-family: var(--font-display);
-  letter-spacing: -0.03em;
-}
-
-h1 {
-  font-size: clamp(3rem, 6vw, 5.4rem);
-  line-height: 0.94;
-}
-
-h2 {
-  font-size: clamp(2.2rem, 4vw, 3.6rem);
-  line-height: 0.98;
-}
-
-h3 {
-  font-size: clamp(1.35rem, 2vw, 1.85rem);
-  line-height: 1.05;
-}
-
-p {
-  margin: 0;
-  line-height: 1.72;
-}
-
+/* h1/h2/h3, p and the eyebrow label are in components.css. Only the inline
+ * flex layout of the eyebrow row is specific to these pages. */
 .eyebrow,
 .glass-pill,
 .stack-kicker,
@@ -403,12 +137,7 @@ p {
 .proof-label {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-soft);
+  gap: var(--space-3);
 }
 
 .glass-pill::before,
@@ -588,31 +317,11 @@ p {
   color: var(--text-muted);
 }
 
-.about-card,
-.founder-card,
-.service-card {
-  padding: 1.45rem;
-}
-
-.about-card,
-.founder-card,
-.service-card {
-  background: rgba(255, 255, 255, 0.92);
-}
-
-.founder-card,
-.service-card,
-.about-card {
-  border: 1px solid var(--line);
-}
-
-.stack-kicker,
-.case-hub-kicker {
-  color: #9d7a36;
-}
-
+/* Card padding, surface and border come from components.css via the
+ * --card-* tokens, so these three rules are redundant now. The kicker colour
+ * is set there too (#9d7a36 here was 3.71:1 on cream — below AA). */
 .stack-kicker {
-  margin-bottom: 0.9rem;
+  margin-bottom: var(--space-3);
 }
 
 .services-grid {
@@ -649,11 +358,7 @@ p {
   color: rgba(247, 247, 242, 0.8);
 }
 
-.site-footer {
-  padding: 3rem 0 2.5rem;
-  background: #081223;
-  color: var(--text-inverse);
-}
+/* Footer padding, navy ground and cream text come from components.css. */
 
 .footer-grid {
   grid-template-columns: minmax(0, 1.25fr) repeat(3, minmax(0, 0.8fr));
@@ -670,37 +375,36 @@ p {
 }
 
 .footer-grid h3 {
-  margin-bottom: 0.7rem;
-  font-size: 1.3rem;
+  margin-bottom: var(--space-3);
 }
 
 .footer-grid a,
 .footer-grid p {
   display: block;
-  margin-bottom: 0.55rem;
-  color: rgba(247, 247, 242, 0.76);
+  margin-bottom: var(--space-2);
+  color: var(--color-ink-inverse-muted);
 }
 
 .footer-brand {
-  margin-bottom: 0.9rem;
+  margin-bottom: var(--space-3);
 }
 
 .footer-contact-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.9rem;
-  margin-top: 1.2rem;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
 }
 
 .contact-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--space-3);
   min-width: 0;
-  padding: 0.9rem 1rem;
+  padding: var(--space-3) var(--space-4);
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-inverse);
+  color: var(--color-ink-inverse);
 }
 
 .contact-item-logo {
@@ -734,8 +438,8 @@ p {
 }
 
 .footer-meta {
-  margin-top: 1rem;
-  color: rgba(247, 247, 242, 0.65);
+  margin-top: var(--space-4);
+  color: var(--color-ink-inverse-faint);
 }
 
 [data-reveal] {
@@ -913,9 +617,9 @@ body.is-nav-open {
 }
 
 @media (max-width: 640px) {
-  :root {
-    --container: min(100vw - 28px, 1160px);
-  }
+  /* --container and the h1/h2 sizes used to be re-declared here, overriding
+   * tokens.css and giving this system its own 14px gutter and heading scale on
+   * small screens. Both are set once in tokens.css now. */
 
   .button,
   .contact-item {
@@ -934,14 +638,6 @@ body.is-nav-open {
   .case-hub-links,
   .related-links {
     flex-direction: column;
-  }
-
-  h1 {
-    font-size: clamp(2.6rem, 12vw, 4rem);
-  }
-
-  h2 {
-    font-size: clamp(2rem, 9vw, 3rem);
   }
 }
 
@@ -1066,7 +762,7 @@ body.is-nav-open {
 .cta-copy .eyebrow,
 .cta-copy .glass-pill,
 .cta-copy .stack-kicker {
-  color: #9d7a36;
+  color: var(--color-gold-text);
 }
 
 .cta-copy p {

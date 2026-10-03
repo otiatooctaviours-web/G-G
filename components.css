@@ -1,0 +1,768 @@
+/* components.css — the one implementation of every shared component.
+ *
+ * Loaded immediately after tokens.css by home.css and styles.css. Because it
+ * is imported ahead of the page stylesheets, equal-specificity rules in those
+ * files still win — page-specific overrides keep working, while the shared
+ * component defaults come from here.
+ *
+ * Both naming conventions are covered, because the markup cannot change:
+ *   System A (home.css)   .container  .site-nav   .nav-shell  .contact-chip
+ *   System B (styles.css) .navbar     .nav-links  .nav-menu   .contact-item
+ * Both map onto the same tokens, which is what makes them one system.
+ *
+ * Scope: global styles, container, section wrappers, typography, links,
+ * buttons, cards, form inputs, nav, footer. Page-specific composition
+ * (hero, pricing cards, flow chart, officeops, testimonials) is NOT here.
+ */
+
+/* ================================================================== presets
+ * Card surface is a token so the two existing presentations survive without
+ * duplicating a single padding or border rule:
+ *   elevated  - styles.css pages: white surface, hairline border
+ *   flush     - home.css pages:    card sits directly on the section
+ * home.css overrides these four values for its own pages; see home.css.
+ */
+:root {
+  --card-pad: var(--space-5);
+  --card-pad-compact: var(--space-4);
+  --card-radius: var(--radius-sm);
+  --card-border: var(--border-hairline);
+  --card-bg: var(--color-surface-glass);
+  --card-shadow: none;
+}
+
+/* ==================================================================== base */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding-bottom: var(--floating-clearance);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-ink);
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* =============================================================== container */
+
+.container,
+.navbar,
+.cta-grid,
+.footer-grid,
+.footer-contact-row,
+.footer-meta,
+.section > * {
+  width: var(--container);
+  margin-inline: auto;
+}
+
+/* ======================================================= section wrappers
+ * One vertical rhythm for every section, on both systems. The fluid clamp
+ * interpolates between the mobile and desktop values declared in tokens.css
+ * so the change happens continuously rather than at a breakpoint.
+ */
+
+.section {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--section-pad);
+}
+
+.section-surface {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(238, 243, 250, 0.76)),
+    radial-gradient(circle at top right, rgba(93, 149, 226, 0.08), transparent 28%);
+}
+
+.section-contrast {
+  color: var(--color-ink-inverse);
+  background:
+    linear-gradient(135deg, rgba(8, 18, 35, 0.98), rgba(18, 38, 64, 0.98)),
+    radial-gradient(circle at top right, rgba(216, 179, 106, 0.18), transparent 24%);
+}
+
+.section-contact {
+  background:
+    linear-gradient(180deg, rgba(238, 243, 250, 0.76), rgba(255, 255, 255, 0.96)),
+    radial-gradient(circle at top left, rgba(216, 179, 106, 0.09), transparent 24%);
+}
+
+/* ============================================================== typography */
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-heading);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-h1);
+  line-height: var(--leading-heading);
+}
+
+h2 {
+  font-size: var(--text-h2);
+  line-height: var(--leading-heading);
+}
+
+h3 {
+  font-size: var(--text-h3);
+  line-height: var(--leading-heading-sm);
+}
+
+p {
+  margin: 0;
+  line-height: var(--leading-body);
+  max-width: var(--measure);
+}
+
+.eyebrow,
+.glass-pill,
+.stack-kicker,
+.case-hub-kicker,
+.proof-label,
+.pricing-kicker {
+  font-size: var(--text-eyebrow);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+/* Eyebrow colour is contextual: gold on dark grounds, AA gold on light ones. */
+.eyebrow,
+.pricing-kicker,
+.addons-card .eyebrow,
+.stack-kicker,
+.case-hub-kicker,
+.service-index,
+.case-study-tag,
+.pricing-check {
+  color: var(--color-gold-text);
+}
+
+.section-contrast .eyebrow,
+.hero-section .eyebrow,
+.cta-copy .eyebrow,
+.officeops-landing .eyebrow {
+  color: var(--color-gold-strong);
+}
+
+.text-small,
+.service-card small,
+.footer-meta small {
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+}
+
+.muted {
+  color: var(--color-muted);
+}
+
+/* =================================================================== links
+ * Inline links inside prose and cards get one treatment: gold underline,
+ * AA-compliant. Structural links (nav, footer, buttons) opt out.
+ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.prose-link,
+.section-heading a,
+.service-card a,
+.case-study-copy a,
+.related-links a,
+.dropdown a {
+  color: var(--color-gold-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+.prose-link:hover,
+.section-heading a:hover,
+.service-card a:hover,
+.case-study-copy a:hover,
+.related-links a:hover,
+.dropdown a:hover {
+  color: var(--color-gold-deep);
+}
+
+/* The gold arrow appended to card links is decorative; it inherits the
+ * accessible colour rather than the old failing mid-gold. */
+.service-card a::after,
+.case-study-copy a::after {
+  color: var(--color-gold-text);
+}
+
+/* ================================================================ buttons
+ * One height, one radius, one horizontal padding, three variants.
+ * min-height is 52px, comfortably above the 44px tap minimum.
+ */
+
+.button,
+.button-primary,
+.button-secondary,
+.button-ghost,
+.nav-cta,
+.submit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--control-height);
+  min-width: var(--tap-min);
+  padding: 0 var(--control-pad-x);
+  border: 1px solid transparent;
+  border-radius: var(--control-radius);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    transform var(--transition),
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.button:hover,
+.button:focus-visible,
+.button-secondary:hover,
+.button-secondary:focus-visible,
+.button-ghost:hover,
+.button-ghost:focus-visible,
+.submit-button:hover,
+.submit-button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.button-primary,
+.submit-button {
+  background: var(--color-gold);
+  color: var(--color-ink-2);
+}
+
+/* The default for all three variants is the inverse (cream) treatment, which
+ * is correct on every dark ground: both heroes, .section-contrast and
+ * .officeops-section-blue. Light-ground inversions are declared by the page
+ * that owns that ground, because they depend on its section classes:
+ * styles.css handles .cta-copy, .services-grid, .reason-section, .about-grid
+ * and the .glass navbar. Do not widen this rule with :not() — that is what
+ * made a dark System B hero render light buttons. */
+.button-secondary,
+.button-ghost,
+.nav-cta {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-border-inverse);
+  color: var(--color-ink-inverse);
+}
+
+/* Text-link: same box metrics as the buttons but no fill or border, so a
+ * tertiary action still clears the tap target. */
+.button-text,
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap-min);
+  padding: 0 var(--space-2);
+  border: 0;
+  background: none;
+  color: var(--color-gold-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-bold);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  cursor: pointer;
+}
+
+.button-text:hover,
+.button-text:focus-visible,
+.text-link:hover,
+.text-link:focus-visible {
+  color: var(--color-gold-deep);
+}
+
+/* =================================================================== cards
+ * One base surface. Families extend it; none redeclare border, radius or
+ * background. Interior padding comes from the card tokens.
+ *
+ * Deliberately excluded, because each already owns its surface or is not a
+ * card: .glass (modifier, below), .brand-badge, .mini-card, .case-metric,
+ * .case-hub-card, .cta-copy, .visual-panel, .portfolio-login-preview, .navbar.
+ */
+.service-card,
+.testimonial-card,
+.faq-item,
+.case-study-card,
+.contact-form-card,
+.pricing-card,
+.addons-card,
+.hero-summary-card,
+.about-card,
+.founder-card {
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  padding: var(--card-pad);
+}
+
+/* Equal-height rows with aligned CTAs.
+ *
+ * Grid items stretch to the tallest card in their row by default, but these
+ * cards laid their children out with `display: grid` + `align-content: start`,
+ * so a card with a two-line paragraph put its link higher than its neighbour
+ * with a one-line paragraph. A flex column plus `margin-top: auto` on the
+ * trailing child pins every link to the bottom of the card, so a row of CTAs
+ * lines up however much copy sits above it.
+ *
+ * `> :last-child` rather than `> a` so it also works for a card ending in a
+ * button or a span; `align-self: flex-start` stops a trailing link from
+ * stretching the full card width. `.faq-item` is excluded: it is a divided
+ * list, not a card row. */
+.service-card,
+.testimonial-card,
+.pricing-card,
+.case-study-card,
+.addons-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.service-card > :last-child,
+.testimonial-card > :last-child,
+.pricing-card > :last-child,
+.case-study-card > :last-child,
+.addons-card > :last-child {
+  margin-top: auto;
+}
+
+.service-card > a:last-child,
+.case-study-card > a:last-child,
+.addons-card > a:last-child {
+  align-self: flex-start;
+}
+
+/* Frosted surface modifier. Applied to the navbar, footer panel, service
+ * cards and several small components on System B; it supplies border,
+ * background and the lifted shadow but no radius, matching the current
+ * square-edged treatment. */
+.glass {
+  border: var(--color-border);
+  background: var(--color-surface-glass);
+  box-shadow: var(--shadow-2);
+}
+
+/* Overlays keep the lifted shadow level. */
+.site-header.is-scrolled,
+.hero-card {
+  box-shadow: var(--shadow-2);
+}
+
+/* Featured pricing card is the one card that reads as raised. */
+.pricing-card-featured,
+.pricing-card-popular {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-2);
+}
+
+/* ============================================================ form inputs
+ * Same radius and inset as buttons, so a form reads as one control set.
+ */
+
+.contact-form-card input,
+.contact-form-card select,
+.contact-form-card textarea,
+.portfolio-login-field {
+  width: 100%;
+  min-height: var(--control-height);
+  padding: var(--control-pad-y) var(--space-4);
+  border: 1px solid rgba(8, 18, 35, 0.14);
+  border-radius: var(--radius-sm);
+  background: rgba(248, 248, 246, 0.92);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.contact-form-card textarea {
+  min-height: calc(var(--control-height) * 2.5);
+  resize: vertical;
+}
+
+.contact-form-card input:focus,
+.contact-form-card select:focus,
+.contact-form-card textarea:focus,
+.portfolio-login-field:focus {
+  outline: 2px solid rgba(216, 179, 106, 0.32);
+  outline-offset: 0;
+  border-color: rgba(216, 179, 106, 0.56);
+}
+
+.contact-form-card label {
+  display: grid;
+  gap: var(--space-2);
+  color: var(--color-ink);
+  font-weight: var(--weight-medium);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.form-status {
+  min-height: var(--space-6);
+  font-weight: var(--weight-medium);
+  color: var(--color-muted);
+}
+
+.form-status.is-success {
+  color: var(--color-success);
+}
+
+.form-status.is-error {
+  color: var(--color-error);
+}
+
+.honeypot-field {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.submit-button {
+  width: 100%;
+  border: 0;
+}
+
+/* ====================================================================== nav */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  padding-block: var(--space-3);
+  transition:
+    background-color var(--transition),
+    box-shadow var(--transition),
+    backdrop-filter var(--transition);
+}
+
+.site-header.is-scrolled {
+  background: rgba(8, 18, 35, 0.74);
+  backdrop-filter: blur(var(--blur-sm));
+}
+
+.nav-shell,
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  position: relative;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: inherit;
+}
+
+.brand img,
+.brand-logo {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  object-fit: cover;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.brand-copy {
+  display: grid;
+  gap: var(--space-1);
+  color: var(--color-ink-inverse);
+}
+
+.brand-copy strong {
+  font-size: var(--text-body);
+  font-weight: var(--weight-bold);
+}
+
+.brand-copy small {
+  color: var(--color-ink-inverse-faint);
+  font-size: var(--text-small);
+}
+
+.site-nav,
+.nav-menu,
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  color: var(--color-ink-inverse-muted);
+}
+
+.nav-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Nav links clear the 44px tap minimum without changing their appearance. */
+.site-nav a,
+.nav-links a,
+.dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  min-height: var(--tap-min);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.site-nav a::after,
+.nav-links a::after,
+.dropdown-trigger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.5rem;
+  width: 100%;
+  height: 1px;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after,
+.site-nav a[aria-current="page"]::after,
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after,
+.dropdown-trigger:hover::after,
+.dropdown-trigger:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--color-ink-inverse);
+}
+
+/* Light glass header inverts the nav text back to the dark ink. */
+.site-header .navbar.glass .brand-copy,
+.site-header .navbar.glass .nav-links,
+.site-header .navbar.glass .dropdown-trigger {
+  color: var(--color-ink);
+}
+
+.site-header .navbar.glass .brand-copy small {
+  color: var(--color-muted);
+}
+
+.nav-toggle {
+  display: none;
+  width: calc(var(--tap-min) + 6px);
+  height: calc(var(--tap-min) + 6px);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 6px auto;
+  background: var(--color-ink-inverse);
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.has-dropdown {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-4));
+  left: 0;
+  z-index: 15;
+  min-width: 240px;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.has-dropdown.is-open .dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+body.is-nav-open {
+  overflow: hidden;
+}
+
+/* =================================================================== footer */
+
+.site-footer {
+  padding-block: var(--space-7);
+  background: var(--color-navy);
+  color: var(--color-ink-inverse);
+}
+
+.footer-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: minmax(0, 1.2fr) auto auto;
+  align-items: center;
+}
+
+/* The glass footer panel keeps the page's own surface and text colour; only
+ * its shape comes from the system. System B paints it as a translucent panel
+ * over navy, so its text must stay cream. */
+.site-footer .footer-grid.glass {
+  border-radius: var(--radius-lg);
+}
+
+.footer-brand {
+  margin-bottom: var(--space-4);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  color: var(--color-ink-inverse-muted);
+}
+
+.footer-copy,
+.footer-note,
+.footer-meta p {
+  color: var(--color-ink-inverse-faint);
+}
+
+.site-footer .footer-grid.glass .footer-copy,
+.site-footer .footer-grid.glass .footer-meta p {
+  color: var(--color-ink-inverse-faint);
+}
+
+.footer-meta {
+  color: var(--color-ink-inverse-faint);
+  font-size: var(--text-small);
+}
+
+/* Footer and nav links are tap targets too. */
+.footer-links a,
+.footer-meta a,
+.footer-grid a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+}
+
+.contact-item,
+.contact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap-min);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  transition: transform var(--transition);
+}
+
+.contact-item:hover,
+.contact-item:focus-visible,
+.contact-chip:hover,
+.contact-chip:focus-visible {
+  transform: translateY(-2px);
+}
+
+.contact-item-logo,
+.contact-chip-logo,
+.contact-logo {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border-radius: var(--radius-pill);
+  object-fit: cover;
+}
+
+.contact-item-badge,
+.contact-chip-badge {
+  font-size: var(--text-eyebrow);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-gold-strong);
+}
+
+.f6s-follow-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  border-radius: var(--radius-pill);
+}
