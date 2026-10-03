@@ -26,6 +26,35 @@
     return `${price.from ? "from " : ""}${base}${range}${price.unit || ""}`;
   };
 
+  const formatTierPrice = (tier) => {
+    const price = tier.price || {};
+
+    if (price.custom) {
+      return { prefix: "", value: price.label || "Custom quote", suffix: price.suffix || "" };
+    }
+
+    const base = formatCurrency(price.amount ?? price.from);
+    const range = price.to ? `-${currencyFormat.format(price.to)}` : "";
+
+    return {
+      prefix: price.from ? "from" : "",
+      value: `${base}${range}`,
+      suffix: price.suffix || tier.priceSuffix || "",
+    };
+  };
+
+  const ICON_CHECK =
+    '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" focusable="false">' +
+    '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4" opacity="0.55" />' +
+    '<path d="M8.2 12.4l2.6 2.6 5-5.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />' +
+    "</svg>";
+
+  const ICON_CLOCK =
+    '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" focusable="false">' +
+    '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4" opacity="0.55" />' +
+    '<path d="M12 6.9V12l3.4 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />' +
+    "</svg>";
+
   const create = (tag, className, text) => {
     const node = document.createElement(tag);
 
@@ -40,35 +69,82 @@
     return node;
   };
 
+  const createIcon = (className, markup) => {
+    const node = create("span", className);
+    node.setAttribute("aria-hidden", "true");
+    node.innerHTML = markup;
+
+    return node;
+  };
+
   const contactLink = (slug) => `./contact.html?package=${encodeURIComponent(slug)}`;
 
-  const buildTierCard = (tier) => {
-    const card = create("article", tier.popular ? "pricing-card pricing-card-popular" : "pricing-card");
+  const buildPanel = (tier) => {
+    const panel = create("div", "pricing-panel");
 
     if (tier.popular) {
-      card.append(create("p", "pricing-card-badge", tier.badge || "Most popular"));
+      panel.append(create("p", "pricing-card-badge", tier.badge || "Most popular"));
     }
 
-    card.append(create("h3", "pricing-tier-name", tier.name));
-    card.append(create("p", "pricing-price", formatPrice(tier.price)));
-    card.append(create("p", "pricing-audience", tier.summary));
+    panel.append(create("h3", "pricing-tier-name", tier.name));
 
-    const inclusions = create("ul");
-    tier.includes.forEach((item) => inclusions.append(create("li", null, item)));
-    card.append(inclusions);
+    const price = formatTierPrice(tier);
+    const priceLine = create("p", "pricing-price");
 
-    const foot = create("div", "pricing-card-foot");
+    if (price.prefix) {
+      priceLine.append(create("span", "pricing-price-prefix", price.prefix));
+    }
 
-    const delivery = create("p", "pricing-delivery");
-    delivery.append(create("span", null, "Delivery"), create("strong", null, tier.delivery));
-    foot.append(delivery);
+    priceLine.append(create("span", "pricing-price-value", price.value));
+
+    if (price.suffix) {
+      priceLine.append(create("span", "pricing-price-suffix", price.suffix));
+    }
+
+    panel.append(priceLine);
+    panel.append(create("p", "pricing-audience", tier.summary));
 
     const cta = create("a", "button button-primary pricing-cta", "Start this project");
     cta.href = contactLink(tier.slug);
     cta.dataset.packageName = tier.name;
-    foot.append(cta);
+    panel.append(cta);
 
-    card.append(foot);
+    return panel;
+  };
+
+  const buildIncludes = (tier) => {
+    const list = create("ul", "pricing-includes");
+
+    tier.includes.forEach((item) => {
+      const entry = create("li");
+      entry.append(createIcon("pricing-check", ICON_CHECK));
+      entry.append(create("span", null, item));
+      list.append(entry);
+    });
+
+    return list;
+  };
+
+  const buildTierCard = (tier) => {
+    const card = create("article", tier.popular ? "pricing-card pricing-card-popular" : "pricing-card");
+
+    card.append(buildPanel(tier));
+    card.append(create("p", "pricing-includes-label", tier.includesLabel || "What's included"));
+
+    if (tier.includesFrom) {
+      const compare = create("p", "pricing-includes-compare");
+      compare.append(document.createTextNode("Everything in "));
+      compare.append(create("strong", null, tier.includesFrom));
+      compare.append(document.createTextNode(", plus:"));
+      card.append(compare);
+    }
+
+    card.append(buildIncludes(tier));
+
+    const delivery = create("p", "pricing-delivery");
+    delivery.append(createIcon("pricing-delivery-icon", ICON_CLOCK));
+    delivery.append(create("span", null, tier.delivery));
+    card.append(delivery);
 
     return card;
   };
