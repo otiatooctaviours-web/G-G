@@ -1,0 +1,86 @@
+/* Cursor-following gold glow behind the pricing cards.
+   Loaded by pricing.html only. Kept out of home.css on purpose. */
+
+.pricing-page .pricing-group {
+  overflow: hidden;
+  overflow: clip;
+}
+
+/* The single glow element. pricing-glow.js inserts it before .container, so it
+   paints above the section background and below the cards. */
+.pricing-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 480px;
+  height: 420px;
+  border-radius: 120px 100px 120px 100px;
+  background: radial-gradient(
+    closest-side,
+    rgba(241, 207, 141, 0.2),
+    rgba(216, 179, 106, 0.12) 48%,
+    rgba(216, 179, 106, 0) 74%
+  );
+  filter: blur(48px);
+  opacity: 0.55;
+  pointer-events: none;
+  will-change: transform;
+  transition: opacity 250ms ease;
+}
+
+.pricing-glow.is-active {
+  opacity: 1;
+}
+
+/* Coarse pointers and reduced motion keep the old fixed glow. */
+.pricing-glow.is-static {
+  opacity: 0.75;
+  transition: none;
+}
+
+/* Retire the fixed glow that used to sit behind the featured card. */
+.pricing-page .pricing-card-popular::before {
+  content: none;
+}
+
+/* Thin border highlight that brightens on the cursor's side of each card. */
+.pricing-page .pricing-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    220px circle at var(--mx, 50%) var(--my, 0%),
+    rgba(241, 207, 141, 0.5),
+    rgba(241, 207, 141, 0) 68%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.pricing-page .pricing-card:hover::after {
+  opacity: 1;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .pricing-page .pricing-card::after {
+    content: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-page .pricing-card::after {
+    content: none;
+  }
+
+  .pricing-glow {
+    transition: none;
+  }
+}
