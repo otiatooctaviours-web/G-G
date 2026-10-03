@@ -142,6 +142,83 @@ if (contactForm && submitButton) {
   });
 }
 
+const PACKAGE_KEY = "gg:package";
+
+const readStoredPackage = () => {
+  try {
+    return JSON.parse(window.sessionStorage.getItem(PACKAGE_KEY) || "null");
+  } catch (error) {
+    return null;
+  }
+};
+
+const writeStoredPackage = (slug, label) => {
+  try {
+    window.sessionStorage.setItem(PACKAGE_KEY, JSON.stringify({ slug, label }));
+  } catch (error) {
+    /* Storage unavailable. The slug in the URL still carries the package. */
+  }
+};
+
+const clearStoredPackage = () => {
+  try {
+    window.sessionStorage.removeItem(PACKAGE_KEY);
+  } catch (error) {
+    /* No-op. */
+  }
+};
+
+const humanizeSlug = (slug) =>
+  String(slug)
+    .split("-")
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
+const getPackageSlug = (href) => {
+  const match = href.match(/[?&]package=([^&#]+)/);
+  return match ? decodeURIComponent(match[1]) : "";
+};
+
+const prefillContactFormFromPackage = () => {
+  if (!contactForm) {
+    return;
+  }
+
+  const slug = getPackageSlug(window.location.search);
+  const stored = readStoredPackage();
+  const label = (stored && stored.slug === slug && stored.label) || humanizeSlug(slug);
+
+  clearStoredPackage();
+
+  if (!label) {
+    return;
+  }
+
+  const serviceSelect = contactForm.querySelector("select[name='service']");
+
+  if (serviceSelect) {
+    const hasOption = Array.from(serviceSelect.options).some((option) => option.value === label);
+
+    if (!hasOption) {
+      const option = document.createElement("option");
+      option.value = label;
+      option.textContent = label;
+      serviceSelect.append(option);
+    }
+
+    serviceSelect.value = label;
+  }
+
+  const messageField = contactForm.querySelector("textarea[name='message']");
+
+  if (messageField && !messageField.value.trim()) {
+    messageField.value = `I'm interested in the ${label} package.\n\n`;
+  }
+};
+
+prefillContactFormFromPackage();
+
 document.addEventListener("click", (event) => {
   const anchor = event.target instanceof Element ? event.target.closest("a") : null;
 
@@ -156,6 +233,12 @@ document.addEventListener("click", (event) => {
     label,
     location: window.location.pathname,
   };
+
+  const packageSlug = getPackageSlug(href);
+
+  if (packageSlug) {
+    writeStoredPackage(packageSlug, anchor.dataset.packageName || "");
+  }
 
   if (/wa\.me|whatsapp\.com/i.test(href)) {
     trackAnalyticsEvent("whatsapp_cta_clicked", eventData);
