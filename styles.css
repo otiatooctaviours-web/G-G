@@ -2,9 +2,10 @@
 @import url("components.css");
 
 /* The old 24-line :root, the box-sizing reset, html/body/img/a/form defaults
- * and the .navbar/.section > */.footer-* container rule are all now in
- * tokens.css and components.css. This file keeps only what is specific to
- * these nine pages: the page ground and the ambient blobs behind it. */
+ * and the .section > */.footer-* container rule are all now in tokens.css and
+ * components.css, along with the shared nav. This file keeps only what is
+ * specific to these nine pages: the page ground and the ambient blobs behind
+ * it. */
 
 body {
   background:
@@ -49,38 +50,8 @@ body {
   background: radial-gradient(circle, rgba(216, 179, 106, 0.12), transparent 72%);
 }
 
-/* Header, navbar, brand, nav links, dropdown and the container rule are all
- * in components.css. The glass variant of the sticky bar stays here because
- * it is specific to these pages. */
-.site-header .navbar.glass {
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(var(--blur-sm));
-}
-
-/* Brand, nav toggle, nav menu, nav links, dropdown and the glass surface are
- * in components.css. Only the light-header colour inversions stay here. */
-.site-header .navbar.glass .brand-copy,
-.site-header .navbar.glass .nav-links,
-.site-header .navbar.glass .dropdown-trigger {
-  color: var(--color-ink);
-}
-
-.site-header .navbar.glass .brand-copy small {
-  color: var(--color-muted);
-}
-
-.dropdown a {
-  color: var(--text);
-}
-
-/* Button geometry and all three variants are in components.css. The two
- * light-ground inversions below stay because they depend on this file's
- * section classes. */
-.site-header .navbar.glass .nav-cta {
-  background: rgba(8, 18, 35, 0.05);
-  border-color: var(--color-border);
-  color: var(--color-ink);
-}
+/* Header, brand, nav links and the container rule are all in components.css,
+ * which is the single implementation of the shared nav. */
 
 .services-grid .button-ghost,
 .reason-section .button-ghost,
@@ -525,77 +496,9 @@ body.is-nav-open {
   }
 }
 
+/* The nav's collapse rules are in components.css. What remains here is this
+ * page's content layout at the same width. */
 @media (max-width: 860px) {
-  .site-header {
-    padding: 0.85rem 0;
-  }
-
-  .nav-toggle {
-    display: inline-block;
-  }
-
-  .site-header .navbar.glass .nav-toggle {
-    background: rgba(8, 18, 35, 0.08);
-  }
-
-  .site-header .navbar.glass .nav-toggle span {
-    background: var(--text);
-  }
-
-  .nav-menu {
-    position: absolute;
-    top: calc(100% + 0.8rem);
-    left: 0;
-    right: 0;
-    display: grid;
-    gap: 1rem;
-    padding: 1.25rem;
-    border-radius: 24px;
-    background: rgba(8, 18, 35, 0.98);
-    box-shadow: 0 22px 45px rgba(4, 10, 20, 0.3);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-8px);
-    transition: opacity 180ms ease, transform 180ms ease;
-  }
-
-  .nav-menu.is-open {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
-
-  .site-header .navbar.glass .nav-links,
-  .site-header .navbar.glass .dropdown-trigger,
-  .site-header .navbar.glass .nav-cta {
-    color: var(--text-inverse);
-  }
-
-  .site-header .navbar.glass .nav-cta {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.18);
-  }
-
-  .nav-links {
-    display: grid;
-    gap: 1rem;
-  }
-
-  .dropdown {
-    position: static;
-    min-width: 0;
-    margin-top: 0.75rem;
-    padding: 0.75rem 0.9rem;
-    opacity: 1;
-    pointer-events: auto;
-    transform: none;
-    display: none;
-  }
-
-  .has-dropdown.is-open .dropdown {
-    display: grid;
-  }
-
   .hero.section {
     margin-top: -76px;
     padding-top: 8rem;

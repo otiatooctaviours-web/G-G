@@ -1,8 +1,7 @@
 const body = document.body;
-const navbar = document.querySelector(".navbar");
+const siteHeader = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
-const navMenu = document.querySelector(".nav-menu");
-const dropdowns = Array.from(document.querySelectorAll(".has-dropdown"));
+const siteNav = document.querySelector(".site-nav");
 const revealItems = document.querySelectorAll("[data-reveal]");
 const counters = document.querySelectorAll("[data-counter]");
 const tiltCards = document.querySelectorAll(".tilt-card");
@@ -96,123 +95,44 @@ emailLinks.forEach((link) => {
   }
 });
 
-const setNavbarState = () => {
-  navbar?.classList.toggle("is-scrolled", window.scrollY > 18);
+const setHeaderState = () => {
+  siteHeader?.classList.toggle("is-scrolled", window.scrollY > 18);
 };
 
-setNavbarState();
-window.addEventListener("scroll", setNavbarState, { passive: true });
+setHeaderState();
+window.addEventListener("scroll", setHeaderState, { passive: true });
 
-if (navToggle && navMenu) {
-  const syncNavOpenState = (isOpen) => {
-    body.classList.toggle("is-nav-open", isOpen);
-    navbar?.classList.toggle("is-menu-open", isOpen);
-  };
-
-  const closeNavMenu = () => {
-    navMenu.classList.remove("is-open");
+if (navToggle && siteNav) {
+  const closeNav = () => {
+    siteNav.classList.remove("is-open");
     navToggle.setAttribute("aria-expanded", "false");
-    syncNavOpenState(false);
-    dropdowns.forEach((dd) => {
-      dd.classList.remove("is-open");
-      const t = dd.querySelector(".dropdown-trigger");
-      if (t) t.setAttribute("aria-expanded", "false");
-    });
+    body.classList.remove("is-nav-open");
   };
 
   navToggle.addEventListener("click", () => {
-    const isOpen = navMenu.classList.toggle("is-open");
+    const isOpen = siteNav.classList.toggle("is-open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
-    syncNavOpenState(isOpen);
+    body.classList.toggle("is-nav-open", isOpen);
+  });
 
-    if (!isOpen) {
-      dropdowns.forEach((dd) => {
-        dd.classList.remove("is-open");
-        const t = dd.querySelector(".dropdown-trigger");
-        if (t) t.setAttribute("aria-expanded", "false");
-      });
-    }
+  siteNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeNav);
   });
 
   document.addEventListener("click", (event) => {
     const target = event.target;
 
-    if (
-      navMenu.classList.contains("is-open") &&
-      target instanceof Node &&
-      !navMenu.contains(target) &&
-      !navToggle.contains(target)
-    ) {
-      closeNavMenu();
+    if (siteNav.classList.contains("is-open") && target instanceof Node && !siteNav.contains(target) && !navToggle.contains(target)) {
+      closeNav();
     }
   });
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
-      closeNavMenu();
+      closeNav();
     }
   });
 }
-if (dropdowns.length > 0) {
-  dropdowns.forEach((dd) => {
-    const trigger = dd.querySelector(".dropdown-trigger");
-    if (!trigger) return;
-
-    const toggle = (force) => {
-      const nextState = typeof force === "boolean" ? force : !dd.classList.contains("is-open");
-      // close others
-      dropdowns.forEach((other) => {
-        if (other !== dd) {
-          other.classList.remove("is-open");
-          const ot = other.querySelector(".dropdown-trigger");
-          if (ot) ot.setAttribute("aria-expanded", "false");
-        }
-      });
-
-      dd.classList.toggle("is-open", nextState);
-      trigger.setAttribute("aria-expanded", String(nextState));
-    };
-
-    trigger.addEventListener("click", (e) => {
-      e.stopPropagation();
-      toggle();
-    });
-  });
-
-  document.addEventListener("click", (event) => {
-    if (!dropdowns.some((dd) => dd.contains(event.target))) {
-      dropdowns.forEach((dd) => {
-        dd.classList.remove("is-open");
-        const t = dd.querySelector(".dropdown-trigger");
-        if (t) t.setAttribute("aria-expanded", "false");
-      });
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      dropdowns.forEach((dd) => {
-        dd.classList.remove("is-open");
-        const t = dd.querySelector(".dropdown-trigger");
-        if (t) t.setAttribute("aria-expanded", "false");
-      });
-    }
-  });
-}
-
-document.querySelectorAll(".nav-links a, .dropdown a").forEach((link) => {
-  link.addEventListener("click", () => {
-    navMenu?.classList.remove("is-open");
-    navToggle?.setAttribute("aria-expanded", "false");
-    body.classList.remove("is-nav-open");
-    navbar?.classList.remove("is-menu-open");
-    dropdowns.forEach((dd) => {
-      dd.classList.remove("is-open");
-      const t = dd.querySelector(".dropdown-trigger");
-      if (t) t.setAttribute("aria-expanded", "false");
-    });
-  });
-});
 
 const revealObserver = new IntersectionObserver(
   (entries) => {

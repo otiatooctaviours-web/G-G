@@ -5,10 +5,14 @@
  * files still win — page-specific overrides keep working, while the shared
  * component defaults come from here.
  *
- * Both naming conventions are covered, because the markup cannot change:
- *   System A (home.css)   .container  .site-nav   .nav-shell  .contact-chip
- *   System B (styles.css) .navbar     .nav-links  .nav-menu   .contact-item
+ * Most components still cover both naming conventions, because that markup
+ * cannot change:
+ *   System A (home.css)   .container  .contact-chip
+ *   System B (styles.css) .contact-item
  * Both map onto the same tokens, which is what makes them one system.
+ *
+ * The nav is no longer one of the split conventions: every page carries the
+ * same .nav-shell / .site-nav markup, so it is defined here only once.
  *
  * Scope: global styles, container, section wrappers, typography, links,
  * buttons, cards, form inputs, nav, footer. Page-specific composition
@@ -76,7 +80,6 @@ textarea {
 /* =============================================================== container */
 
 .container,
-.navbar,
 .cta-grid,
 .footer-grid,
 .footer-contact-row,
@@ -206,8 +209,7 @@ a {
 .section-heading a,
 .service-card a,
 .case-study-copy a,
-.related-links a,
-.dropdown a {
+.related-links a {
   color: var(--color-gold-text);
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -218,8 +220,7 @@ a {
 .section-heading a:hover,
 .service-card a:hover,
 .case-study-copy a:hover,
-.related-links a:hover,
-.dropdown a:hover {
+.related-links a:hover {
   color: var(--color-gold-deep);
 }
 
@@ -239,7 +240,6 @@ a {
 .button-primary,
 .button-secondary,
 .button-ghost,
-.nav-cta,
 .submit-button {
   display: inline-flex;
   align-items: center;
@@ -284,12 +284,11 @@ a {
  * is correct on every dark ground: both heroes, .section-contrast and
  * .officeops-section-blue. Light-ground inversions are declared by the page
  * that owns that ground, because they depend on its section classes:
- * styles.css handles .cta-copy, .services-grid, .reason-section, .about-grid
- * and the .glass navbar. Do not widen this rule with :not() — that is what
- * made a dark System B hero render light buttons. */
+ * styles.css handles .cta-copy, .services-grid, .reason-section and .about-grid.
+ * Do not widen this rule with :not() — that is what made a dark System B hero
+ * render light buttons. */
 .button-secondary,
-.button-ghost,
-.nav-cta {
+.button-ghost {
   background: rgba(255, 255, 255, 0.05);
   border-color: var(--color-border-inverse);
   color: var(--color-ink-inverse);
@@ -329,7 +328,7 @@ a {
  *
  * Deliberately excluded, because each already owns its surface or is not a
  * card: .glass (modifier, below), .brand-badge, .mini-card, .case-metric,
- * .case-hub-card, .cta-copy, .visual-panel, .portfolio-login-preview, .navbar.
+ * .case-hub-card, .cta-copy, .visual-panel, .portfolio-login-preview.
  */
 .service-card,
 .testimonial-card,
@@ -385,10 +384,10 @@ a {
   align-self: flex-start;
 }
 
-/* Frosted surface modifier. Applied to the navbar, footer panel, service
- * cards and several small components on System B; it supplies border,
- * background and the lifted shadow but no radius, matching the current
- * square-edged treatment. */
+/* Frosted surface modifier. Applied to the footer panel, service cards and
+ * several small components on System B; it supplies border, background and
+ * the lifted shadow but no radius, matching the current square-edged
+ * treatment. */
 .glass {
   border: var(--color-border);
   background: var(--color-surface-glass);
@@ -500,8 +499,7 @@ a {
   backdrop-filter: blur(var(--blur-sm));
 }
 
-.nav-shell,
-.navbar {
+.nav-shell {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -543,25 +541,15 @@ a {
   font-size: var(--text-small);
 }
 
-.site-nav,
-.nav-menu,
-.nav-links {
+.site-nav {
   display: flex;
   align-items: center;
   gap: var(--space-5);
   color: var(--color-ink-inverse-muted);
 }
 
-.nav-links {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
 /* Nav links clear the 44px tap minimum without changing their appearance. */
-.site-nav a,
-.nav-links a,
-.dropdown-trigger {
+.site-nav a {
   display: inline-flex;
   align-items: center;
   position: relative;
@@ -575,9 +563,7 @@ a {
   cursor: pointer;
 }
 
-.site-nav a::after,
-.nav-links a::after,
-.dropdown-trigger::after {
+.site-nav a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -592,27 +578,12 @@ a {
 
 .site-nav a:hover::after,
 .site-nav a:focus-visible::after,
-.site-nav a[aria-current="page"]::after,
-.nav-links a:hover::after,
-.nav-links a:focus-visible::after,
-.dropdown-trigger:hover::after,
-.dropdown-trigger:focus-visible::after {
+.site-nav a[aria-current="page"]::after {
   transform: scaleX(1);
 }
 
 .site-nav a[aria-current="page"] {
   color: var(--color-ink-inverse);
-}
-
-/* Light glass header inverts the nav text back to the dark ink. */
-.site-header .navbar.glass .brand-copy,
-.site-header .navbar.glass .nav-links,
-.site-header .navbar.glass .dropdown-trigger {
-  color: var(--color-ink);
-}
-
-.site-header .navbar.glass .brand-copy small {
-  color: var(--color-muted);
 }
 
 .nav-toggle {
@@ -635,30 +606,52 @@ a {
   transition: transform var(--transition), opacity var(--transition);
 }
 
-.has-dropdown {
-  position: relative;
-}
+/* The nav collapses to the same panel on every page at the same width, so the
+ * desktop links never render in a range too narrow to hold them. */
+@media (max-width: 860px) {
+  .site-header {
+    padding-block: 14px;
+  }
 
-.dropdown {
-  position: absolute;
-  top: calc(100% + var(--space-4));
-  left: 0;
-  z-index: 15;
-  min-width: 240px;
-  display: grid;
-  gap: var(--space-3);
-  padding: var(--space-4);
-  border-radius: var(--radius-lg);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-8px);
-  transition: opacity var(--transition), transform var(--transition);
-}
+  .nav-toggle {
+    display: inline-block;
+  }
 
-.has-dropdown.is-open .dropdown {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
+  .nav-shell {
+    position: relative;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    right: 0;
+    display: grid;
+    gap: 14px;
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-lg);
+    background: rgba(8, 18, 35, 0.96);
+    box-shadow: 0 22px 45px rgba(4, 10, 20, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity var(--transition), transform var(--transition);
+  }
+
+  .site-nav.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-toggle[aria-expanded="true"] span:first-child {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .nav-toggle[aria-expanded="true"] span:last-child {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 }
 
 body.is-nav-open {
