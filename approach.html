@@ -29,6 +29,7 @@
       rel="stylesheet" media="print" onload="this.media='all'"
     />
     <link rel="stylesheet" href="./home.css?v=20260526-landwind" />
+    <link rel="stylesheet" href="./approach-flow.css?v=20261003" />
   </head>
   <body>
     <header class="site-header" id="home">
@@ -96,34 +97,105 @@
         </div>
       </section>
 
-      <section class="section section-surface">
+      <section class="section section-surface flow-section" aria-labelledby="flow-heading">
         <div class="container">
           <div class="section-heading">
             <p class="eyebrow">How It Moves</p>
-            <h2>Short loops, visible progress.</h2>
+            <h2 id="flow-heading">Short loops, visible progress.</h2>
           </div>
 
-          <div class="service-grid">
-            <article class="service-card">
-              <span class="service-index">01</span>
-              <h3>Read the Current Flow</h3>
-              <p>Spreadsheets, forms, manual checks, staff roles, reports, and broken handoffs.</p>
-            </article>
-            <article class="service-card">
-              <span class="service-index">02</span>
-              <h3>Shape the Useful Version</h3>
-              <p>The smallest system that improves the work without adding clutter.</p>
-            </article>
-            <article class="service-card">
-              <span class="service-index">03</span>
-              <h3>Build and Adjust</h3>
-              <p>Screens, data, permissions, notifications, exports, and integrations come together.</p>
-            </article>
-            <article class="service-card">
-              <span class="service-index">04</span>
-              <h3>Hand Over</h3>
-              <p>Training, notes, admin access, deployment support, and next-step maintenance.</p>
-            </article>
+          <div class="flow-wrap">
+            <span class="flow-start" aria-hidden="true"></span>
+
+            <ol class="flow-track" role="list">
+              <li class="flow-node" style="--i: 0">
+                <div class="flow-card">
+                  <span class="flow-index">01</span>
+                  <h3>Read the Current Flow</h3>
+                  <p>Spreadsheets, forms, manual checks, staff roles, reports, and broken handoffs.</p>
+                </div>
+
+                <svg class="flow-link" viewBox="0 0 46 16" width="46" height="16" aria-hidden="true" focusable="false">
+                  <path class="flow-link-line" d="M 2 8 H 36" />
+                  <path class="flow-link-head" d="M 35 3.5 L 41.5 8 L 35 12.5" />
+                  <circle class="flow-link-dot" cx="23" cy="8" r="3" />
+                </svg>
+
+                <svg class="flow-link-v" viewBox="0 0 20 56" width="20" height="56" aria-hidden="true" focusable="false">
+                  <path class="flow-link-v-line" d="M 10 2 V 36" />
+                  <path class="flow-link-v-head" d="M 5 31 L 10 37 L 15 31" />
+                </svg>
+              </li>
+
+              <li class="flow-node" style="--i: 1">
+                <div class="flow-card">
+                  <span class="flow-index">02</span>
+                  <h3>Shape the Useful Version</h3>
+                  <p>The smallest system that improves the work without adding clutter.</p>
+                </div>
+
+                <svg class="flow-link" viewBox="0 0 46 16" width="46" height="16" aria-hidden="true" focusable="false">
+                  <path class="flow-link-line" d="M 2 8 H 36" />
+                  <path class="flow-link-head" d="M 35 3.5 L 41.5 8 L 35 12.5" />
+                  <circle class="flow-link-dot" cx="23" cy="8" r="3" />
+                </svg>
+
+                <svg class="flow-link-v" viewBox="0 0 20 56" width="20" height="56" aria-hidden="true" focusable="false">
+                  <path class="flow-link-v-line" d="M 10 2 V 36" />
+                  <path class="flow-link-v-head" d="M 5 31 L 10 37 L 15 31" />
+                </svg>
+              </li>
+
+              <li class="flow-node" style="--i: 2">
+                <div class="flow-card">
+                  <span class="flow-index">03</span>
+                  <h3>Build and Adjust</h3>
+                  <p>Screens, data, permissions, notifications, exports, and integrations come together.</p>
+                </div>
+
+                <svg class="flow-link" viewBox="0 0 46 16" width="46" height="16" aria-hidden="true" focusable="false">
+                  <path class="flow-link-line" d="M 2 8 H 36" />
+                  <path class="flow-link-head" d="M 35 3.5 L 41.5 8 L 35 12.5" />
+                  <circle class="flow-link-dot" cx="23" cy="8" r="3" />
+                </svg>
+
+                <svg class="flow-link-v" viewBox="0 0 20 56" width="20" height="56" aria-hidden="true" focusable="false">
+                  <path class="flow-link-v-line" d="M 10 2 V 36" />
+                  <path class="flow-link-v-head" d="M 5 31 L 10 37 L 15 31" />
+                </svg>
+
+                <span class="flow-elbow" aria-hidden="true"></span>
+
+                <span class="flow-arc" aria-hidden="true">
+                  <svg class="flow-arc-curve" viewBox="0 0 100 52" preserveAspectRatio="none" focusable="false">
+                    <path class="flow-arc-trace" d="M 100 2 C 100 48, 0 48, 0 2" />
+                    <path class="flow-arc-line" d="M 100 2 C 100 48, 0 48, 0 2" />
+                  </svg>
+                  <svg class="flow-arc-tip" viewBox="0 0 22 14" width="22" height="14" focusable="false">
+                    <path class="flow-arc-arrow" d="M 2 12 L 11 3 L 20 12" />
+                  </svg>
+                </span>
+              </li>
+
+              <li class="flow-node flow-node--end" style="--i: 3">
+                <div class="flow-card">
+                  <span class="flow-index">04</span>
+                  <h3>Hand Over</h3>
+                  <p>Training, notes, admin access, deployment support, and next-step maintenance.</p>
+                </div>
+
+                <svg class="flow-link" viewBox="0 0 46 16" width="46" height="16" aria-hidden="true" focusable="false">
+                  <path class="flow-link-line" d="M 2 8 H 36" />
+                  <path class="flow-link-head" d="M 35 3.5 L 41.5 8 L 35 12.5" />
+                  <circle class="flow-link-dot" cx="23" cy="8" r="3" />
+                </svg>
+
+                <svg class="flow-link-v" viewBox="0 0 20 56" width="20" height="56" aria-hidden="true" focusable="false">
+                  <path class="flow-link-v-line" d="M 10 2 V 36" />
+                  <path class="flow-link-v-head" d="M 5 31 L 10 37 L 15 31" />
+                </svg>
+              </li>
+            </ol>
           </div>
         </div>
       </section>
@@ -156,6 +228,7 @@
     </footer>
 
     <script src="./whatsapp-float.js?v=20261003" defer></script>
+    <script src="./approach-flow.js?v=20261003" defer></script>
     <script src="./home.js?v=20260704-clean" defer></script>
   </body>
 </html>

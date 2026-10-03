@@ -1,0 +1,457 @@
+/* "How it moves" flow chart. approach.html only. */
+
+.flow-section {
+  --flow-gap: 46px;
+  --flow-rowgap: 56px;
+  --flow-rail: 11px;
+  --flow-line: rgba(8, 18, 35, 0.26);
+  --flow-gold: #9d7a36;
+  --flow-card-bg: rgba(255, 255, 255, 0.94);
+  --flow-card-border: rgba(8, 18, 35, 0.1);
+}
+
+.flow-wrap {
+  position: relative;
+}
+
+/* ---------------------------------------------------------------- track */
+
+.flow-track {
+  display: grid;
+  grid-template-columns: 20px repeat(4, minmax(0, 1fr));
+  column-gap: var(--flow-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flow-node {
+  position: relative;
+  display: flex;
+  min-width: 0;
+}
+
+.flow-card {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px 24px;
+  border: 1px solid var(--flow-card-border);
+  border-radius: 16px;
+  background: var(--flow-card-bg);
+  box-shadow: 0 18px 44px rgba(6, 15, 30, 0.1);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.flow-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  min-width: 42px;
+  height: 28px;
+  padding: 0 11px;
+  border: 1px solid rgba(157, 122, 54, 0.34);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: var(--flow-gold);
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease;
+}
+
+.flow-card p {
+  color: var(--text-muted);
+  overflow-wrap: break-word;
+}
+
+/* Step 04 reads as the end of the run. */
+.flow-node--end .flow-index {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* ------------------------------------------------------- start and end */
+
+.flow-start {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px rgba(216, 179, 106, 0.18);
+}
+
+/* ---------------------------------------------------------- connectors */
+
+.flow-link,
+.flow-link-v {
+  position: absolute;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.flow-link {
+  top: 50%;
+  left: 100%;
+  width: var(--flow-gap);
+  height: 16px;
+  transform: translateY(-50%);
+}
+
+.flow-node:last-child .flow-link {
+  display: none;
+}
+
+.flow-link-v {
+  display: none;
+}
+
+.flow-link-line,
+.flow-link-head,
+.flow-link-v-line,
+.flow-link-v-head {
+  fill: none;
+  stroke: var(--flow-line);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.flow-link-dot {
+  fill: var(--accent);
+}
+
+/* Return arc: 03 back to 02, no label.
+   Anchored inside node 03. The box runs from node 02's centre (left) to
+   node 03's centre (right), so it tracks the grid at any container width.
+   The curve uses percentages and stretches; the arrowhead is a separate
+   1:1 svg so it never distorts. */
+.flow-arc {
+  position: absolute;
+  top: 100%;
+  left: calc(-50% - var(--flow-gap));
+  width: calc(100% + var(--flow-gap));
+  height: 52px;
+  pointer-events: none;
+}
+
+.flow-arc-curve {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.flow-arc-tip {
+  position: absolute;
+  top: 0;
+  left: -11px;
+  width: 22px;
+  height: 14px;
+  overflow: visible;
+}
+
+.flow-arc-trace {
+  fill: none;
+  stroke: rgba(157, 122, 54, 0.18);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.flow-arc-line,
+.flow-arc-arrow {
+  fill: none;
+  stroke: rgba(157, 122, 54, 0.62);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.flow-arc-line {
+  stroke-dasharray: 4 5;
+}
+
+/* Elbow from 02 down and left into 03, tablet only.
+   Node 02 is up and to the right of node 03, so the box runs from node 03's
+   centre (left edge) to node 02's centre (right edge): width = card + column
+   gap. Height is the row gap, so the top edge meets node 02's bottom edge. */
+.flow-elbow {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  display: none;
+  width: calc(100% + var(--flow-gap));
+  height: var(--flow-rowgap);
+  background: linear-gradient(var(--flow-line), var(--flow-line)) no-repeat 0 50% / 100% 1px;
+  pointer-events: none;
+}
+
+.flow-elbow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 50%;
+  background: var(--flow-line);
+  transform-origin: top;
+}
+
+.flow-elbow::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid var(--flow-line);
+  border-bottom: 1.5px solid var(--flow-line);
+  transform: rotate(45deg);
+}
+
+/* ----------------------------------------------------------------- hover */
+
+@media (hover: hover) and (pointer: fine) {
+  .flow-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(216, 179, 106, 0.62);
+    box-shadow: 0 26px 58px rgba(6, 15, 30, 0.14);
+  }
+
+  .flow-card:hover .flow-index {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+}
+
+/* ------------------------------------------------------------- entrance */
+
+.flow-armed .flow-node {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 520ms ease,
+    transform 520ms ease;
+  transition-delay: calc(var(--i) * 120ms);
+}
+
+.flow-armed .flow-link-line,
+.flow-armed .flow-link-head,
+.flow-armed .flow-link-v-line,
+.flow-armed .flow-link-v-head {
+  stroke-dasharray: 70;
+  stroke-dashoffset: 70;
+  transition: stroke-dashoffset 420ms ease;
+  transition-delay: calc((var(--i) + 1) * 120ms);
+}
+
+.flow-armed .flow-link-dot {
+  opacity: 0;
+  transition: opacity 300ms ease;
+  transition-delay: calc((var(--i) + 1) * 120ms + 300ms);
+}
+
+.flow-armed .flow-start {
+  opacity: 0;
+  transform: translateY(calc(-50% + 12px));
+  transition: opacity 420ms ease;
+}
+
+.flow-armed .flow-arc-trace {
+  stroke-dasharray: 144;
+  stroke-dashoffset: 144;
+  transition: stroke-dashoffset 620ms ease;
+  transition-delay: 600ms;
+}
+
+.flow-armed .flow-arc-line,
+.flow-armed .flow-arc-arrow {
+  opacity: 0;
+  transition: opacity 260ms ease;
+  transition-delay: 1080ms;
+}
+
+.flow-armed .flow-elbow {
+  background-size: 0 1px;
+  transition: background-size 420ms ease;
+  transition-delay: calc(3 * 120ms);
+}
+
+.flow-armed .flow-elbow::before {
+  transform: scaleY(0);
+  transition: transform 300ms ease;
+  transition-delay: calc(3 * 120ms);
+}
+
+.flow-armed .flow-elbow::after {
+  opacity: 0;
+  transition: opacity 240ms ease;
+  transition-delay: calc(3 * 120ms + 320ms);
+}
+
+.flow-section.is-revealed .flow-node {
+  opacity: 1;
+  transform: none;
+}
+
+.flow-section.is-revealed .flow-link-line,
+.flow-section.is-revealed .flow-link-head,
+.flow-section.is-revealed .flow-link-v-line,
+.flow-section.is-revealed .flow-link-v-head {
+  stroke-dashoffset: 0;
+}
+
+.flow-section.is-revealed .flow-link-dot,
+.flow-section.is-revealed .flow-start,
+.flow-section.is-revealed .flow-arc-line,
+.flow-section.is-revealed .flow-arc-arrow,
+.flow-section.is-revealed .flow-elbow::after {
+  opacity: 1;
+}
+
+.flow-section.is-revealed .flow-start {
+  transform: translateY(-50%);
+}
+
+.flow-section.is-revealed .flow-arc-trace {
+  stroke-dashoffset: 0;
+}
+
+.flow-section.is-revealed .flow-elbow {
+  background-size: 100% 1px;
+}
+
+.flow-section.is-revealed .flow-elbow::before {
+  transform: scaleY(1);
+}
+
+/* ---------------------------------------------------------------- tablet */
+
+@media (max-width: 1023px) {
+  .flow-start,
+  .flow-arc {
+    display: none;
+  }
+
+  .flow-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: var(--flow-rowgap);
+  }
+
+  .flow-node:nth-child(2) .flow-link,
+  .flow-node:nth-child(4) .flow-link {
+    display: none;
+  }
+
+  .flow-elbow {
+    display: block;
+  }
+}
+
+/* ---------------------------------------------------------------- mobile */
+
+@media (max-width: 639px) {
+  .flow-elbow {
+    display: none;
+  }
+
+  .flow-track {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--flow-rowgap);
+  }
+
+  .flow-link {
+    display: none;
+  }
+
+  .flow-node {
+    padding-left: 38px;
+  }
+
+  .flow-node::before {
+    content: "";
+    position: absolute;
+    top: 34px;
+    bottom: 0;
+    left: var(--flow-rail);
+    width: 1px;
+    background: var(--flow-line);
+    transform-origin: top;
+  }
+
+  .flow-node::after {
+    content: "";
+    position: absolute;
+    top: 27px;
+    left: calc(var(--flow-rail) - 7px);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(216, 179, 106, 0.2);
+  }
+
+  .flow-node:last-child::before {
+    display: none;
+  }
+
+  .flow-link-v {
+    top: 100%;
+    left: calc(var(--flow-rail) - 10px);
+    display: block;
+    width: 20px;
+    height: var(--flow-rowgap);
+  }
+
+  .flow-node:last-child .flow-link-v {
+    display: none;
+  }
+
+  .flow-card {
+    padding: 22px 20px;
+  }
+}
+
+/* --------------------------------------------------------- reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-armed .flow-node,
+  .flow-armed .flow-start,
+  .flow-armed .flow-link-dot,
+  .flow-armed .flow-link-line,
+  .flow-armed .flow-link-head,
+  .flow-armed .flow-link-v-line,
+  .flow-armed .flow-link-v-head,
+  .flow-armed .flow-arc-trace,
+  .flow-armed .flow-arc-line,
+  .flow-armed .flow-arc-arrow,
+  .flow-armed .flow-elbow,
+  .flow-armed .flow-elbow::before,
+  .flow-armed .flow-elbow::after {
+    opacity: 1;
+    transform: none;
+    background-size: 100% 1px;
+    stroke-dashoffset: 0;
+    transition: none;
+    transition-delay: 0ms;
+  }
+}
