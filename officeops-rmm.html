@@ -202,9 +202,12 @@
             <p class="oo-eyebrow">Let’s make work more visible</p>
             <h2>Meet your new command center.</h2>
             <p style="color:#576273">Tell us about your team. We’ll show you how OfficeOps brings your office into focus.</p>
-            <p style="font-size:.82rem;color:#576273">Contact details are placeholders. Official details coming soon.</p>
+            <p style="font-size:.88rem;color:#576273">Prefer email? Write to <a href="mailto:info@ggmarketing.co.ke">info@ggmarketing.co.ke</a> — demo requests go straight there.</p>
           </div>
-          <form class="contact-form-card" action="https://formspree.io/f/xlgwyzwb" method="POST">
+          <form class="contact-form-card" action="https://formspree.io/f/xlgwyzwb" method="POST" data-formspree-endpoint="https://formspree.io/f/xlgwyzwb">
+            <input type="hidden" name="_subject" value="OfficeOps RMM demo request — ggmarketing.co.ke" />
+            <input type="hidden" name="_replyto" value="" data-replyto-mirror />
+            <input type="hidden" name="source" value="officeops-rmm.html Book a demo" />
             <div class="form-grid">
               <label><span>Full name</span><input name="name" type="text" placeholder="e.g. Alex Kamau" required /></label>
               <label><span>Work email</span><input name="email" type="email" placeholder="alex@company.com" required /></label>
@@ -214,6 +217,7 @@
               <label><span>Interested plan</span><select name="plan"><option>Not sure yet</option><option>Starter</option><option>Business</option><option>Enterprise</option></select></label>
             </div>
             <label class="message-field"><span>Message</span><textarea name="message" rows="5" placeholder="Tell us about your office or call center…"></textarea></label>
+            <label class="honeypot-field" aria-hidden="true"><span>Website</span><input name="website" type="text" tabindex="-1" autocomplete="off" /></label>
             <button class="button button-primary submit-button" type="submit">Book my demo</button>
             <p class="form-status" role="status" aria-live="polite"></p>
           </form>

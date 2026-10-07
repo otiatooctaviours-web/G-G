@@ -98,6 +98,14 @@ if (contactForm && submitButton) {
     setStatus();
 
     const formData = new FormData(contactForm);
+    const visitorEmail = String(formData.get("email") || "").trim();
+    const replyMirror = contactForm.querySelector("[data-replyto-mirror]");
+
+    if (replyMirror && visitorEmail) {
+      replyMirror.value = visitorEmail;
+      formData.set("_replyto", visitorEmail);
+    }
+
     formData.append("type", "inquiry");
     formData.append("source", "Homepage Contact Form");
     formData.append("pageUrl", window.location.href);
