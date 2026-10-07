@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024" role="img" aria-labelledby="office-placeholder-title">
+  <title id="office-placeholder-title">Kenyan professionals working together in a modern office</title>
+  <rect width="1536" height="1024" fill="#081223"/>
+  <g fill="none" stroke="#d8b36a" stroke-width="2">
+    <rect x="128" y="128" width="1280" height="768" rx="16"/>
+    <text x="768" y="480" text-anchor="middle" fill="#d8b36a" font-family="system-ui, sans-serif" font-size="24" font-weight="600">Office Image Placeholder</text>
+    <text x="768" y="520" text-anchor="middle" fill="#f1cf8d" font-family="system-ui, sans-serif" font-size="14">Add office.jpg (1536×1024) to assets/</text>
+  </g>
+</svg>

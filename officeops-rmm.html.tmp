@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#081223" />
+    <meta name="description" content="OfficeOps RMM by G&G Tech Kenya — live workstation monitoring, interactive floor maps, people management and consent-first remote assistance. Plans from KES 9,900/month." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://ggmarketing.co.ke/officeops-rmm.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="G&G Tech" />
+    <meta property="og:title" content="OfficeOps RMM — See your whole office, live." />
+    <meta property="og:description" content="One live view of your office and call center. Built by G&G Tech, Kenya, with privacy at the core. Plans from KES 9,900/month." />
+    <meta property="og:url" content="https://ggmarketing.co.ke/officeops-rmm.html" />
+    <meta property="og:image" content="https://ggmarketing.co.ke/assets/offer-founder-hero.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="OfficeOps RMM — See your whole office, live." />
+    <meta name="twitter:description" content="Live workstation monitoring, interactive floor maps, people management and consent-first remote assistance." />
+    <meta name="twitter:image" content="https://ggmarketing.co.ke/assets/offer-founder-hero.jpg" />
+    <title>OfficeOps RMM — See your whole office, live. | G&G Tech Kenya</title>
+    <link rel="icon" href="./assets/favicon.svg?v=20261003-0930" type="image/svg+xml" />
+    <link rel="icon" href="./assets/favicon.ico?v=20261003-0930" sizes="any" />
+    <link rel="icon" href="./assets/favicon-32.png?v=20261003-0930" type="image/png" sizes="32x32" />
+    <link rel="icon" href="./assets/favicon-16.png?v=20261003-0930" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png?v=20261003-0930" sizes="180x180" />
+    <link rel="manifest" href="./site.webmanifest?v=20261003-0930" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;650;700;750;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./officeops-app.css?v=20261007-officeops" />
+  <style>
+      .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--primary);color:var(--primary-foreground);border:1px solid var(--primary);border-radius:6px;font-weight:700;cursor:pointer;text-decoration:none}.btn-outline{background:transparent;color:var(--foreground);border-color:var(--border)}.btn-ghost{background:transparent;border-color:transparent;color:var(--foreground)}.btn[disabled]{opacity:.6;cursor:wait}.btn-small{padding:6px 12px;font-size:12px}[data-lucide]{width:18px;height:18px;flex:none;display:inline-block}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.ml-auto{margin-left:auto}.hidden{display:none}.md-block{display:none}@media(min-width:768px){.md-block{display:block}}.scroll-reveal{visibility:visible;opacity:0;transform:translateY(22px);animation:scrollReveal .7s ease-out forwards}@keyframes scrollReveal{to{opacity:1;transform:translateY(0)}}.section-heading{margin:0 0 14px}.center{text-align:center}.section-link{display:inline-flex;align-items:center;gap:6px;color:var(--primary);font-weight:700;font-size:12px;margin-top:18px;text-decoration:none}.section-link:hover{color:var(--online)}.contact-card{display:flex;align-items:center;gap:14px;padding:18px;border:1px solid var(--border);border-radius:10px;background:var(--secondary)}.contact-card h3{margin:2px 0 2px;font-size:13px}.contact-card p{margin:0;font-size:11px;color:var(--muted-foreground)}.contact-placeholder{color:#576273;font-size:.82rem;margin-top:10px;padding:8px 12px;background:#f8fafc;border:1px dashed var(--border);border-radius:8px}.comparison{width:100%;border-collapse:collapse;margin-top:22px;font-size:12px}.comparison th,.comparison td{padding:11px 14px;border:1px solid var(--border);text-align:left}.comparison thead th{background:var(--background);font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted-foreground)}.comparison tbody td:first-child{font-weight:700;color:var(--foreground)}.comparison tbody tr:nth-child(even){background:var(--secondary)}.comparison .yes{display:inline-flex;align-items:center;gap:5px;color:var(--online)}.comparison .no{color:#576273}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:11px;font-weight:600;color:var(--muted-foreground)}.field input,.field select,.field textarea{background:var(--card);border:1px solid var(--border);border-radius:7px;padding:10px 12px;font:inherit;color:var(--foreground)}.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--primary);outline-offset:1px}.field-error{color:var(--destructive);font-size:11px}.full{width:100%}.submit-row{margin-top:18px}.submit-row button{width:100%}.status-legend{padding:14px 0;gap:14px;border-top:1px solid var(--border)}.status-legend span{display:flex;align-items:center;gap:6px;font-size:12px}.live-dot{width:7px;height:7px;border-radius:50%;background:var(--online)}.trust-strip{padding:22px 0}.trust-inner{padding-block:22px}.trust-item{display:flex;gap:10px;align-items:center;font-size:12px}.trust-item svg{color:var(--online);flex-shrink:0}.trust-item strong{font-size:12px}.trust-item small{color:var(--muted-foreground);font-size:10px}.tour-content{display:none}.tour-content[data-state=active]{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:40px;align-items:center;margin-top:30px}.tour-tab{display:inline-flex;gap:7px;font-size:11px;min-height:38px;padding:9px 12px;border:1px solid transparent}.tour-tab svg{width:16px;height:16px;flex:none}.tour-tab[data-state=active]{background:var(--accent);color:var(--primary);border-color:var(--border);box-shadow:none}.tour-content .tour-kicker svg{color:var(--primary);width:16px;height:16px;flex-shrink:0}.tour-content h3{font-size:23px}.tour-content p{color:var(--muted-foreground)}.login-preview h3{font-size:22px}.login-preview svg{width:22px;height:22px}.step-number{width:40px;height:40px;border-radius:50%;background:var(--primary);color:var(--primary-foreground);display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0}.role{display:flex;gap:12px;align-items:flex-start;padding:16px 18px;border:1px solid var(--border);border-radius:10px;background:var(--secondary)}.role svg{color:var(--primary);flex-shrink:0;width:18px;height:18px}.role h4{margin:2px 0 2px;font-size:14px}.role p{margin:0;font-size:11px;color:var(--muted-foreground)}.price-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px}.price-card.popular{border:2px solid var(--online);box-shadow:var(--shadow)}.price-card .plan-title{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:800}.price-card .plan-title svg{color:var(--primary);width:20px;height:20px}.plan-description{color:var(--muted-foreground);font-size:12px}.price{font-size:32px;font-weight:800}.plan-capacity{color:#576273;font-size:11px;margin:6px 0 12px}.popular-label{background:var(--online);color:#fff;font-size:9px;font-weight:800;padding:3px 9px;border-radius:999px;display:inline-block}.footer-brand{display:flex;align-items:center;gap:10px}.footer-brand .brand-mark{width:34px;height:34px;border-radius:8px}.footer-brand .brand-name{font-size:18px}.footer-brand .brand-name small{font-size:9px;padding:2px 5px}.footer-links a{display:block;font-size:12px;font-weight:600;color:var(--muted-foreground);padding:4px 0}.footer-links a:hover{color:var(--primary)}.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:11px;color:var(--muted-foreground)}.footer-bottom svg{color:var(--primary);width:14px;height:14px}.site-nav{height:80px}.nav-links a{font-size:11px}.mobile-menu{display:none}
+    </style>
+  </head>
+  <body>
+    <div class="oo-page">
+    <header class="site-nav">
+      <div class="container nav-inner">
+        <a href="#" class="brand" aria-label="OfficeOps RMM home">
+          <span class="brand-mark"><img src="./assets/officeops-logo-badge.png" alt="" width="40" height="40" /></span>
+          <div>
+            <div class="brand-name">OfficeOps<small>RMM</small></div>
+            <div class="brand-by">BY G&G TECH · KENYA</div>
+          </div>
+        </a>
+        <nav aria-label="Main navigation" class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#floor-maps">Floor Maps</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <button type="button" class="btn btn-ghost btn-small" id="oo-theme" aria-label="Switch to dark mode" title="Dark mode">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <a href="#contact" class="btn nav-demo btn-small">Book a demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+          <button type="button" class="btn btn-ghost btn-small mobile-menu" id="oo-menu" aria-label="Open navigation" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+<main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy scroll-reveal">
+            <div class="eyebrow eyebrow-pill"><i class="live-dot"></i> YOUR WORKSPACE. CONNECTED. VISIBLE. LIVE.</div>
+            <h1>See your whole<br />office, <span>live.</span></h1>
+            <p>One live view of which workstations are on, who's logged in, on a call, idle or offline. Keep your teams connected with communication, reporting and consent-based remote assist.</p>
+            <div class="hero-buttons">
+              <a href="#contact" class="btn">Book a demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+              <a href="#pricing" class="hero-outline btn">See pricing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+            <div class="hero-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Built for visibility. Designed around trust.</div>
+            <div class="works-with"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span><strong>Works with</strong> a visible Windows workstation agent<br />and a supervisor launcher.</span></div>
+          </div>
+          <div class="product-scene scroll-reveal" style="margin-top:-16px">
+            <div class="browser-frame">
+              <div class="browser-bar">
+                <div class="browser-dots"><i></i><i></i><i></i></div>
+                <div class="browser-label"><span class="browser-bar-end"></span>
+                  <span style="display:inline-block;background:var(--dashboard);color:var(--muted-on-dark);font-size:9px;padding:2px 6px;border-radius:3px">OfficeOps RMM</span>
+                  <span style="display:inline-block;background:var(--dashboard);color:var(--muted-on-dark);font-size:9px;padding:2px 6px;border-radius:3px">Live</span>
+                </div>
+              </div>
+              <img src="./assets/command-center.webp" alt="OfficeOps Command Center showing live workstation counts, call state, idle and offline status, daily time totals and a productivity chart" width="1240" height="768" loading="eager" />
+            </div>
+            <div class="float-alert">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <div><strong>Visibility without surveillance.</strong><span>Consent-first. No audio recording. Always visible.</span></div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 3 9 3 14"/></svg>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+    <div class="hero-bottom" style="padding-top:26px;margin-top:34px;border-top:1px solid var(--dashboard-border);display:flex;align-items:center;gap:18px;color:var(--muted-on-dark);font-size:10px">
+      <strong>A clearer picture. A better-run office.</strong>
+      <span class="divider" style="height:16px;width:1px;background:var(--dashboard-border)"></span>
+      <div class="status-legend">
+        <span><i class="status-dot status-online"></i>Logged in</span>
+        <span><i class="status-dot status-call"></i>On call</span>
+        <span><i class="status-dot status-idle"></i>Idle</span>
+        <span><i class="status-dot status-offline"></i>Offline</span>
+      </div>
+      <span class="ml-auto">Built in Kenya. Ready for your team.</span>
+    </div>
+  </section>
+    <section class="trust-strip" aria-label="Platform essentials">
+      <div class="container trust-inner">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          <div>
+            <strong>15-second live refresh</strong>
+            <small>A real-time pulse of your office</small>
+          </div>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 1v2.5M12 20.5v2.5M4.5 4.5l2 2M17.5 17.5l2 2M19.5 4.5l-2 2M6.34 17.66l-2 2"/></svg>
+          <div>
+            <strong>30-second heartbeats</strong>
+            <small>Reliable workstation telemetry</small>
+          </div>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M8 7l4-4 4 4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+          <div>
+            <strong>CSV, Excel &amp; PDF exports</strong>
+            <small>Insights you can share and act on</small>
+          </div>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <div>
+            <strong>Role-based access</strong>
+            <small>The right visibility for every role</small>
+          </div>
+        </div>
+      </div>
+        <article class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+          <h3>Reports that drive action</h3>
+          <p>Track attendance, mic activity, idle time and shift productivity. Compare departments and export reports and alert history.</p>
+          <div class="feature-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>CSV, Excel &amp; PDF exports.</div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9c0 3.3 0 3.7 2 4.9l4-2 4 2c2-1.2 2-1.6 2-4.9z"/><path d="M22 9c0 3.3 0 3.7-2 4.9l-4-2-4 2c-2-1.2-2-1.6-2-4.9z"/><path d="M12 4c2 3 4 4.5 4 7"/></svg></div>
+          <h3>Consent-based remote assist</h3>
+          <p>Help with a one-time 8-character code that expires in 10 minutes. User-present, view-only screen sharing in the browser.</p>
+          <div class="feature-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Support with permission.</div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Compliance controls</h3>
+          <p>Manage consent, microphone settings, desktop alerts and data retention. Give your team visibility into how monitoring works.</p>
+          <div class="feature-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Trust built into every setting.</div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <h3>Lightweight workstation agent</h3>
+          <p>A visible tray app reports boot, network, login, idle, call and mic-state telemetry. A reliable heartbeat, every 30 seconds.</p>
+          <div class="feature-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Always visible. Never hidden.</div>
+        </article>
+      </div>
+    </section>
+    <section id="features" class="section container scroll-reveal">
+      <div class="heading-row">
+        <div class="section-heading">
+          <div class="eyebrow">ONE PLATFORM. A COMPLETE PICTURE.</div>
+          <h2>Less guesswork.<br />More operational clarity.</h2>
+          <p>Everything you need to understand your office, support your people,<br class="hidden md:block" /> and keep work moving — without switching between tools.</p>
+        </div>
+        <a href="#contact" class="section-link">Explore OfficeOps in a demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+      </div>
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <h3>Real-time monitoring</h3>
+          <p>Know what's happening at every desk. See devices, logins, active calls, idle time and offline workstations in one live view.</p>
+          <div class="feature-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>One view. Every workstation.</div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></div>
+          <h3>Interactive floor maps</h3>
+          <p>Go from branch to floor, department to seat. Build your layout with drag-and-drop or auto-arrange, then watch it come alive.</p>
+          <div class="feature-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Your office, at a glance.</div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>People CRM</h3>
+          <p>Keep shifts, seat assignments and performance history together. Connect your people with the workstations they use.</p>
+          <div class="feature-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>People, not just devices.</div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+          <h3>Alerts &amp; announcements</h3>
+          <p>Catch idle desks, offline devices, late logins and no-call stretches. Share targeted updates, attachments and quick links.</p>
+          <div class="feature-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>The right message. The right team.</div>
+        </article>
+      </div>
+    </section>
+    <section id="real-product" class="section product-tour-section">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">INSIDE OFFICEOPS RMM</div>
+          <h2>See the real product</h2>
+          <p>A closer look at your workspace, people and operational controls.</p>
+        </div>
+        <article class="login-preview">
+          <div>
+            <div class="tour-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> ADMIN COMMAND CENTER</div>
+            <h3>Secure access. Visible consent.</h3>
+            <p>Admin Command Center: secure cloud access, with remote sessions requiring an expiring code and visible consent.</p>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dots"><i></i><i></i><i></i></div>
+              <div class="browser-label"><span class="browser-bar-end"></span>
+                <span style="background:var(--dashboard);color:var(--muted-on-dark);font-size:8px;padding:1px 5px;border-radius:2px">Admin Command Center</span>
+              </div>
+            </div>
+            <img src="./assets/screens/login.webp" alt="OfficeOps Admin Command Center login screen with username, password and a protected workspace notice requiring an expiring remote-session code and visible consent" width="800" height="520" loading="lazy" />
+          </div>
+        </article>
+        <div class="tour-tabs" role="tablist" aria-label="Real product screens">
+          <button class="tour-tab" data-tab="command" role="tab" aria-label="Command Center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Command Center</button>
+          <button class="tour-tab" data-tab="activity" role="tab" aria-label="Activity feed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Activity feed</button>
+          <button class="tour-tab" data-tab="departments" role="tab" aria-label="Departments"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>Departments</button>
+          <button class="tour-tab" data-tab="people" role="tab" aria-label="People CRM"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>People CRM</button>
+          <button class="tour-tab" data-tab="alerts" role="tab" aria-label="Alerts &amp; Comms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Alerts &amp; Comms</button>
+          <button class="tour-tab" data-tab="reports" role="tab" aria-label="Reports"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Reports</button>
+          <button class="tour-tab" data-tab="compliance" role="tab" aria-label="Compliance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>Compliance</button>
+          <button class="tour-tab" data-tab="security" role="tab" aria-label="Account security"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/></svg>Account security</button>
+        </div>
+        <div class="tour-content" data-tab="compliance" role="tabpanel" data-state="active">
+          <div class="tour-copy">
+            <div class="tour-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>Compliance</div>
+            <h3>Consent and monitoring controls.</h3>
+            <p>Require employee consent and choose which monitoring signals are enabled. Set activity and audit retention days, with controls for desktop alerts from admin broadcasts.</p>
+            <ul class="list-check">
+              <li>Require consent before activity monitoring</li>
+              <li>Optional foreground app names and activity duration</li>
+              <li>Browser domains only — never full URLs or page titles</li>
+              <li>Microphone-in-use state without recording audio</li>
+            </ul>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar"><div class="browser-dots"><i></i><i></i><i></i></div><div class="browser-label"><span class="browser-bar-end"></span><span style="background:var(--dashboard);color:var(--muted-on-dark);font-size:8px;padding:1px 5px;border-radius:2px">Compliance</span></div></div>
+            <img src="./assets/screens/compliance.webp" alt="OfficeOps Compliance controls for employee consent, app and domain tracking, microphone state, desktop alerts and activity and audit retention days" width="800" height="520" loading="lazy" />
+          </div>
+        </div>
+        <div class="tour-content" data-tab="security" role="tabpanel" data-state="active">
+          <div class="tour-copy">
+            <div class="tour-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/></svg>Account security</div>
+            <h3>Profile and security.</h3>
+            <p>Keep your account identity and protection settings together. Manage profile information, login protection and password changes, then review recent security activity or revoke all sessions.</p>
+            <ul class="list-check">
+              <li>Profile information</li>
+              <li>Login protection and password changes</li>
+              <li>Recent security activity</li>
+              <li>Revoke all sessions</li>
+            </ul>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar"><div class="browser-dots"><i></i><i></i><i></i></div><div class="browser-label"><span class="browser-bar-end"></span><span style="background:var(--dashboard);color:var(--muted-on-dark);font-size:8px;padding:1px 5px;border-radius:2px">Account security</span></div></div>
+            <img src="./assets/screens/profile-security.webp" alt="OfficeOps Profile and Security screen with account details and navigation for login protection, password changes, security activity and session revocation" width="800" height="520" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <div class="tour-content" data-tab="people" role="tabpanel" data-state="active">
+          <div class="tour-copy">
+            <div class="tour-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>People CRM</div>
+            <h3>Profiles for employees and supervisors.</h3>
+            <p>Create profiles and link or assign devices to the people who use them. Keep contact details, device credentials and notes together, with an Employee Directory.</p>
+            <ul class="list-check">
+              <li>Employee and Supervisor profile options</li>
+              <li>Link existing devices or create device credentials</li>
+              <li>Store email, phone and notes</li>
+              <li>Employee Directory</li>
+            </ul>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar"><div class="browser-dots"><i></i><i></i><i></i></div><div class="browser-label"><span class="browser-bar-end"></span><span style="background:var(--dashboard);color:var(--muted-on-dark);font-size:8px;padding:1px 5px;border-radius:2px">People CRM</span></div></div>
+            <img src="./assets/screens/people-crm.webp" alt="OfficeOps People CRM profile form with employee and supervisor options, device assignment, email, phone, device credentials and notes" width="800" height="520" loading="lazy" />
+          </div>
+        </div>
+        <div class="tour-content" data-tab="alerts" role="tabpanel" data-state="active">
+          <div class="tour-copy">
+            <div class="tour-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Alerts &amp; Comms</div>
+            <h3>Reach every desk.</h3>
+            <p>Broadcast announcements to all devices or a single department with Normal or higher priority. Add downloadable attachments and department Quick Links, so devices only see links for their own department.</p>
+            <ul class="list-check">
+              <li>Broadcast titles and messages</li>
+              <li>All-device or department targeting</li>
+              <li>Priority selection and downloadable attachments</li>
+              <li>Department-specific Quick Links</li>
+            </ul>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar"><div class="browser-dots"><i></i><i></i><i></i></div><div class="browser-label"><span class="browser-bar-end"></span><span style="background:var(--dashboard);color:var(--muted-on-dark);font-size:8px;padding:1px 5px;border-radius:2px">Alerts &amp; Comms</span></div></div>
+            <img src="./assets/screens/alerts-comms.webp" alt="OfficeOps Alerts and Comms broadcast form with title, message, file attachments, audience, priority and department Quick Links" width="800" height="520" loading="lazy" />
+          </div>
+        </div>
+        <div class="tour-content" data-tab="reports" role="tabpanel" data-state="active">
+          <div class="tour-copy">
+            <div class="tour-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Reports</div>
+            <h3>Attendance and department comparison.</h3>
+            <p>Use trend charts to compare staffing and department productivity. Recent attendance shows login and logout times reported from each machine's clock, with CSV exports for the activity you need to review.</p>
+            <ul class="list-check">
+              <li>Attendance and department trend charts</li>
+              <li>Recent attendance from each machine's clock</li>
+              <li>Attendance, mic-activity and idle-time CSV exports</li>
+              <li>Shift-productivity and department-comparison CSV exports</li>
+            </ul>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar"><div class="browser-dots"><i></i><i></i><i></i></div><div class="browser-label"><span class="browser-bar-end"></span><span style="background:var(--dashboard);color:var(--muted-on-dark);font-size:8px;padding:1px 5px;border-radius:2px">Reports</span></div></div>
+            <img src="./assets/screens/reports.webp" alt="OfficeOps Reports screen showing attendance comparison chart, recent attendance totals and CSV export categories" width="800" height="520" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="tour-content" data-tab="command" role="tabpanel" data-state="active">
+          <div class="tour-copy">
+            <div class="tour-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Command Center</div>
+            <h3>One live pulse of your whole workspace.</h3>
+            <p>See Live Devices, On Active Call, Idle Desks and Offline Machines together. Today's Call Time includes utilization, while Today's Online Time shows idle time alongside a 7-day Productivity Trend.</p>
+            <ul class="list-check">
+              <li>Live Device Activity: foreground app, browser domain, microphone state and duration</li>
+              <li>No titles, content, audio or full URLs are collected</li>
+              <li>Filter device activity by department</li>
+              <li>Call, online and idle minutes across the last 7 days</li>
+            </ul>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar"><div class="browser-dots"><i></i><i></i><i></i></div><div class="browser-label"><span class="browser-bar-end"></span><span style="background:var(--dashboard);color:var(--muted-on-dark);font-size:8px;padding:1px 5px;border-radius:2px">Command Center</span></div></div>
+            <img src="./assets/screens/command-center.webp" alt="OfficeOps Command Center with live device, call, idle and offline counts, daily time totals, department filter and productivity chart" width="800" height="520" loading="lazy" />
+          </div>
+        </div>
+        <div class="tour-content" data-tab="activity" role="tabpanel" data-state="active">
+          <div class="tour-copy">
+            <div class="tour-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Activity feed</div>
+            <h3>Your most active people, at a glance.</h3>
+            <p>The Top Active Employees list brings today's call activity and workstation uptime together. Each person appears with their department, call time and current status badge.</p>
+            <ul class="list-check">
+              <li>Top Active Employees with department names</li>
+              <li>Logged In, Break and Connected status badges</li>
+              <li>On Call and Offline states</li>
+              <li>Call-time totals beside each employee</li>
+            </ul>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar"><div class="browser-dots"><i></i><i></i><i></i></div><div class="browser-label"><span class="browser-bar-end"></span><span style="background:var(--dashboard);color:var(--muted-on-dark);font-size:8px;padding:1px 5px;border-radius:2px">Activity feed</span></div></div>
+            <img src="./assets/screens/activity-feed.webp" alt="OfficeOps Top Active Employees list showing departments, call-time totals and Logged In, Break, Connected, On Call and Offline badges" width="800" height="520" loading="lazy" />
+          </div>
+        </div>
+        <div class="tour-content" data-tab="departments" role="tabpanel" data-state="active">
+          <div class="tour-copy">
+            <div class="tour-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>Departments</div>
+            <h3>Real-time department floor plans.</h3>
+            <p>Create departments and choose a floor colour for each room. Move devices into the right room, then drag each workstation into position.</p>
+            <ul class="list-check">
+              <li>Create named departments</li>
+              <li>Choose a floor colour</li>
+              <li>Move devices to the appropriate room</li>
+              <li>Drag workstations into position</li>
+            </ul>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar"><div class="browser-dots"><i></i><i></i><i></i></div><div class="browser-label"><span class="browser-bar-end"></span><span style="background:var(--dashboard);color:var(--muted-on-dark);font-size:8px;padding:1px 5px;border-radius:2px">Departments</span></div></div>
+            <img src="./assets/screens/departments.webp" alt="OfficeOps Departments screen with a new department field, floor colour picker and real-time department floor plan area" width="800" height="520" loading="lazy" />
+          </div>
+        </div>
+
+
+
+
+
+    <section id="floor-maps" class="section floor-section">
+      <div class="container floor-layout scroll-reveal">
+        <div class="mini-floor">
+          <div class="panel-heading">
+            <span>Nairobi HQ · Floor 01</span>
+            <small>Customer Support</small>
+          </div>
+          <div class="floor-room">
+            <div class="seat-grid">
+              <div class="seat" title="Seat 1: Logged in"><i class="status-dot status-online"></i></div>
+              <div class="seat" title="Seat 2: On call"><i class="status-dot status-call"></i></div>
+              <div class="seat" title="Seat 3: On call"><i class="status-dot status-call"></i></div>
+              <div class="seat" title="Seat 4: Logged in"><i class="status-dot status-online"></i></div>
+              <div class="seat" title="Seat 5: Idle"><i class="status-dot status-idle"></i></div>
+              <div class="seat" title="Seat 6: Logged in"><i class="status-dot status-online"></i></div>
+              <div class="seat" title="Seat 7: On call"><i class="status-dot status-call"></i></div>
+              <div class="seat" title="Seat 8: Logged in"><i class="status-dot status-online"></i></div>
+              <div class="seat" title="Seat 9: Logged in"><i class="status-dot status-online"></i></div>
+              <div class="seat" title="Seat 10: Logged in"><i class="status-dot status-online"></i></div>
+              <div class="seat" title="Seat 11: On call"><i class="status-dot status-call"></i></div>
+              <div class="seat" title="Seat 12: Logged in"><i class="status-dot status-online"></i></div>
+              <div class="seat" title="Seat 13: Logged in"><i class="status-dot status-online"></i></div>
+              <div class="seat" title="Seat 14: Logged in"><i class="status-dot status-online"></i></div>
+              <div class="seat" title="Seat 15: On call"><i class="status-dot status-call"></i></div>
+              <div class="seat" title="Seat 16: Idle"><i class="status-dot status-idle"></i></div>
+              <div class="seat" title="Seat 17: Logged in"><i class="status-dot status-online"></i></div>
+              <div class="seat" title="Seat 18: On call"><i class="status-dot status-call"></i></div>
+              <div class="seat" title="Seat 19: On call"><i class="status-dot status-call"></i></div>
+              <div class="seat" title="Seat 20: Logged in"><i class="status-dot status-online"></i></div>
+              <div class="seat" title="Seat 21: Logged in"><i class="status-dot status-online"></i></div>
+              <div class="seat" title="Seat 22: On call"><i class="status-dot status-call"></i></div>
+              <div class="seat" title="Seat 23: Offline"><i class="status-dot status-offline"></i></div>
+              <div class="seat" title="Seat 24: Logged in"><i class="status-dot status-online"></i></div>
+              <div class="seat" title="Seat 25: Idle"><i class="status-dot status-idle"></i></div>
+            </div>
+            <div class="status-legend">
+              <span><i class="status-dot status-online"></i>Logged in</span>
+              <span><i class="status-dot status-call"></i>On call</span>
+              <span><i class="status-dot status-idle"></i>Idle</span>
+              <span><i class="status-dot status-offline"></i>Offline</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="section-heading">
+            <div class="eyebrow">YOUR FLOOR PLAN, BROUGHT TO LIFE</div>
+            <h2>Every branch. Every seat. One live map.</h2>
+            <p>See the whole operation, then zoom into the details. A familiar view of your office makes the next action obvious.</p>
+          </div>
+          <ul class="list-check">
+    <section class="section container scroll-reveal">
+      <div class="section-heading center">
+        <div class="eyebrow">FROM SETUP TO INSIGHT</div>
+        <h2>Your office, connected in three steps.</h2>
+        <p>A simple start. A live view. A more informed way to work.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <span class="step-number">01</span>
+          <h3>Enroll your workstations</h3>
+          <p>Install the visible workstation agent and connect each device with its department code.</p>
+        </article>
+        <article class="step">
+          <span class="step-number">02</span>
+          <h3>Watch your floor come alive</h3>
+          <p>Place devices on your floor maps and see workstation and team statuses update live.</p>
+        </article>
+        <article class="step">
+          <span class="step-number">03</span>
+          <h3>Report, connect &amp; act</h3>
+          <p>Turn activity into useful reports, send targeted announcements and offer consent-based support.</p>
+        </article>
+      </div>
+      <div class="roles">
+        <article class="role">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          <div>
+            <h4>Admin</h4>
+            <p>Manage branches, devices, settings and the complete operation.</p>
+          </div>
+        </article>
+        <article class="role">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div>
+            <h4>Supervisor</h4>
+            <p>Monitor and support the team within their own department.</p>
+          </div>
+        </article>
+        <article class="role">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/></svg>
+          <div>
+            <h4>HR</h4>
+            <p>People-only access for shifts, assignments and performance history.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section id="privacy" class="section privacy-section">
+      <div class="container privacy-layout scroll-reveal">
+        <div>
+          <div class="section-heading">
+            <div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> PRIVACY ISN'T AN AFTERTHOUGHT</div>
+            <h2>Understand your office.<br />Respect your people.</h2>
+            <p>Operational visibility should build trust, not erode it. OfficeOps keeps consent and transparency at the center.</p>
+          </div>
+          <ul class="list-check">
+            <li>Consent-first monitoring, with visible workstation agents.</li>
+            <li>Microphone state transitions and durations only — never audio.</li>
+            <li>Peer-to-peer screen sharing. Screen media never passes through the API.</li>
+            <li>Automatic data retention and audit logs for accountability.</li>
+          </ul>
+          <div class="privacy-statement"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Not hidden surveillance. Agents run visibly. Always.</div>
+        </div>
+        <div>
+          <img class="privacy-image" src="./assets/office.jpg" alt="Kenyan professionals working together in a modern, open call-center office" width="1536" height="1024" loading="lazy" />
+          <div class="privacy-caption"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/></svg> Better visibility. Stronger teams. Mutual trust.</div>
+        </div>
+      </div>
+    </section>
+    <section id="pricing" class="section container scroll-reveal">
+      <div class="section-heading center">
+        <div class="eyebrow">A PLAN FOR EVERY OPERATION</div>
+        <h2>Clear pricing. Room to grow.</h2>
+        <p>Start with the visibility you need. Add capabilities as your team grows.<br />Monthly subscriptions in Kenyan shillings.</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="price-card">
+          <div class="plan-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> Starter</div>
+          <p class="plan-description">A clear view for a growing office.</p>
+          <div class="price"><sup>KES</sup> 9,900 <small>/ month</small></div>
+          <p class="plan-capacity">Up to 25 workstations · 1 branch</p>
+          <ul class="list-check">
+            <li>Command Center &amp; live floor maps</li>
+            <li>Inactivity &amp; offline alerts</li>
+            <li>CSV report exports</li>
+            <li>1 admin account</li>
+            <li>Email support</li>
+          </ul>
+          <a href="#contact" class="btn">Book a demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        </article>
+        <article class="price-card">
+          <div class="plan-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg> Business</div>
+          <p class="plan-description">Keep people, teams and branches in sync.</p>
+          <div class="price"><sup>KES</sup> 29,900 <small>/ month</small></div>
+          <p class="plan-capacity">Up to 150 workstations · 3 branches</p>
+          <ul class="list-check">
+            <li>Everything in Starter</li>
+            <li>People CRM &amp; shift management</li>
+            <li>Announcements &amp; quick links</li>
+            <li>Excel &amp; PDF reports</li>
+            <li>Consent-based remote assist</li>
+            <li>Supervisor &amp; HR roles, scoped access</li>
+            <li>WhatsApp support</li>
+          </ul>
+          <a href="#contact" class="btn">Book a demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        </article>
+        <article class="price-card">
+          <div class="plan-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v22M2 12h22"/></svg> Enterprise</div>
+          <p class="plan-description">Built around your operation.</p>
+          <div class="price">Custom</div>
+          <p class="plan-capacity">Unlimited workstations &amp; branches</p>
+          <ul class="list-check">
+            <li>Everything in Business</li>
+            <li>Compliance &amp; retention controls</li>
+            <li>Audit log review</li>
+            <li>Self-host or cloud deployment</li>
+            <li>Custom onboarding &amp; reporting</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#contact" class="btn">Talk to sales <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        </article>
+
+
+
+
+            <li>Navigate branch → floor → department → seat</li>
+            <li>Arrange seats with drag-and-drop or auto-arrange</li>
+            <li>Spot logged-in, on-call, idle and offline desks instantly</li>
+          </ul>
+          <a href="#contact" class="section-link">See your office on the map <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        </div>
+      </div>
+    </section>
